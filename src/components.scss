@@ -1,0 +1,133 @@
+@import url("https://necolas.github.io/normalize.css/latest/normalize.css");
+@import url("./fonts/TT-Commons/fontface.css");
+
+// Colors
+
+$color-black: #1D1D1D;
+$color-white: #FFFFFF;
+$color-grey: #F2F2F2;
+$color-grey-input: #E3E3E3;
+$color-grey-selection: #DBDBDB;
+$color-grey-detail: #B2B2B2;
+$color-red: #FA4D2B;
+$color-yellow: #FAC02B;
+$color-green: #0FBF36;
+
+// Font weights
+
+.font-weight-regular {font-weight: 400;}
+$font-weight-regular: 400;
+
+.font-weight-medium {font-weight: 500;}
+$font-weight-medium: 500;
+
+.font-weight-demibold {font-weight: 600;}
+$font-weight-demibold: 600;
+
+.font-weight-bold {font-weight: 700;}
+$font-weight-bold: 700;
+
+// Font size
+
+.font-size-label {font-size: 1.6rem;}
+$font-size-label: 1.8rem;
+
+.font-size-label-title {font-size: 2rem;}
+$font-size-label-title: 2.2rem;
+
+// Font family
+
+$font-family-regular: "TT Commons Regular";
+$font-family-regular-italic: "TT Commons Regular Italic";
+
+$font-family-medium: "TT Commons Medium";
+$font-family-medium-italic: "TT Commons Medium Italic";
+
+$font-family-demibold: "TT Commons DemiBold";
+$font-family-demibold-italic: "TT Commons DemiBold Italic";
+
+$font-family-bold: "TT Commons Bold";
+$font-family-bold-italic: "TT Commons Bold Italic";
+
+// Normalize
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+
+// Set default element style
+
+html {
+  font-size: 10px; // Initialize rem unit
+  font-family: $font-family-regular;
+  padding: 0;
+  margin: 0;
+  color: $color-black;
+  background: $color-white;
+  background-color: $color-white;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+// Label
+
+.label {
+  font-size: $font-size-label;
+  line-height: $font-size-label;
+  font-family: $font-family-medium;
+  display: inline-block;
+
+  &.detail {
+    color: $color-grey-detail;
+  }
+
+  &.bold {
+    font-family: $font-family-demibold;
+  }
+
+  &.paragraph {
+    font-family: $font-family-regular;
+  }
+
+  &.title {
+    font-size: $font-size-label-title;
+    line-height: $font-size-label-title;
+    font-family: $font-family-demibold;
+  }
+}
+
+// Buttons
+
+.button {
+  font-size: $font-size-label;
+  font-family: $font-family-demibold;
+  padding: 1.6rem 4rem;
+  border-radius: 1rem;
+  background: $color-grey-input; // default
+  color: $color-black; // default
+  display: inline-block;
+
+  // Size
+  &.chip {
+    padding: 1rem 2rem;
+  }
+
+  // Styles
+  &.black {
+    background: $color-black;
+    color: $color-white;
+  }
+  &.action {
+    background: $color-yellow;
+    color: $color-black;
+  }
+}
+
+// Icons
+

@@ -1,0 +1,65 @@
+/* Custom fontface for Trobify */
+
+    /* Regular */
+
+    @font-face {
+      font-family: 'TT Commons Regular';
+      font-style: normal;
+      font-weight: normal;
+      src: local('TT Commons Regular'), url('TT-Commons-Regular.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'TT Commons Regular Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('TT Commons Italic'), url('TT-Commons-Regular-Italic.woff') format('woff');
+    }
+
+    /* Medium */
+
+    @font-face {
+      font-family: 'TT Commons Medium';
+      font-style: normal;
+      font-weight: normal;
+      src: local('TT Commons Medium'), url('TT-Commons-Medium.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'TT Commons Medium Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('TT Commons Medium Italic'), url('TT-Commons-Medium-Italic.woff') format('woff');
+    }
+    
+    /* DemiBold */
+
+    @font-face {
+      font-family: 'TT Commons DemiBold';
+      font-style: normal;
+      font-weight: normal;
+      src: local('TT Commons DemiBold'), url('TT-Commons-DemiBold.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'TT Commons DemiBold Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('TT Commons DemiBold Italic'), url('TT-Commons-DemiBold-Italic.woff') format('woff');
+    }
+    
+    /* Bold */
+
+    @font-face {
+      font-family: 'TT Commons Bold';
+      font-style: normal;
+      font-weight: normal;
+      src: local('TT Commons Bold'), url('TT-Commons-Bold.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'TT Commons Bold Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('TT Commons Bold Italic'), url('TT-Commons-Bold-Italic.woff') format('woff');
+    }

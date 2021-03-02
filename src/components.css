@@ -1,0 +1,97 @@
+@import url("https://necolas.github.io/normalize.css/latest/normalize.css");
+@import url("./fonts/TT-Commons/fontface.css");
+.font-weight-regular {
+  font-weight: 400;
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.font-weight-demibold {
+  font-weight: 600;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+
+.font-size-label {
+  font-size: 1.6rem;
+}
+
+.font-size-label-title {
+  font-size: 2rem;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-size: 10px;
+  font-family: "TT Commons Regular";
+  padding: 0;
+  margin: 0;
+  color: #1D1D1D;
+  background: #FFFFFF;
+  background-color: #FFFFFF;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.label {
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  font-family: "TT Commons Medium";
+  display: inline-block;
+}
+
+.label.detail {
+  color: #B2B2B2;
+}
+
+.label.bold {
+  font-family: "TT Commons DemiBold";
+}
+
+.label.paragraph {
+  font-family: "TT Commons Regular";
+}
+
+.label.title {
+  font-size: 2.2rem;
+  line-height: 2.2rem;
+  font-family: "TT Commons DemiBold";
+}
+
+.button {
+  font-size: 1.8rem;
+  font-family: "TT Commons DemiBold";
+  padding: 1.6rem 4rem;
+  border-radius: 1rem;
+  background: #E3E3E3;
+  color: #1D1D1D;
+  display: inline-block;
+}
+
+.button.chip {
+  padding: 1rem 2rem;
+}
+
+.button.black {
+  background: #1D1D1D;
+  color: #FFFFFF;
+}
+
+.button.action {
+  background: #FAC02B;
+  color: #1D1D1D;
+}
+/*# sourceMappingURL=components.css.map */
