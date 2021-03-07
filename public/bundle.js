@@ -312,7 +312,7 @@ eval("\n\nvar bind = __webpack_require__(/*! ./helpers/bind */ \"./node_modules/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.catalogo = void 0;\nconst axios_1 = __importDefault(__webpack_require__(/*! axios */ \"./node_modules/axios/index.js\"));\nclass catalogo {\n    constructor() {\n        this.getCatalogo();\n    }\n    getCatalogo() {\n        const myRequest = 'http://localhost:3000/catalogo';\n        axios_1.default.get(myRequest).then((response) => {\n            console.log(response);\n            console.log('object');\n        });\n    }\n}\nexports.catalogo = catalogo;\nlet ejemplo = new catalogo();\nejemplo.getCatalogo();\n\n\n//# sourceURL=webpack://trobify-frontend/./src/index.ts?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.catalogo = void 0;\nconst axios_1 = __importDefault(__webpack_require__(/*! axios */ \"./node_modules/axios/index.js\"));\nclass catalogo {\n    constructor() {\n        this.getCatalogo();\n    }\n    getCatalogo() {\n        const myRequest = 'http://localhost:3000/catalogo';\n        axios_1.default.get(myRequest).then((response) => {\n            console.log(response);\n        });\n    }\n}\nexports.catalogo = catalogo;\nlet ejemplo = new catalogo();\nejemplo.getCatalogo();\n\n\n//# sourceURL=webpack://trobify-frontend/./src/index.ts?");
 
 /***/ })
 
