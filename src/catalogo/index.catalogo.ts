@@ -1,14 +1,11 @@
-import * as request from 'request';
+import http from 'http';
 
 export class catalogo {
-	getCatalog() {
-		let options: any = {
-			headers: {
-				'User-Agent': 'request',
-			},
-		};
-		request.get('http://localhost:3000/catalogo', options, (err, res, body) => {
-			console.log(body);
+	getCatalogo() {
+		const myRequest = 'http://localhost:3000';
+
+		http.get(myRequest, (res) => {
+			console.log(res);
 		});
 	}
 }

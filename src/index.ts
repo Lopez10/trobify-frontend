@@ -1,20 +1,16 @@
-import * as request from 'request';
-import { catalogo } from './catalogo/index.catalogo';
+import axios from 'axios';
 
-export class indexExample {
-	getInfo() {
-		let options: any = {
-			headers: {
-				'User-Agent': 'request',
-			},
-		};
-		request.get('http://localhost:3000', options, (err, res, body) => {
-			console.log(body);
+export class catalogo {
+	constructor() {
+		this.getCatalogo();
+	}
+	getCatalogo() {
+		const myRequest = 'http://localhost:3000/catalogo';
+
+		axios.get(myRequest).then((response) => {
+			console.log(response);
 		});
 	}
 }
-let ejemplo = new indexExample();
-ejemplo.getInfo();
-let ejemplo2 = new catalogo();
-
-ejemplo2.getCatalog();
+let ejemplo = new catalogo();
+ejemplo.getCatalogo();
