@@ -1,11 +1,12 @@
-import http from 'http';
+import axios from 'axios';
 
 export class catalogo {
-	getCatalogo() {
-		const myRequest = 'http://localhost:3000';
-
-		http.get(myRequest, (res) => {
-			console.log(res);
-		});
+	constructor() {
+		this.getCatalogo();
+	}
+	async getCatalogo() {
+		const myRequest = 'http://localhost:3000/catalogo';
+		let listadoInmuebles = axios.get(myRequest);
+		return listadoInmuebles;
 	}
 }

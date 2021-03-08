@@ -1,16 +1,7 @@
-import axios from 'axios';
+import { catalogo } from './catalogo/index.catalogo';
 
-export class catalogo {
-	constructor() {
-		this.getCatalogo();
-	}
-	getCatalogo() {
-		const myRequest = 'http://localhost:3000/catalogo';
-
-		axios.get(myRequest).then((response) => {
-			console.log(response);
-		});
-	}
-}
-let ejemplo = new catalogo();
-ejemplo.getCatalogo();
+let inmuebles = new catalogo();
+let listadoInmuebles = inmuebles.getCatalogo();
+listadoInmuebles.then((resultadoInmuebles) => {
+	console.log(resultadoInmuebles.data);
+});

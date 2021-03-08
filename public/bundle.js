@@ -305,14 +305,25 @@ eval("\n\nvar bind = __webpack_require__(/*! ./helpers/bind */ \"./node_modules/
 
 /***/ }),
 
+/***/ "./src/catalogo/index.catalogo.ts":
+/*!****************************************!*\
+  !*** ./src/catalogo/index.catalogo.ts ***!
+  \****************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.catalogo = void 0;\nconst axios_1 = __importDefault(__webpack_require__(/*! axios */ \"./node_modules/axios/index.js\"));\nclass catalogo {\n    constructor() {\n        this.getCatalogo();\n    }\n    getCatalogo() {\n        return __awaiter(this, void 0, void 0, function* () {\n            const myRequest = 'http://localhost:3000/catalogo';\n            let listadoInmuebles = axios_1.default.get(myRequest);\n            return listadoInmuebles;\n        });\n    }\n}\nexports.catalogo = catalogo;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/catalogo/index.catalogo.ts?");
+
+/***/ }),
+
 /***/ "./src/index.ts":
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.catalogo = void 0;\nconst axios_1 = __importDefault(__webpack_require__(/*! axios */ \"./node_modules/axios/index.js\"));\nclass catalogo {\n    constructor() {\n        this.getCatalogo();\n    }\n    getCatalogo() {\n        const myRequest = 'http://localhost:3000/catalogo';\n        axios_1.default.get(myRequest).then((response) => {\n            console.log(response);\n        });\n    }\n}\nexports.catalogo = catalogo;\nlet ejemplo = new catalogo();\nejemplo.getCatalogo();\n\n\n//# sourceURL=webpack://trobify-frontend/./src/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst index_catalogo_1 = __webpack_require__(/*! ./catalogo/index.catalogo */ \"./src/catalogo/index.catalogo.ts\");\nlet inmuebles = new index_catalogo_1.catalogo();\nlet listadoInmuebles = inmuebles.getCatalogo();\nlistadoInmuebles.then((resultadoInmuebles) => {\n    console.log(resultadoInmuebles);\n});\n\n\n//# sourceURL=webpack://trobify-frontend/./src/index.ts?");
 
 /***/ })
 
@@ -345,7 +356,7 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/index.ts");
 /******/ 	
 /******/ })()
