@@ -1,25 +1,148 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Components</title>
+		<title>Components - Test</title>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" type="text/css" href="css/styles.css" />
 	</head>
 
 	<body>
+		<!-- Icons  -->
+		<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  
+			<symbol id="notification" viewBox="0 0 24 26">
+				<title></title>
+				<path xmlns="http://www.w3.org/2000/svg" d="M15.8589 20.3846V21.3077C15.8589 22.287 15.4698 23.2261 14.7772 23.9185C14.0846 24.611 13.1452 25 12.1657 25C11.1862 25 10.2468 24.611 9.55418 23.9185C8.86156 23.2261 8.47246 22.287 8.47246 21.3077V20.3846M22.0728 18.5056C20.5909 16.6923 19.5447 15.7692 19.5447 10.7702C19.5447 6.19231 17.2064 4.56135 15.2819 3.76923C15.0262 3.66423 14.7856 3.42308 14.7077 3.16058C14.3701 2.01192 13.4237 1 12.1657 1C10.9077 1 9.96071 2.0125 9.62659 3.16173C9.54869 3.42712 9.30805 3.66423 9.05241 3.76923C7.12558 4.5625 4.78961 6.18769 4.78961 10.7702C4.78673 15.7692 3.7405 16.6923 2.2586 18.5056C1.6446 19.2567 2.18242 20.3846 3.25634 20.3846H21.0808C22.149 20.3846 22.6833 19.2533 22.0728 18.5056Z" stroke-linecap="param(stroke-linecap) round" stroke-linejoin="param(stroke-linejoin) round" fill="param(fill) none" stroke="param(outline) #1D1D1D" stroke-width="param(outline-width) 2"/> 
+			</symbol>
+			
+			
+		</svg>
+
+
 		<!-- Label  -->
-		<div class="component label">Label (default)</div>
-		<div class="component label title">Label title</div>
-		<div class="component label detail">Label detail</div>
-		<div class="component label paragraph">Label paragraph</div>
-		<div class="component label bold">Label bold</div>
+		<div class="label title-x2">Label title x2</div>
+		<div class="label title">Label title</div>
+		<div class="label">Label (default)</div>
+		<div class="label detail">Label detail</div>
+		<div class="label paragraph">Label paragraph</div>
+		<div class="label bold">Label bold</div>
+
+		<br><br><br>
 
 		<!-- Button  -->
-		<a href=""><div class="component button">Button (default)</div></a>
-		<a href=""><div class="component button black">Button black</div></a>
-		<a href=""><div class="component button action">Button action</div></a>
-		<a href=""><div class="component button chip">Button chip (default)</div></a>
+		<a href=""><div class="button">Button (default)</div></a>
+		<a href=""><div class="button black">Button black</div></a>
+		<a href=""><div class="button action">Button action</div></a>
+		<a href=""><div class="button chip">Button chip (default)</div></a>
+
+		<br><br><br>
+		
+		<a href=""><div class="button icon">
+			<svg class="icon">
+			<use xlink:href="#notification" />
+		</svg>
+		Button icon
+	</div></a>
+
+		<br><br><br>
+
+		<!-- Property Item  -->
+
+		<div class="property_item">
+			<img>
+			<div class="content">
+				<div class="price"><div class="label title-x2">00.000.000</div><div class="currency"><div class="label title">€</div></div></div>
+				<div class="localization"><div class="label bold">Ubicación del inmueble</div></div>
+				<div class="features"><div class="label bold">000 m<sup>2</sup></div><div class="label bold">00 Hab</div><div class="label bold">00 Baños</div><div class="label bold">00º Piso</div></div>
+				<div class="description"><div class="label paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...</div></div>
+				<div class="actions"></div>
+			</div>
+		</div>
+		<div class="property_item discounted">
+			<img>
+			<div class="content">
+				<div class="price"><div class="label title-x2">00.000.000</div><div class="currency">€</div></div>
+				<div class="localization"><div class="label bold">Ubicación del inmueble</div></div>
+				<div class="features"><div class="label bold">000 m<sup>2</sup></div><div class="label bold">00 Hab</div><div class="label bold">00 Baños</div><div class="label bold">00º Piso</div></div>
+				<div class="description"><div class="label paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...</div></div>
+				<div class="actions"></div>
+			</div>
+		</div>
+		<div class="property_item liked">
+			<img>
+			<div class="content">
+				<div class="price"><div class="label title-x2">00.000.000</div><div class="currency">€</div></div>
+				<div class="localization"><div class="label bold">Ubicación del inmueble</div></div>
+				<div class="features"><div class="label bold">000 m<sup>2</sup></div><div class="label bold">00 Hab</div><div class="label bold">00 Baños</div><div class="label bold">00º Piso</div></div>
+				<div class="description"><div class="label paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...</div></div>
+				<div class="actions"></div>
+			</div>
+		</div>
+		<div class="property_item discounted liked">
+			<img>
+			<div class="content">
+				<div class="price"><div class="label title-x2">00.000.000</div><div class="currency">€</div></div>
+				<div class="localization"><div class="label bold">Ubicación del inmueble</div></div>
+				<div class="features"><div class="label bold">000 m<sup>2</sup></div><div class="label bold">00 Hab</div><div class="label bold">00 Baños</div><div class="label bold">00º Piso</div></div>
+				<div class="description"><div class="label paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...</div></div>
+				<div class="actions"></div>
+			</div>
+		</div>
+
+		<!-- Script  -->
 		<script src="./bundle.js"></script>
+
+		<!-- TESTS -->
+
+		<!--
+			Sources:
+			https://css-tricks.com/svg-symbol-good-choice-icons/
+			https://www.youtube.com/watch?v=-nVJwYKx6H8
+
+
+
+			<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  
+				<symbol id="beaker" viewBox="214.7 0 182.6 792">
+					<circle cx="344.8" cy="20.2" r="20.2"/>
+					<circle cx="344.8" cy="92.9" r="20.2"/>
+					<circle cx="320.5" cy="169.7" r="24.2"/>
+					<circle cx="243" cy="141.4" r="24.2"/>
+					<circle cx="284.2" cy="56.6" r="36.4"/>
+					<path d="M397.3 768.5l-11.3-343.5v-178.5l9.7-20.2h-29.9l-4 13.7 2.4 189.9 9.7 316.8c1.6 14.5-19.4 12.9-34.8 12.9h-33.9s-38.8.8-46.1 0c-14.5-.8-18.6 1.6-17-29.1 1.6-25.2.8-95.5 5.7-301.5l-2.4-189.9-3.2-12.9h-27.5l9.7 20.2v178.6s-3.2 323.3-3.2 343.5c0 26.7 22.6 23.4 22.6 23.4h128.5c7.2 0 25 0 25-23.4zM259.9 473.5h93.8l-1.6-79.9h-92.2zM356.1 611.7l-2.4-132.6v5.7h-93.8l-.8 126.9zM352.1 382.3l-1.7-99.4h-89.7l-.8 99.4zM259.1 623l-.8 123.6h101l-2.4-123.6z"/>
+				</symbol>
+				
+				<symbol id="fish" viewBox="0 26 100 48">
+					<path d="M98.5,47.5C96.5,45.5,81,35,62,35c-2.1,0-4.2,0.1-6.2,0.3L39,26c0,4.5,1.3,9,2.4,12.1C31.7,40.7,23.3,44,16,44L0,34
+				c0,8,4,16,4,16s-4,8-4,16l16-10c7.3,0,15.7,3.3,25.4,5.9C40.3,65,39,69.5,39,74l16.8-9.3c2,0.2,4.1,0.3,6.2,0.3
+				c19,0,34.5-10.5,36.5-12.5S100.5,49.5,98.5,47.5z M85.5,50c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5
+				C88,48.9,86.9,50,85.5,50z" fill="param(fill) #FFF" stroke="param(outline) #000" stroke-width="param(outline-width) 1"/>  
+				</symbol>
+				
+			</svg>
+
+			<svg class="icon"><use xlink:href="#beaker" /></svg>
+
+			<svg class="icon green"><use xlink:href="#fish" /></svg>
+				<svg class="icon green"><use xlink:href="#fish" style="fill:none;fill-opacity:1;stroke:#000000;"/></svg>
+
+			Style.css
+
+				.icon {
+					width: 125px;
+					height: 125px;
+					background: #eee;
+				}
+				
+				.icon.green use {
+					stroke: green;
+				}
+				
+				body {
+					padding: 20px;
+				}
+		-->
+
 	</body>
 </html>
