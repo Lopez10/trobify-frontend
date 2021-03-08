@@ -35,6 +35,9 @@ $font-size-label: 1.8rem;
 .font-size-label-title {font-size: 2rem;}
 $font-size-label-title: 2.2rem;
 
+.font-size-label-title-x2 {font-size: 4rem;}
+$font-size-label-title-x2: 4.4rem;
+
 // Font family
 
 $font-family-regular: "TT Commons Regular";
@@ -75,6 +78,13 @@ a {
   cursor: pointer;
 }
 
+// Icons
+
+svg.icon{
+  width: 2.4rem;
+  height: 2.4rem;
+} 
+
 // Label
 
 .label {
@@ -98,6 +108,12 @@ a {
   &.title {
     font-size: $font-size-label-title;
     line-height: $font-size-label-title;
+    font-family: $font-family-demibold;
+  }
+
+  &.title-x2 {
+    font-size: $font-size-label-title-x2;
+    line-height: $font-size-label-title-x2;
     font-family: $font-family-demibold;
   }
 }

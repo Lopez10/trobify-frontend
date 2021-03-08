@@ -24,6 +24,10 @@
   font-size: 2rem;
 }
 
+.font-size-label-title-x2 {
+  font-size: 4rem;
+}
+
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -44,6 +48,11 @@ a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+}
+
+svg.icon {
+  width: 2.4rem;
+  height: 2.4rem;
 }
 
 .label {
@@ -71,6 +80,12 @@ a {
   font-family: "TT Commons DemiBold";
 }
 
+.label.title-x2 {
+  font-size: 4.4rem;
+  line-height: 4.4rem;
+  font-family: "TT Commons DemiBold";
+}
+
 .button {
   font-size: 1.8rem;
   font-family: "TT Commons DemiBold";
@@ -94,4 +109,4 @@ a {
   background: #FAC02B;
   color: #1D1D1D;
 }
-/*# sourceMappingURL=components.css.map */
+/*# sourceMappingURL=styles.css.map */
