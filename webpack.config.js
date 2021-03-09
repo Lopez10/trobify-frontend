@@ -1,7 +1,9 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: './src/index.ts',
+	plugins: [new HtmlWebpackPlugin({ title: 'Development' })],
 	mode: 'development',
 	module: {
 		rules: [
