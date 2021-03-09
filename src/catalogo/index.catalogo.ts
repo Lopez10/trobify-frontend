@@ -4,9 +4,10 @@ export class catalogo {
 	constructor() {
 		this.getCatalogo();
 	}
-	getCatalogo() {
+	async getCatalogo() {
 		const myRequest = 'http://localhost:3000/catalogo';
-		let listadoInmuebles = axios.get(myRequest);
-		return listadoInmuebles;
+		let inmuebles = await axios.get(myRequest);
+		//let datosInmuebles = inmuebles.data;
+		return inmuebles.data;
 	}
 }
