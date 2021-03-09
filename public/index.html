@@ -13,7 +13,7 @@
   
 			<symbol id="notification" viewBox="0 0 24 26">
 				<title></title>
-				<path xmlns="http://www.w3.org/2000/svg" d="M15.8589 20.3846V21.3077C15.8589 22.287 15.4698 23.2261 14.7772 23.9185C14.0846 24.611 13.1452 25 12.1657 25C11.1862 25 10.2468 24.611 9.55418 23.9185C8.86156 23.2261 8.47246 22.287 8.47246 21.3077V20.3846M22.0728 18.5056C20.5909 16.6923 19.5447 15.7692 19.5447 10.7702C19.5447 6.19231 17.2064 4.56135 15.2819 3.76923C15.0262 3.66423 14.7856 3.42308 14.7077 3.16058C14.3701 2.01192 13.4237 1 12.1657 1C10.9077 1 9.96071 2.0125 9.62659 3.16173C9.54869 3.42712 9.30805 3.66423 9.05241 3.76923C7.12558 4.5625 4.78961 6.18769 4.78961 10.7702C4.78673 15.7692 3.7405 16.6923 2.2586 18.5056C1.6446 19.2567 2.18242 20.3846 3.25634 20.3846H21.0808C22.149 20.3846 22.6833 19.2533 22.0728 18.5056Z" stroke-linecap="param(stroke-linecap) round" stroke-linejoin="param(stroke-linejoin) round" fill="param(fill) none" stroke="param(outline) #1D1D1D" stroke-width="param(outline-width) 2"/> 
+				<path xmlns="http://www.w3.org/2000/svg" d="M15.8589 20.3846V21.3077C15.8589 22.287 15.4698 23.2261 14.7772 23.9185C14.0846 24.611 13.1452 25 12.1657 25C11.1862 25 10.2468 24.611 9.55418 23.9185C8.86156 23.2261 8.47246 22.287 8.47246 21.3077V20.3846M22.0728 18.5056C20.5909 16.6923 19.5447 15.7692 19.5447 10.7702C19.5447 6.19231 17.2064 4.56135 15.2819 3.76923C15.0262 3.66423 14.7856 3.42308 14.7077 3.16058C14.3701 2.01192 13.4237 1 12.1657 1C10.9077 1 9.96071 2.0125 9.62659 3.16173C9.54869 3.42712 9.30805 3.66423 9.05241 3.76923C7.12558 4.5625 4.78961 6.18769 4.78961 10.7702C4.78673 15.7692 3.7405 16.6923 2.2586 18.5056C1.6446 19.2567 2.18242 20.3846 3.25634 20.3846H21.0808C22.149 20.3846 22.6833 19.2533 22.0728 18.5056Z" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-width="2.35"/> 
 			</symbol>
 			
 			
@@ -39,54 +39,66 @@
 		<br><br><br>
 		
 		<a href=""><div class="button icon">
-			<svg class="icon">
-			<use xlink:href="#notification" />
-		</svg>
-		Button icon
-	</div></a>
+			<svg class="icon"><use xlink:href="#notification"/></svg>
+			Button icon
+		</div></a>
+		<a href=""><div class="button black icon">
+			<svg class="icon"><use xlink:href="#notification"/></svg>
+			Button black icon
+		</div></a>
+		<a href=""><div class="button action icon">
+			<svg class="icon"><use xlink:href="#notification"/></svg>
+			Button action icon
+		</div></a>
+		<a href=""><div class="button chip icon">
+			<svg class="icon"><use xlink:href="#notification"/></svg>
+			Button chip icon
+		</div></a>
 
 		<br><br><br>
 
 		<!-- Property Item  -->
 
-		<div class="property_item">
-			<img>
-			<div class="content">
-				<div class="price"><div class="label title-x2">00.000.000</div><div class="currency"><div class="label title">€</div></div></div>
-				<div class="localization"><div class="label bold">Ubicación del inmueble</div></div>
-				<div class="features"><div class="label bold">000 m<sup>2</sup></div><div class="label bold">00 Hab</div><div class="label bold">00 Baños</div><div class="label bold">00º Piso</div></div>
-				<div class="description"><div class="label paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...</div></div>
-				<div class="actions"></div>
+		<div class="list">
+			<div class="property_item">
+				<div class="photo" style="background-image:url(css/img/real-pics/0.jpg)"></div>
+				<div class="content">
+					<div class="price"><div class="label title-x2">00.000.000</div><div class="currency"><div class="label title">€</div></div></div>
+					<div class="localization"><div class="label bold">Ubicación del inmueble</div></div>
+					<div class="features"><div class="label bold">000 m<sup>2</sup></div><div class="label bold">00 Hab</div><div class="label bold">00 Baños</div><div class="label bold">00º Piso</div></div>
+					<div class="description"><div class="label paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...</div></div>
+					<div class="actions"></div>
+				</div>
 			</div>
-		</div>
-		<div class="property_item discounted">
-			<img>
-			<div class="content">
-				<div class="price"><div class="label title-x2">00.000.000</div><div class="currency">€</div></div>
-				<div class="localization"><div class="label bold">Ubicación del inmueble</div></div>
-				<div class="features"><div class="label bold">000 m<sup>2</sup></div><div class="label bold">00 Hab</div><div class="label bold">00 Baños</div><div class="label bold">00º Piso</div></div>
-				<div class="description"><div class="label paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...</div></div>
-				<div class="actions"></div>
+			<div class="property_item discounted">
+				<div class="photo"></div>
+				<div class="content">
+					<div class="price"><div class="label title-x2">00.000.000</div><div class="currency">€</div></div>
+					<div class="localization"><div class="label bold">Ubicación del inmueble</div></div>
+					<div class="features"><div class="label bold">000 m<sup>2</sup></div><div class="label bold">00 Hab</div><div class="label bold">00 Baños</div><div class="label bold">00º Piso</div></div>
+					<div class="description"><div class="label paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...</div></div>
+					<div class="actions"></div>
+				</div>
 			</div>
-		</div>
-		<div class="property_item liked">
-			<img>
-			<div class="content">
-				<div class="price"><div class="label title-x2">00.000.000</div><div class="currency">€</div></div>
-				<div class="localization"><div class="label bold">Ubicación del inmueble</div></div>
-				<div class="features"><div class="label bold">000 m<sup>2</sup></div><div class="label bold">00 Hab</div><div class="label bold">00 Baños</div><div class="label bold">00º Piso</div></div>
-				<div class="description"><div class="label paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...</div></div>
-				<div class="actions"></div>
+			<div class="property_item liked">
+				<div class="photo"></div>
+				<div class="content">
+					<div class="price"><div class="label title-x2">00.000.000</div><div class="currency">€</div></div>
+					<div class="localization"><div class="label bold">Ubicación del inmueble</div></div>
+					<div class="features"><div class="label bold">000 m<sup>2</sup></div><div class="label bold">00 Hab</div><div class="label bold">00 Baños</div><div class="label bold">00º Piso</div></div>
+					<div class="description"><div class="label paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...</div></div>
+					<div class="actions"></div>
+				</div>
 			</div>
-		</div>
-		<div class="property_item discounted liked">
-			<img>
-			<div class="content">
-				<div class="price"><div class="label title-x2">00.000.000</div><div class="currency">€</div></div>
-				<div class="localization"><div class="label bold">Ubicación del inmueble</div></div>
-				<div class="features"><div class="label bold">000 m<sup>2</sup></div><div class="label bold">00 Hab</div><div class="label bold">00 Baños</div><div class="label bold">00º Piso</div></div>
-				<div class="description"><div class="label paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...</div></div>
-				<div class="actions"></div>
+			<div class="property_item discounted liked">
+				<div class="photo"></div>
+				<div class="content">
+					<div class="price"><div class="label title-x2">00.000.000</div><div class="currency">€</div></div>
+					<div class="localization"><div class="label bold">Ubicación del inmueble</div></div>
+					<div class="features"><div class="label bold">000 m<sup>2</sup></div><div class="label bold">00 Hab</div><div class="label bold">00 Baños</div><div class="label bold">00º Piso</div></div>
+					<div class="description"><div class="label paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...</div></div>
+					<div class="actions"></div>
+				</div>
 			</div>
 		</div>
 

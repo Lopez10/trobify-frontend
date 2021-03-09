@@ -50,6 +50,10 @@ a {
   cursor: pointer;
 }
 
+img {
+  border: none !important;
+}
+
 svg.icon {
   width: 2.4rem;
   height: 2.4rem;
@@ -89,15 +93,25 @@ svg.icon {
 .button {
   font-size: 1.8rem;
   font-family: "TT Commons DemiBold";
-  padding: 1.6rem 4rem;
+  padding: 1.6rem 3.6rem;
   border-radius: 1rem;
   background: #E3E3E3;
   color: #1D1D1D;
   display: inline-block;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .button.chip {
-  padding: 1rem 2rem;
+  padding: 1rem 2rem !important;
+}
+
+.button.chip.icon svg {
+  margin-right: 1rem !important;
 }
 
 .button.black {
@@ -105,8 +119,56 @@ svg.icon {
   color: #FFFFFF;
 }
 
+.button.black.icon svg {
+  stroke: #FFFFFF !important;
+}
+
 .button.action {
   background: #FAC02B;
   color: #1D1D1D;
+}
+
+.button.icon svg {
+  margin-right: 1.6rem;
+  stroke: #1D1D1D;
+}
+
+.list .property_item .photo {
+  margin-right: 3rem;
+}
+
+.property_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.property_item .photo {
+  width: 60rem;
+  height: 30rem;
+  background-image: url(./img/placeholder.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 2rem;
+}
+
+.property_item .price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.property_item .price .currency {
+  margin-left: .6rem;
 }
 /*# sourceMappingURL=styles.css.map */

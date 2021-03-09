@@ -78,6 +78,10 @@ a {
   cursor: pointer;
 }
 
+img {
+  border: none !important;
+}
+
 // Icons
 
 svg.icon{
@@ -123,27 +127,69 @@ svg.icon{
 .button {
   font-size: $font-size-label;
   font-family: $font-family-demibold;
-  padding: 1.6rem 4rem;
+  padding: 1.6rem 3.6rem;
   border-radius: 1rem;
   background: $color-grey-input; // default
   color: $color-black; // default
   display: inline-block;
+  display: inline-flex;
+  align-items: center;
 
   // Size
   &.chip {
-    padding: 1rem 2rem;
+    padding: 1rem 2rem !important;
+    &.icon svg {
+      margin-right: 1rem !important;
+    }
   }
 
   // Styles
   &.black {
     background: $color-black;
     color: $color-white;
+    &.icon svg {
+      stroke: $color-white !important;
+    }
   }
   &.action {
     background: $color-yellow;
     color: $color-black;
   }
+  &.icon {
+    svg {
+      margin-right: 1.6rem;
+      stroke: $color-black;
+    }
+  }
 }
 
-// Icons
+// Property list item
 
+.list .property_item {
+  .photo {
+    margin-right: 3rem;
+  }
+}
+.property_item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  .photo {
+    width: 60rem;
+    height: 30rem;
+    background-image: url(./img/placeholder.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 2rem;
+  }
+
+  .price {
+    display: flex;
+    align-items: baseline;
+    .currency {
+      margin-left: .6rem;
+    }
+  }
+}
