@@ -1,7 +1,10 @@
-import { catalogo } from './catalogo/index.catalogo';
+import { Catalogo } from './catalogo/index.catalogo';
 
-let inmuebles = new catalogo();
-let listadoInmuebles = inmuebles.getCatalogo();
-listadoInmuebles.then((result) => {
-	console.log(result);
-});
+class Principal {
+	constructor() {}
+}
+
+let catalogo: Catalogo = new Catalogo();
+
+let inmuebles = catalogo.listadoInmuebles();
+catalogo.mostrarInmuebles(inmuebles);
