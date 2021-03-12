@@ -125,9 +125,10 @@ svg.icon{
 // Buttons
 
 .button {
+  cursor: pointer;
   font-size: $font-size-label;
   font-family: $font-family-demibold;
-  padding: 1.6rem 3.6rem;
+  padding: 1.6rem 4.4rem;
   border-radius: 1rem;
   background: $color-grey-input; // default
   color: $color-black; // default
@@ -137,9 +138,14 @@ svg.icon{
 
   // Size
   &.chip {
-    padding: 1rem 2rem !important;
-    &.icon svg {
-      margin-right: 1rem !important;
+    padding: 1rem 2.6rem !important;
+    &.icon {
+      // SVG Adjustement
+      padding: 0.835rem 2.6rem !important;
+      svg {
+        transform: scale(.75);
+        margin-right: 0.6rem !important;
+      }
     }
   }
 
@@ -147,7 +153,7 @@ svg.icon{
   &.black {
     background: $color-black;
     color: $color-white;
-    &.icon svg {
+    &.icon svg, &.icon-button svg {
       stroke: $color-white !important;
     }
   }
@@ -156,9 +162,21 @@ svg.icon{
     color: $color-black;
   }
   &.icon {
+    // SVG Adjustement
+    padding: 1.435rem 4.4rem !important;
     svg {
       margin-right: 1.6rem;
       stroke: $color-black;
+    }
+  }
+  &.icon-button {
+    padding: 0 0;
+    height: 5.27rem;
+    width: 5.27rem;
+    svg {
+      margin-right: 0;
+      stroke: $color-black;
+      margin: auto auto;
     }
   }
 }
@@ -166,8 +184,20 @@ svg.icon{
 // Property list item
 
 .list .property_item {
+  margin-bottom: 3rem;
   .photo {
     margin-right: 3rem;
+  }
+  .description {
+    max-width: 40rem;
+  }
+  .features div::after {
+    content: "·";
+    margin: 0 1rem;
+  }
+  .features div:last-child::after {
+    content: none !important;
+    margin: 0;
   }
 }
 .property_item {
@@ -176,13 +206,22 @@ svg.icon{
   justify-content: flex-start;
 
   .photo {
-    width: 60rem;
+    min-width: 45rem;
+    width: 45rem;
+    max-width: 45rem;
     height: 30rem;
     background-image: url(./img/placeholder.png);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    border-radius: 2rem;
+    border-radius: 3rem;
+  }
+
+  .location, .features {
+    margin-bottom: 1rem;
+  }
+  .price, .description {
+    margin-bottom: 2.4rem;
   }
 
   .price {
@@ -190,6 +229,16 @@ svg.icon{
     align-items: baseline;
     .currency {
       margin-left: .6rem;
+    }
+  }
+
+  .actions {
+    display: flex;
+    .button {
+      margin-right: 1rem;
+    }
+    .button:last-child {
+      margin-right: 0;
     }
   }
 }

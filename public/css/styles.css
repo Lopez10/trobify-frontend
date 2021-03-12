@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://necolas.github.io/normalize.css/latest/normalize.css");
 @import url("./fonts/TT-Commons/fontface.css");
 .font-weight-regular {
@@ -91,9 +92,10 @@ svg.icon {
 }
 
 .button {
+  cursor: pointer;
   font-size: 1.8rem;
   font-family: "TT Commons DemiBold";
-  padding: 1.6rem 3.6rem;
+  padding: 1.6rem 4.4rem;
   border-radius: 1rem;
   background: #E3E3E3;
   color: #1D1D1D;
@@ -107,11 +109,17 @@ svg.icon {
 }
 
 .button.chip {
-  padding: 1rem 2rem !important;
+  padding: 1rem 2.6rem !important;
+}
+
+.button.chip.icon {
+  padding: 0.835rem 2.6rem !important;
 }
 
 .button.chip.icon svg {
-  margin-right: 1rem !important;
+  -webkit-transform: scale(0.75);
+          transform: scale(0.75);
+  margin-right: 0.6rem !important;
 }
 
 .button.black {
@@ -119,7 +127,7 @@ svg.icon {
   color: #FFFFFF;
 }
 
-.button.black.icon svg {
+.button.black.icon svg, .button.black.icon-button svg {
   stroke: #FFFFFF !important;
 }
 
@@ -128,13 +136,47 @@ svg.icon {
   color: #1D1D1D;
 }
 
+.button.icon {
+  padding: 1.435rem 4.4rem !important;
+}
+
 .button.icon svg {
   margin-right: 1.6rem;
   stroke: #1D1D1D;
 }
 
+.button.icon-button {
+  padding: 0 0;
+  height: 5.27rem;
+  width: 5.27rem;
+}
+
+.button.icon-button svg {
+  margin-right: 0;
+  stroke: #1D1D1D;
+  margin: auto auto;
+}
+
+.list .property_item {
+  margin-bottom: 3rem;
+}
+
 .list .property_item .photo {
   margin-right: 3rem;
+}
+
+.list .property_item .description {
+  max-width: 40rem;
+}
+
+.list .property_item .features div::after {
+  content: "·";
+  margin: 0 1rem;
+}
+
+.list .property_item .features div:last-child::after {
+  content: none !important;
+  margin: 0;
 }
 
 .property_item {
@@ -150,13 +192,23 @@ svg.icon {
 }
 
 .property_item .photo {
-  width: 60rem;
+  min-width: 45rem;
+  width: 45rem;
+  max-width: 45rem;
   height: 30rem;
   background-image: url(./img/placeholder.png);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  border-radius: 2rem;
+  border-radius: 3rem;
+}
+
+.property_item .location, .property_item .features {
+  margin-bottom: 1rem;
+}
+
+.property_item .price, .property_item .description {
+  margin-bottom: 2.4rem;
 }
 
 .property_item .price {
@@ -170,5 +222,19 @@ svg.icon {
 
 .property_item .price .currency {
   margin-left: .6rem;
+}
+
+.property_item .actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.property_item .actions .button {
+  margin-right: 1rem;
+}
+
+.property_item .actions .button:last-child {
+  margin-right: 0;
 }
 /*# sourceMappingURL=styles.css.map */
