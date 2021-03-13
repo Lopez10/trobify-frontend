@@ -1,8 +1,14 @@
 export function catalogDom(div: any, item: any) {
 	let property = document.createElement('div');
 	property.className = 'property_item';
+
+	let photo = document.createElement('div');
+	photo.className = 'photo';
+	property.appendChild(photo);
+
 	let content = document.createElement('div');
 	content.className = 'content';
+
 	let price = document.createElement('div');
 	price.className = 'price';
 	let priceTitle = document.createElement('div');
@@ -23,11 +29,27 @@ export function catalogDom(div: any, item: any) {
 
 	let features = document.createElement('div');
 	features.className = 'features';
-	let labelBoldBanos = document.createElement('div');
-	labelBoldBanos.className = 'label bold';
-	labelBoldBanos.textContent = item.banos;
-	features.appendChild(labelBoldBanos);
+
+	let banos = document.createElement('div');
+	banos.className = 'label bold';
+	banos.textContent = item.banos + ' Baños';
+	features.appendChild(banos);
+
+	let habitaciones = document.createElement('div');
+	habitaciones.className = 'label bold';
+	habitaciones.textContent = item.cant_habitaciones + ' Habitaciones';
+	features.appendChild(habitaciones);
+
+	let superficie = document.createElement('div');
+	superficie.className = 'label bold';
+	superficie.textContent = item.superficie;
+	features.appendChild(superficie);
 	content.appendChild(features);
+
+	let descripcion = document.createElement('div');
+	descripcion.className = 'description label paragraph';
+	descripcion.textContent = item.breveDescripcion;
+	content.appendChild(descripcion);
 
 	property.appendChild(content);
 	div?.appendChild(property);
