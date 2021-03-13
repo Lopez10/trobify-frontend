@@ -4,6 +4,7 @@ export function catalogDom(div: any, item: any) {
 
 	let photo = document.createElement('div');
 	photo.className = 'photo';
+	photo.style.backgroundImage = 'url(' + item.valor + ')';
 	property.appendChild(photo);
 
 	let content = document.createElement('div');
