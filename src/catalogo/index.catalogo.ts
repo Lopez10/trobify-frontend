@@ -23,7 +23,7 @@ export class Catalogo {
 		catalogo.then((result) => {
 			result.forEach((item: any) => {
 				const p = document.createElement('p');
-				p.textContent = item.precio;
+				p.textContent = item.tipo;
 				div?.appendChild(p);
 			});
 		});
