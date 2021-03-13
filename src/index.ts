@@ -8,3 +8,5 @@ let catalogo: Catalogo = new Catalogo();
 
 let inmuebles = catalogo.listadoInmuebles();
 catalogo.mostrarInmuebles(inmuebles);
+
+
