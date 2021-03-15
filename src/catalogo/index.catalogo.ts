@@ -6,7 +6,7 @@ export class Catalogo {
 	}
 	async getCatalogo() {
 		const myRequest = 'http://localhost:3000/catalogo';
-		let inmuebles = await axios.get(myRequest).then((result) => {
+		let inmuebles: Promise<any> = await axios.get(myRequest).then((result) => {
 			return result.data;
 		});
 		return inmuebles;
