@@ -334,7 +334,18 @@ eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _argument
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst index_catalogo_1 = __webpack_require__(/*! ./catalogo/index.catalogo */ \"./src/catalogo/index.catalogo.ts\");\nclass Principal {\n    constructor() { }\n}\nlet catalogo = new index_catalogo_1.Catalogo();\nlet inmuebles = catalogo.listadoInmuebles();\ncatalogo.mostrarInmuebles(inmuebles);\n\n\n//# sourceURL=webpack://trobify-frontend/./src/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst index_catalogo_1 = __webpack_require__(/*! ./catalogo/index.catalogo */ \"./src/catalogo/index.catalogo.ts\");\nconst index_hipoteca_1 = __webpack_require__(/*! ./inmueble/hipoteca/index.hipoteca */ \"./src/inmueble/hipoteca/index.hipoteca.ts\");\nlet catalogo = new index_catalogo_1.Catalogo();\nlet inmuebles = catalogo.listadoInmuebles();\ncatalogo.mostrarInmuebles(inmuebles);\nlet precio = 0;\nlet localizacion = 'Valencia';\nlet hipoteca = new index_hipoteca_1.simuladorHipoteca(precio, localizacion);\n\n\n//# sourceURL=webpack://trobify-frontend/./src/index.ts?");
+
+/***/ }),
+
+/***/ "./src/inmueble/hipoteca/index.hipoteca.ts":
+/*!*************************************************!*\
+  !*** ./src/inmueble/hipoteca/index.hipoteca.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.simuladorHipoteca = void 0;\nclass simuladorHipoteca {\n    constructor(precio, localizacion) {\n        this.precio = precio;\n        this.localizacion = localizacion;\n    }\n    calculoAhorro(ahorro) {\n        return this.precio - ahorro;\n    }\n    calculoInteres(interes, variable) {\n        let interesFijo = 2;\n        let valorInteres;\n        if (interes == 'fijo') {\n            valorInteres = interesFijo * this.precio;\n        }\n        else {\n            valorInteres = variable * this.precio;\n        }\n        return valorInteres;\n    }\n    calculoCondicion(condicion) {\n        if (condicion == 'segunda mano') {\n        }\n        else {\n        }\n    }\n    calculoCuotaMensual(precioTotal, plazo) {\n        return precioTotal / plazo;\n    }\n}\nexports.simuladorHipoteca = simuladorHipoteca;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/inmueble/hipoteca/index.hipoteca.ts?");
 
 /***/ })
 
