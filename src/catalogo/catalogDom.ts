@@ -4,7 +4,7 @@ export function catalogDom(div: any, item: any) {
 
 	let photo = document.createElement('div');
 	photo.className = 'photo';
-	photo.style.backgroundImage = 'url(' + item.valor + ')';
+	photo.style.backgroundImage = 'url(' + item.urlImg + ')';
 	property.appendChild(photo);
 
 	let content = document.createElement('div');
@@ -33,12 +33,12 @@ export function catalogDom(div: any, item: any) {
 
 	let banos = document.createElement('div');
 	banos.className = 'label bold';
-	banos.textContent = item.banos + ' Baños';
+	banos.textContent = item.nBan + ' Baños';
 	features.appendChild(banos);
 
 	let habitaciones = document.createElement('div');
 	habitaciones.className = 'label bold';
-	habitaciones.textContent = item.cant_habitaciones + ' Habitaciones';
+	habitaciones.textContent = item.nHab + ' Habitaciones';
 	features.appendChild(habitaciones);
 
 	let superficie = document.createElement('div');
@@ -49,7 +49,7 @@ export function catalogDom(div: any, item: any) {
 
 	let descripcion = document.createElement('div');
 	descripcion.className = 'description label paragraph';
-	descripcion.textContent = item.breveDescripcion;
+	descripcion.textContent = item.descrip;
 	content.appendChild(descripcion);
 
 	property.appendChild(content);

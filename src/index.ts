@@ -1,6 +1,7 @@
 import { Catalogo } from './catalogo/index.catalogo';
 import { simuladorHipoteca } from './inmueble/hipoteca/index.hipoteca';
 const mostrarMapa = require('../public/js/mapa.js');
+
 let catalogo: Catalogo = new Catalogo();
 
 let inmuebles = catalogo.listadoInmuebles();
