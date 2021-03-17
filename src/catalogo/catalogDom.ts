@@ -43,7 +43,7 @@ export function catalogDom(div: any, item: any) {
 
 	let superficie = document.createElement('div');
 	superficie.className = 'label bold';
-	superficie.textContent = item.superficie;
+	superficie.textContent = item.area;
 	features.appendChild(superficie);
 	content.appendChild(features);
 
