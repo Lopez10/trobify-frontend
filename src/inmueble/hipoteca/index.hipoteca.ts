@@ -8,13 +8,13 @@ export class simuladorHipoteca {
 	calculoAhorro(ahorro: number) {
 		return this.precio - ahorro;
 	}
-	calculoInteres(interes: string, variable: number) {
-		let interesFijo: number = 2;
+	calculoInteres(interes: string, variable: number, ahorro: number) {
+		let interesFijo: number = 1.75;
 		let valorInteres: number;
 		if (interes == 'fijo') {
-			valorInteres = interesFijo * this.precio;
+			valorInteres = (interesFijo * ahorro) / 100;
 		} else {
-			valorInteres = variable * this.precio;
+			valorInteres = (variable * ahorro) / 100;
 		}
 		return valorInteres;
 	}
@@ -23,7 +23,11 @@ export class simuladorHipoteca {
 		} else {
 		}
 	}
-	calculoCuotaMensual(precioTotal: number, plazo: number) {
-		return precioTotal / plazo;
+	calculoTotal(valorInteres: number, valorAhorro: number, anos: number) {
+		return (valorAhorro += valorInteres * anos);
+	}
+
+	calculoCuotaMensual(valorTotal: number, anos: number) {
+		return valorTotal / (anos * 12);
 	}
 }
