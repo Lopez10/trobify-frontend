@@ -4,6 +4,8 @@
  *
  * @param  {H.Map} map      A HERE Map instance within the application
  */
+import { Ubicacion } from '../../src/inmueble/index.inmueble';
+
  function addMarkersToMap(map) {
 
     map.addObject(new H.map.Marker({lat:39.4824580556214, lng:-0.3605097019263287}));
@@ -13,6 +15,13 @@
     map.addObject(new H.map.Marker({lat:39.461720317273375, lng:-0.36648071565416274}));
 
     map.addObject(new H.map.Marker({lat:39.47196011110214, lng:-0.4141619307622086}));
+/*
+    let ubicacion = new Ubicacion();
+    let u2 = ubicacion.getUbicacion();
+    
+    u2.foreach(element => {
+      map.addObject(new H.map.Marker({lat:element.latitud, lng:element.longitud}));
+    });*/
 }
 
 /**
