@@ -334,7 +334,7 @@ eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _argument
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst index_catalogo_1 = __webpack_require__(/*! ./catalogo/index.catalogo */ \"./src/catalogo/index.catalogo.ts\");\nconst index_hipoteca_1 = __webpack_require__(/*! ./inmueble/hipoteca/index.hipoteca */ \"./src/inmueble/hipoteca/index.hipoteca.ts\");\nlet catalogo = new index_catalogo_1.Catalogo();\nlet inmuebles = catalogo.listadoInmuebles();\ncatalogo.mostrarInmuebles(inmuebles);\nlet precio = 300000;\nlet localizacion = 'Valencia';\nlet hipoteca = new index_hipoteca_1.simuladorHipoteca(precio, localizacion);\nlet ahorro = 25000;\nlet interes = 'fijo';\nlet valorVariable = 0.0;\nlet anos = 40;\nlet calculoAhorro = hipoteca.calculoAhorro(ahorro);\nlet calculoInteres = hipoteca.calculoInteres(interes, valorVariable, calculoAhorro);\nlet total = hipoteca.calculoTotal(calculoInteres, calculoAhorro, anos);\nconsole.log(total, hipoteca.calculoCuotaMensual(total, anos));\n\n\n//# sourceURL=webpack://trobify-frontend/./src/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst index_catalogo_1 = __webpack_require__(/*! ./catalogo/index.catalogo */ \"./src/catalogo/index.catalogo.ts\");\nconst index_hipoteca_1 = __webpack_require__(/*! ./inmueble/hipoteca/index.hipoteca */ \"./src/inmueble/hipoteca/index.hipoteca.ts\");\nconst mostrarMapa = __webpack_require__(/*! ../public/js/mapa.js */ \"./public/js/mapa.js\");\nlet catalogo = new index_catalogo_1.Catalogo();\nlet inmuebles = catalogo.listadoInmuebles();\ncatalogo.mostrarInmuebles(inmuebles);\nlet precio = 300000;\nlet localizacion = 'Valencia';\nlet hipoteca = new index_hipoteca_1.simuladorHipoteca(precio, localizacion);\nlet ahorro = 25000;\nlet interes = 'fijo';\nlet valorVariable = 0.0;\nlet anos = 40;\nlet calculoAhorro = hipoteca.calculoAhorro(ahorro);\nlet calculoInteres = hipoteca.calculoInteres(interes, valorVariable, calculoAhorro);\nlet total = hipoteca.calculoTotal(calculoInteres, calculoAhorro, anos);\nconsole.log(total, hipoteca.calculoCuotaMensual(total, anos));\nmostrarMapa.mostrarMapa(inmuebles);\n\n\n//# sourceURL=webpack://trobify-frontend/./src/index.ts?");
 
 /***/ }),
 
@@ -346,6 +346,17 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\ncons
 
 "use strict";
 eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.simuladorHipoteca = void 0;\nclass simuladorHipoteca {\n    constructor(precio, localizacion) {\n        this.precio = precio;\n        this.localizacion = localizacion;\n    }\n    calculoAhorro(ahorro) {\n        return this.precio - ahorro;\n    }\n    calculoInteres(interes, variable, ahorro) {\n        let interesFijo = 1.75;\n        let valorInteres;\n        if (interes == 'fijo') {\n            valorInteres = (interesFijo * ahorro) / 100;\n        }\n        else {\n            valorInteres = (variable * ahorro) / 100;\n        }\n        return valorInteres;\n    }\n    calculoCondicion(condicion) {\n        if (condicion == 'segunda mano') {\n        }\n        else {\n        }\n    }\n    calculoTotal(valorInteres, valorAhorro, anos) {\n        return (valorAhorro += valorInteres * anos);\n    }\n    calculoCuotaMensual(valorTotal, anos) {\n        return valorTotal / (anos * 12);\n    }\n}\nexports.simuladorHipoteca = simuladorHipoteca;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/inmueble/hipoteca/index.hipoteca.ts?");
+
+/***/ }),
+
+/***/ "./public/js/mapa.js":
+/*!***************************!*\
+  !*** ./public/js/mapa.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"mostrarMapa\": () => (/* binding */ mostrarMapa)\n/* harmony export */ });\nfunction mostrarMapa(ubicaciones) {\n\tfunction addMarkersToMap(map) {\n\t\tubicaciones.then((item) => {\n\t\t\titem.forEach((result) => {\n\t\t\t\tmap.addObject(new H.map.Marker({ lat: result.latitud, lng: result.longitud }));\n\t\t\t});\n\t\t});\n\t}\n\tvar platform = new H.service.Platform({\n\t\tapikey: 'TEwOAo-zrGY4x4fsz8YFwBK4tLdyk7wPuoicDhmRb0k',\n\t});\n\tvar defaultLayers = platform.createDefaultLayers();\n\t//Step 2: initialize a map - this map is centered over Europe\n\tvar map = new H.Map(document.getElementById('map'), defaultLayers.vector.normal.map, {\n\t\tcenter: { lat: 50, lng: 5 },\n\t\tzoom: 4,\n\t\tpixelRatio: window.devicePixelRatio || 1,\n\t});\n\t// add a resize listener to make sure that the map occupies the whole container\n\twindow.addEventListener('resize', function () {\n\t\treturn map.getViewPort().resize();\n\t});\n\t//Step 3: make the map interactive\n\t// MapEvents enables the event system\n\t// Behavior implements default interactions for pan/zoom (also on mobile touch environments)\n\tvar behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));\n\t// Create the default UI components\n\tvar ui = H.ui.UI.createDefault(map, defaultLayers);\n\t// Now use the map as required...\n\twindow.onload = function () {\n\t\taddMarkersToMap(map);\n\t};\n}\n\n\n//# sourceURL=webpack://trobify-frontend/./public/js/mapa.js?");
 
 /***/ })
 
@@ -373,6 +384,35 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 /******/ 	

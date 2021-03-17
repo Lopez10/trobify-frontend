@@ -1,6 +1,6 @@
 import { Catalogo } from './catalogo/index.catalogo';
 import { simuladorHipoteca } from './inmueble/hipoteca/index.hipoteca';
-
+const mostrarMapa = require('../public/js/mapa.js');
 let catalogo: Catalogo = new Catalogo();
 
 let inmuebles = catalogo.listadoInmuebles();
@@ -19,3 +19,5 @@ let calculoAhorro = hipoteca.calculoAhorro(ahorro);
 let calculoInteres = hipoteca.calculoInteres(interes, valorVariable, calculoAhorro);
 let total = hipoteca.calculoTotal(calculoInteres, calculoAhorro, anos);
 console.log(total, hipoteca.calculoCuotaMensual(total, anos));
+
+mostrarMapa.mostrarMapa(inmuebles);
