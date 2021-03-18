@@ -16,22 +16,34 @@ let filtros: any = {
 	nHab: 1,
 	clfEn: 1,
 };
+
 let inmuebles = catalogo.getCatalogo(filtros);
 catalogo.mostrarInmuebles(inmuebles);
 
 // Creacion de Hipoteca (ejemplo)
-let precio: number = 300000;
-let localizacion: string = 'Valencia';
-let hipoteca = new simuladorHipoteca(precio, localizacion);
-let ahorro = 25000;
-let interes = 'fijo';
-let valorVariable = 0.0;
-let anos = 40;
+let x: HTMLFormElement =
+	document.querySelector('#formularioHipoteca') || document.createElement('form');
 
-let calculoAhorro = hipoteca.calculoAhorro(ahorro);
-let calculoInteres = hipoteca.calculoInteres(interes, valorVariable, calculoAhorro);
-let total = hipoteca.calculoTotal(calculoInteres, calculoAhorro, anos);
-console.log(total, hipoteca.calculoCuotaMensual(total, anos));
+let localizacion: string = 'Valencia';
+
+let valorVariable = 0.0;
+
+x.onsubmit = () => {
+	const formData = new FormData(x);
+
+	let condicionHipoteca = formData.get('condicion') as string;
+	let precio = (formData.get('precio') as unknown) as number;
+	let ahorro = (formData.get('ahorro') as unknown) as number;
+	let plazo = (formData.get('plazo') as unknown) as number;
+	let interes = formData.get('interes') as string;
+	console.log(condicionHipoteca, precio, ahorro, plazo, interes);
+	let hipoteca = new simuladorHipoteca(precio, localizacion);
+	let calculoAhorro = hipoteca.calculoAhorro(ahorro);
+	let calculoInteres = hipoteca.calculoInteres(interes, valorVariable, calculoAhorro);
+	let total = hipoteca.calculoTotal(calculoInteres, calculoAhorro, plazo);
+	console.log(total, hipoteca.calculoCuotaMensual(total, plazo));
+	return false;
+};
 
 // Mostrar mapa
-mostrarMapa.mostrarMapa(inmuebles);
+//mostrarMapa.mostrarMapa(inmuebles);
