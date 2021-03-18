@@ -2,22 +2,30 @@ import { Catalogo } from './catalogo/index.catalogo';
 import { simuladorHipoteca } from './inmueble/hipoteca/index.hipoteca';
 const mostrarMapa = require('../public/js/mapa.js');
 
-//Creacion de catalogo
+//Creacion de catalogo con filtrado
 let catalogo: Catalogo = new Catalogo();
-let filtros: any = {
-	opt: 1,
-	ord: 1,
-	preMin: 1,
-	preMax: 1,
-	mrgn: 10,
-	supMin: 10,
-	supMax: 100,
-	prov: 1,
-	nHab: 1,
-	clfEn: 1,
-};
-
-let inmuebles = catalogo.getCatalogo(filtros);
+let opt: number = 1;
+let ord: number = 1;
+let preMin: number = 1;
+let preMax: number = 30000;
+let mrgn: number = 5;
+let supMin: number = 1;
+let supMax: number = 200;
+let prov: number = 100;
+let nHab: number = 2;
+let clfEn: number = 1;
+let inmuebles = catalogo.getCatalogo(
+	opt,
+	ord,
+	preMin,
+	preMax,
+	mrgn,
+	supMin,
+	supMax,
+	prov,
+	nHab,
+	clfEn
+);
 catalogo.mostrarInmuebles(inmuebles);
 
 // Creacion de Hipoteca (ejemplo)
@@ -46,4 +54,4 @@ x.onsubmit = () => {
 };
 
 // Mostrar mapa
-//mostrarMapa.mostrarMapa(inmuebles);
+mostrarMapa.mostrarMapa(inmuebles);
