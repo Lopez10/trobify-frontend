@@ -33,7 +33,7 @@ $font-weight-bold: 700;
 $font-size-label: 1.8rem;
 
 .font-size-label-title {font-size: 2rem;}
-$font-size-label-title: 2.2rem;
+$font-size-label-title: 2.4rem;
 
 .font-size-label-title-x2 {font-size: 4rem;}
 $font-size-label-title-x2: 4.4rem;
@@ -70,6 +70,7 @@ html {
   color: $color-black;
   background: $color-white;
   background-color: $color-white;
+  letter-spacing: .03rem;
 }
 
 a {
@@ -82,12 +83,227 @@ img {
   border: none !important;
 }
 
+// Form
+
+.form {
+  .sub-group {
+    margin-left: 2rem;
+  }
+  .label, .button, .select {
+    display: block;
+    margin-top: 1.5rem;
+    .label {
+      margin-top: 0rem;
+      display: inline-block;
+    }
+    &:first-child {
+      margin-top: 0rem;
+    }
+  }
+  .label {
+    margin-top: 3rem;
+  }
+  label {
+    margin-top: .8rem;
+  }
+  .group {
+    margin-top: 3rem;
+    &:first-child {
+      margin-top: 0rem;
+      margin-bottom: 3rem;
+    }
+    .label, .button, .select {
+      &:first-child {
+        margin-top: 0rem;
+      }
+      margin-top: 1.5rem;
+    }
+  }
+  .button {
+    display: flex;
+  }
+}
+
+// Form --> Input
+
+select, input, label {
+  font-size: $font-size-label;
+}
+input {
+  display: inline-block;
+  width: 10rem;
+  &[type="checkbox"], &[type="radio"] {
+    width: auto;
+    margin-right: 1rem;
+  }
+}
+label {
+  display: block;
+}
+
+// => Selector
+
+.select {
+  position: relative;
+}
+
+.select select {
+  //display: none !important;
+}
+
+.select-selected {
+  background: $color-grey-selection;
+  font-family: $font-family-demibold;
+  border-radius: 1rem;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: ">";
+  top: 1.8rem;
+  right: 1rem;
+  transform: rotateZ(90deg) scaleY(1.6);
+  transform-origin: center center;
+  font-size: $font-size-label-title;
+  font-family: $font-family-regular;
+  width: 0;
+  height: 0;
+}
+.select-selected.select-arrow-active {
+  border-radius: 1rem 1rem 0rem 0rem;
+  &:after {
+    top: 2.8rem;
+    right: 6rem;
+    transform: rotateZ(-90deg) scaleY(1.6);
+  }
+}
+
+.select-items div,.select-selected {
+  color: $color-black;
+  padding: 1.4rem 2rem;
+  font-size: $font-size-label;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 1rem;
+}
+.select-items {
+  position: absolute;
+  background: $color-grey-selection;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-radius: 0rem 0rem 1rem 1rem;
+  //box-shadow: 0 6rem 5rem rgba($color-black, .2);
+}
+.select-hide {
+  display: none;
+}
+.select-items div:hover, .item-selected {
+  background: rgba($color-black,.1);
+}
+.item-selected {
+  font-family: $font-family-demibold;
+}
+
+// Flexbox
+
+.flexbox {
+  display: flex;
+
+  .map {
+    &.round {
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+  }
+
+  &.block {
+    background: $color-grey;
+    display: inline-table;
+    
+    &.form {
+      padding: 5rem 4rem;
+    }
+    &.round {
+      border-radius: 1rem;
+    }
+    &.overflow {
+      overflow: scroll;
+    }
+  }
+  &.group {
+    background: $color-grey;
+    &.round {
+      border-radius: 1rem;
+    }
+    &.overflow {
+      overflow: scroll;
+    }
+    .option {
+      background: none;
+      &.selected {
+        background: $color-grey-selection;
+        font-family: $font-family-bold;
+      }
+    }
+  }
+  &.spaced {
+    margin: 2rem;
+  }
+  &.inner-spaced {
+    padding: 2rem;
+  }
+  &.shrinknt {
+    flex-shrink: 0;
+  }
+
+  &.column {
+    flex-direction: column;
+    //box-shadow: inset 0 0 0 .2rem red;
+  }
+  &.row {
+    flex-direction: row;
+    //box-shadow: inset 0 0 0 .2rem blue;
+  }
+  &.row, &.column {
+    &.full-width {
+      width: 100vw;
+      overflow: scroll;
+    }
+    &.full-height {
+      height: 100vh;
+      overflow: scroll;
+    }
+  }
+  .item {
+    &.full-width, &.full-height {
+      flex: 0 0 100%;
+    }
+  }
+}
+
 // Icons
 
 svg.icon{
   width: 2.4rem;
   height: 2.4rem;
 } 
+
+// Spacers
+
+.sep {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+
+  &.x2 {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
 
 // Label
 

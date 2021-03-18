@@ -43,6 +43,7 @@ html {
   color: #1D1D1D;
   background: #FFFFFF;
   background-color: #FFFFFF;
+  letter-spacing: .03rem;
 }
 
 a {
@@ -55,9 +56,250 @@ img {
   border: none !important;
 }
 
+.form .sub-group {
+  margin-left: 2rem;
+}
+
+.form .label, .form .button, .form .select {
+  display: block;
+  margin-top: 1.5rem;
+}
+
+.form .label .label, .form .button .label, .form .select .label {
+  margin-top: 0rem;
+  display: inline-block;
+}
+
+.form .label:first-child, .form .button:first-child, .form .select:first-child {
+  margin-top: 0rem;
+}
+
+.form .label {
+  margin-top: 3rem;
+}
+
+.form label {
+  margin-top: .8rem;
+}
+
+.form .group {
+  margin-top: 3rem;
+}
+
+.form .group:first-child {
+  margin-top: 0rem;
+  margin-bottom: 3rem;
+}
+
+.form .group .label, .form .group .button, .form .group .select {
+  margin-top: 1.5rem;
+}
+
+.form .group .label:first-child, .form .group .button:first-child, .form .group .select:first-child {
+  margin-top: 0rem;
+}
+
+.form .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+select, input, label {
+  font-size: 1.8rem;
+}
+
+input {
+  display: inline-block;
+  width: 10rem;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  width: auto;
+  margin-right: 1rem;
+}
+
+label {
+  display: block;
+}
+
+.select {
+  position: relative;
+}
+
+.select-selected {
+  background: #DBDBDB;
+  font-family: "TT Commons DemiBold";
+  border-radius: 1rem;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: ">";
+  top: 1.8rem;
+  right: 1rem;
+  -webkit-transform: rotateZ(90deg) scaleY(1.6);
+          transform: rotateZ(90deg) scaleY(1.6);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  font-size: 2.4rem;
+  font-family: "TT Commons Regular";
+  width: 0;
+  height: 0;
+}
+
+.select-selected.select-arrow-active {
+  border-radius: 1rem 1rem 0rem 0rem;
+}
+
+.select-selected.select-arrow-active:after {
+  top: 2.8rem;
+  right: 6rem;
+  -webkit-transform: rotateZ(-90deg) scaleY(1.6);
+          transform: rotateZ(-90deg) scaleY(1.6);
+}
+
+.select-items div, .select-selected {
+  color: #1D1D1D;
+  padding: 1.4rem 2rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border-radius: 1rem;
+}
+
+.select-items {
+  position: absolute;
+  background: #DBDBDB;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-radius: 0rem 0rem 1rem 1rem;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .item-selected {
+  background: rgba(29, 29, 29, 0.1);
+}
+
+.item-selected {
+  font-family: "TT Commons DemiBold";
+}
+
+.flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flexbox .map.round {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.flexbox.block {
+  background: #F2F2F2;
+  display: inline-table;
+}
+
+.flexbox.block.form {
+  padding: 5rem 4rem;
+}
+
+.flexbox.block.round {
+  border-radius: 1rem;
+}
+
+.flexbox.block.overflow {
+  overflow: scroll;
+}
+
+.flexbox.group {
+  background: #F2F2F2;
+}
+
+.flexbox.group.round {
+  border-radius: 1rem;
+}
+
+.flexbox.group.overflow {
+  overflow: scroll;
+}
+
+.flexbox.group .option {
+  background: none;
+}
+
+.flexbox.group .option.selected {
+  background: #DBDBDB;
+  font-family: "TT Commons Bold";
+}
+
+.flexbox.spaced {
+  margin: 2rem;
+}
+
+.flexbox.inner-spaced {
+  padding: 2rem;
+}
+
+.flexbox.shrinknt {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.flexbox.column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.flexbox.row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.flexbox.row.full-width, .flexbox.column.full-width {
+  width: 100vw;
+  overflow: scroll;
+}
+
+.flexbox.row.full-height, .flexbox.column.full-height {
+  height: 100vh;
+  overflow: scroll;
+}
+
+.flexbox .item.full-width, .flexbox .item.full-height {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+}
+
 svg.icon {
   width: 2.4rem;
   height: 2.4rem;
+}
+
+.sep {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.sep.x2 {
+  width: 3rem;
+  height: 3rem;
 }
 
 .label {
@@ -80,8 +322,8 @@ svg.icon {
 }
 
 .label.title {
-  font-size: 2.2rem;
-  line-height: 2.2rem;
+  font-size: 2.4rem;
+  line-height: 2.4rem;
   font-family: "TT Commons DemiBold";
 }
 

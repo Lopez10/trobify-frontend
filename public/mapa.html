@@ -7,9 +7,10 @@
 		/>
 		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 
-		<title>Map at a specified location</title>
+		<title>Buscar inmueble en mapa</title>
 		<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
-		<link rel="stylesheet" type="text/css" href="./css/mapa/mapa.css" />
+		<link rel="stylesheet" type="text/css" href="./css/styles.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/mapa/map.css"/>
 		<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
 		<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
 		<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
@@ -22,20 +23,169 @@
 		</script>
 	</head>
 	<body id="markers-on-the-map">
-		<div class="page-header">
+		<svg xmlns="http://www.w3.org/2000/svg" style="display: none !important;">
+			<symbol id="notification" viewBox="0 0 24 26">
+				<title>notification bell</title>
+				<path
+					xmlns="http://www.w3.org/2000/svg"
+					d="M15.8589 20.3846V21.3077C15.8589 22.287 15.4698 23.2261 14.7772 23.9185C14.0846 24.611 13.1452 25 12.1657 25C11.1862 25 10.2468 24.611 9.55418 23.9185C8.86156 23.2261 8.47246 22.287 8.47246 21.3077V20.3846M22.0728 18.5056C20.5909 16.6923 19.5447 15.7692 19.5447 10.7702C19.5447 6.19231 17.2064 4.56135 15.2819 3.76923C15.0262 3.66423 14.7856 3.42308 14.7077 3.16058C14.3701 2.01192 13.4237 1 12.1657 1C10.9077 1 9.96071 2.0125 9.62659 3.16173C9.54869 3.42712 9.30805 3.66423 9.05241 3.76923C7.12558 4.5625 4.78961 6.18769 4.78961 10.7702C4.78673 15.7692 3.7405 16.6923 2.2586 18.5056C1.6446 19.2567 2.18242 20.3846 3.25634 20.3846H21.0808C22.149 20.3846 22.6833 19.2533 22.0728 18.5056Z"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					fill="none"
+					stroke-width="2.35"
+				/>
+			</symbol>
+			<!--
+			<symbol id="map" viewBox="0 0 28 28">
+				<title>map icon</title>
+				<path
+					xmlns="http://www.w3.org/2000/svg"
+					d="M18.1539 6.61569V25.9984M9.84613 2.00073V21.3834M17.304 6.42185L10.696 2.19457C10.4331 2.06328 10.1427 1.99662 9.8489 2.00013C9.5551 2.00364 9.26637 2.07722 9.00673 2.21476L2.49096 6.58625C2.34272 6.66477 2.21869 6.7822 2.13219 6.92592C2.04568 7.06964 1.99999 7.23421 2 7.40194V24.4657C1.99999 24.6248 2.04114 24.7813 2.11947 24.9199C2.1978 25.0584 2.31063 25.1744 2.44702 25.2565C2.58341 25.3386 2.73871 25.384 2.89784 25.3884C3.05697 25.3927 3.21452 25.3559 3.35519 25.2813L8.99865 21.6015C9.26042 21.4628 9.55171 21.3892 9.84793 21.3868C10.1441 21.3844 10.4366 21.4533 10.7006 21.5877L17.154 25.7988C17.4157 25.9321 17.7054 26.0011 17.9991 26C18.2928 25.9989 18.582 25.9277 18.8427 25.7924L25.5021 21.4117C25.6522 21.3339 25.7779 21.2163 25.8657 21.0718C25.9535 20.9274 26 20.7616 26 20.5926V3.53348C26 3.3743 25.9589 3.21783 25.8805 3.07925C25.8022 2.94068 25.6894 2.82472 25.553 2.74262C25.4166 2.66053 25.2613 2.61511 25.1022 2.61075C24.943 2.6064 24.7855 2.64327 24.6448 2.71779L18.991 6.40166C18.7316 6.53881 18.4433 6.61218 18.1499 6.61569C17.8566 6.6192 17.5666 6.55275 17.304 6.42185Z"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					fill="none"
+					stroke-width="2.35"
+				/>
+			</symbol>
+			-->
+		</svg>
+		<div class="flexbox row full-height">
+
+			<div class="filters flexbox column full-height overflow inner-spaced shrinknt">
+				<div class="filters flexbox column block round form">
+					<div class="group">
+						<div class="label title-x2">900 <div class="label title">Resultados</div></div>
+						<div class="label paragraph">¿Te avisamos de nuevos<br>inmuebles con estos filtros?</div>
+						<div class="button black icon" href="">
+							<svg class="icon"><use xlink:href="#notification" /></svg>
+							Notificarme
+						</div>
+					</div>
+
+					<div class="label title">Ordenar por</div>
+					<div class="select"><select class="select">
+						<option value="0">Más nuevos</option>
+						<option value="1">Más nuevos</option>
+						<option value="2">Más baratos</option>
+						<option value="3">Más caros</option>
+						<option value="4">Más antiguos</option>
+						<option value="5">Más grandes</option>
+						<option value="6">Más pequeños</option>
+						<option value="7">Baratos por m<sup>2</sup></option>
+						<option value="8">Caros por m<sup>2</sup></option>
+					</select></div>
+	
+					<div class="label title">Provincia</div>
+					<div class="select"><select class="select">
+						<option value="0">Valencia</option>
+						<option value="1">Valencia</option>
+						<option value="1">Castellón</option>
+					</select></div>
+
+					<div class="label title">Tipo de inmueble</div>
+					<div class="select"><select class="select">
+						<option value="0">Vivienda 1</option>
+						<option value="1">Vivienda 1</option>
+						<option value="2">Vivienda 2</option>
+						<option value="3">Vivienda 3</option>
+					</select></div>
+
+					<div class="label title">Precio</div>
+					<input class="priceMin" type="number" min="0" value="0"/><input class="priceMax" type="number" min="0" value="0"/>
+					<div class="label title">Umbral</div>
+					<label><input class="pricePlus" type="checkbox"/><span>Aplicar umbral</span></label>
+					<input class="priceMax" type="number" min="0" value="0"/>
+
+					<div class="label title">Superficie</div>
+					<input class="priceMax" type="number" min="0" value="0"/>
+
+					<div class="label title">Tipo de vivienda</div>
+					<div class="label">Pisos</div>
+					<label><input type="checkbox"/><span>Todos los pisos</span></label>
+					<div class="sub-group">
+						<label><input type="checkbox"/><span>Ático</span></label>
+						<label><input type="checkbox"/><span>Plantas intermedias</span></label>
+						<label><input type="checkbox"/><span>Dúplex</span></label>
+						<label><input type="checkbox"/><span>Loft</span></label>
+						<label><input type="checkbox"/><span>Planta baja</span></label>
+					</div>
+					<div class="label">Casas</div>
+					<label><input type="checkbox"/><span>Todas las casas</span></label>
+					<div class="sub-group">
+						<label><input type="checkbox"/><span>Casa o chalet</span></label>
+						<label><input type="checkbox"/><span>Casa adosada</span></label>
+						<label><input type="checkbox"/><span>Finca rústica</span></label>
+					</div>
+
+					<div class="label title">Habitaciones</div>
+					<label><input type="radio" name="h"/><span>0 o más</span></label>
+					<label><input type="radio" name="h"/><span>1 o más</span></label>
+					<label><input type="radio" name="h"/><span>2 o más</span></label>
+					<label><input type="radio" name="h"/><span>3 o más</span></label>
+					<label><input type="radio" name="h"/><span>4 o más</span></label>
+
+					<div class="label title">Baños</div>
+					<label><input type="radio" name="b"/><span>0 o más</span></label>
+					<label><input type="radio" name="b"/><span>1 o más</span></label>
+					<label><input type="radio" name="b"/><span>2 o más</span></label>
+					<label><input type="radio" name="b"/><span>3 o más</span></label>
+
+					<div class="label title">Características</div>
+					<label><input type="checkbox"/><span>Ascensor</span></label>
+					<label><input type="checkbox"/><span>Amueblado</span></label>
+					<label><input type="checkbox"/><span>Terraza o balcón</span></label>
+					<label><input type="checkbox"/><span>Aire acondicionado</span></label>
+					<label><input type="checkbox"/><span>Armario empotrado</span></label>
+					<label><input type="checkbox"/><span>Garaje</span></label>
+					<label><input type="checkbox"/><span>Jardín</span></label>
+					<label><input type="checkbox"/><span>Piscina</span></label>
+					<label><input type="checkbox"/><span>Trastero</span></label>
+
+					<div class="button black">Aplicar filtros</div>
+				</div>
+			</div>
+
+			<div class="flexbox column full-width">
+
+				<div class="nav flexbox row spaced" style="margin-bottom: 0;">
+
+					<div class="nav flexbox row group round">
+						<div class="button option selected" href="">Comprar</div>
+						<div class="button option" href="">Alquilar</div>
+						<div class="button option" href="">Alquilar habitación</div>
+					</div>
+
+					<div class="sep x2"></div>
+
+					<div class="nav flexbox row group round">
+						<div class="button option" href="">Lista</div>
+						<div class="button option selected" href="">Mapa</div>
+					</div>
+					
+				</div>
+
+				<div class="flexbox column full-height spaced">
+					<div id="map" class="map full-width round"></div>
+				</div>
+			</div>
+
+			<!--
+			<div class="page-header">
 			<h1>Map at a specified location</h1>
 			<p>Display a map at a specified location and zoom level</p>
+			</div>
+			<p>
+				This example displays a movable map initially centered on the <b>Brandenburg Gate</b> in the
+				centre of Berlin <i>(52.5159°N, 13.3777°E)</i>
+			</p>
+			<h3>Code</h3>
+			<p>
+				The <code>map.setCenter()</code> method and <code>map.setZoom() </code>method are able to
+				control the location of the map.<br />
+			</p>
+			-->
 		</div>
-		<p>
-			This example displays a movable map initially centered on the <b>Brandenburg Gate</b> in the
-			centre of Berlin <i>(52.5159°N, 13.3777°E)</i>
-		</p>
-		<div id="map"></div>
-		<h3>Code</h3>
-		<p>
-			The <code>map.setCenter()</code> method and <code>map.setZoom() </code>method are able to
-			control the location of the map.<br />
-		</p>
 		<script type="text/javascript" src="./bundle.js"></script>
+		<!--<script type="text/javascript" src="./js/selector.js"></script>-->
 	</body>
 </html>
