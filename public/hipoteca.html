@@ -9,24 +9,39 @@
 	</head>
 	<body>
 		<div class="content">
-			<div class="label title">Simulador hipoteca</div>
-			<form id="formularioHipoteca">
-				<input type="radio" name="condicion" id="segundaMano" value="segundaMano" />
-				<label for="segundaMano">Segunda mano</label>
-				<input type="radio" name="condicion" id="nuevo" value="nuevo" />
-				<label for="nuevo">Nuevo</label><br />
-				<label for="precio">precio</label>
-				<input type="text" name="precio" id="precio" /><br />
-				<label for="ahorro">ahorro</label>
-				<input type="text" name="ahorro" id="ahorro" /><br />
-				<label for="plazo">Plazo</label>
-				<input type="text" name="plazo" id="plazo" /><br />
-				<input type="radio" name="interes" id="fijo" value="fijo" />
-				<label for="interes">Fijo</label>
-				<input type="radio" name="interes" id="variable" value="variable" />
-				<label for="variable">Variable</label><br />
-				<button type="submit">Submit</button>
-			</form>
+			<div class="filters flexbox column center-h center-v">
+				<div class="filters flexbox column block round form">
+					<div class="label title-x2">Simulador hipoteca</div>
+					<div class="sep x2"></div>
+					<form id="formularioHipoteca">
+	
+						<div class="label title">Condición</div>
+						<label><input class="pricePlus" type="radio" name="condicion" id="segundaMano" value="segundaMano"/><div class="label bold">Segunda mano</div></label>
+						<label><input class="pricePlus" type="radio" name="condicion" id="nuevo" value="nuevo"/><div class="label bold">Nuevo</div></label>
+	
+						<div class="label title">Precio</div>
+						<input class="priceMax" type="number" min="0" value="0" name="precio" id="precio"/>
+	
+						<div class="label title">Ahorro aportado</div>
+						<input class="priceMax" type="number" min="0" value="0" name="ahorro" id="ahorro"/>
+	
+						<div class="label title">Plazo en años</div>
+						<input class="priceMax" type="number" min="0" value="0" name="plazo" id="plazo"/>
+	
+						<div class="label title">Tipo de interés</div>
+						<label><input class="pricePlus" type="radio" name="interes" id="fijo" value="fijo"/><div class="label bold">Fijo</div></label>
+						<label><input class="pricePlus" type="radio" name="interes" id="variable" value="variable"/><div class="label bold">Variable</div></label>
+
+						<div class="sep"></div>
+						<label for="submit"><div class="button black inline-flex">Aplicar filtros</div></label>
+						<button name="submit" type="submit" style="display: none;">Submit</button>
+					</form>
+					<div class="sep"></div>
+					<div class="label title">Total hipoteca<div class="sep x2 inline"></div><div class="label bold green">000000</div></div>
+					<div class="label title">Cuota mensual<div class="sep x2 inline"></div><div class="label bold green">000000</div><div class="label bold">/mes</div></div>
+				</div>
+			</div>
+			
 		</div>
 		<script type="text/javascript" src="./bundle.js"></script>
 	</body>

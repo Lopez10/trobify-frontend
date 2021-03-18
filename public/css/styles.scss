@@ -131,6 +131,9 @@ select, input, label {
 }
 input {
   max-width: 10rem;
+  &[type="number"], &[type="text"] {
+    margin-top: 1.5rem;
+  }
 }
 
 label {
@@ -292,6 +295,12 @@ label {
   &.shrinknt {
     flex-shrink: 0;
   }
+  &.center-h {
+    align-items: center;
+  }
+  &.center-v {
+    justify-content: center;
+  }
 
   &.column {
     flex-direction: column;
@@ -336,6 +345,10 @@ svg.icon{
     width: 3rem;
     height: 3rem;
   }
+
+  &.inline {
+    display: inline-block;
+  }
 }
 
 
@@ -349,6 +362,15 @@ svg.icon{
 
   &.detail {
     color: $color-grey-detail;
+  }
+  &.green {
+    color: $color-green;
+  }
+  &.yellow {
+    color: $color-yellow;
+  }
+  &.red {
+    color: $color-red;
   }
 
   &.bold {
@@ -397,6 +419,9 @@ svg.icon{
         margin-right: 0.6rem !important;
       }
     }
+  }
+  &.inline-flex {
+    display: inline-flex;
   }
 
   // Styles

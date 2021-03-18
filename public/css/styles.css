@@ -113,6 +113,10 @@ input {
   max-width: 10rem;
 }
 
+input[type="number"], input[type="text"] {
+  margin-top: 1.5rem;
+}
+
 label {
   display: block;
   margin-bottom: 1.5rem;
@@ -294,6 +298,18 @@ label input[type="radio"]:checked ~ .label::before {
       flex-shrink: 0;
 }
 
+.flexbox.center-h {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flexbox.center-v {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .flexbox.column {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -340,6 +356,10 @@ svg.icon {
   height: 3rem;
 }
 
+.sep.inline {
+  display: inline-block;
+}
+
 .label {
   font-size: 1.8rem;
   line-height: 1.8rem;
@@ -349,6 +369,18 @@ svg.icon {
 
 .label.detail {
   color: #B2B2B2;
+}
+
+.label.green {
+  color: #0FBF36;
+}
+
+.label.yellow {
+  color: #FAC02B;
+}
+
+.label.red {
+  color: #FA4D2B;
 }
 
 .label.bold {
@@ -400,6 +432,12 @@ svg.icon {
   -webkit-transform: scale(0.75);
           transform: scale(0.75);
   margin-right: 0.6rem !important;
+}
+
+.button.inline-flex {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .button.black {
