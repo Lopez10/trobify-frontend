@@ -1,12 +1,15 @@
-import { Catalogo } from './catalogo/index.catalogo';
+import { Filtrado } from './catalogo/filtrado/index.filtrado';
 import { simuladorHipoteca } from './inmueble/hipoteca/index.hipoteca';
 const mostrarMapa = require('../public/js/mapa.js');
 
 //Creacion de catalogo con filtrado
-let catalogo: Catalogo = new Catalogo();
-let opt: number = 1;
+let catalogo: Filtrado = new Filtrado();
+catalogo.generarLista();
+let params: string = catalogo.catalogoParams();
+let inmueblesMapa = catalogo.getCatalogo(params);
+/*let opt: number = 1;
 let ord: number = 1;
-/*let preMin: number = 1;
+let preMin: number = 1;
 let preMax: number = 30000;
 let aMrgn: number = 1;
 let mrgn: number = 0.05;
@@ -15,30 +18,15 @@ let supMax: number = 200;
 let prov: number = 46;
 let nHab: number = 2;
 let clfEn: number = 1;*/
-let inmuebles = catalogo.getCatalogo(
-	opt,
-	ord
-	/*preMin,
-	preMax,
-	aMrgn,
-	mrgn,
-	supMin,
-	supMax,
-	prov,
-	nHab,
-	clfEn*/
-);
-
-catalogo.mostrarInmuebles(inmuebles);
 
 // Creacion de Hipoteca (ejemplo)
-let x: HTMLFormElement =
+let hipotecaForm: HTMLFormElement =
 	document.querySelector('#formularioHipoteca') || document.createElement('form');
 console.log('object');
 let localizacion: string = 'Valencia';
 
-x.onsubmit = () => {
-	const formData = new FormData(x);
+hipotecaForm.onsubmit = () => {
+	const formData = new FormData(hipotecaForm);
 
 	let condicionHipoteca = formData.get('condicion') as string;
 	let precio = (formData.get('precio') as unknown) as number;
@@ -64,4 +52,4 @@ x.onsubmit = () => {
 };
 
 // Mostrar mapa
-mostrarMapa.mostrarMapa(inmuebles);
+mostrarMapa.mostrarMapa(inmueblesMapa);
