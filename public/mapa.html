@@ -63,7 +63,7 @@
 					</div>
 					<form id="filtroForm">
 						<div class="label title">Ordenar por</div>
-						<div class="select">
+						
 							<select name="orden" class="select">
 								<option value="0">Más nuevos</option>
 								<option value="1">Más antiguos</option>
@@ -74,30 +74,30 @@
 								<option value="6">Baratos por m<sup>2</sup></option>
 								<option value="7">Caros por m<sup>2</sup></option>
 							</select>
-						</div>
+						
 		
 						<div class="label title">Provincia</div>
-						<div class="select">
+						
 							<select class="select" name="provincia">
 								<option value="0">Alicante</option>
 								<option value="1">Valencia</option>
 								<option value="2">Castellón</option>
 							</select>
-						</div>
+						
 
 						<div class="label title">Tipo de inmueble</div>
-						<div class="select">
+						
 							<select class="select" name="tipo_inmueble">
 								<option value="0">Vivienda 1</option>
 								<option value="1">Vivienda 1</option>
 								<option value="2">Vivienda 2</option>
 								<option value="3">Vivienda 3</option>
 							</select>
-						</div>
+						
 
 						<div class="label title">Precio</div>
-						<input name="priceMin" class="priceMin" type="number" min="0" value="0"/>
-						<input name="priceMax" class="priceMax" type="number" min="0" value="0"/>
+						<input name="priceMin" class="priceMin" type="number" min="0" value="10000"/>
+						<input name="priceMax" class="priceMax" type="number" min="0" value="100000"/>
 						<div class="label title">Umbral</div>
 						<label><input name="boolUmbral" class="pricePlus" type="checkbox"/><div class="label bold">Aplicar umbral</div></label>
 						<input name="umbral" class="priceMax" type="number" min="0" value="0"/>
@@ -125,17 +125,17 @@
 						</div>
 
 						<div class="label title">Habitaciones</div>
-						<label><input type="radio" name="h"/><div class="label bold">0 o más</div></label>
-						<label><input type="radio" name="h"/><div class="label bold">1 o más</div></label>
-						<label><input type="radio" name="h"/><div class="label bold">2 o más</div></label>
-						<label><input type="radio" name="h"/><div class="label bold">3 o más</div></label>
-						<label><input type="radio" name="h"/><div class="label bold">4 o más</div></label>
+						<label><input type="radio" name="h" value="0"/><div class="label bold">0 o más</div></label>
+						<label><input type="radio" name="h" value="1"/><div class="label bold">1 o más</div></label>
+						<label><input type="radio" name="h" value="2"/><div class="label bold">2 o más</div></label>
+						<label><input type="radio" name="h" value="3"/><div class="label bold">3 o más</div></label>
+						<label><input type="radio" name="h" value="4"/><div class="label bold">4 o más</div></label>
 
 						<div class="label title">Baños</div>
-						<label><input type="radio" name="b"/><div class="label bold">0 o más</div></label>
-						<label><input type="radio" name="b"/><div class="label bold">1 o más</div></label>
-						<label><input type="radio" name="b"/><div class="label bold">2 o más</div></label>
-						<label><input type="radio" name="b"/><div class="label bold">3 o más</div></label>
+						<label><input type="radio" name="b" value="0"/><div class="label bold">0 o más</div></label>
+						<label><input type="radio" name="b" value="1"/><div class="label bold">1 o más</div></label>
+						<label><input type="radio" name="b" value="2"/><div class="label bold">2 o más</div></label>
+						<label><input type="radio" name="b" value="3"/><div class="label bold">3 o más</div></label>
 
 						<div class="label title">Características</div>
 						<label><input type="checkbox"/><div class="label bold">Ascensor</div></label>
