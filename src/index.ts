@@ -6,26 +6,29 @@ const mostrarMapa = require('../public/js/mapa.js');
 let catalogo: Catalogo = new Catalogo();
 let opt: number = 1;
 let ord: number = 1;
-let preMin: number = 1;
+/*let preMin: number = 1;
 let preMax: number = 30000;
-let mrgn: number = 5;
+let aMrgn: number = 1;
+let mrgn: number = 0.05;
 let supMin: number = 1;
 let supMax: number = 200;
-let prov: number = 100;
+let prov: number = 46;
 let nHab: number = 2;
-let clfEn: number = 1;
+let clfEn: number = 1;*/
 let inmuebles = catalogo.getCatalogo(
 	opt,
-	ord,
-	preMin,
+	ord
+	/*preMin,
 	preMax,
+	aMrgn,
 	mrgn,
 	supMin,
 	supMax,
 	prov,
 	nHab,
-	clfEn
+	clfEn*/
 );
+
 catalogo.mostrarInmuebles(inmuebles);
 
 // Creacion de Hipoteca (ejemplo)
