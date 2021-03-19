@@ -1,1 +1,1 @@
-export function catalogDom(div: any) {}
+export function hipotecaDom(div: any) {}

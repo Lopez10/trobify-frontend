@@ -19,8 +19,10 @@ export class simuladorHipoteca {
 		return valorInteres;
 	}
 	calculoCondicion(condicion: string) {
-		if (condicion == 'segunda mano') {
+		if (condicion == 'segundaMano') {
+			this.precio = this.precio * 0.995;
 		} else {
+			this.precio = this.precio * 1.0005;
 		}
 	}
 	calculoTotal(valorInteres: number, valorAhorro: number, anos: number) {
