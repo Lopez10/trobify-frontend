@@ -9,8 +9,8 @@
 
 		<title>Buscar inmueble en mapa</title>
 		<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
-		<link rel="stylesheet" type="text/css" href="./css/styles.css"/>
-		<link rel="stylesheet" type="text/css" href="./css/mapa/map.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="./css/mapa/map.css" />
 		<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
 		<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
 		<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
@@ -23,7 +23,7 @@
 		</script>
 	</head>
 	<body id="markers-on-the-map">
-		<svg xmlns="http://www.w3.org/2000/svg" style="display: none !important;">
+		<svg xmlns="http://www.w3.org/2000/svg" style="display: none !important">
 			<symbol id="notification" viewBox="0 0 24 26">
 				<title>notification bell</title>
 				<path
@@ -50,12 +50,16 @@
 			-->
 		</svg>
 		<div class="flexbox row full-height">
-
 			<div class="filters flexbox column full-height overflow inner-spaced shrinknt">
 				<div class="filters flexbox column block round form">
 					<div class="group">
-						<div class="label title-x2">900 <div class="label title">Resultados</div></div>
-						<div class="label paragraph">¿Te avisamos de nuevos<br>inmuebles con estos filtros?</div>
+						<div class="label title-x2">
+							900
+							<div class="label title">Resultados</div>
+						</div>
+						<div class="label paragraph">
+							¿Te avisamos de nuevos<br />inmuebles con estos filtros?
+						</div>
 						<div class="button black icon" href="">
 							<svg class="icon"><use xlink:href="#notification" /></svg>
 							Notificarme
@@ -63,100 +67,185 @@
 					</div>
 					<form id="filtroForm">
 						<div class="label title">Ordenar por</div>
-						
-							<select name="orden" class="select">
-								<option value="0">Más nuevos</option>
-								<option value="1">Más antiguos</option>
-								<option value="2">Más baratos</option>
-								<option value="3">Más caros</option>
-								<option value="4">Más grandes</option>
-								<option value="5">Más pequeños</option>
-								<option value="6">Baratos por m<sup>2</sup></option>
-								<option value="7">Caros por m<sup>2</sup></option>
-							</select>
-						
-		
-						<div class="label title">Provincia</div>
-						
-							<select class="select" name="provincia">
-								<option value="0">Alicante</option>
-								<option value="1">Valencia</option>
-								<option value="2">Castellón</option>
-							</select>
-						
 
-						<div class="label title">Tipo de inmueble</div>
-						
-							<select class="select" name="tipo_inmueble">
-								<option value="0">Vivienda 1</option>
-								<option value="1">Vivienda 1</option>
-								<option value="2">Vivienda 2</option>
-								<option value="3">Vivienda 3</option>
-							</select>
-						
+						<select name="orden" class="select">
+							<option value="0">Más nuevos</option>
+							<option value="1">Más antiguos</option>
+							<option value="2">Más baratos</option>
+							<option value="3">Más caros</option>
+							<option value="4">Más grandes</option>
+							<option value="5">Más pequeños</option>
+							<option value="6">Baratos por m<sup>2</sup></option>
+							<option value="7">Caros por m<sup>2</sup></option>
+						</select>
+
+						<div class="label title">Provincia</div>
+
+						<select class="select" name="provincia">
+							<option value="0">Alicante</option>
+							<option value="1">Valencia</option>
+							<option value="2">Castellón</option>
+						</select>
+
+						<div class="label title">Estado de inmueble</div>
+
+						<select class="select" name="stdo">
+							<option value="1">Obra nueva</option>
+							<option value="2">Buen estado</option>
+							<option value="3">Reformado</option>
+							<option value="4">A reformar</option>
+						</select>
 
 						<div class="label title">Precio</div>
-						<input name="priceMin" class="priceMin" type="number" min="0" value="10000"/>
-						<input name="priceMax" class="priceMax" type="number" min="0" value="100000"/>
+						<input name="priceMin" class="priceMin" type="number" min="0" value="10000" />
+						<input name="priceMax" class="priceMax" type="number" min="0" value="100000" />
 						<div class="label title">Umbral</div>
-						<label><input name="boolUmbral" class="pricePlus" type="checkbox"/><div class="label bold">Aplicar umbral</div></label>
-						<input name="umbral" class="priceMax" type="number" min="0" value="0"/>
+						<label
+							><input name="boolUmbral" class="pricePlus" type="checkbox" />
+							<div class="label bold">Aplicar umbral</div></label
+						>
+						<input
+							name="umbral"
+							class="priceMax"
+							type="number"
+							min="0"
+							max="1"
+							value="0.5"
+							step="0.1"
+						/>
 
 						<div class="label title">Superficie</div>
-						<input name="superficie" class="priceMax" type="number" min="0" value="0"/>
+						<input name="supMin" class="priceMax" type="number" min="0" value="50" />
+						<input name="supMax" class="priceMax" type="number" min="0" value="200" />
 
 						<div class="label title">Tipo de vivienda</div>
-						<div class="label">Pisos</div>
-						<label>
-							<input type="checkbox"/><div class="label bold" >Todos los pisos</div></label>
+
 						<div class="sub-group">
-							<label><input name="atico" type="checkbox"/><div class="label bold">Ático</div></label>
-							<label><input name="plantasIntermedias" type="checkbox"/><div class="label bold">Plantas intermedias</div></label>
-							<label><input name="duplex" type="checkbox"/><div class="label bold">Dúplex</div></label>
-							<label><input name="loft" type="checkbox"/><div class="label bold">Loft</div></label>
-							<label><input name="plantaBaja" type="checkbox"/><div class="label bold">Planta baja</div></label>
-						</div>
-						<div class="label">Casas</div>
-						<label><input type="checkbox"/><div class="label bold">Todas las casas</div></label>
-						<div class="sub-group">
-							<label><input name="casaChalet" type="checkbox"/><div class="label bold">Casa o chalet</div></label>
-							<label><input name="casaAdosada" type="checkbox"/><div class="label bold">Casa adosada</div></label>
-							<label><input name="fincaRustica" type="checkbox"/><div class="label bold class="label bold"">Finca rústica</div></label>
+							<label
+								><input name="tpoViv" type="radio" value="1" checked />
+								<div class="label bold">Ático</div></label
+							>
+							<label
+								><input name="tpoViv" type="radio" value="2" />
+								<div class="label bold">Plantas intermedias</div></label
+							>
+							<label
+								><input name="tpoViv" type="radio" value="3" />
+								<div class="label bold">Dúplex</div></label
+							>
+							<label
+								><input name="tpoViv" type="radio" value="4" />
+								<div class="label bold">Loft</div></label
+							>
+							<label
+								><input name="tpoViv" type="radio" value="5" />
+								<div class="label bold">Planta baja</div></label
+							>
+							<label
+								><input name="tpoViv" type="radio" value="6" />
+								<div class="label bold">Casa</div></label
+							>
+							<label
+								><input name="tpoViv" type="radio" value="7" />
+								<div class="label bold">Chalet</div></label
+							>
+							<label
+								><input name="tpoViv" type="radio" value="8" />
+								<div class="label bold">Casa adosada</div></label
+							>
+							<label
+								><input name="tpoViv" type="radio" value="9" />
+								<div class="label bold">Finca rústica</div></label
+							>
 						</div>
 
 						<div class="label title">Habitaciones</div>
-						<label><input type="radio" name="h" value="0"/><div class="label bold">0 o más</div></label>
-						<label><input type="radio" name="h" value="1"/><div class="label bold">1 o más</div></label>
-						<label><input type="radio" name="h" value="2"/><div class="label bold">2 o más</div></label>
-						<label><input type="radio" name="h" value="3"/><div class="label bold">3 o más</div></label>
-						<label><input type="radio" name="h" value="4"/><div class="label bold">4 o más</div></label>
+						<label
+							><input type="radio" name="h" value="0" checked />
+							<div class="label bold">0 o más</div></label
+						>
+						<label
+							><input type="radio" name="h" value="1" />
+							<div class="label bold">1 o más</div></label
+						>
+						<label
+							><input type="radio" name="h" value="2" />
+							<div class="label bold">2 o más</div></label
+						>
+						<label
+							><input type="radio" name="h" value="3" />
+							<div class="label bold">3 o más</div></label
+						>
+						<label
+							><input type="radio" name="h" value="4" />
+							<div class="label bold">4 o más</div></label
+						>
 
 						<div class="label title">Baños</div>
-						<label><input type="radio" name="b" value="0"/><div class="label bold">0 o más</div></label>
-						<label><input type="radio" name="b" value="1"/><div class="label bold">1 o más</div></label>
-						<label><input type="radio" name="b" value="2"/><div class="label bold">2 o más</div></label>
-						<label><input type="radio" name="b" value="3"/><div class="label bold">3 o más</div></label>
+						<label
+							><input type="radio" name="b" value="0" checked />
+							<div class="label bold">0 o más</div></label
+						>
+						<label
+							><input type="radio" name="b" value="1" />
+							<div class="label bold">1 o más</div></label
+						>
+						<label
+							><input type="radio" name="b" value="2" />
+							<div class="label bold">2 o más</div></label
+						>
+						<label
+							><input type="radio" name="b" value="3" />
+							<div class="label bold">3 o más</div></label
+						>
 
 						<div class="label title">Características</div>
-						<label><input type="checkbox"/><div class="label bold">Ascensor</div></label>
-						<label><input type="checkbox"/><div class="label bold">Amueblado</div></label>
-						<label><input type="checkbox"/><div class="label bold">Terraza o balcón</div></label>
-						<label><input type="checkbox"/><div class="label bold">Aire acondicionado</div></label>
-						<label><input type="checkbox"/><div class="label bold">Armario empotrado</div></label>
-						<label><input type="checkbox"/><div class="label bold">Garaje</div></label>
-						<label><input type="checkbox"/><div class="label bold">Jardín</div></label>
-						<label><input type="checkbox"/><div class="label bold">Piscina</div></label>
-						<label><input type="checkbox"/><div class="label bold">Trastero</div></label>
-						
-						<button class="button black inline-flex" name="submit" type="submit">Aplicar filtros</button>
+						<label
+							><input type="checkbox" />
+							<div class="label bold">Ascensor</div></label
+						>
+						<label
+							><input type="checkbox" />
+							<div class="label bold">Amueblado</div></label
+						>
+						<label
+							><input type="checkbox" />
+							<div class="label bold">Terraza o balcón</div></label
+						>
+						<label
+							><input type="checkbox" />
+							<div class="label bold">Aire acondicionado</div></label
+						>
+						<label
+							><input type="checkbox" />
+							<div class="label bold">Armario empotrado</div></label
+						>
+						<label
+							><input type="checkbox" />
+							<div class="label bold">Garaje</div></label
+						>
+						<label
+							><input type="checkbox" />
+							<div class="label bold">Jardín</div></label
+						>
+						<label
+							><input type="checkbox" />
+							<div class="label bold">Piscina</div></label
+						>
+						<label
+							><input type="checkbox" />
+							<div class="label bold">Trastero</div></label
+						>
+
+						<button class="button black inline-flex" name="submit" type="submit">
+							Aplicar filtros
+						</button>
 					</form>
 				</div>
 			</div>
 
 			<div class="flexbox column full-width">
-
 				<div class="nav flexbox row spaced">
-
 					<div class="nav flexbox row group round">
 						<div class="button option selected" href="">Comprar</div>
 						<div class="button option" href="">Alquilar</div>
@@ -169,7 +258,6 @@
 						<div class="button option" href="">Lista</div>
 						<div class="button option selected" href="">Mapa</div>
 					</div>
-					
 				</div>
 
 				<div class="flexbox column full-height spaced">
