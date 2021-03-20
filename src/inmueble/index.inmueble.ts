@@ -1,4 +1,6 @@
 import axios from 'axios';
+
+
 export class Inmueble {
 	constructor() {
 		this.getInmueble();

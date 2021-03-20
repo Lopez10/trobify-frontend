@@ -1,3 +1,4 @@
+
 export function mostrarMapa2(ubicaciones) {
 
 	function addMarkersToMap(map) {
@@ -7,27 +8,21 @@ export function mostrarMapa2(ubicaciones) {
 			});
 		});
 	}
+
 	var platform = new H.service.Platform({
 		apikey: 'TEwOAo-zrGY4x4fsz8YFwBK4tLdyk7wPuoicDhmRb0k',
 	});
 	var defaultLayers = platform.createDefaultLayers();
-	//Step 2: initialize a map - this map is centered over Europe
 	var map = new H.Map(document.getElementById('map'), defaultLayers.vector.normal.map, {
 		center: { lat: 39.47024, lng: -0.3768049 },
 		zoom: 12,
 		pixelRatio: window.devicePixelRatio || 1,
 	});
-	// add a resize listener to make sure that the map occupies the whole container
 	window.addEventListener('resize', function () {
 		return map.getViewPort().resize();
 	});
-	//Step 3: make the map interactive
-	// MapEvents enables the event system
-	// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
 	var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-	// Create the default UI components
 	var ui = H.ui.UI.createDefault(map, defaultLayers);
-	// Now use the map as required...
 	window.onload = function () {
 		addMarkersToMap(map);
 	};
@@ -36,14 +31,17 @@ export function mostrarMapa2(ubicaciones) {
 
 
 export function mostrarMapa(ubicaciones) {
+	let latitud = 39.47024;
+	let longitud = -0.3768049;
 	// Parte común  -----------------------------------------------------------
 	var platform = new H.service.Platform({
 		apikey: 'TEwOAo-zrGY4x4fsz8YFwBK4tLdyk7wPuoicDhmRb0k',
 	});
 	var defaultLayers = platform.createDefaultLayers();
-	var map = new H.Map(document.getElementById('map'), 
+	var map = new H.Map(
+		document.getElementById('map'), 
 		defaultLayers.vector.normal.map, {
-			center: { lat: 39.47024, lng: -0.3768049 },
+			center: { lat: latitud, lng: longitud },
 			zoom: 12,
 			pixelRatio: window.devicePixelRatio || 1,
 		}
@@ -88,4 +86,4 @@ function addMarkerToGroup(group, coordinate, html) {
 	// add custom data to the marker
 	marker.setData(html);
 	group.addObject(marker);
-  }
+}

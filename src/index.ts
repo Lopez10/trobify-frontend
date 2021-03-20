@@ -1,4 +1,5 @@
 import { Catalogo } from './catalogo/index.catalogo';
+import { Provincia } from './catalogo/index.provincias';
 import { simuladorHipoteca } from './inmueble/hipoteca/index.hipoteca';
 const mostrarMapa = require('../public/js/mapa.js');
 
@@ -15,7 +16,7 @@ let supMax: number = 200;
 let prov: number = 46;
 let nHab: number = 2;
 let clfEn: number = 1;*/
-let inmuebles = catalogo.getCatalogo(
+let inmuebles: Promise<any> = catalogo.getCatalogo(
 	opt,
 	ord
 	/*preMin,
@@ -28,13 +29,15 @@ let inmuebles = catalogo.getCatalogo(
 	nHab,
 	clfEn*/
 );
-
+/*
+let provincia: Provincia = new Provincia();
+let capiProv: Promise<any> = provincia.getProvincia(46);
+*/
 catalogo.mostrarInmuebles(inmuebles);
 
 // Creacion de Hipoteca (ejemplo)
 let x: HTMLFormElement =
 	document.querySelector('#formularioHipoteca') || document.createElement('form');
-console.log('object');
 let localizacion: string = 'Valencia';
 
 x.onsubmit = () => {
@@ -64,4 +67,8 @@ x.onsubmit = () => {
 };
 
 // Mostrar mapa
-mostrarMapa.mostrarMapa(inmuebles);
+/*
+let lat: number = provincia.getProvLatitud;
+let lon: number = capiProv.getProvLongitud;
+*/
+mostrarMapa.mostrarMapa( inmuebles );
