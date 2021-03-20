@@ -47,4 +47,50 @@ export class Catalogo {
 			});
 		});
 	}
+
+	//Aún en pruebas.
+	async getFiltros(id_cliente: number,
+		opt: number,
+		vis: number,
+		prov: number,
+		ord: number,
+		preMin: number,
+		preMax: number,
+		aMrgn: number,
+		mrgn: number,
+		supMin: number,
+		supMax: number,	
+		nHab: number,
+		nBan: number,
+		clfEn: number,
+		stdo: string,
+		tipoViv: string,
+		caract: string){
+			const myRequest = 'http://localhost:3000/catalogo/:id_cliente';			
+			let filtros: Promise<any> = await axios
+			.get(myRequest, {
+				params: {
+					id_cliente: id_cliente,
+					opt: opt,
+					vis: vis,
+					prov: prov,
+					ord: ord,
+					preMin: preMin,
+					preMax: preMax,
+					aMrgn: aMrgn,
+					mrgn: mrgn,
+					supMin: supMin,
+					supMax: supMax,	
+					nHab: nHab,
+					nBan: nBan,
+					clfEn: clfEn,
+					stdo: stdo,
+					tipoViv: tipoViv,
+					caract: caract
+				},
+			}).then((result) => {
+				return result.data;
+			});
+		return filtros;		
+		}
 }
