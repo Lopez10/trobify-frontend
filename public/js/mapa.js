@@ -1,38 +1,9 @@
-export function mostrarMapa2(ubicaciones) {
-	function addMarkersToMap(map) {
-		ubicaciones.then((item) => {
-			item.forEach((result) => {
-				map.addObject(new H.map.Marker({ lat: result.latitud, lng: result.longitud }));
-			});
-		});
-	}
-
-	var platform = new H.service.Platform({
-		apikey: 'TEwOAo-zrGY4x4fsz8YFwBK4tLdyk7wPuoicDhmRb0k',
-	});
-	var defaultLayers = platform.createDefaultLayers();
-	var map = new H.Map(document.getElementById('map'), defaultLayers.vector.normal.map, {
-		center: { lat: 39.47024, lng: -0.3768049 },
-		zoom: 12,
-		pixelRatio: window.devicePixelRatio || 1,
-	});
-	window.addEventListener('resize', function () {
-		return map.getViewPort().resize();
-	});
-	var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-	var ui = H.ui.UI.createDefault(map, defaultLayers);
-	window.onload = function () {
-		addMarkersToMap(map);
-	};
-}
-
 export function mostrarMapa(ubicaciones, latitud, longitud, zm) {
 	// Parte común  -----------------------------------------------------------
 	var platform = new H.service.Platform({
 		apikey: 'TEwOAo-zrGY4x4fsz8YFwBK4tLdyk7wPuoicDhmRb0k',
 	});
 	var defaultLayers = platform.createDefaultLayers();
-	console.log(ubicaciones, latitud, longitud, zm);
 	var map = new H.Map(document.getElementById('map'), defaultLayers.vector.normal.map, {
 		center: { lat: latitud, lng: longitud },
 		zoom: zm,

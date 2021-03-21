@@ -47,6 +47,7 @@ catalogoForm.onsubmit = () => {
 
 	let catalogoFiltrado = catalogo.getCatalogo(params);
 	catalogo.mostrarInmuebles(catalogoFiltrado);
+	
 	mapa.mostrarMapa(
 		catalogoFiltrado,
 		provincia[prov].latitud,
