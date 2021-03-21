@@ -56,6 +56,15 @@ img {
   border: none !important;
 }
 
+.form.inline label {
+  display: inline-block;
+  margin: 0;
+}
+
+.form.inline label .button {
+  margin: 0;
+}
+
 .form .sub-group {
   margin-left: 2rem;
 }
@@ -285,6 +294,15 @@ label input[type="radio"]:checked ~ .label::before {
   font-family: "TT Commons Bold";
 }
 
+.flexbox.group label input[type="radio"] {
+  display: none;
+}
+
+.flexbox.group label input[type="radio"]:checked ~ .label, .flexbox.group label input[type="radio"]:checked ~ .button {
+  background: #DBDBDB;
+  font-family: "TT Commons Bold";
+}
+
 .flexbox.spaced {
   margin: 2rem;
 }
@@ -367,6 +385,10 @@ svg.icon {
   display: inline-block;
 }
 
+.label.inline {
+  display: inline-block !important;
+}
+
 .label.detail {
   color: #B2B2B2;
 }
@@ -418,6 +440,14 @@ svg.icon {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none !important;
+}
+
+.button.invisible {
+  display: none !important;
 }
 
 .button.chip {

@@ -86,6 +86,15 @@ img {
 // Form
 
 .form {
+  &.inline {
+    label {
+      display: inline-block;
+      margin: 0;
+      .button {
+        margin: 0;
+      }
+    }
+  }
   .sub-group {
     margin-left: 2rem;
   }
@@ -285,6 +294,15 @@ label {
         font-family: $font-family-bold;
       }
     }
+    label {
+      input[type="radio"] {
+        display: none;
+      }
+      input[type="radio"]:checked ~ .label, input[type="radio"]:checked ~ .button {
+        background: $color-grey-selection;
+        font-family: $font-family-bold;
+      }
+    }
   }
   &.spaced {
     margin: 2rem;
@@ -360,6 +378,10 @@ svg.icon{
   font-family: $font-family-medium;
   display: inline-block;
 
+  &.inline {
+    display: inline-block !important;
+  }
+
   &.detail {
     color: $color-grey-detail;
   }
@@ -407,6 +429,12 @@ svg.icon{
   display: inline-block;
   display: inline-flex;
   align-items: center;
+  appearance: none;
+  border: none !important;
+
+  &.invisible {
+    display: none !important;
+  }
 
   // Size
   &.chip {
