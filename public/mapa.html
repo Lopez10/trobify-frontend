@@ -252,6 +252,10 @@
 							<div class="label bold">Trastero</div></label
 						>
 
+						<!-- Seleccionar si es Comprar, Alquilar o Alquilar habitación -->
+
+						<input type="radio" id="filterOpt" name="opt" value="1" style="display:none;"/>
+
 						<button class="button black inline-flex" name="submit" type="submit">
 							Aplicar filtros
 						</button>
@@ -271,23 +275,23 @@
 					<div class="nav flexbox row group round">
 						<form id="tipoBusqueda" class="form inline">
 							<label>
-								<input type="radio" name="opt" onchange='this.form.submit();'
- value="1"/>
-								<div class="button option" href="">Comprar</div>
+								<input type="radio" name="opt" value="1" onchange='document.getElementById("filterOpt").value=1'/>
+								<div class="button option">Comprar</div>
 							</label>
 							<label>
-								<input type="radio" name="opt" onchange='this.form.submit();'
- value="2"/>
-								<div class="button option" href="">Alquilar</div>
+								<input type="radio" name="opt" value="2" onchange='document.getElementById("filterOpt").value=2'/>
+								<div class="button option">Alquilar</div>
 							</label>
-							<label>
-								<input type="radio" name="opt" onchange='this.form.submit();'
- value="3"/>
-								<div class="button option" href="">Alquilar habitación</div>
+							<label class="disabled">
+								<input type="radio" name="opt" value="3" onchange='document.getElementById("filterOpt").value=3' disabled/>
+								<div class="button option">Alquilar habitación</div>
 							</label>
-							<!--<button class="button black inline-flex invisible" name="submit" type="submit">
+							<!--
+								<button class="button black inline-flex invisible" name="submit" type="submit">
 								Aplicar filtros
-							</button>-->
+							</button>
+							onchange='this.form.submit();'
+						-->
 						</form>
 					</div>
 
