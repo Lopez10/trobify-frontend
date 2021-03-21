@@ -13,6 +13,7 @@ let catalogoForm: HTMLFormElement =
 catalogoForm.onsubmit = () => {
 	const formData = new FormData(catalogoForm);
 	let ord = (formData.get('orden') as unknown) as number;
+	let opt = (formData.get('opt') as unknown) as number;
 	let preMin = (formData.get('priceMin') as unknown) as number;
 	let preMax = (formData.get('priceMax') as unknown) as number;
 	let mrgn = (formData.get('umbral') as unknown) as number;
@@ -28,6 +29,7 @@ catalogoForm.onsubmit = () => {
 	//let clfEn = (formData.get('clfEn') as unknown) as number; // Por que no se puede seleccionar en ningún sitio
 	let params = querystring.stringify({
 		ord: ord,
+		opt: opt,
 		preMin: preMin,
 		preMax: preMax,
 		mrgn: mrgn/100,
