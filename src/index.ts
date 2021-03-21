@@ -1,49 +1,58 @@
-import { Catalogo } from './catalogo/index.catalogo';
-import { Ubicacion } from './interface/provincia.inteface';
-import { obtenerProvincias } from './data/provincias';
+import { Filtrado } from './catalogo/filtrado/index.filtrado';
 import { simuladorHipoteca } from './inmueble/hipoteca/index.hipoteca';
 const mostrarMapa = require('../public/js/mapa.js');
+import querystring from 'querystring';
 
 //Creacion de catalogo con filtrado
-let catalogo: Catalogo = new Catalogo();
-let opt: number = 1;
-let ord: number = 1;
-let prov: number = 0; // También se usa para centrar el mapa
-/*let preMin: number = 1;
-let preMax: number = 30000;
-let aMrgn: number = 1;
-let mrgn: number = 0.05;
-let supMin: number = 1;
-let supMax: number = 200;
-let prov: number = 46;
-let nHab: number = 2;
-let clfEn: number = 1;*/
-let inmuebles: Promise<any> = catalogo.getCatalogo(
-	opt,
-	ord,
-	prov
-	/*preMin,
-	preMax,
-	aMrgn,
-	mrgn,
-	supMin,
-	supMax,
-	nHab,
-	clfEn*/
-);
+let catalogo: Filtrado = new Filtrado();
 
+let catalogoForm: HTMLFormElement =
+	document.querySelector('#filtroForm') || document.createElement('form');
+catalogoForm.onsubmit = () => {
+	const formData = new FormData(catalogoForm);
 
-
-
-catalogo.mostrarInmuebles(inmuebles);
+	let ord = (formData.get('orden') as unknown) as number;
+	let preMin = (formData.get('priceMin') as unknown) as number;
+	let preMax = (formData.get('priceMax') as unknown) as number;
+	let mrgn = (formData.get('umbral') as unknown) as number;
+	let aMrgn = (formData.get('boolUmbral') as unknown) as number;
+	let supMin = (formData.get('supMin') as unknown) as number;
+	let supMax = (formData.get('supMax') as unknown) as number;
+	let prov = (formData.get('provincia') as unknown) as number;
+	let tpoViv = (formData.get('tpoViv') as unknown) as number;
+	let nHab = (formData.get('h') as unknown) as number;
+	let nBan = (formData.get('b') as unknown) as number;
+	let stdo = (formData.get('stdo') as unknown) as number;
+	let clfEn = (formData.get('clfEn') as unknown) as number;
+	let params = querystring.stringify({
+		ord: ord,
+		preMin: preMin,
+		preMax: preMax,
+		mrgn: mrgn,
+		aMrgn: aMrgn,
+		supMin: supMin,
+		supMax: supMax,
+		stdo: stdo,
+		tpoViv: tpoViv,
+		prov: 46,
+		nHab: nHab,
+		nBan: nBan,
+		//clfEn: clfEn,
+	});
+	console.log(params);
+	let catalogoFiltrado = catalogo.getCatalogo(params);
+	catalogo.mostrarInmuebles(catalogoFiltrado);
+	mostrarMapa.mostrarMapa(catalogoFiltrado);
+	return false;
+};
 
 // Creacion de Hipoteca (ejemplo)
-let x: HTMLFormElement =
+let hipotecaForm: HTMLFormElement =
 	document.querySelector('#formularioHipoteca') || document.createElement('form');
 let localizacion: string = 'Valencia';
 
-x.onsubmit = () => {
-	const formData = new FormData(x);
+hipotecaForm.onsubmit = () => {
+	const formData = new FormData(hipotecaForm);
 
 	let condicionHipoteca = formData.get('condicion') as string;
 	let precio = (formData.get('precio') as unknown) as number;
@@ -68,10 +77,13 @@ x.onsubmit = () => {
 	return false;
 };
 
-
-
 let provincia: Array<Ubicacion> = obtenerProvincias();
 // Mostrar mapa
-mostrarMapa.mostrarMapa( inmuebles, provincia[prov].latitud, provincia[prov].longitud, provincia[prov].zoom);
+mostrarMapa.mostrarMapa(
+	inmuebles,
+	provincia[prov].latitud,
+	provincia[prov].longitud,
+	provincia[prov].zoom
+);
 
 catalogo.crearProvincias();
