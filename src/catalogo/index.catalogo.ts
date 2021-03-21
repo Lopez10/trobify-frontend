@@ -104,8 +104,8 @@ export class Catalogo {
 			if ( result.codigoPostal != 0 ) {
 				let div = document.getElementById('provincias');
 				let option = document.createElement('option');
-				option.setAttribute('value', result.codigoPostal + '' );
-				let textoProvincia = document.createTextNode( result.provincia + '' );
+				option.setAttribute('value', result.codigoPostal.toString() );
+				let textoProvincia = document.createTextNode( result.provincia.toString() );
 				option.appendChild(textoProvincia);
 				if (div != null) div.appendChild(option);
 			}
