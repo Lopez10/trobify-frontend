@@ -23,13 +23,14 @@ catalogoForm.onsubmit = () => {
 	let tpoViv = (formData.get('tpoViv') as unknown) as number;
 	let nHab = (formData.get('h') as unknown) as number;
 	let nBan = (formData.get('b') as unknown) as number;
-	let stdo = (formData.get('stdo') as unknown) as number;
+	//let stdo = (formData.get('stdo') as unknown) as number;
+	let stdo = ((formData.get('stdo') as unknown) as string)==(null) ? (((formData.getAll('stdo'))) as unknown) as string : (formData.get('stdo') as unknown) as string;
 	let clfEn = (formData.get('clfEn') as unknown) as number;
 	let params = querystring.stringify({
 		ord: ord,
 		preMin: preMin,
 		preMax: preMax,
-		mrgn: mrgn,
+		mrgn: mrgn/100,
 		aMrgn: aMrgn,
 		supMin: supMin,
 		supMax: supMax,
