@@ -79,6 +79,7 @@ export class Catalogo {
 			if (result.codigoPostal != 0) {
 				let option = document.createElement('option');
 				option.setAttribute('value', result.codigoPostal.toString());
+				if ( result.codigoPostal == 46 ) option.setAttribute('selected', 'selected');
 				let textoProvincia = document.createTextNode(result.provincia.toString());
 				option.appendChild(textoProvincia);
 				if (div != null) div.appendChild(option);

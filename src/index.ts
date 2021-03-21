@@ -20,12 +20,12 @@ catalogoForm.onsubmit = () => {
 	let supMin = (formData.get('supMin') as unknown) as number;
 	let supMax = (formData.get('supMax') as unknown) as number;
 	let prov = (formData.get('provincia') as unknown) as number;
-	let tpoViv = (formData.get('tpoViv') as unknown) as number;
 	let nHab = (formData.get('h') as unknown) as number;
 	let nBan = (formData.get('b') as unknown) as number;
-	//let stdo = (formData.get('stdo') as unknown) as number;
-	let stdo = ((formData.get('stdo') as unknown) as string)==(null) ? (((formData.getAll('stdo'))) as unknown) as string : (formData.get('stdo') as unknown) as string;
-	let clfEn = (formData.get('clfEn') as unknown) as number;
+	let stdo = ((formData.getAll('stdo') as unknown) as Array<String>).join(",") as string;
+	let tpoViv = ((formData.getAll('tpoViv') as unknown) as Array<String>).join(",") as string;
+	let caract = ((formData.getAll('caract') as unknown) as Array<String>).join(",") as string;
+	//let clfEn = (formData.get('clfEn') as unknown) as number; // Por que no se puede seleccionar en ningún sitio
 	let params = querystring.stringify({
 		ord: ord,
 		preMin: preMin,
@@ -36,21 +36,15 @@ catalogoForm.onsubmit = () => {
 		supMax: supMax,
 		stdo: stdo,
 		tpoViv: tpoViv,
+		caract: caract,
 		prov: prov,
 		nHab: nHab,
 		nBan: nBan,
-		clfEn: clfEn,
+		//clfEn: clfEn, // Por que no se puede seleccionar en ningún sitio
 	});
-	console.log(params);
+
 	let catalogoFiltrado = catalogo.getCatalogo(params);
 	catalogo.mostrarInmuebles(catalogoFiltrado);
-	console.log(
-		catalogoFiltrado,
-		provincia[prov].latitud,
-		provincia[prov].longitud,
-		provincia[prov].zoom
-	);
-
 	mapa.mostrarMapa(
 		catalogoFiltrado,
 		provincia[prov].latitud,
