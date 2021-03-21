@@ -73,10 +73,10 @@ export class Catalogo {
 	}
 
 	crearProvincias() {
+		let div = document.getElementById('provincias');
 		obtenerProvincias().forEach((result) => {
 			// Este if es para que no salga la primera posición del Array (Corresponede a las coordenadas de España) en el cuadro desplegable
 			if (result.codigoPostal != 0) {
-				let div = document.getElementById('provincias');
 				let option = document.createElement('option');
 				option.setAttribute('value', result.codigoPostal.toString());
 				let textoProvincia = document.createTextNode(result.provincia.toString());

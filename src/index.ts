@@ -1,6 +1,8 @@
 import { Filtrado } from './catalogo/filtrado/index.filtrado';
 import { simuladorHipoteca } from './inmueble/hipoteca/index.hipoteca';
-const mostrarMapa = require('../public/js/mapa.js');
+import { obtenerProvincias } from './data/provincias';
+import { Ubicacion } from './interface/provincia.inteface';
+const mapa = require('../public/js/mapa.js');
 import querystring from 'querystring';
 
 //Creacion de catalogo con filtrado
@@ -10,7 +12,6 @@ let catalogoForm: HTMLFormElement =
 	document.querySelector('#filtroForm') || document.createElement('form');
 catalogoForm.onsubmit = () => {
 	const formData = new FormData(catalogoForm);
-
 	let ord = (formData.get('orden') as unknown) as number;
 	let preMin = (formData.get('priceMin') as unknown) as number;
 	let preMax = (formData.get('priceMax') as unknown) as number;
@@ -34,15 +35,28 @@ catalogoForm.onsubmit = () => {
 		supMax: supMax,
 		stdo: stdo,
 		tpoViv: tpoViv,
-		prov: 46,
+		prov: prov,
 		nHab: nHab,
 		nBan: nBan,
-		//clfEn: clfEn,
+		clfEn: clfEn,
 	});
 	console.log(params);
 	let catalogoFiltrado = catalogo.getCatalogo(params);
 	catalogo.mostrarInmuebles(catalogoFiltrado);
-	mostrarMapa.mostrarMapa(catalogoFiltrado);
+	console.log(
+		catalogoFiltrado,
+		provincia[prov].latitud,
+		provincia[prov].longitud,
+		provincia[prov].zoom
+	);
+
+	mapa.mostrarMapa(
+		catalogoFiltrado,
+		provincia[prov].latitud,
+		provincia[prov].longitud,
+		provincia[prov].zoom
+	);
+
 	return false;
 };
 
@@ -78,12 +92,4 @@ hipotecaForm.onsubmit = () => {
 };
 
 let provincia: Array<Ubicacion> = obtenerProvincias();
-// Mostrar mapa
-mostrarMapa.mostrarMapa(
-	inmuebles,
-	provincia[prov].latitud,
-	provincia[prov].longitud,
-	provincia[prov].zoom
-);
-
 catalogo.crearProvincias();

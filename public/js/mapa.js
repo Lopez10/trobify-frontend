@@ -32,6 +32,7 @@ export function mostrarMapa(ubicaciones, latitud, longitud, zm) {
 		apikey: 'TEwOAo-zrGY4x4fsz8YFwBK4tLdyk7wPuoicDhmRb0k',
 	});
 	var defaultLayers = platform.createDefaultLayers();
+	console.log(ubicaciones, latitud, longitud, zm);
 	var map = new H.Map(document.getElementById('map'), defaultLayers.vector.normal.map, {
 		center: { lat: latitud, lng: longitud },
 		zoom: zm,
