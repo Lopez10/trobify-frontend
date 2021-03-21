@@ -30,9 +30,7 @@ export function mostrarMapa2(ubicaciones) {
 
 
 
-export function mostrarMapa(ubicaciones) {
-	let latitud = 39.47024;
-	let longitud = -0.3768049;
+export function mostrarMapa(ubicaciones, latitud, longitud, zm) {
 	// Parte común  -----------------------------------------------------------
 	var platform = new H.service.Platform({
 		apikey: 'TEwOAo-zrGY4x4fsz8YFwBK4tLdyk7wPuoicDhmRb0k',
@@ -42,7 +40,7 @@ export function mostrarMapa(ubicaciones) {
 		document.getElementById('map'), 
 		defaultLayers.vector.normal.map, {
 			center: { lat: latitud, lng: longitud },
-			zoom: 12,
+			zoom: zm,
 			pixelRatio: window.devicePixelRatio || 1,
 		}
 	);

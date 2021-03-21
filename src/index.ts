@@ -1,5 +1,6 @@
 import { Catalogo } from './catalogo/index.catalogo';
-import { Provincia } from './catalogo/index.provincias';
+import { Ubicacion } from './interface/provincia.inteface';
+import { obtenerProvincias } from './data/provincias';
 import { simuladorHipoteca } from './inmueble/hipoteca/index.hipoteca';
 const mostrarMapa = require('../public/js/mapa.js');
 
@@ -7,6 +8,7 @@ const mostrarMapa = require('../public/js/mapa.js');
 let catalogo: Catalogo = new Catalogo();
 let opt: number = 1;
 let ord: number = 1;
+let prov: number = 46; // También se usa para centrar el mapa
 /*let preMin: number = 1;
 let preMax: number = 30000;
 let aMrgn: number = 1;
@@ -18,21 +20,21 @@ let nHab: number = 2;
 let clfEn: number = 1;*/
 let inmuebles: Promise<any> = catalogo.getCatalogo(
 	opt,
-	ord
+	ord,
+	prov
 	/*preMin,
 	preMax,
 	aMrgn,
 	mrgn,
 	supMin,
 	supMax,
-	prov,
 	nHab,
 	clfEn*/
 );
-/*
-let provincia: Provincia = new Provincia();
-let capiProv: Promise<any> = provincia.getProvincia(46);
-*/
+
+
+
+
 catalogo.mostrarInmuebles(inmuebles);
 
 // Creacion de Hipoteca (ejemplo)
@@ -66,10 +68,10 @@ x.onsubmit = () => {
 	return false;
 };
 
+
+
+let provincia: Array<Ubicacion> = obtenerProvincias();
 // Mostrar mapa
-/*
-let lat: number = provincia.getProvLatitud;
-let lon: number = capiProv.getProvLongitud;
-*/
-mostrarMapa.mostrarMapa(inmuebles);
+mostrarMapa.mostrarMapa( inmuebles, provincia[prov].latitud, provincia[prov].longitud, provincia[prov].zoom);
+
 catalogo.crearProvincias();

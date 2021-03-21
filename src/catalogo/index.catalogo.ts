@@ -6,14 +6,14 @@ export class Catalogo {
 	constructor() {}
 	async getCatalogo(
 		opt: number,
-		ord: number
+		ord: number,
+		prov: number
 		/*preMin: number,
 		preMax: number,
 		mrgn: number,
 		aMrgn: number,
 		supMin: number,
 		supMax: number,
-		prov: number,
 		nHab: number,
 		clfEn: number*/
 	) {
@@ -23,13 +23,13 @@ export class Catalogo {
 				params: {
 					opt: opt,
 					ord: ord,
+					prov: prov,
 					/*preMin: preMin,
 					preMax: preMax,
 					aMrgn: aMrgn,
 					mrgn: mrgn,
 					supMin: supMin,
 					supMax: supMax,
-					prov: prov,
 					nHab: nHab,
 					clfEn: clfEn,*/
 				},
@@ -99,12 +99,14 @@ export class Catalogo {
 	}
 	crearProvincias() {
 		obtenerProvincias().forEach((result) => {
-			let div = document.getElementById('provincias');
-			let option = document.createElement('option');
-			option.setAttribute('value', result.codigoPostal);
-			let textoProvincia = document.createTextNode(result.provincia);
-			option.appendChild(textoProvincia);
-			if (div != null) div.appendChild(option);
+			if ( result.codigoPostal != 0 ) {
+				let div = document.getElementById('provincias');
+				let option = document.createElement('option');
+				option.setAttribute('value', result.codigoPostal + '' );
+				let textoProvincia = document.createTextNode( result.provincia + '' );
+				option.appendChild(textoProvincia);
+				if (div != null) div.appendChild(option);
+			}
 		});
 	}
 }
