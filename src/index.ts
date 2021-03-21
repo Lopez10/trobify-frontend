@@ -71,4 +71,5 @@ x.onsubmit = () => {
 let lat: number = provincia.getProvLatitud;
 let lon: number = capiProv.getProvLongitud;
 */
-mostrarMapa.mostrarMapa( inmuebles );
+mostrarMapa.mostrarMapa(inmuebles);
+catalogo.crearProvincias();

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { catalogDom } from './catalogDom';
+import { obtenerProvincias } from '../data/provincias';
 
 export class Catalogo {
 	constructor() {}
@@ -49,7 +50,8 @@ export class Catalogo {
 	}
 
 	//Aún en pruebas.
-	async getFiltros(id_cliente: number,
+	async getFiltros(
+		id_cliente: number,
 		opt: number,
 		vis: number,
 		prov: number,
@@ -59,15 +61,16 @@ export class Catalogo {
 		aMrgn: number,
 		mrgn: number,
 		supMin: number,
-		supMax: number,	
+		supMax: number,
 		nHab: number,
 		nBan: number,
 		clfEn: number,
 		stdo: string,
 		tipoViv: string,
-		caract: string){
-			const myRequest = 'http://localhost:3000/catalogo/:id_cliente';			
-			let filtros: Promise<any> = await axios
+		caract: string
+	) {
+		const myRequest = 'http://localhost:3000/catalogo/:id_cliente';
+		let filtros: Promise<any> = await axios
 			.get(myRequest, {
 				params: {
 					id_cliente: id_cliente,
@@ -80,17 +83,28 @@ export class Catalogo {
 					aMrgn: aMrgn,
 					mrgn: mrgn,
 					supMin: supMin,
-					supMax: supMax,	
+					supMax: supMax,
 					nHab: nHab,
 					nBan: nBan,
 					clfEn: clfEn,
 					stdo: stdo,
 					tipoViv: tipoViv,
-					caract: caract
+					caract: caract,
 				},
-			}).then((result) => {
+			})
+			.then((result) => {
 				return result.data;
 			});
-		return filtros;		
-		}
+		return filtros;
+	}
+	crearProvincias() {
+		obtenerProvincias().forEach((result) => {
+			let div = document.getElementById('provincias');
+			let option = document.createElement('option');
+			option.setAttribute('value', result.codigoPostal);
+			let textoProvincia = document.createTextNode(result.provincia);
+			option.appendChild(textoProvincia);
+			if (div != null) div.appendChild(option);
+		});
+	}
 }
