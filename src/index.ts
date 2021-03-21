@@ -1,7 +1,7 @@
 import { Filtrado } from './catalogo/filtrado/index.filtrado';
 import { simuladorHipoteca } from './inmueble/hipoteca/index.hipoteca';
 import { obtenerProvincias } from './data/provincias';
-import { Ubicacion } from './interface/provincia.inteface';
+import { Provincia } from './interface/provincia.inteface';
 const mapa = require('../public/js/mapa.js');
 import querystring from 'querystring';
 
@@ -92,5 +92,5 @@ hipotecaForm.onsubmit = () => {
 	return false;
 };
 
-let provincia: Array<Ubicacion> = obtenerProvincias();
+let provincia: Array<Provincia> = obtenerProvincias();
 catalogo.crearProvincias();

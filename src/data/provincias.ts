@@ -1,6 +1,6 @@
-import { Ubicacion } from "../interface/provincia.inteface";
+import { Provincia } from "../interface/provincia.inteface";
 
-export function obtenerProvincias(): Array<Ubicacion> {
+export function obtenerProvincias(): Array<Provincia> {
 	let provincias = [
 		{ codigoPostal: 0, provincia: 'España', capital: 'Madrid', latitud: 40.41669, longitud: -3.700346, zoom: 6 },
 		{ codigoPostal: 1, provincia: 'Álava', capital: 'Vitoria-Gasteiz', latitud: 42.84641, longitud: -2.667893, zoom: 10 },

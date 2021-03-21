@@ -1,4 +1,4 @@
-export interface Ubicacion {
+export interface Provincia {
     codigoPostal: Number,
     provincia: String,
     capital: String,
