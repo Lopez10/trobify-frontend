@@ -261,24 +261,48 @@ label input[type="radio"]:checked ~ .label::before {
   display: flex;
 }
 
+.flexbox .searchView #map, .flexbox .searchView #viewMode {
+  position: relative;
+}
+
 .flexbox .searchView input[type="radio"]#viewMode[value="1"] ~ #map {
   pointer-events: none;
   opacity: 0;
+  -webkit-transform: scale(0) !important;
+          transform: scale(0) !important;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
 }
 
 .flexbox .searchView input[type="radio"]#viewMode[value="1"] ~ #catalogo {
   pointer-events: all;
   opacity: 1;
+  -webkit-transform: scale(1) !important;
+          transform: scale(1) !important;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
 }
 
 .flexbox .searchView input[type="radio"]#viewMode[value="2"] ~ #catalogo {
   pointer-events: none;
   opacity: 0;
+  -webkit-transform: scale(0) !important;
+          transform: scale(0) !important;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
 }
 
 .flexbox .searchView input[type="radio"]#viewMode[value="2"] ~ #map {
   pointer-events: all;
   opacity: 1;
+  -webkit-transform: scale(1) !important;
+          transform: scale(1) !important;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
 }
 
 .flexbox .map.round {

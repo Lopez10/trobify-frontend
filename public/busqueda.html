@@ -269,7 +269,7 @@
 
 						<!-- Seleccionar si es Comprar, Alquilar o Alquilar habitación -->
 
-						<input type="radio" id="filterOpt" name="opt" value="1" style="display: none" checked />
+						<input type="radio" id="filterOpt" name="opt" value="1" style="display: none" checked/>
 
 						<button id="filtroFormSubmit" class="button black inline-flex" name="submit" type="submit" onclick="document.getElementById('map').innerHTML=''">
 							Aplicar filtros
@@ -283,15 +283,15 @@
 					<div class="nav flexbox row group round">
 						<form id="searchTypeForm" class="form inline flexbox">
 							<label class="inline">
-								<input type="radio" name="opt" value="1" onchange='document.getElementById("filterOpt").value=1' checked/>
+								<input type="radio" name="opt" id="opt1" value="1" onchange='updateBuyOption(1)' checked/>
 								<div class="button option">Comprar</div>
 							</label>
 							<label class="inline">
-								<input type="radio" name="opt" value="2" onchange='document.getElementById("filterOpt").value=2'/>
+								<input type="radio" name="opt" id="opt2" value="2" onchange='updateBuyOption(2)'/>
 								<div class="button option">Alquilar</div>
 							</label>
 							<label class="disabled inline">
-								<input type="radio" name="opt" value="3" onchange='document.getElementById("filterOpt").value=3' disabled/>
+								<input type="radio" name="opt" id="opt3" value="3" onchange='updateBuyOption(3)' disabled/>
 								<div class="button option">Alquilar habitación</div>
 							</label>
 						</form>
@@ -304,11 +304,11 @@
 					<div class="nav flexbox row group round">
 						<form id="viewModeForm" class="form inline flexbox">
 							<label class="inline">
-								<input type="radio" name="view" value="1" onchange='document.getElementById("viewMode").value=1' checked/>
+								<input type="radio" name="view" id="viewList" value="1" onchange='updateViewMode(1)' checked/>
 								<div class="button option">Lista</div>
 							</label>
 							<label class="inline">
-								<input type="radio" name="view" value="2" onchange='document.getElementById("viewMode").value=2'/>
+								<input type="radio" name="view" id="viewMap" value="2" onchange='updateViewMode(2)'/>
 								<div class="button option">Mapa</div>
 							</label>
 						</form>
@@ -316,9 +316,9 @@
 				</div>
 
 				<div class="flexbox column full-height spaced searchView">
-					<input type="radio" id="viewMode" name="view" value="2" style="display: none"/>
+					<input type="radio" id="viewMode" name="view" value="1" style="display: none"/>
 					<div id="map" class="map full-width round"></div>
-					<div id="catalogo" class="full-width"></div>
+					<div id="catalogo" class="full-width list"></div>
 				</div>
 			</div>
 		</div>
@@ -326,14 +326,32 @@
 		<!--<script type="text/javascript" src="./js/selector.js"></script>-->
 	</body>
 	<script type="text/javascript">
-		window.onload=function(){
-			document.getElementById("filtroFormSubmit").click();
-		};
-		/*
 		window.onload = function() {
-			// When page loads -> load map and list
-			document.getElementById("filtroForm").submit(); 
+			setDefaultFilters();
 		};
-		*/
+
+		function loadFilter() {
+			document.getElementById("filtroFormSubmit").click();
+		}
+		function updateBuyOption(x) {
+			document.getElementById("filterOpt").value=x;
+			loadFilter();
+		}
+		function updateViewMode(x) {
+			document.getElementById("viewMode").value=x;
+		}
+		function setDefaultFilters() {
+			// Set default buy option
+			document.getElementById("opt1").checked = true;
+			document.getElementById("opt2").checked = false;
+			document.getElementById("opt3").checked = false;
+			// Set default view mode
+			document.getElementById("viewList").checked = true;
+			document.getElementById("viewMap").checked = false;
+			// Load filters
+			loadFilter();
+		}
+
+		//document.getElementById("filterOpt").querySelectorAll('label').addEventListener("click", loadFilter());
 	</script>
 </html>

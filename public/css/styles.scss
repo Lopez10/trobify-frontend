@@ -265,22 +265,33 @@ label {
   display: flex;
 
   .searchView {
+    #map, #viewMode {
+      position: relative;
+    }
     input[type="radio"]#viewMode {
       &[value="1"] ~ #map {
         pointer-events: none;
         opacity: 0;
+        transform: scale(0) !important;
+        order: 2;
       }
       &[value="1"] ~ #catalogo {
         pointer-events: all;
         opacity: 1;
+        transform: scale(1) !important;
+        order: 1;
       }
       &[value="2"] ~ #catalogo {
         pointer-events: none;
         opacity: 0;
+        transform: scale(0) !important;
+        order: 2;
       }
       &[value="2"] ~ #map {
         pointer-events: all;
         opacity: 1;
+        transform: scale(1) !important;
+        order: 1;
       }
     }
   }
