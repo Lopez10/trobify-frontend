@@ -263,7 +263,7 @@ label {
 
 .flexbox {
   display: flex;
-  
+
   .searchView {
     input[type="radio"]#viewMode {
       &[value="1"] ~ #map {
@@ -306,6 +306,7 @@ label {
     }
     .option {
       background: none;
+      user-select: none;
       &.selected {
         background: $color-grey-selection;
         font-family: $font-family-bold;

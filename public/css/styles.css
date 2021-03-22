@@ -305,6 +305,10 @@ label input[type="radio"]:checked ~ .label::before {
 
 .flexbox.group .option {
   background: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .flexbox.group .option.selected {
