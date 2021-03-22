@@ -286,6 +286,7 @@ label {
         opacity: 0;
         transform: scale(0) !important;
         order: 2;
+        display: none;
       }
       &[value="2"] ~ #map {
         pointer-events: all;
