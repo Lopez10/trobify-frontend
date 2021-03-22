@@ -282,7 +282,7 @@ label {
       border-radius: 1rem;
     }
     &.overflow {
-      overflow: scroll;
+      overflow: auto;
     }
   }
   &.group {
@@ -291,7 +291,7 @@ label {
       border-radius: 1rem;
     }
     &.overflow {
-      overflow: scroll;
+      overflow: auto;
     }
     .option {
       background: none;
@@ -301,6 +301,9 @@ label {
       }
     }
     label {
+      &.inline {
+        display: inline-flex;
+      }
       input[type="radio"] {
         display: none;
       }
@@ -337,11 +340,11 @@ label {
   &.row, &.column {
     &.full-width {
       width: 100vw;
-      overflow: scroll;
+      overflow: auto;
     }
     &.full-height {
       height: 100vh;
-      overflow: scroll;
+      overflow: auto;
     }
   }
   .item {

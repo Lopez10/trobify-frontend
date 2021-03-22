@@ -280,7 +280,7 @@ label input[type="radio"]:checked ~ .label::before {
 }
 
 .flexbox.block.overflow {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .flexbox.group {
@@ -292,7 +292,7 @@ label input[type="radio"]:checked ~ .label::before {
 }
 
 .flexbox.group.overflow {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .flexbox.group .option {
@@ -302,6 +302,12 @@ label input[type="radio"]:checked ~ .label::before {
 .flexbox.group .option.selected {
   background: #DBDBDB;
   font-family: "TT Commons Bold";
+}
+
+.flexbox.group label.inline {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .flexbox.group label input[type="radio"] {
@@ -354,12 +360,12 @@ label input[type="radio"]:checked ~ .label::before {
 
 .flexbox.row.full-width, .flexbox.column.full-width {
   width: 100vw;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .flexbox.row.full-height, .flexbox.column.full-height {
   height: 100vh;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .flexbox .item.full-width, .flexbox .item.full-height {
