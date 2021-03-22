@@ -15,7 +15,7 @@ export function catalogDom(div: any, item: any) {
 	let priceTitle = document.createElement('div');
 	priceTitle.className = 'label title-x2';
 	let priceText = document.createElement('p');
-	priceText.textContent = item.precio;
+	priceText.textContent = formatterEuro.format(item.precio);
 	priceTitle.appendChild(priceText);
 	price.appendChild(priceTitle);
 	content.appendChild(price);
@@ -24,7 +24,7 @@ export function catalogDom(div: any, item: any) {
 	location.className = 'location';
 	let labelBold = document.createElement('div');
 	labelBold.className = 'label bold';
-	labelBold.textContent = 'Ubicacion del inmueble';
+	labelBold.textContent = item.direccion;
 	location.appendChild(labelBold);
 	content.appendChild(location);
 
@@ -33,17 +33,20 @@ export function catalogDom(div: any, item: any) {
 
 	let banos = document.createElement('div');
 	banos.className = 'label bold';
-	banos.textContent = item.nBan + ' Baños';
+	banos.textContent = 'Baños: ' + item.nBan;
 	features.appendChild(banos);
 
 	let habitaciones = document.createElement('div');
 	habitaciones.className = 'label bold';
-	habitaciones.textContent = item.nHab + ' Habitaciones';
+	habitaciones.textContent = 'Habitaciones: ' + item.nHab;
 	features.appendChild(habitaciones);
 
+	let sup = document.createElement('sup');
+	sup.textContent = '2';
 	let superficie = document.createElement('div');
 	superficie.className = 'label bold';
-	superficie.textContent = item.area;
+	superficie.textContent = 'Superficie: ' + item.area + ' m';
+	superficie.appendChild(sup);
 	features.appendChild(superficie);
 	content.appendChild(features);
 
@@ -55,3 +58,8 @@ export function catalogDom(div: any, item: any) {
 	property.appendChild(content);
 	div?.appendChild(property);
 }
+
+const formatterEuro = new Intl.NumberFormat('de-DE', {
+	style: 'currency',
+	currency: 'EUR',
+});
