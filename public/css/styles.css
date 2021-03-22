@@ -129,11 +129,31 @@ select, input, label {
 }
 
 input {
-  max-width: 10rem;
+  max-width: 11rem;
 }
 
 input[type="number"], input[type="text"] {
+  display: inline-block;
+  width: auto;
   margin-top: 1.5rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 1rem;
+  background: #E3E3E3;
+  font-family: "TT Commons DemiBold";
+}
+
+input[type="number"]:hover, input[type="text"]:hover {
+  background: #DBDBDB;
+}
+
+input[type="number"]:focus, input[type="text"]:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem #1D1D1D;
+          box-shadow: 0 0 0 0.2rem #1D1D1D;
+  background: #DBDBDB;
 }
 
 label {
@@ -169,8 +189,19 @@ label input[type="checkbox"], label input[type="radio"] {
   display: none;
 }
 
+label input[type="checkbox"]:hover ~ .label::before, label input[type="radio"]:hover ~ .label::before {
+  background: #DBDBDB;
+}
+
 label input[type="checkbox"]:checked ~ .label::before, label input[type="radio"]:checked ~ .label::before {
   background: #1D1D1D;
+}
+
+label input[type="checkbox"][type="checkbox"]:checked ~ .label::before, label input[type="radio"][type="checkbox"]:checked ~ .label::before {
+  background-image: url("../css/icons/check.svg");
+  background-size: 1.8rem 1.8rem;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 label input[type="radio"] ~ .label::before {
@@ -293,6 +324,7 @@ label input[type="radio"]:checked ~ .label::before {
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2;
+  display: none !important;
 }
 
 .flexbox .searchView input[type="radio"]#viewMode[value="2"] ~ #map {
@@ -508,6 +540,12 @@ svg.icon {
      -moz-appearance: none;
           appearance: none;
   border: none !important;
+}
+
+.button.center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .button.invisible {

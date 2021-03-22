@@ -145,9 +145,24 @@ select, input, label {
   font-size: $font-size-label;
 }
 input {
-  max-width: 10rem;
+  max-width: 11rem;
   &[type="number"], &[type="text"] {
+    display: inline-block;
+    width: auto;
     margin-top: 1.5rem;
+    appearance: none;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    border-radius: 1rem;
+    background: $color-grey-input;
+    font-family: $font-family-demibold;
+    &:hover {
+      background: $color-grey-selection;
+    }
+    &:focus {
+      box-shadow: 0 0 0 0.2rem $color-black;
+      background: $color-grey-selection;
+    }
   }
 }
 
@@ -177,9 +192,18 @@ label {
     width: 10rem;
     &[type="checkbox"], &[type="radio"] {
       display: none;
-  
+
+      &:hover ~ .label::before {
+        background: $color-grey-selection;
+      }
       &:checked ~ .label::before {
         background: $color-black;
+      }
+      &[type="checkbox"]:checked ~ .label::before {
+        background-image: url("../css/icons/check.svg");
+        background-size: 1.8rem 1.8rem;
+        background-position: center center;
+        background-repeat: no-repeat;
       }
     }
 
@@ -474,6 +498,10 @@ svg.icon{
   align-items: center;
   appearance: none;
   border: none !important;
+
+  &.center {
+    justify-content: center;
+  }
 
   &.invisible {
     display: none !important;
