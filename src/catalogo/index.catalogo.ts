@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { catalogDom } from './catalogDom';
-import { obtenerProvincias } from '../data/provincias';
+import { catalogDom } from './dom.catalogo';
+import { obtenerProvincias } from '../../data/provincias';
 
 export class Catalogo {
 	constructor() {}
@@ -16,6 +16,9 @@ export class Catalogo {
 
 	mostrarInmuebles(catalogo: Promise<any>) {
 		const div = document.getElementById('catalogo');
+		if (div != null) {
+			div.innerHTML = '';
+		}
 		catalogo.then((result) => {
 			result.forEach((item: any) => {
 				catalogDom(div, item);
@@ -79,7 +82,7 @@ export class Catalogo {
 			if (result.codigoPostal != 0) {
 				let option = document.createElement('option');
 				option.setAttribute('value', result.codigoPostal.toString());
-				if ( result.codigoPostal == 46 ) option.setAttribute('selected', 'selected');
+				if (result.codigoPostal == 46) option.setAttribute('selected', 'selected');
 				let textoProvincia = document.createTextNode(result.provincia.toString());
 				option.appendChild(textoProvincia);
 				if (div != null) div.appendChild(option);

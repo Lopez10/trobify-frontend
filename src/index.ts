@@ -1,12 +1,12 @@
-import { Filtrado } from './catalogo/filtrado/index.filtrado';
 import { simuladorHipoteca } from './inmueble/hipoteca/index.hipoteca';
-import { obtenerProvincias } from './data/provincias';
+import { obtenerProvincias } from '../data/provincias';
 import { Provincia } from './interface/provincia.inteface';
 const mapa = require('../public/js/mapa.js');
 import querystring from 'querystring';
+import { Catalogo } from './catalogo/index.catalogo';
 
 //Creacion de catalogo con filtrado
-let catalogo: Filtrado = new Filtrado();
+let catalogo: Catalogo = new Catalogo();
 
 let catalogoForm: HTMLFormElement =
 	document.querySelector('#filtroForm') || document.createElement('form');
@@ -23,16 +23,16 @@ catalogoForm.onsubmit = () => {
 	let prov = (formData.get('provincia') as unknown) as number;
 	let nHab = (formData.get('h') as unknown) as number;
 	let nBan = (formData.get('b') as unknown) as number;
-	let stdo = ((formData.getAll('stdo') as unknown) as Array<String>).join(",") as string;
-	let tpoViv = ((formData.getAll('tpoViv') as unknown) as Array<String>).join(",") as string;
-	let caract = ((formData.getAll('caract') as unknown) as Array<String>).join(",") as string;
+	let stdo = ((formData.getAll('stdo') as unknown) as Array<String>).join(',') as string;
+	let tpoViv = ((formData.getAll('tpoViv') as unknown) as Array<String>).join(',') as string;
+	let caract = ((formData.getAll('caract') as unknown) as Array<String>).join(',') as string;
 	//let clfEn = (formData.get('clfEn') as unknown) as number; // Por que no se puede seleccionar en ningún sitio
 	let params = querystring.stringify({
 		ord: ord,
 		opt: opt,
 		preMin: preMin,
 		preMax: preMax,
-		mrgn: mrgn/100,
+		mrgn: mrgn / 100,
 		aMrgn: aMrgn,
 		supMin: supMin,
 		supMax: supMax,
@@ -47,7 +47,7 @@ catalogoForm.onsubmit = () => {
 
 	let catalogoFiltrado = catalogo.getCatalogo(params);
 	catalogo.mostrarInmuebles(catalogoFiltrado);
-	
+
 	mapa.mostrarMapa(
 		catalogoFiltrado,
 		provincia[prov].latitud,
@@ -57,6 +57,41 @@ catalogoForm.onsubmit = () => {
 
 	return false;
 };
+
+// Modificaciones del DOM
+let botonMapa = document.getElementById('botonMapa');
+let botonLista = document.getElementById('botonLista');
+let mostrarMapa = document.getElementById('mostrarMapa');
+let mostrarCatalogo = document.getElementById('mostrarCatalogo');
+botonMapa?.addEventListener('click', () => {
+	if (mostrarMapa != null && mostrarCatalogo != null) {
+		mostrarCatalogo.style.display = 'none';
+		mostrarMapa.style.display = 'block';
+	}
+	botonLista?.classList.remove('selected');
+	botonMapa?.classList.add('selected');
+});
+
+botonLista?.addEventListener('click', () => {
+	if (mostrarMapa != null && mostrarCatalogo != null) {
+		mostrarMapa.style.display = 'none';
+		mostrarCatalogo.style.display = 'block';
+	}
+	botonMapa?.classList.remove('selected');
+	botonLista?.classList.add('selected');
+});
+
+let botonCompra = document.getElementById('botonCompra');
+let botonAlquilar = document.getElementById('botonAlquilar');
+
+botonCompra?.addEventListener('click', () => {
+	botonAlquilar?.classList.remove('selected');
+	botonCompra?.classList.add('selected');
+});
+botonAlquilar?.addEventListener('click', () => {
+	botonCompra?.classList.remove('selected');
+	botonAlquilar?.classList.add('selected');
+});
 
 // Creacion de Hipoteca (ejemplo)
 let hipotecaForm: HTMLFormElement =
