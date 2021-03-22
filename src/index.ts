@@ -59,6 +59,7 @@ catalogoForm.onsubmit = () => {
 };
 
 // Modificaciones del DOM
+/*
 let botonMapa = document.getElementById('botonMapa');
 let botonLista = document.getElementById('botonLista');
 let mostrarMapa = document.getElementById('mostrarMapa');
@@ -92,6 +93,7 @@ botonAlquilar?.addEventListener('click', () => {
 	botonCompra?.classList.remove('selected');
 	botonAlquilar?.classList.add('selected');
 });
+*/
 
 // Creacion de Hipoteca (ejemplo)
 let hipotecaForm: HTMLFormElement =
