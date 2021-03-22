@@ -7,7 +7,6 @@ import { Catalogo } from './catalogo/index.catalogo';
 
 //Creacion de catalogo con filtrado
 let catalogo: Catalogo = new Catalogo();
-
 let catalogoForm: HTMLFormElement =
 	document.querySelector('#filtroForm') || document.createElement('form');
 catalogoForm.onsubmit = () => {
@@ -128,3 +127,9 @@ hipotecaForm.onsubmit = () => {
 
 let provincia: Array<Provincia> = obtenerProvincias();
 catalogo.crearProvincias();
+mapa.mostrarMapa(
+	catalogo.getCatalogo(''),
+	provincia[0].latitud,
+	provincia[0].longitud,
+	provincia[0].zoom
+);
