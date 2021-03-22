@@ -20,6 +20,14 @@ export class Catalogo {
 			div.innerHTML = '';
 		}
 		catalogo.then((result) => {
+			const resultado = document.getElementById('resultAmount');
+			if (resultado != null) {
+				resultado.innerHTML = result.length;
+				const plural = document.getElementById('plural');
+				if (result.length == 1 && plural != null) {
+					plural.innerHTML = 'Resultado';
+				}
+			}
 			result.forEach((item: any) => {
 				catalogDom(div, item);
 			});

@@ -31,18 +31,38 @@ export function mostrarMapa(ubicaciones, latitud, longitud, zm) {
 	// Bucle
 	ubicaciones.then((item) => {
 		item.forEach((result) => {
-			addMarkerToGroup(group, {lat: result.latitud, lng: result.longitud},
-				'<div><a href="http://localhost:8080/public/construccion.html" target="_blank"><b>' + result.catastro + '</b></a></div>' +
-				'<div>' + 
-					'Precio: ' + result.precio + ' € <br>' + 
-					'Superficie: ' + result.area + ' m <sup>2</sup><br>' +
-					'Habitaciones: ' + result.nHab + '<br>' +
-					'Baños: ' + result.nBan + '<br>' +
-					'Cocinas: ' + result.nCoc + '<br>' +
-					'Certif. Energética: ' + result.certif + '<br>' +
-					'Estado: ' + result.estado + '<br>' +
-					'Tipo de Vivienda: ' + result.tpoViv + '<br>' +
-				'</div>'
+			addMarkerToGroup(
+				group,
+				{ lat: result.latitud, lng: result.longitud },
+				'<div><a href="http://localhost:8080/public/construccion.html" target="_blank"><b>' +
+					result.catastro +
+					'</b></a></div>' +
+					'<div>' +
+					'Precio: ' +
+					result.precio +
+					' € <br>' +
+					'Superficie: ' +
+					result.area +
+					' m <sup>2</sup><br>' +
+					'Habitaciones: ' +
+					result.nHab +
+					'<br>' +
+					'Baños: ' +
+					result.nBan +
+					'<br>' +
+					'Cocinas: ' +
+					result.nCoc +
+					'<br>' +
+					'Certif. Energética: ' +
+					result.certif +
+					'<br>' +
+					'Estado: ' +
+					result.estado +
+					'<br>' +
+					'Tipo de Vivienda: ' +
+					result.tpoViv +
+					'<br>' +
+					'</div>'
 			);
 		});
 	});

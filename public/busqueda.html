@@ -32,8 +32,8 @@
 			<div class="filters flexbox column block round form">
 				<div class="group">
 					<div class="label title-x2">
-						900
-						<div class="label title">Resultados</div>
+						<span id="resultAmount"></span>
+						<div id="plural" class="label title">Resultados</div>
 					</div>
 					<div class="label paragraph">
 						¿Te avisamos de nuevos<br />inmuebles con estos filtros?
@@ -83,8 +83,8 @@
 					</label>
 
 					<div class="label title">Precio</div>
-					<input name="priceMin" class="priceMin" type="number" min="0" value="0" />
-					<input name="priceMax" class="priceMax" type="number" min="0" value="1000000"
+					<input name="priceMin" class="priceMin" type="number" min="0" value="0" step="10000" />
+					<input name="priceMax" class="priceMax" type="number" min="0" value="1000000" step="10000"
 						style="margin-left: 10px" />
 					<div class="label title">Margen (%)</div>
 					<label><input name="boolUmbral" class="pricePlus" type="checkbox" />
@@ -105,7 +105,8 @@
 					<div class="label title">Superficie</div>
 					<input name="supMin" class="priceMax" type="number" min="0" value="50"
 						list="listaSuperficiesMin" />
-					<input name="supMax" class="priceMax" type="number" min="0" value="5000" style="margin-left: 10px"/>
+					<input name="supMax" class="priceMax" type="number" min="0" value="5000"
+						style="margin-left: 10px" />
 
 					<div class="label title">Tipo de vivienda</div>
 
