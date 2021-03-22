@@ -26,6 +26,8 @@ export class Catalogo {
 				const plural = document.getElementById('plural');
 				if (result.length == 1 && plural != null) {
 					plural.innerHTML = 'Resultado';
+				} else if (result.length != 1 && plural != null) {
+					plural.innerHTML = 'Resultados';
 				}
 			}
 			result.forEach((item: any) => {
