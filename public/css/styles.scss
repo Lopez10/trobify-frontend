@@ -267,10 +267,20 @@ label {
   .searchView {
     input[type="radio"]#viewMode {
       &[value="1"] ~ #map {
-        display: none;
+        pointer-events: none;
+        opacity: 0;
+      }
+      &[value="1"] ~ #catalogo {
+        pointer-events: all;
+        opacity: 1;
       }
       &[value="2"] ~ #catalogo {
-        display: none;
+        pointer-events: none;
+        opacity: 0;
+      }
+      &[value="2"] ~ #map {
+        pointer-events: all;
+        opacity: 1;
       }
     }
   }

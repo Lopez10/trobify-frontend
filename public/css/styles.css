@@ -262,11 +262,23 @@ label input[type="radio"]:checked ~ .label::before {
 }
 
 .flexbox .searchView input[type="radio"]#viewMode[value="1"] ~ #map {
-  display: none;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.flexbox .searchView input[type="radio"]#viewMode[value="1"] ~ #catalogo {
+  pointer-events: all;
+  opacity: 1;
 }
 
 .flexbox .searchView input[type="radio"]#viewMode[value="2"] ~ #catalogo {
-  display: none;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.flexbox .searchView input[type="radio"]#viewMode[value="2"] ~ #map {
+  pointer-events: all;
+  opacity: 1;
 }
 
 .flexbox .map.round {

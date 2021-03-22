@@ -271,7 +271,7 @@
 
 						<input type="radio" id="filterOpt" name="opt" value="1" style="display: none" checked />
 
-						<button class="button black inline-flex" name="submit" type="submit" onclick="document.getElementById('map').innerHTML=''">
+						<button id="filtroFormSubmit" class="button black inline-flex" name="submit" type="submit" onclick="document.getElementById('map').innerHTML=''">
 							Aplicar filtros
 						</button>
 					</form>
@@ -316,7 +316,7 @@
 				</div>
 
 				<div class="flexbox column full-height spaced searchView">
-					<input type="radio" id="viewMode" name="view" value="1" style="display: none"/>
+					<input type="radio" id="viewMode" name="view" value="2" style="display: none"/>
 					<div id="map" class="map full-width round"></div>
 					<div id="catalogo" class="full-width"></div>
 				</div>
@@ -325,4 +325,15 @@
 		<script type="text/javascript" src="./bundle.js"></script>
 		<!--<script type="text/javascript" src="./js/selector.js"></script>-->
 	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			document.getElementById("filtroFormSubmit").click();
+		};
+		/*
+		window.onload = function() {
+			// When page loads -> load map and list
+			document.getElementById("filtroForm").submit(); 
+		};
+		*/
+	</script>
 </html>
