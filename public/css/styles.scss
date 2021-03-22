@@ -263,6 +263,17 @@ label {
 
 .flexbox {
   display: flex;
+  
+  .searchView {
+    input[type="radio"]#viewMode {
+      &[value="1"] ~ #map {
+        display: none;
+      }
+      &[value="2"] ~ #catalogo {
+        display: none;
+      }
+    }
+  }
 
   .map {
     &.round {

@@ -261,6 +261,14 @@ label input[type="radio"]:checked ~ .label::before {
   display: flex;
 }
 
+.flexbox .searchView input[type="radio"]#viewMode[value="1"] ~ #map {
+  display: none;
+}
+
+.flexbox .searchView input[type="radio"]#viewMode[value="2"] ~ #catalogo {
+  display: none;
+}
+
 .flexbox .map.round {
   border-radius: 1rem;
   overflow: hidden;

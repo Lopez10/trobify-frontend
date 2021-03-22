@@ -299,17 +299,26 @@
 
 					<div class="sep x2"></div>
 
+					<!-- Seleccionar si es Lista o Mapa -->
+
 					<div class="nav flexbox row group round">
-						<div id="botonLista" class="button option" href="">Lista</div>
-						<div id="botonMapa" class="button option selected" href="">Mapa</div>
+						<form id="tipoBusqueda" class="form inline flexbox">
+							<label class="inline">
+								<input type="radio" name="view" value="1" onchange='document.getElementById("viewMode").value=1' checked/>
+								<div class="button option">Lista</div>
+							</label>
+							<label class="inline">
+								<input type="radio" name="view" value="2" onchange='document.getElementById("viewMode").value=2'/>
+								<div class="button option">Mapa</div>
+							</label>
+						</form>
 					</div>
 				</div>
 
-				<div id="mostrarMapa" class="flexbox column full-height spaced">
+				<div class="flexbox column full-height spaced searchView">
+					<input type="radio" id="viewMode" name="view" value="1" style="display: none"/>
 					<div id="map" class="map full-width round"></div>
-				</div>
-				<div id="mostrarCatalogo" style="display: none" class="flexbox column full-height spaced">
-					<div id="catalogo"></div>
+					<div id="catalogo" class="full-width"></div>
 				</div>
 			</div>
 		</div>
