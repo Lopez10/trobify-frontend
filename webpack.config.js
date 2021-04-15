@@ -3,7 +3,8 @@ const path = require('path');
 module.exports = {
 	entry: {
 		index: './src/index.ts',
-		catalogo: 'src/catalogo/index.catalogo.ts',
+		catalogo: './src/catalogo/index.catalogo.ts',
+		mapa: './src/mapa/index.mapa.ts',
 	},
 	mode: 'development',
 	module: {

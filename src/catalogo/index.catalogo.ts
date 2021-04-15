@@ -2,7 +2,6 @@ import { Catalogo } from './catalogo';
 import querystring from 'querystring';
 
 let catalogo: Catalogo = new Catalogo();
-const mapa = require('../public/js/mapa.js');
 
 construirCatalogo();
 
