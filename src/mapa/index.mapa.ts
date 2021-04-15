@@ -5,4 +5,5 @@ const mapa = require('../../public/js/mapa.js');
 let inmuebles = new Catalogo();
 let creacionMapa = new Mapa(inmuebles);
 
-creacionMapa.mostrarProvincia(mapa);
+let provincia = creacionMapa.mostrarProvincia();
+creacionMapa.mostrarMapa(inmuebles, provincia);

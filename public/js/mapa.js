@@ -9,6 +9,7 @@ export function mostrarMapa(ubicaciones, latitud, longitud, zm) {
 		zoom: zm,
 		pixelRatio: window.devicePixelRatio || 1,
 	});
+	console.log(map);
 	window.addEventListener('resize', function () {
 		return map.getViewPort().resize();
 	});

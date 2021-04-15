@@ -6,16 +6,19 @@ export class Mapa {
 	constructor(inmuebles: any) {
 		this.inmuebles = inmuebles;
 	}
-
-	mostrarProvincia(mapa: any) {
-		let provincia: Array<Provincia> = obtenerProvincias();
-		this.crearProvincias();
+	mostrarMapa(mapa: any, provincia: Array<Provincia>) {
 		mapa.mostrarMapa(
 			this.inmuebles.getCatalogo(),
 			provincia[0].latitud,
 			provincia[0].longitud,
 			provincia[0].zoom
 		);
+	}
+
+	mostrarProvincia() {
+		let provincia: Array<Provincia> = obtenerProvincias();
+		this.crearProvincias();
+
 		return provincia;
 	}
 
