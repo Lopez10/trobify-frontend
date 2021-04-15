@@ -2,9 +2,10 @@ const path = require('path');
 
 module.exports = {
 	entry: {
-		index: './src/index.ts',
+		//index: './src/index.ts',
 		catalogo: './src/catalogo/index.catalogo.ts',
 		mapa: './src/mapa/index.mapa.ts',
+		hipoteca: './src/inmueble/hipoteca/index.hipoteca',
 	},
 	mode: 'development',
 	module: {

@@ -15,6 +15,7 @@ export function mostrarMapa(ubicaciones, latitud, longitud, zm) {
 	});
 	var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 	var ui = H.ui.UI.createDefault(map, defaultLayers);
+	console.log(ui);
 	// Parte común  -----------------------------------------------------------
 	// Parte funcional  -------------------------------------------------------
 	var group = new H.map.Group();

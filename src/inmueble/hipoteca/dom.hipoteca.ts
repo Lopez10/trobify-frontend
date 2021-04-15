@@ -1,5 +1,5 @@
-import { simuladorHipoteca } from './index.hipoteca';
-export function hipotecaDom(div: any) {
+import { Hipoteca } from './hipoteca';
+export function hipotecaDom() {
 	let hipotecaForm: HTMLFormElement =
 		document.querySelector('#formularioHipoteca') || document.createElement('form');
 	let localizacion: string = 'Valencia';
@@ -14,7 +14,7 @@ export function hipotecaDom(div: any) {
 		let valorVariable = (formData.get('valorVariable') as unknown) as number;
 		let interes = formData.get('interes') as string;
 		console.log(condicionHipoteca, precio, ahorro, plazo, interes);
-		let hipoteca = new simuladorHipoteca(precio, localizacion);
+		let hipoteca = new Hipoteca(precio, localizacion);
 		let valorCondicionHipoteca = hipoteca.calculoCondicion(condicionHipoteca);
 		let calculoAhorro = hipoteca.calculoAhorro(ahorro);
 		let calculoInteres = hipoteca.calculoInteres(interes, valorVariable, calculoAhorro);
