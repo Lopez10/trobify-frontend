@@ -1,7 +1,10 @@
 const path = require('path');
 
 module.exports = {
-	entry: './src/index.ts',
+	entry: {
+		index: './src/index.ts',
+		catalogo: 'src/catalogo/index.catalogo.ts',
+	},
 	mode: 'development',
 	module: {
 		rules: [
@@ -18,7 +21,7 @@ module.exports = {
 	},
 	output: {
 		publicPath: 'public',
-		filename: 'bundle.js',
+		filename: '[name].bundle.js', // [name].js
 		path: path.resolve(__dirname, 'public'),
 	},
 };
