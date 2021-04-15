@@ -6,4 +6,4 @@ let inmuebles = new Catalogo();
 let creacionMapa = new Mapa(inmuebles);
 
 let provincia = creacionMapa.mostrarProvincia();
-creacionMapa.mostrarMapa(inmuebles, provincia);
+creacionMapa.mostrarMapa(mapa, provincia);
