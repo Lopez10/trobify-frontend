@@ -1,15 +1,17 @@
 import { obtenerProvincias } from '../../data/provincias';
 import { Provincia } from '../interface/provincia.inteface';
-import { Catalogo } from '../catalogo/catalogo';
 
 export class Mapa {
-	constructor() {}
+	inmuebles: any;
+	constructor(inmuebles: any) {
+		this.inmuebles = inmuebles;
+	}
 
 	mostrarProvincia(mapa: any) {
 		let provincia: Array<Provincia> = obtenerProvincias();
 		this.crearProvincias();
 		mapa.mostrarMapa(
-			catalogo.getCatalogo(),
+			this.inmuebles.getCatalogo(),
 			provincia[0].latitud,
 			provincia[0].longitud,
 			provincia[0].zoom
