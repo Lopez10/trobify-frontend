@@ -25,14 +25,18 @@ export class Mapa {
 	crearProvincias() {
 		let div = document.getElementById('provincias');
 		obtenerProvincias().forEach((result) => {
-			if (result.codigoPostal != 0) {
-				let option = document.createElement('option');
-				option.setAttribute('value', result.codigoPostal.toString());
-				if (result.codigoPostal == 46) option.setAttribute('selected', 'selected');
-				let textoProvincia = document.createTextNode(result.provincia.toString());
-				option.appendChild(textoProvincia);
-				if (div != null) div.appendChild(option);
-			}
+			this.codigoPostalSeleccionado(result, div);
 		});
+	}
+
+	private codigoPostalSeleccionado(result: Provincia, div: HTMLElement | null) {
+		if (result.codigoPostal != 0) {
+			let option = document.createElement('option');
+			option.setAttribute('value', result.codigoPostal.toString());
+			if (result.codigoPostal == 46) option.setAttribute('selected', 'selected');
+			let textoProvincia = document.createTextNode(result.provincia.toString());
+			option.appendChild(textoProvincia);
+			if (div != null) div.appendChild(option);
+		}
 	}
 }
