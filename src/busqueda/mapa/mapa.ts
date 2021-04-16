@@ -1,24 +1,16 @@
-import { obtenerProvincias } from '../../data/provincias';
-import { Provincia } from '../interface/provincia.inteface';
+import { obtenerProvincias } from '../../../data/provincias';
+import { Provincia } from '../../interface/provincia.inteface';
+//const mapa = require('../../../public/js/mapa.js');
 
 export class Mapa {
-	inmuebles: any;
-	constructor(inmuebles: any) {
-		this.inmuebles = inmuebles;
-	}
-	mostrarMapa(mapa: any, provincia: Array<Provincia>) {
-		mapa.mostrarMapa(
-			this.inmuebles.getCatalogo(),
-			provincia[0].latitud,
-			provincia[0].longitud,
-			provincia[0].zoom
-		);
+	constructor() {}
+	mostrarMapa(inmuebles: any, provincias: Array<Provincia>, prov: number) {
+		//mapa.mostrarMapa(inmuebles, provincias[0].latitud, provincias[0].longitud, provincias[0].zoom);
 	}
 
 	mostrarProvincia() {
 		let provincia: Array<Provincia> = obtenerProvincias();
 		this.crearProvincias();
-
 		return provincia;
 	}
 
