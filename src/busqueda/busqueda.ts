@@ -1,12 +1,14 @@
 import querystring from 'querystring';
 import { Catalogo } from './catalogo/catalogo';
 import { Mapa } from './mapa/mapa';
+import { obtenerProvincias } from '../../data/provincias';
 import axios from 'axios';
 import { Provincia } from '../interface/provincia.inteface';
 
 export class Busqueda {
 	constructor() {
 		this.aplicarFiltros();
+		this.crearProvincias();
 	}
 	aplicarFiltros() {
 		let filtroForm: HTMLFormElement =
@@ -46,16 +48,16 @@ export class Busqueda {
 				//clfEn: clfEn, // Por que no se puede seleccionar en ningún sitio
 			});
 			let inmuebles = this.getInmuebles(params);
-			this.crearMapa(0, inmuebles);
+			this.crearMapa(prov, inmuebles);
 			this.crearCatalogo(inmuebles);
+
 			return false;
 		};
 	}
 
 	private crearMapa(prov: number, inmuebles: Promise<any>) {
 		let mapa = new Mapa();
-		let provincias: Provincia[] = mapa.mostrarProvincia();
-		mapa.mostrarMapa(inmuebles, provincias, prov || 0);
+		mapa.mostrarMapa(inmuebles, prov || 0);
 	}
 
 	private crearCatalogo(inmuebles: Promise<any>) {
@@ -63,11 +65,29 @@ export class Busqueda {
 		catalogo.mostrarInmuebles(inmuebles);
 	}
 
-	getInmuebles(params: string) {
+	private getInmuebles(params: string) {
 		const myRequest = 'http://localhost:3000/catalogo?';
 		let inmuebles: Promise<any> = axios.get(myRequest + params).then((result) => {
 			return result.data;
 		});
 		return inmuebles;
+	}
+
+	private crearProvincias() {
+		let div = document.getElementById('provincias');
+		obtenerProvincias().forEach((result) => {
+			this.comprobarCodigoPostal(result, div);
+		});
+	}
+
+	private comprobarCodigoPostal(result: Provincia, div: HTMLElement | null) {
+		if (result.codigoPostal != 0) {
+			let option = document.createElement('option');
+			option.setAttribute('value', result.codigoPostal.toString());
+			if (result.codigoPostal == 46) option.setAttribute('selected', 'selected');
+			let textoProvincia = document.createTextNode(result.provincia.toString());
+			option.appendChild(textoProvincia);
+			if (div != null) div.appendChild(option);
+		}
 	}
 }
