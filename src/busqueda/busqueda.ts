@@ -1,12 +1,14 @@
 import querystring from 'querystring';
+import axios from 'axios';
 import { Catalogo } from './catalogo/catalogo';
 import { Mapa } from './mapa/mapa';
 import { obtenerProvincias } from '../../data/provincias';
-import axios from 'axios';
 import { Provincia } from '../interface/provincia.inteface';
 
 export class Busqueda {
+	provincias: Provincia[];
 	constructor() {
+		this.provincias = obtenerProvincias();
 		this.aplicarFiltros();
 		this.crearProvincias();
 	}
@@ -57,7 +59,7 @@ export class Busqueda {
 
 	private crearMapa(prov: number, inmuebles: Promise<any>) {
 		let mapa = new Mapa();
-		mapa.mostrarMapa(inmuebles, prov || 0);
+		mapa.mostrarMapa(inmuebles, this.provincias, prov || 0);
 	}
 
 	private crearCatalogo(inmuebles: Promise<any>) {
@@ -75,7 +77,7 @@ export class Busqueda {
 
 	private crearProvincias() {
 		let div = document.getElementById('provincias');
-		obtenerProvincias().forEach((result) => {
+		this.provincias.forEach((result) => {
 			this.comprobarCodigoPostal(result, div);
 		});
 	}
