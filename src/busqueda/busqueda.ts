@@ -45,9 +45,10 @@ export class Busqueda {
 				nBan: nBan,
 				//clfEn: clfEn, // Por que no se puede seleccionar en ningún sitio
 			});
-			let inmuebles = this.getInmuebles();
+			let inmuebles = this.getInmuebles(params);
 			this.crearMapa(0, inmuebles);
 			this.crearCatalogo(inmuebles);
+			return false;
 		};
 	}
 
@@ -62,9 +63,9 @@ export class Busqueda {
 		catalogo.mostrarInmuebles(inmuebles);
 	}
 
-	getInmuebles() {
+	getInmuebles(params: string) {
 		const myRequest = 'http://localhost:3000/catalogo?';
-		let inmuebles: Promise<any> = axios.get(myRequest).then((result) => {
+		let inmuebles: Promise<any> = axios.get(myRequest + params).then((result) => {
 			return result.data;
 		});
 		return inmuebles;
