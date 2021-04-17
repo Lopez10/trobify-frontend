@@ -146,22 +146,52 @@ select, input, label {
 }
 input {
   max-width: 11rem;
-  &[type="number"], &[type="text"] {
+  &[type="number"], &[type="text"], &[type="password"] {
     display: inline-block;
     width: auto;
     margin-top: 1.5rem;
     appearance: none;
     border: none;
-    padding: 0.8rem 1.6rem;
+    padding: 1.2rem 1.6rem;
     border-radius: 1rem;
     background: $color-grey-input;
-    font-family: $font-family-demibold;
-    &:hover {
-      background: $color-grey-selection;
+    font-family: $font-family-medium;
+    font-size: $font-size-label;
+    transition: all .1s ease-in-out;
+
+    &.no-border {
+      &:hover, &:active, &:focus {
+        box-shadow: none;
+      }
     }
-    &:focus {
-      box-shadow: 0 0 0 0.2rem $color-black;
-      background: $color-grey-selection;
+
+    &::placeholder {
+      opacity: .35;
+    }
+
+    &[type="password"] {
+      letter-spacing: .5rem;
+      -webkit-text-fill-color: $color-black;
+      -webkit-text-stroke-width: .5rem;
+      -webkit-text-stroke-color: $color-black;
+
+      &::placeholder {
+        letter-spacing: .15rem;
+        -webkit-text-stroke-width: 0;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 .2rem rgba($color-black, .2);
+    }
+    &:focus, &:active {
+      box-shadow: 0 0 0 .2rem rgba($color-black, .6);
+    }
+
+    &.mode-fill {
+      display: block;
+      width: 100%;
+      max-width: 100vw;
     }
   }
 }
@@ -288,6 +318,10 @@ label {
 .flexbox {
   display: flex;
 
+  &.inline {
+    display: inline-flex;
+  }
+
   .searchView {
     #map, #viewMode {
       position: relative;
@@ -386,6 +420,12 @@ label {
   &.center-v {
     justify-content: center;
   }
+  &.center-items-v {
+    align-items: center;
+    * {
+      margin-top: 0;
+    }
+  }
 
   &.column {
     flex-direction: column;
@@ -448,6 +488,13 @@ svg.icon{
   &.inline {
     display: inline-block !important;
   }
+  &.block {
+    display: block !important;
+  }
+
+  &.centered {
+    text-align: center;
+  }
 
   &.detail {
     color: $color-grey-detail;
@@ -493,14 +540,20 @@ svg.icon{
   border-radius: 1rem;
   background: $color-grey-input; // default
   color: $color-black; // default
-  display: inline-block;
   display: inline-flex;
   align-items: center;
   appearance: none;
   border: none !important;
+  letter-spacing: .1rem;
 
   &.center {
     justify-content: center;
+  }
+  &.centered {
+    margin: 0 auto;
+  }
+  &.block {
+    width: 100%;
   }
 
   &.invisible {

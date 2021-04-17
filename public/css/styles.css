@@ -132,7 +132,7 @@ input {
   max-width: 11rem;
 }
 
-input[type="number"], input[type="text"] {
+input[type="number"], input[type="text"], input[type="password"] {
   display: inline-block;
   width: auto;
   margin-top: 1.5rem;
@@ -140,20 +140,77 @@ input[type="number"], input[type="text"] {
      -moz-appearance: none;
           appearance: none;
   border: none;
-  padding: 0.8rem 1.6rem;
+  padding: 1.2rem 1.6rem;
   border-radius: 1rem;
   background: #E3E3E3;
-  font-family: "TT Commons DemiBold";
+  font-family: "TT Commons Medium";
+  font-size: 1.8rem;
+  -webkit-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
 }
 
-input[type="number"]:hover, input[type="text"]:hover {
-  background: #DBDBDB;
+input[type="number"].no-border:hover, input[type="number"].no-border:active, input[type="number"].no-border:focus, input[type="text"].no-border:hover, input[type="text"].no-border:active, input[type="text"].no-border:focus, input[type="password"].no-border:hover, input[type="password"].no-border:active, input[type="password"].no-border:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
-input[type="number"]:focus, input[type="text"]:focus {
-  -webkit-box-shadow: 0 0 0 0.2rem #1D1D1D;
-          box-shadow: 0 0 0 0.2rem #1D1D1D;
-  background: #DBDBDB;
+input[type="number"]::-webkit-input-placeholder, input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder {
+  opacity: .35;
+}
+
+input[type="number"]:-ms-input-placeholder, input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder {
+  opacity: .35;
+}
+
+input[type="number"]::-ms-input-placeholder, input[type="text"]::-ms-input-placeholder, input[type="password"]::-ms-input-placeholder {
+  opacity: .35;
+}
+
+input[type="number"]::placeholder, input[type="text"]::placeholder, input[type="password"]::placeholder {
+  opacity: .35;
+}
+
+input[type="number"][type="password"], input[type="text"][type="password"], input[type="password"][type="password"] {
+  letter-spacing: .5rem;
+  -webkit-text-fill-color: #1D1D1D;
+  -webkit-text-stroke-width: .5rem;
+  -webkit-text-stroke-color: #1D1D1D;
+}
+
+input[type="number"][type="password"]::-webkit-input-placeholder, input[type="text"][type="password"]::-webkit-input-placeholder, input[type="password"][type="password"]::-webkit-input-placeholder {
+  letter-spacing: .15rem;
+  -webkit-text-stroke-width: 0;
+}
+
+input[type="number"][type="password"]:-ms-input-placeholder, input[type="text"][type="password"]:-ms-input-placeholder, input[type="password"][type="password"]:-ms-input-placeholder {
+  letter-spacing: .15rem;
+  -webkit-text-stroke-width: 0;
+}
+
+input[type="number"][type="password"]::-ms-input-placeholder, input[type="text"][type="password"]::-ms-input-placeholder, input[type="password"][type="password"]::-ms-input-placeholder {
+  letter-spacing: .15rem;
+  -webkit-text-stroke-width: 0;
+}
+
+input[type="number"][type="password"]::placeholder, input[type="text"][type="password"]::placeholder, input[type="password"][type="password"]::placeholder {
+  letter-spacing: .15rem;
+  -webkit-text-stroke-width: 0;
+}
+
+input[type="number"]:hover, input[type="text"]:hover, input[type="password"]:hover {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(29, 29, 29, 0.2);
+          box-shadow: 0 0 0 0.2rem rgba(29, 29, 29, 0.2);
+}
+
+input[type="number"]:focus, input[type="number"]:active, input[type="text"]:focus, input[type="text"]:active, input[type="password"]:focus, input[type="password"]:active {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(29, 29, 29, 0.6);
+          box-shadow: 0 0 0 0.2rem rgba(29, 29, 29, 0.6);
+}
+
+input[type="number"].mode-fill, input[type="text"].mode-fill, input[type="password"].mode-fill {
+  display: block;
+  width: 100%;
+  max-width: 100vw;
 }
 
 label {
@@ -292,6 +349,12 @@ label input[type="radio"]:checked ~ .label::before {
   display: flex;
 }
 
+.flexbox.inline {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
 .flexbox .searchView #map, .flexbox .searchView #viewMode {
   position: relative;
 }
@@ -424,6 +487,16 @@ label input[type="radio"]:checked ~ .label::before {
           justify-content: center;
 }
 
+.flexbox.center-items-v {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flexbox.center-items-v * {
+  margin-top: 0;
+}
+
 .flexbox.column {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -485,6 +558,14 @@ svg.icon {
   display: inline-block !important;
 }
 
+.label.block {
+  display: block !important;
+}
+
+.label.centered {
+  text-align: center;
+}
+
 .label.detail {
   color: #B2B2B2;
 }
@@ -529,7 +610,6 @@ svg.icon {
   border-radius: 1rem;
   background: #E3E3E3;
   color: #1D1D1D;
-  display: inline-block;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -540,12 +620,21 @@ svg.icon {
      -moz-appearance: none;
           appearance: none;
   border: none !important;
+  letter-spacing: .1rem;
 }
 
 .button.center {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.button.centered {
+  margin: 0 auto;
+}
+
+.button.block {
+  width: 100%;
 }
 
 .button.invisible {
