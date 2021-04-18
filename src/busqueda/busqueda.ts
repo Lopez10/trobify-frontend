@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Catalogo } from './catalogo/catalogo';
 import { Mapa } from './mapa/mapa';
 import { obtenerProvincias } from '../../data/provincias';
-import { Provincia } from '../interface/provincia.inteface';
+import { Provincia } from '../interface/provincia.interface';
 
 export class Busqueda {
 	provincias: Provincia[];

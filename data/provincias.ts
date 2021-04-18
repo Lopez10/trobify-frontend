@@ -1,4 +1,4 @@
-import { Provincia } from '../src/interface/provincia.inteface';
+import { Provincia } from '../src/interface/provincia.interface';
 
 export function obtenerProvincias(): Array<Provincia> {
 	let provincias = [

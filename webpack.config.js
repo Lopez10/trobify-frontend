@@ -5,6 +5,7 @@ module.exports = {
 		//index: './src/index.ts',
 		busqueda: './src/busqueda/index.busqueda.ts',
 		hipoteca: './src/inmueble/hipoteca/index.hipoteca.ts',
+		login: './src/login/index.login.ts',
 		//inmueble: './src/inmueble/inmueble'
 	},
 	mode: 'development',
