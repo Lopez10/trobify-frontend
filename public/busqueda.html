@@ -200,9 +200,12 @@
 
 					<!-- Seleccionar si es Comprar, Alquilar o Alquilar habitación -->
 
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
+
 					<input type="radio" id="filterOpt" name="opt" value="1" style="display: none" checked />
 
-					<button id="filtroFormSubmit" class="button black inline-flex" name="submit" type="submit"
+					<button id="filtroFormSubmit" class="button black inline-flex block center applyFiltersSearch" name="submit" type="submit"
 						onclick="document.getElementById('map').innerHTML=''">
 						Aplicar filtros
 					</button>
@@ -265,6 +268,7 @@
 <script type="text/javascript">
 	window.onload = function () {
 		setDefaultFilters();
+		setApplyFilterButtonWidth();
 	};
 
 	function loadFilter() {
@@ -287,6 +291,9 @@
 		document.getElementById("viewMap").checked = false;
 		// Load filters
 		loadFilter();
+	}
+	function setApplyFilterButtonWidth() {
+		document.getElementById("filtroFormSubmit").style.width = document.getElementById("filtroForm").getBoundingClientRect().width + "px";
 	}
 
 		//document.getElementById("filterOpt").querySelectorAll('label').addEventListener("click", loadFilter());

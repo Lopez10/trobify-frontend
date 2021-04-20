@@ -146,53 +146,98 @@ select, input, label {
 }
 input {
   max-width: 11rem;
-  &[type="number"], &[type="text"], &[type="password"] {
-    display: inline-block;
-    width: auto;
-    margin-top: 1.5rem;
-    appearance: none;
-    border: none;
-    padding: 1.2rem 1.6rem;
-    border-radius: 1rem;
-    background: $color-grey-input;
-    font-family: $font-family-medium;
-    font-size: $font-size-label;
-    transition: all .1s ease-in-out;
+  display: inline-block;
 
-    &.no-border {
-      &:hover, &:active, &:focus {
-        box-shadow: none;
-      }
+  &[type="checkbox"], &[type="radio"] {
+    display: none;
+
+    &:hover ~ .label::before {
+      background: $color-grey-selection;
     }
+    &:checked ~ .label::before {
+      background: $color-black;
+    }
+    &[type="checkbox"]:checked ~ .label::before {
+      background-image: url("../css/icons/check.svg");
+      background-size: 1.8rem 1.8rem;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &[type="radio"] ~ .label::before {
+    border-radius: 100%;
+    box-shadow: inset 0 0 0 .3rem $color-grey-input, inset 0 0 0 .7rem $color-grey;
+  }
+  &[type="radio"]:checked ~ .label::before {
+    box-shadow: inset 0 0 0 .3rem $color-black, inset 0 0 0 .7rem $color-grey;
+  }
+}
+
+input[type="number"],
+input[type="text"],
+input[type="password"],
+textarea {
+  display: inline-block;
+  width: auto;
+  margin-top: 1.5rem;
+  appearance: none;
+  border: none;
+  padding: 1.2rem 1.6rem;
+  border-radius: 1rem;
+  background: $color-grey-input;
+  font-family: $font-family-medium;
+  font-size: $font-size-label;
+  transition: all .1s ease-in-out;
+
+  &[disabled] {
 
     &::placeholder {
-      opacity: .35;
+      opacity: 1;
     }
 
-    &[type="password"] {
-      letter-spacing: .5rem;
-      -webkit-text-fill-color: $color-black;
-      -webkit-text-stroke-width: .5rem;
-      -webkit-text-stroke-color: $color-black;
+    &:hover, &:active, &:focus {
+      box-shadow: none;
+    }
+  }
 
-      &::placeholder {
-        letter-spacing: .15rem;
-        -webkit-text-stroke-width: 0;
-      }
-    }
+  &.no-resize {
+    resize: none;
+  }
 
-    &:hover {
-      box-shadow: 0 0 0 .2rem rgba($color-black, .2);
+  &.no-border {
+    &:hover, &:active, &:focus {
+      box-shadow: none;
     }
-    &:focus, &:active {
-      box-shadow: 0 0 0 .2rem rgba($color-black, .6);
-    }
+  }
 
-    &.mode-fill {
-      display: block;
-      width: 100%;
-      max-width: 100vw;
+  &::placeholder {
+    opacity: .35;
+  }
+
+  &[type="password"] {
+    letter-spacing: .5rem;
+    -webkit-text-fill-color: $color-black;
+    -webkit-text-stroke-width: .5rem;
+    -webkit-text-stroke-color: $color-black;
+
+    &::placeholder {
+      letter-spacing: .15rem;
+      -webkit-text-stroke-width: 0;
     }
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 .2rem rgba($color-black, .2);
+  }
+  &:focus, &:active {
+    box-shadow: 0 0 0 .2rem rgba($color-black, .6);
+  }
+
+  &.mode-fill {
+    display: block;
+    width: 100%;
+    max-width: 100vw;
   }
 }
 
@@ -214,35 +259,6 @@ label {
       height: 3rem;
       background: $color-grey-input;
       border-radius: .8rem;
-    }
-  }
-
-  input {
-    display: inline-block;
-    width: 10rem;
-    &[type="checkbox"], &[type="radio"] {
-      display: none;
-
-      &:hover ~ .label::before {
-        background: $color-grey-selection;
-      }
-      &:checked ~ .label::before {
-        background: $color-black;
-      }
-      &[type="checkbox"]:checked ~ .label::before {
-        background-image: url("../css/icons/check.svg");
-        background-size: 1.8rem 1.8rem;
-        background-position: center center;
-        background-repeat: no-repeat;
-      }
-    }
-
-    &[type="radio"] ~ .label::before {
-      border-radius: 100%;
-      box-shadow: inset 0 0 0 .3rem $color-grey-input, inset 0 0 0 .7rem $color-grey;
-    }
-    &[type="radio"]:checked ~ .label::before {
-      box-shadow: inset 0 0 0 .3rem $color-black, inset 0 0 0 .7rem $color-grey;
     }
   }
 }
@@ -408,6 +424,9 @@ label {
   &.spaced {
     margin: 2rem;
   }
+  &.spaced-top {
+    margin-top: 4rem;
+  }
   &.inner-spaced {
     padding: 2rem;
   }
@@ -528,6 +547,14 @@ svg.icon{
     line-height: $font-size-label-title-x2;
     font-family: $font-family-demibold;
   }
+
+  &.required {
+    &::after {
+      content: " *";
+      font-family: $font-family-demibold;
+      color: $color-red;
+    }
+  }
 }
 
 // Buttons
@@ -606,6 +633,24 @@ svg.icon{
       margin: auto auto;
     }
   }
+
+  &.applyFiltersSearch {
+    position: fixed;
+    bottom: 2.5rem;
+    max-width: 30rem;
+    box-shadow: 0 3rem 0 0 $color-grey, 0 -.9rem 2rem 1rem $color-grey;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -4rem;
+      left: 0;
+      width: 100%;
+      height: 4rem;
+      background: linear-gradient(rgba($color-grey,0),rgba($color-grey,1));
+    }
+  }
+
 }
 
 // Property list item

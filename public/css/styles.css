@@ -130,9 +130,43 @@ select, input, label {
 
 input {
   max-width: 11rem;
+  display: inline-block;
 }
 
-input[type="number"], input[type="text"], input[type="password"] {
+input[type="checkbox"], input[type="radio"] {
+  display: none;
+}
+
+input[type="checkbox"]:hover ~ .label::before, input[type="radio"]:hover ~ .label::before {
+  background: #DBDBDB;
+}
+
+input[type="checkbox"]:checked ~ .label::before, input[type="radio"]:checked ~ .label::before {
+  background: #1D1D1D;
+}
+
+input[type="checkbox"][type="checkbox"]:checked ~ .label::before, input[type="radio"][type="checkbox"]:checked ~ .label::before {
+  background-image: url("../css/icons/check.svg");
+  background-size: 1.8rem 1.8rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+input[type="radio"] ~ .label::before {
+  border-radius: 100%;
+  -webkit-box-shadow: inset 0 0 0 0.3rem #E3E3E3, inset 0 0 0 0.7rem #F2F2F2;
+          box-shadow: inset 0 0 0 0.3rem #E3E3E3, inset 0 0 0 0.7rem #F2F2F2;
+}
+
+input[type="radio"]:checked ~ .label::before {
+  -webkit-box-shadow: inset 0 0 0 0.3rem #1D1D1D, inset 0 0 0 0.7rem #F2F2F2;
+          box-shadow: inset 0 0 0 0.3rem #1D1D1D, inset 0 0 0 0.7rem #F2F2F2;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="password"],
+textarea {
   display: inline-block;
   width: auto;
   margin-top: 1.5rem;
@@ -149,65 +183,162 @@ input[type="number"], input[type="text"], input[type="password"] {
   transition: all .1s ease-in-out;
 }
 
-input[type="number"].no-border:hover, input[type="number"].no-border:active, input[type="number"].no-border:focus, input[type="text"].no-border:hover, input[type="text"].no-border:active, input[type="text"].no-border:focus, input[type="password"].no-border:hover, input[type="password"].no-border:active, input[type="password"].no-border:focus {
+input[type="number"][disabled]::-webkit-input-placeholder,
+input[type="text"][disabled]::-webkit-input-placeholder,
+input[type="password"][disabled]::-webkit-input-placeholder,
+textarea[disabled]::-webkit-input-placeholder {
+  opacity: 1;
+}
+
+input[type="number"][disabled]:-ms-input-placeholder,
+input[type="text"][disabled]:-ms-input-placeholder,
+input[type="password"][disabled]:-ms-input-placeholder,
+textarea[disabled]:-ms-input-placeholder {
+  opacity: 1;
+}
+
+input[type="number"][disabled]::-ms-input-placeholder,
+input[type="text"][disabled]::-ms-input-placeholder,
+input[type="password"][disabled]::-ms-input-placeholder,
+textarea[disabled]::-ms-input-placeholder {
+  opacity: 1;
+}
+
+input[type="number"][disabled]::placeholder,
+input[type="text"][disabled]::placeholder,
+input[type="password"][disabled]::placeholder,
+textarea[disabled]::placeholder {
+  opacity: 1;
+}
+
+input[type="number"][disabled]:hover, input[type="number"][disabled]:active, input[type="number"][disabled]:focus,
+input[type="text"][disabled]:hover,
+input[type="text"][disabled]:active,
+input[type="text"][disabled]:focus,
+input[type="password"][disabled]:hover,
+input[type="password"][disabled]:active,
+input[type="password"][disabled]:focus,
+textarea[disabled]:hover,
+textarea[disabled]:active,
+textarea[disabled]:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-input[type="number"]::-webkit-input-placeholder, input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder {
+input[type="number"].no-resize,
+input[type="text"].no-resize,
+input[type="password"].no-resize,
+textarea.no-resize {
+  resize: none;
+}
+
+input[type="number"].no-border:hover, input[type="number"].no-border:active, input[type="number"].no-border:focus,
+input[type="text"].no-border:hover,
+input[type="text"].no-border:active,
+input[type="text"].no-border:focus,
+input[type="password"].no-border:hover,
+input[type="password"].no-border:active,
+input[type="password"].no-border:focus,
+textarea.no-border:hover,
+textarea.no-border:active,
+textarea.no-border:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+input[type="number"]::-webkit-input-placeholder,
+input[type="text"]::-webkit-input-placeholder,
+input[type="password"]::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
   opacity: .35;
 }
 
-input[type="number"]:-ms-input-placeholder, input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder {
+input[type="number"]:-ms-input-placeholder,
+input[type="text"]:-ms-input-placeholder,
+input[type="password"]:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
   opacity: .35;
 }
 
-input[type="number"]::-ms-input-placeholder, input[type="text"]::-ms-input-placeholder, input[type="password"]::-ms-input-placeholder {
+input[type="number"]::-ms-input-placeholder,
+input[type="text"]::-ms-input-placeholder,
+input[type="password"]::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
   opacity: .35;
 }
 
-input[type="number"]::placeholder, input[type="text"]::placeholder, input[type="password"]::placeholder {
+input[type="number"]::placeholder,
+input[type="text"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder {
   opacity: .35;
 }
 
-input[type="number"][type="password"], input[type="text"][type="password"], input[type="password"][type="password"] {
+input[type="number"][type="password"],
+input[type="text"][type="password"],
+input[type="password"][type="password"],
+textarea[type="password"] {
   letter-spacing: .5rem;
   -webkit-text-fill-color: #1D1D1D;
   -webkit-text-stroke-width: .5rem;
   -webkit-text-stroke-color: #1D1D1D;
 }
 
-input[type="number"][type="password"]::-webkit-input-placeholder, input[type="text"][type="password"]::-webkit-input-placeholder, input[type="password"][type="password"]::-webkit-input-placeholder {
+input[type="number"][type="password"]::-webkit-input-placeholder,
+input[type="text"][type="password"]::-webkit-input-placeholder,
+input[type="password"][type="password"]::-webkit-input-placeholder,
+textarea[type="password"]::-webkit-input-placeholder {
   letter-spacing: .15rem;
   -webkit-text-stroke-width: 0;
 }
 
-input[type="number"][type="password"]:-ms-input-placeholder, input[type="text"][type="password"]:-ms-input-placeholder, input[type="password"][type="password"]:-ms-input-placeholder {
+input[type="number"][type="password"]:-ms-input-placeholder,
+input[type="text"][type="password"]:-ms-input-placeholder,
+input[type="password"][type="password"]:-ms-input-placeholder,
+textarea[type="password"]:-ms-input-placeholder {
   letter-spacing: .15rem;
   -webkit-text-stroke-width: 0;
 }
 
-input[type="number"][type="password"]::-ms-input-placeholder, input[type="text"][type="password"]::-ms-input-placeholder, input[type="password"][type="password"]::-ms-input-placeholder {
+input[type="number"][type="password"]::-ms-input-placeholder,
+input[type="text"][type="password"]::-ms-input-placeholder,
+input[type="password"][type="password"]::-ms-input-placeholder,
+textarea[type="password"]::-ms-input-placeholder {
   letter-spacing: .15rem;
   -webkit-text-stroke-width: 0;
 }
 
-input[type="number"][type="password"]::placeholder, input[type="text"][type="password"]::placeholder, input[type="password"][type="password"]::placeholder {
+input[type="number"][type="password"]::placeholder,
+input[type="text"][type="password"]::placeholder,
+input[type="password"][type="password"]::placeholder,
+textarea[type="password"]::placeholder {
   letter-spacing: .15rem;
   -webkit-text-stroke-width: 0;
 }
 
-input[type="number"]:hover, input[type="text"]:hover, input[type="password"]:hover {
+input[type="number"]:hover,
+input[type="text"]:hover,
+input[type="password"]:hover,
+textarea:hover {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(29, 29, 29, 0.2);
           box-shadow: 0 0 0 0.2rem rgba(29, 29, 29, 0.2);
 }
 
-input[type="number"]:focus, input[type="number"]:active, input[type="text"]:focus, input[type="text"]:active, input[type="password"]:focus, input[type="password"]:active {
+input[type="number"]:focus, input[type="number"]:active,
+input[type="text"]:focus,
+input[type="text"]:active,
+input[type="password"]:focus,
+input[type="password"]:active,
+textarea:focus,
+textarea:active {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(29, 29, 29, 0.6);
           box-shadow: 0 0 0 0.2rem rgba(29, 29, 29, 0.6);
 }
 
-input[type="number"].mode-fill, input[type="text"].mode-fill, input[type="password"].mode-fill {
+input[type="number"].mode-fill,
+input[type="text"].mode-fill,
+input[type="password"].mode-fill,
+textarea.mode-fill {
   display: block;
   width: 100%;
   max-width: 100vw;
@@ -235,41 +366,6 @@ label .label::before {
   height: 3rem;
   background: #E3E3E3;
   border-radius: .8rem;
-}
-
-label input {
-  display: inline-block;
-  width: 10rem;
-}
-
-label input[type="checkbox"], label input[type="radio"] {
-  display: none;
-}
-
-label input[type="checkbox"]:hover ~ .label::before, label input[type="radio"]:hover ~ .label::before {
-  background: #DBDBDB;
-}
-
-label input[type="checkbox"]:checked ~ .label::before, label input[type="radio"]:checked ~ .label::before {
-  background: #1D1D1D;
-}
-
-label input[type="checkbox"][type="checkbox"]:checked ~ .label::before, label input[type="radio"][type="checkbox"]:checked ~ .label::before {
-  background-image: url("../css/icons/check.svg");
-  background-size: 1.8rem 1.8rem;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-label input[type="radio"] ~ .label::before {
-  border-radius: 100%;
-  -webkit-box-shadow: inset 0 0 0 0.3rem #E3E3E3, inset 0 0 0 0.7rem #F2F2F2;
-          box-shadow: inset 0 0 0 0.3rem #E3E3E3, inset 0 0 0 0.7rem #F2F2F2;
-}
-
-label input[type="radio"]:checked ~ .label::before {
-  -webkit-box-shadow: inset 0 0 0 0.3rem #1D1D1D, inset 0 0 0 0.7rem #F2F2F2;
-          box-shadow: inset 0 0 0 0.3rem #1D1D1D, inset 0 0 0 0.7rem #F2F2F2;
 }
 
 .select {
@@ -466,6 +562,10 @@ label input[type="radio"]:checked ~ .label::before {
   margin: 2rem;
 }
 
+.flexbox.spaced-top {
+  margin-top: 4rem;
+}
+
 .flexbox.inner-spaced {
   padding: 2rem;
 }
@@ -602,6 +702,12 @@ svg.icon {
   font-family: "TT Commons DemiBold";
 }
 
+.label.required::after {
+  content: " *";
+  font-family: "TT Commons DemiBold";
+  color: #FA4D2B;
+}
+
 .button {
   cursor: pointer;
   font-size: 1.8rem;
@@ -694,6 +800,25 @@ svg.icon {
   margin-right: 0;
   stroke: #1D1D1D;
   margin: auto auto;
+}
+
+.button.applyFiltersSearch {
+  position: fixed;
+  bottom: 2.5rem;
+  max-width: 30rem;
+  -webkit-box-shadow: 0 3rem 0 0 #F2F2F2, 0 -0.9rem 2rem 1rem #F2F2F2;
+          box-shadow: 0 3rem 0 0 #F2F2F2, 0 -0.9rem 2rem 1rem #F2F2F2;
+}
+
+.button.applyFiltersSearch::before {
+  content: "";
+  position: absolute;
+  top: -4rem;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(242, 242, 242, 0)), to(#f2f2f2));
+  background: linear-gradient(rgba(242, 242, 242, 0), #f2f2f2);
 }
 
 .list .property_item {

@@ -5,61 +5,70 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Iniciar sesión</title>
+	<title>Registrar Inmueble</title>
 	<link rel="stylesheet" href="./css/styles.css" />
 </head>
 
 <body>
 	<div class="content">
 		<div class="filters flexbox row full-height center-h center-v">
+
 			<div class="filters flexbox column full-height center-v spaced">
+
 				<div class="filters flexbox column block round form">
+
+					<form id="formNewProperty">
+
+						<div class="label title required">Tipo de inmueble</div>
+						<select name="propertyType" class="select">
+							<option value="1">Vivienda</option>
+							<option value="2">Garaje</option>
+							<option value="3">Obra Nueva</option>
+						</select>
+
+						<div class="label title required">Método de venta</div>
+						<select name="propertyMethod" class="select">
+							<option value="1">Vender</option>
+							<option value="2">Alquilar</option>
+						</select>
 	
-					<form id="formLogin">
-						<div class="label title">Correo o teléfono</div>
-						<input class="mode-fill" type="text" name="user" id="user" placeholder="carmelo@gmail.com" required autofocus/>
-	
-						<div class="label title">Contraseña</div>
-						<input class="mode-fill" type="password" name="password" id="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required/>
-	
+						<div class="label title">Catastro</div>
+						<input class="mode-fill" type="text" name="catast" id="catast" placeholder="0000000AA0000A0000AA"
+						required/>
+						<textarea class="mode-fill no-resize" name="place" id="place" placeholder="AV PRIMADO REIG 151 Es:1 Pl:02 Pt:04" required disabled></textarea>
+
+						<div class="label title">Ubicación del inmueble</div>
+						<input class="mode-fill" type="text" name="location" id="location" placeholder="Valencia" value=""
+						required disabled/>
+						
 						<div class="sep"></div>
 	
 						<button class="button black block center" name="submit" type="submit">
 							Iniciar sesión
 						</button>
 	
-						<div class="label centered block">
-							<div class="label detail" style="margin-right: 6px;">¿Eres nuevo?</div>
-							<a class="label bold" href="signup.html">Crear cuenta</a></div>
-	
 					</form>
-					
+
 				</div>
+
+				<div class="filters flexbox column block round form spaced-top">
+					
+					<div class="label title">Col 1, Row 2</div>
+
+				</div>
+
 			</div>
+
 			<div class="filters flexbox column full-height center-v spaced">
+
 				<div class="filters flexbox column block round form">
-	
-					<form id="formLogin">
-						<div class="label title">Correo</div>
-						<input class="mode-fill" type="text" name="user" id="user" placeholder="carmelo@gmail.com" required autofocus/>
-	
-						<div class="label title">Contraseña</div>
-						<input class="mode-fill" type="password" name="password" id="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required/>
-	
-						<div class="sep"></div>
-	
-						<button class="button black block center" name="submit" type="submit">
-							Iniciar sesión
-						</button>
-	
-						<div class="label centered block">
-							<div class="label detail" style="margin-right: 6px;">¿Eres nuevo?</div>
-							<a class="label bold" href="signup.html">Crear cuenta</a></div>
-	
-					</form>
+					
+					<div class="label title">Col 2, Row 1</div>
 					
 				</div>
+
 			</div>
+
 		</div>
 	</div>
 </body>
