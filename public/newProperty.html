@@ -10,67 +10,143 @@
 </head>
 
 <body>
+
 	<div class="content">
-		<div class="filters flexbox row full-height center-h center-v">
 
-			<div class="filters flexbox column full-height center-v spaced">
+		<form id="formNewProperty">
 
-				<div class="filters flexbox column block round form">
+			<div class="flexbox column center-v spaced-inner-top spaced-inner-bottom overflow">
 
-					<form id="formNewProperty">
+				<div class="flexbox row center-h spaced-top">
+					<div class="label title-x2">Nuevo inmueble</div>
 
-						<div class="label title required">Tipo de inmueble</div>
-						<select name="propertyType" class="select">
-							<option value="1">Vivienda</option>
-							<option value="2">Garaje</option>
-							<option value="3">Obra Nueva</option>
-						</select>
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
 
-						<div class="label title required">Método de venta</div>
-						<select name="propertyMethod" class="select">
-							<option value="1">Vender</option>
-							<option value="2">Alquilar</option>
-						</select>
-	
-						<div class="label title">Catastro</div>
-						<input class="mode-fill" type="text" name="catast" id="catast" placeholder="0000000AA0000A0000AA"
-						required/>
-						<textarea class="mode-fill no-resize" name="place" id="place" placeholder="AV PRIMADO REIG 151 Es:1 Pl:02 Pt:04" required disabled></textarea>
-
-						<div class="label title">Ubicación del inmueble</div>
-						<input class="mode-fill" type="text" name="location" id="location" placeholder="Valencia" value=""
-						required disabled/>
-						
-						<div class="sep"></div>
-	
-						<button class="button black block center" name="submit" type="submit">
-							Iniciar sesión
-						</button>
-	
-					</form>
-
+					<a class="button" href="./index.html">Cancelar</a>
+					<div class="sep"></div>
+					<button class="button black" name="submit" type="submit">
+						Registrar inmueble
+					</button>
 				</div>
 
-				<div class="filters flexbox column block round form spaced-top">
-					
-					<div class="label title">Col 1, Row 2</div>
+				<div class="flexbox row center-h">
+
+					<div class="flexbox column spaced-top">
+
+						<div class="flexbox column block round form">
+
+								<div class="label title">Tipo de inmueble</div>
+								<select name="propertyType" class="select">
+									<option value="1">Vivienda</option>
+									<option value="2">Garaje</option>
+									<option value="3">Obra Nueva</option>
+								</select>
+
+								<div class="label title">Método de venta</div>
+								<select name="propertyMethod" class="select">
+									<option value="1">Vender</option>
+									<option value="2">Alquilar</option>
+								</select>
+			
+								<div class="label title optional">Catastro</div>
+								<input class="mode-fill" type="text" name="catast" id="catast" placeholder="0000000AA0000A0000AA"/>
+
+								<div class="label title">Dirección</div>
+								<textarea class="mode-fill no-resize" name="place" id="place" placeholder="AV PRIMADO REIG 151 Es:1 Pl:02 Pt:04" required></textarea>
+
+								<div class="label title">Superficie</div>
+								<input class="mode-fill" type="text" name="location" id="location" placeholder="98 m²" value=""
+								required/>
+
+								<div class="label title">Precio</div>
+								<input class="mode-fill" type="text" name="location" id="location" placeholder="100.000 €" value=""
+								required/>
+
+						</div>
+
+						<div class="filters flexbox column block round form spaced-top">
+
+							<div class="propertyType-home">
+
+								<div class="label title">Tipo de vivienda</div>
+								<select name="homeType" class="select">
+									<option value="1">Piso</option>
+									<option value="2">Ático</option>
+									<option value="3">Bajo</option>
+									<option value="4">Dúplex</option>
+								</select>
+
+								<div class="label title">Habitaciones</div>
+								<select name="roomCount" class="select">
+									<option value="1">0 (estudio)</option>
+									<option value="2">1</option>
+									<option value="3">2</option>
+									<option value="4">3</option>
+									<option value="5">4 o más</option>
+								</select>
+
+								<div class="label title">Baños</div>
+								<select name="bathroomCount" class="select">
+									<option value="1">0</option>
+									<option value="2">1</option>
+									<option value="3">2</option>
+									<option value="4">3 o más</option>
+								</select>
+
+								<div class="label title optional">Características</div>
+								<label><input name="feature featureElevator" type="checkbox" value="1" />
+									<div class="label bold">Ascensor</div>
+								</label>
+								<label><input name="feature featureFurniture" type="checkbox" value="2" />
+									<div class="label bold">Amueblado</div>
+								</label>
+								<label><input name="feature featureBalcony" type="checkbox" value="3" />
+									<div class="label bold">Terraza o balcón</div>
+								</label>
+								<label><input name="feature featureAirConditioning" type="checkbox" value="4" />
+									<div class="label bold">Aire acondicionado</div>
+								</label>
+								<label><input name="feature featureBuiltInCloset" type="checkbox" value="5" />
+									<div class="label bold">Armario empotrado</div>
+								</label>
+								<label><input name="feature featureGarage" type="checkbox" value="6" />
+									<div class="label bold">Garaje</div>
+								</label>
+								<label><input name="feature featureGarden" type="checkbox" value="7" />
+									<div class="label bold">Jardín</div>
+								</label>
+								<label><input name="feature featurePool" type="checkbox" value="8" />
+									<div class="label bold">Piscina</div>
+								</label>
+								<label><input name="feature featureStorageRoom" type="checkbox" value="9" />
+									<div class="label bold">Trastero</div>
+								</label>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="filters flexbox column spaced-top spaced">
+
+						<div class="filters flexbox column block round form">
+							
+							<div class="label title">Col 2, Row 1</div>
+							
+						</div>
+
+					</div>
 
 				</div>
 
 			</div>
 
-			<div class="filters flexbox column full-height center-v spaced">
+		</form>
 
-				<div class="filters flexbox column block round form">
-					
-					<div class="label title">Col 2, Row 1</div>
-					
-				</div>
-
-			</div>
-
-		</div>
 	</div>
+
 </body>
 
 </html>

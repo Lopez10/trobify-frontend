@@ -193,7 +193,7 @@ textarea {
   &[disabled] {
 
     &::placeholder {
-      opacity: 1;
+      opacity: .8;
     }
 
     &:hover, &:active, &:focus {
@@ -427,16 +427,22 @@ label {
   &.spaced-top {
     margin-top: 4rem;
   }
+  &.spaced-inner-top {
+    padding-top: 4rem;
+  }
+  &.spaced-inner-bottom {
+    padding-bottom: 4rem;
+  }
   &.inner-spaced {
     padding: 2rem;
   }
   &.shrinknt {
     flex-shrink: 0;
   }
-  &.center-h {
+  &.center-v {
     align-items: center;
   }
-  &.center-v {
+  &.center-h {
     justify-content: center;
   }
   &.center-items-v {
@@ -546,6 +552,10 @@ svg.icon{
     font-size: $font-size-label-title-x2;
     line-height: $font-size-label-title-x2;
     font-family: $font-family-demibold;
+
+    &.spaced-top {
+      margin-top: 6rem;
+    }
   }
 
   &.required {
@@ -553,6 +563,15 @@ svg.icon{
       content: " *";
       font-family: $font-family-demibold;
       color: $color-red;
+    }
+  }
+
+  &.optional {
+    &::after {
+      content: " (opcional)";
+      font-family: $font-family-demibold;
+      font-size: $font-size-label;
+      color: $color-grey-detail;
     }
   }
 }

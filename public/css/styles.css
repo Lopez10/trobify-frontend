@@ -187,28 +187,28 @@ input[type="number"][disabled]::-webkit-input-placeholder,
 input[type="text"][disabled]::-webkit-input-placeholder,
 input[type="password"][disabled]::-webkit-input-placeholder,
 textarea[disabled]::-webkit-input-placeholder {
-  opacity: 1;
+  opacity: .8;
 }
 
 input[type="number"][disabled]:-ms-input-placeholder,
 input[type="text"][disabled]:-ms-input-placeholder,
 input[type="password"][disabled]:-ms-input-placeholder,
 textarea[disabled]:-ms-input-placeholder {
-  opacity: 1;
+  opacity: .8;
 }
 
 input[type="number"][disabled]::-ms-input-placeholder,
 input[type="text"][disabled]::-ms-input-placeholder,
 input[type="password"][disabled]::-ms-input-placeholder,
 textarea[disabled]::-ms-input-placeholder {
-  opacity: 1;
+  opacity: .8;
 }
 
 input[type="number"][disabled]::placeholder,
 input[type="text"][disabled]::placeholder,
 input[type="password"][disabled]::placeholder,
 textarea[disabled]::placeholder {
-  opacity: 1;
+  opacity: .8;
 }
 
 input[type="number"][disabled]:hover, input[type="number"][disabled]:active, input[type="number"][disabled]:focus,
@@ -566,6 +566,14 @@ label .label::before {
   margin-top: 4rem;
 }
 
+.flexbox.spaced-inner-top {
+  padding-top: 4rem;
+}
+
+.flexbox.spaced-inner-bottom {
+  padding-bottom: 4rem;
+}
+
 .flexbox.inner-spaced {
   padding: 2rem;
 }
@@ -575,13 +583,13 @@ label .label::before {
       flex-shrink: 0;
 }
 
-.flexbox.center-h {
+.flexbox.center-v {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.flexbox.center-v {
+.flexbox.center-h {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -702,10 +710,21 @@ svg.icon {
   font-family: "TT Commons DemiBold";
 }
 
+.label.title-x2.spaced-top {
+  margin-top: 6rem;
+}
+
 .label.required::after {
   content: " *";
   font-family: "TT Commons DemiBold";
   color: #FA4D2B;
+}
+
+.label.optional::after {
+  content: " (opcional)";
+  font-family: "TT Commons DemiBold";
+  font-size: 1.8rem;
+  color: #B2B2B2;
 }
 
 .button {
