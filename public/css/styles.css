@@ -165,6 +165,7 @@ input[type="radio"]:checked ~ .label::before {
 
 input[type="number"],
 input[type="text"],
+input[type="email"],
 input[type="password"],
 textarea {
   display: inline-block;
@@ -185,6 +186,7 @@ textarea {
 
 input[type="number"][disabled]::-webkit-input-placeholder,
 input[type="text"][disabled]::-webkit-input-placeholder,
+input[type="email"][disabled]::-webkit-input-placeholder,
 input[type="password"][disabled]::-webkit-input-placeholder,
 textarea[disabled]::-webkit-input-placeholder {
   opacity: .8;
@@ -192,6 +194,7 @@ textarea[disabled]::-webkit-input-placeholder {
 
 input[type="number"][disabled]:-ms-input-placeholder,
 input[type="text"][disabled]:-ms-input-placeholder,
+input[type="email"][disabled]:-ms-input-placeholder,
 input[type="password"][disabled]:-ms-input-placeholder,
 textarea[disabled]:-ms-input-placeholder {
   opacity: .8;
@@ -199,6 +202,7 @@ textarea[disabled]:-ms-input-placeholder {
 
 input[type="number"][disabled]::-ms-input-placeholder,
 input[type="text"][disabled]::-ms-input-placeholder,
+input[type="email"][disabled]::-ms-input-placeholder,
 input[type="password"][disabled]::-ms-input-placeholder,
 textarea[disabled]::-ms-input-placeholder {
   opacity: .8;
@@ -206,6 +210,7 @@ textarea[disabled]::-ms-input-placeholder {
 
 input[type="number"][disabled]::placeholder,
 input[type="text"][disabled]::placeholder,
+input[type="email"][disabled]::placeholder,
 input[type="password"][disabled]::placeholder,
 textarea[disabled]::placeholder {
   opacity: .8;
@@ -215,6 +220,9 @@ input[type="number"][disabled]:hover, input[type="number"][disabled]:active, inp
 input[type="text"][disabled]:hover,
 input[type="text"][disabled]:active,
 input[type="text"][disabled]:focus,
+input[type="email"][disabled]:hover,
+input[type="email"][disabled]:active,
+input[type="email"][disabled]:focus,
 input[type="password"][disabled]:hover,
 input[type="password"][disabled]:active,
 input[type="password"][disabled]:focus,
@@ -227,6 +235,7 @@ textarea[disabled]:focus {
 
 input[type="number"].no-resize,
 input[type="text"].no-resize,
+input[type="email"].no-resize,
 input[type="password"].no-resize,
 textarea.no-resize {
   resize: none;
@@ -236,6 +245,9 @@ input[type="number"].no-border:hover, input[type="number"].no-border:active, inp
 input[type="text"].no-border:hover,
 input[type="text"].no-border:active,
 input[type="text"].no-border:focus,
+input[type="email"].no-border:hover,
+input[type="email"].no-border:active,
+input[type="email"].no-border:focus,
 input[type="password"].no-border:hover,
 input[type="password"].no-border:active,
 input[type="password"].no-border:focus,
@@ -248,6 +260,7 @@ textarea.no-border:focus {
 
 input[type="number"]::-webkit-input-placeholder,
 input[type="text"]::-webkit-input-placeholder,
+input[type="email"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
   opacity: .35;
@@ -255,6 +268,7 @@ textarea::-webkit-input-placeholder {
 
 input[type="number"]:-ms-input-placeholder,
 input[type="text"]:-ms-input-placeholder,
+input[type="email"]:-ms-input-placeholder,
 input[type="password"]:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
   opacity: .35;
@@ -262,6 +276,7 @@ textarea:-ms-input-placeholder {
 
 input[type="number"]::-ms-input-placeholder,
 input[type="text"]::-ms-input-placeholder,
+input[type="email"]::-ms-input-placeholder,
 input[type="password"]::-ms-input-placeholder,
 textarea::-ms-input-placeholder {
   opacity: .35;
@@ -269,6 +284,7 @@ textarea::-ms-input-placeholder {
 
 input[type="number"]::placeholder,
 input[type="text"]::placeholder,
+input[type="email"]::placeholder,
 input[type="password"]::placeholder,
 textarea::placeholder {
   opacity: .35;
@@ -276,6 +292,7 @@ textarea::placeholder {
 
 input[type="number"][type="password"],
 input[type="text"][type="password"],
+input[type="email"][type="password"],
 input[type="password"][type="password"],
 textarea[type="password"] {
   letter-spacing: .5rem;
@@ -286,6 +303,7 @@ textarea[type="password"] {
 
 input[type="number"][type="password"]::-webkit-input-placeholder,
 input[type="text"][type="password"]::-webkit-input-placeholder,
+input[type="email"][type="password"]::-webkit-input-placeholder,
 input[type="password"][type="password"]::-webkit-input-placeholder,
 textarea[type="password"]::-webkit-input-placeholder {
   letter-spacing: .15rem;
@@ -294,6 +312,7 @@ textarea[type="password"]::-webkit-input-placeholder {
 
 input[type="number"][type="password"]:-ms-input-placeholder,
 input[type="text"][type="password"]:-ms-input-placeholder,
+input[type="email"][type="password"]:-ms-input-placeholder,
 input[type="password"][type="password"]:-ms-input-placeholder,
 textarea[type="password"]:-ms-input-placeholder {
   letter-spacing: .15rem;
@@ -302,6 +321,7 @@ textarea[type="password"]:-ms-input-placeholder {
 
 input[type="number"][type="password"]::-ms-input-placeholder,
 input[type="text"][type="password"]::-ms-input-placeholder,
+input[type="email"][type="password"]::-ms-input-placeholder,
 input[type="password"][type="password"]::-ms-input-placeholder,
 textarea[type="password"]::-ms-input-placeholder {
   letter-spacing: .15rem;
@@ -310,6 +330,7 @@ textarea[type="password"]::-ms-input-placeholder {
 
 input[type="number"][type="password"]::placeholder,
 input[type="text"][type="password"]::placeholder,
+input[type="email"][type="password"]::placeholder,
 input[type="password"][type="password"]::placeholder,
 textarea[type="password"]::placeholder {
   letter-spacing: .15rem;
@@ -318,6 +339,7 @@ textarea[type="password"]::placeholder {
 
 input[type="number"]:hover,
 input[type="text"]:hover,
+input[type="email"]:hover,
 input[type="password"]:hover,
 textarea:hover {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(29, 29, 29, 0.2);
@@ -327,6 +349,8 @@ textarea:hover {
 input[type="number"]:focus, input[type="number"]:active,
 input[type="text"]:focus,
 input[type="text"]:active,
+input[type="email"]:focus,
+input[type="email"]:active,
 input[type="password"]:focus,
 input[type="password"]:active,
 textarea:focus,
@@ -337,11 +361,82 @@ textarea:active {
 
 input[type="number"].mode-fill,
 input[type="text"].mode-fill,
+input[type="email"].mode-fill,
 input[type="password"].mode-fill,
 textarea.mode-fill {
   display: block;
   width: 100%;
   max-width: 100vw;
+}
+
+input[type="password"] {
+  position: relative;
+}
+
+input[type="password"] ~ label.passwordHint {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2.5rem);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  padding: 3rem 2.5rem;
+  background: #1D1D1D;
+  color: #FFFFFF;
+  border-radius: 1rem;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+  pointer-events: none;
+  opacity: 0;
+}
+
+input[type="password"]:focus ~ label.passwordHint {
+  left: calc(50% + 3rem);
+  opacity: 1;
+}
+
+input[type="password"] ~ label::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: -1rem;
+  width: 2rem;
+  height: 2rem;
+  background: #1D1D1D;
+  -webkit-transform: translateY(-50%) rotateZ(45deg);
+          transform: translateY(-50%) rotateZ(45deg);
+}
+
+input[type="password"] ~ label span {
+  font-family: "TT Commons DemiBold";
+}
+
+input[type="password"] ~ label p {
+  position: relative;
+  margin: 1.75rem 0 0 3.8rem;
+  color: #F2F2F2;
+}
+
+input[type="password"] ~ label p::before {
+  content: "";
+  position: absolute;
+  top: -0.1rem;
+  left: -3.4rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 100%;
+  background: rgba(250, 77, 43, 0.8);
+  background-image: url("../css/icons/cross.svg");
+  background-size: 1.1rem 1.1rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+input[type="password"] ~ label p.done::before {
+  background: rgba(15, 191, 54, 0.85);
+  background-image: url("../css/icons/check.svg");
+  background-size: 1.4rem 1.4rem;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 label {
