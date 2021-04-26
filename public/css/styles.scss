@@ -242,7 +242,7 @@ textarea {
   }
 }
 
-input[type="password"] {
+input[type="password"].hint {
   position: relative;
   & ~ label.passwordHint {
     position: absolute;
