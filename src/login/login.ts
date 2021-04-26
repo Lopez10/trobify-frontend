@@ -10,10 +10,11 @@ export class Login {
 		const myRequest = 'http://localhost:3000/login';
 		axios.post(myRequest, usuario).then(
 			(response) => {
-				// if (response.data == true) {
-				// 	this.setCookie('username', usuario.username);
-				// }
 				console.log(response.data);
+				if (response.data == true) {
+					this.setCookie('username', usuario.mail);
+					window.location.replace('http://localhost:8080/public/busqueda.html');
+				}
 			},
 			(error) => console.log(error)
 		);
