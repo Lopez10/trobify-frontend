@@ -463,10 +463,79 @@ label .label::before {
   border-radius: .8rem;
 }
 
+#uploadImgSource {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  max-width: 100vw;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dropArea {
+  border: 0.35rem dashed #DBDBDB;
+  border-radius: 1rem;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.dropArea.highlight {
+  border-color: rgba(29, 29, 29, 0.6);
+  background: #E3E3E3;
+}
+
+.dropArea.highlight .button {
+  background: #DBDBDB;
+}
+
+.gallery {
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  width: 38rem;
+  max-width: 38rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 1rem;
+  background: #E3E3E3;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.button:hover {
+  background: #DBDBDB;
+}
+
+.fileElement {
+  display: none;
+}
+
 .select {
   position: relative;
 }
 
+/*
+.select select {
+  //display: none !important;
+}
+*/
 .select-selected {
   background: #DBDBDB;
   font-family: "TT Commons DemiBold";

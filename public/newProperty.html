@@ -133,7 +133,16 @@
 
 						<div class="filters flexbox column block round form">
 							
-							<div class="label title">Col 2, Row 1</div>
+							<div class="label title">Imágenes <div class="label detail" style="margin-left: 6px;"><span id="totalImagesUploaded">0</span> imágenes</div></div>
+
+							<div id="dropArea" class="dropArea">
+								<input type="file" class="fileElement" id="fileElement" multiple accept="image/*" onchange="handleFiles(this.files)">
+								<label for="fileElement">
+									<p>Drop images or click to upload</p>
+									<div class="button" style="display:inline-block;">Select some files</div>
+								</label>
+							</div>
+							<div id="gallery" class="gallery"></div>
 							
 						</div>
 
@@ -149,6 +158,264 @@
 
 </body>
 
+<script type="text/javascript">
+
+var totalImagesUploaded = 0;
+
+	// Get DataURL from image
+	function getDataUrl(img) {
+		// Create canvas
+		const canvas = document.createElement('canvas');
+		const ctx = canvas.getContext('2d');
+		// Set width and height
+		canvas.width = img.width;
+		canvas.height = img.height;
+		// Draw the image
+		ctx.drawImage(img, 0, 0, img.width, img.height);
+		return canvas.toDataURL('image/jpeg');
+	}
+
+	// Test
+	/*
+	window.onload = function () {
+		const dataUrl = getDataUrl(document.querySelector('#uploadImg'));
+		window.open(dataUrl,'_blank');
+	};
+	*/
+
+	let dropArea = document.querySelector("#dropArea");
+
+	// Prevent default drag behaviors
+	["dragenter", "dragover", "dragleave", "drop"].forEach(eventName => {
+		dropArea.addEventListener(eventName, preventDefaults, false)
+		document.body.addEventListener(eventName, preventDefaults, false)
+	});
+
+	// Highlight drop area when item is dragged over it
+	// When enter or hover
+	["dragenter", "dragover"].forEach(eventName => {
+		dropArea.addEventListener(eventName, highlight, false);
+	});
+	// When leave or drop
+	["dragleave", "drop"].forEach(eventName => {
+		dropArea.addEventListener(eventName, unhighlight, false);
+	});
+
+	// Handle dropped files
+	dropArea.addEventListener("drop", handleDrop, false);
+
+	function preventDefaults (e) {
+		e.preventDefault();
+		e.stopPropagation();
+	}
+
+	function highlight(e) {
+		dropArea.classList.add("highlight");
+	}
+
+	function unhighlight(e) {
+		dropArea.classList.remove("highlight");
+	}
+
+	function handleDrop(e) {
+		var dt = e.dataTransfer;
+		var files = dt.files;
+
+		handleFiles(files);
+	}
+
+	function handleFiles(files) {
+		files = [...files];
+		files.forEach( file => {
+			if (file.type.match("image.*")) {
+				previewFile(file);
+				document.getElementById("totalImagesUploaded").textContent = ++totalImagesUploaded;
+			} else {
+				console.warn("The file you are trying to upload is not a image! (%s)", file.type.split("/")[1]);
+			}
+		})
+	}
+
+	function previewFile(file) {
+		let reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onloadend = function() {
+			let img = document.createElement("img");
+			img.src = reader.result;
+			img.id = convertToCharCode(Date.now());
+			img.style.cssText = "width:calc(180px);margin:5px;border-radius:6px;";
+			document.querySelector("#gallery").appendChild(img);
+			//getDataUrl(img);
+		}
+	}
+
+	function convertToCharCode(num) {
+    return num
+        .toString()    // convert number to string
+        .split('')     // convert string to array of characters
+        .map(Number)   // parse characters as numbers
+        .map(n => (n || 10) + 64)   // convert to char code, correcting for J
+        .map(c => String.fromCharCode(c))   // convert char codes to strings
+        .join('');     // join values together
+}
+
+	document.querySelector("#gallery").addEventListener("mousemove", detectImage);
+	document.querySelector("#gallery").addEventListener("mouseleave", () => { tmpTarget = "" });
+
+	var tmpTarget;
+	function detectImage(e) {
+		if (e.target.id != tmpTarget) {
+			if (e.target.tagName == "IMG") {
+				showOptions(e.target.id)
+			} else hideOptions(tmpTarget);
+		}
+		tmpTarget = e.target.id;
+	}
+
+	function showOptions(id) {
+		console.log("entra de la imagen %s", id);
+	}
+
+	function hideOptions(id) {
+		if (id != "") {
+			console.log("sale de la imagen %s", id);
+		}
+	}
+
+	
+
+	/*
+
+	function toDataURL(url, callback) {
+		var xhr = new XMLHttpRequest();
+		xhr.onload = function() {
+			var reader = new FileReader();
+			reader.onloadend = function() {
+				callback(reader.result);
+			}
+			reader.readAsDataURL(xhr.response);
+		};
+		xhr.open('GET', url);
+		xhr.responseType = 'blob';
+		xhr.send();
+	}
+
+	toDataURL('https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0', function(dataUrl) {
+		console.log('RESULT:', dataUrl)
+	})
+
+	*/
+
+	/*
+
+	// ************************ Drag and drop ***************** //
+	let dropArea = document.getElementById("drop-area");
+
+	// Prevent default drag behaviors
+	['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+		dropArea.addEventListener(eventName, preventDefaults, false)
+		document.body.addEventListener(eventName, preventDefaults, false)
+	})
+
+	// Highlight drop area when item is dragged over it
+	['dragenter', 'dragover'].forEach(eventName => {
+		dropArea.addEventListener(eventName, highlight, false)
+	})
+
+	['dragleave', 'drop'].forEach(eventName => {
+		dropArea.addEventListener(eventName, unhighlight, false)
+	})
+
+	// Handle dropped files
+	dropArea.addEventListener('drop', handleDrop, false)
+
+	function preventDefaults (e) {
+		e.preventDefault()
+		e.stopPropagation()
+	}
+
+	function highlight(e) {
+		dropArea.classList.add('highlight')
+	}
+
+	function unhighlight(e) {
+		dropArea.classList.remove('active')
+	}
+
+	function handleDrop(e) {
+		var dt = e.dataTransfer
+		var files = dt.files
+
+		handleFiles(files)
+	}
+
+	let uploadProgress = []
+	let progressBar = document.getElementById('progress-bar')
+
+	function initializeProgress(numFiles) {
+		progressBar.value = 0
+		uploadProgress = []
+
+		for(let i = numFiles; i > 0; i--) {
+			uploadProgress.push(0)
+		}
+	}
+
+	function updateProgress(fileNumber, percent) {
+		uploadProgress[fileNumber] = percent
+		let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length
+		console.debug('update', fileNumber, percent, total)
+		progressBar.value = total
+	}
+
+	function handleFiles(files) {
+		files = [...files]
+		initializeProgress(files.length)
+		files.forEach(uploadFile)
+		files.forEach(previewFile)
+	}
+
+	function previewFile(file) {
+		let reader = new FileReader()
+		reader.readAsDataURL(file)
+		reader.onloadend = function() {
+			let img = document.createElement('img')
+			img.src = reader.result
+			document.getElementById('gallery').appendChild(img)
+		}
+	}
+
+	function uploadFile(file, i) {
+		var url = 'https://api.cloudinary.com/v1_1/joezimim007/image/upload'
+		var xhr = new XMLHttpRequest()
+		var formData = new FormData()
+		xhr.open('POST', url, true)
+		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+
+		// Update progress (can be used to show progress indicator)
+		xhr.upload.addEventListener("progress", function(e) {
+			updateProgress(i, (e.loaded * 100.0 / e.total) || 100)
+		})
+
+		xhr.addEventListener('readystatechange', function(e) {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				updateProgress(i, 100) // <- Add this
+			}
+			else if (xhr.readyState == 4 && xhr.status != 200) {
+				// Error. Inform the user
+				console.error("Error uploading image, status %d: %s", xhr.status, xhr.statusText);
+			}
+		})
+
+		formData.append('upload_preset', 'ujpu6gyk')
+		formData.append('file', file)
+		xhr.send(formData)
+	}
+
+	*/
+
+</script>
+
 <!--
 	https://www.google.com/search?client=firefox-b-d&q=html+upload+image+to+server
 
@@ -160,8 +427,13 @@
 
 	http://jsfiddle.net/4cwpLvae/
 
+	FRONTEND
 
 	https://codepen.io/joezimjs/pen/yPWQbd
+
+	BACKEND
+
+	https://medium.com/swlh/uploading-images-to-your-node-js-backend-978261eb0724
 -->
 
 </html>

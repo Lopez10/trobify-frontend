@@ -15,13 +15,16 @@
 			<div class="filters flexbox column block round form">
 
 				<form id="formLogin">
+					
 					<div class="label title">Correo o teléfono</div>
+
 					<input class="mode-fill" type="email" name="user" id="user" placeholder="carmelo@gmail.com"
 						required autofocus/>
 
 					<div class="label title">Contraseña</div>
+
 					<input class="mode-fill hint" type="password" name="password" id="password"
-						placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\!\¡\?\¿\@\#\$\%\^\&\*\)\(\[\]\{\}\ñ\Ñ\ç\Ç\,\+\=\.\_\-\\\/\|]).{8,}" onkeyup="checkPasswordStrength(this.value)" required/>
+						placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*" onkeyup="checkPasswordStrength(this.value)" required/>
 						<label for="password" id="passwordHint" class="passwordHint">
 							<span>La contraseña debe contener</span>
 							<p id="passwordLength">Más de 8 caracteres</p>
@@ -37,8 +40,8 @@
 						Iniciar sesión
 					</button>
 
-					<div class="label centered block">
-						<div class="label detail" style="margin-right: 6px;">¿Eres nuevo?</div>
+					<div class="label centered block" style="padding:0 32px;">
+						<div class="label detail" style="margin-right:6px;">¿Eres nuevo?</div>
 						<a class="label bold" href="signup.html">Crear cuenta</a>
 					</div>
 
