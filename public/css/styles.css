@@ -233,6 +233,14 @@ textarea[disabled]:focus {
           box-shadow: none;
 }
 
+input[type="number"].transparent,
+input[type="text"].transparent,
+input[type="email"].transparent,
+input[type="password"].transparent,
+textarea.transparent {
+  background: none;
+}
+
 input[type="number"].no-resize,
 input[type="text"].no-resize,
 input[type="email"].no-resize,
