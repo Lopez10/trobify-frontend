@@ -339,14 +339,14 @@ label {
 }
 
 .dropArea {
-  border: .35rem dashed $color-grey-selection;
+  border: .3rem dashed $color-grey-selection;
   border-radius: 1rem;
   width: 100%;
   margin: 2rem auto;
-  padding: 3rem 2rem;
   text-align: center;
 
   label {
+    padding: 4rem;
     color: $color-grey-detail;
   }
 }

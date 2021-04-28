@@ -474,15 +474,15 @@ label .label::before {
 }
 
 .dropArea {
-  border: 0.35rem dashed #DBDBDB;
+  border: 0.3rem dashed #DBDBDB;
   border-radius: 1rem;
   width: 100%;
   margin: 2rem auto;
-  padding: 3rem 2rem;
   text-align: center;
 }
 
 .dropArea label {
+  padding: 4rem;
   color: #B2B2B2;
 }
 
