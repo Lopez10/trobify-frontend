@@ -345,12 +345,17 @@ label {
   margin: 2rem auto;
   padding: 3rem 2rem;
   text-align: center;
+
+  label {
+    color: $color-grey-detail;
+  }
 }
 .dropArea.highlight {
-  border-color: rgba($color-black, .6);
-  background: $color-grey-input;
+  border-color: rgba($color-black, .2);
+  background: rgba($color-black, .05);
+
   .button {
-    background: $color-grey-selection;
+    background: rgba($color-black, .1);
   }
 }
 .gallery {
