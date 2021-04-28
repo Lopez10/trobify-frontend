@@ -463,32 +463,36 @@ label .label::before {
   border-radius: .8rem;
 }
 
-#uploadImgSource {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  max-width: 100vw;
-  opacity: 0;
-  pointer-events: none;
-}
-
 .dropArea {
   border: 0.3rem dashed #DBDBDB;
   border-radius: 1rem;
   width: 100%;
   margin: 2rem auto;
   text-align: center;
+  -webkit-transition: all .1s ease-out;
+  transition: all .1s ease-out;
 }
 
 .dropArea label {
-  padding: 4rem;
+  padding: 5rem 4rem;
+  margin: 0;
   color: #B2B2B2;
+  -webkit-transition: all .1s ease-out;
+  transition: all .1s ease-out;
+}
+
+.dropArea label .button, .dropArea label p {
+  -webkit-transition: all .1s ease-out;
+  transition: all .1s ease-out;
 }
 
 .dropArea.highlight {
   border-color: rgba(29, 29, 29, 0.2);
   background: rgba(29, 29, 29, 0.05);
+}
+
+.dropArea.highlight p {
+  color: rgba(29, 29, 29, 0.5);
 }
 
 .dropArea.highlight .button {
@@ -514,6 +518,25 @@ label .label::before {
   width: 38rem;
   max-width: 38rem;
   margin-top: 1rem;
+}
+
+.gallery.empty {
+  padding: 8rem 0;
+  text-align: center;
+  font-size: 1.8rem;
+  background: rgba(29, 29, 29, 0.05);
+  border-radius: 1rem;
+}
+
+.gallery.empty::before {
+  content: "Carga imágenes para añadirlas al inmueble";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+  color: rgba(29, 29, 29, 0.5);
 }
 
 .gallery .imageOptions {
@@ -946,6 +969,8 @@ svg.icon {
           appearance: none;
   border: none !important;
   letter-spacing: .1rem;
+  -webkit-transition: all .1s ease-out;
+  transition: all .1s ease-out;
 }
 
 .button.center {

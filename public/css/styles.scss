@@ -328,31 +328,32 @@ label {
 
 // Image uploader
 
-#uploadImgSource {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  max-width: 100vw;
-  opacity: 0;
-  pointer-events: none;
-}
-
 .dropArea {
   border: .3rem dashed $color-grey-selection;
   border-radius: 1rem;
   width: 100%;
   margin: 2rem auto;
   text-align: center;
+  transition: all .1s ease-out;
 
   label {
-    padding: 4rem;
+    padding: 5rem 4rem;
+    margin: 0;
     color: $color-grey-detail;
+    transition: all .1s ease-out;
+
+    .button, p {
+      transition: all .1s ease-out;
+    }
   }
 }
 .dropArea.highlight {
   border-color: rgba($color-black, .2);
   background: rgba($color-black, .05);
+
+  p {
+    color: rgba($color-black, .5);
+  }
 
   .button {
     background: rgba($color-black, .1);
@@ -368,6 +369,24 @@ label {
   width: 38rem;
   max-width: 38rem;
   margin-top: 1rem;
+
+  &.empty {
+    padding: 8rem 0;
+    text-align: center;
+    font-size: $font-size-label;
+    background: rgba($color-black, .05);
+    border-radius: 1rem;
+
+    &::before {
+      content: "Carga imágenes para añadirlas al inmueble";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      pointer-events: none;
+      color: rgba($color-black, .5);
+    }
+  }
 
   .imageOptions {
     position: absolute;
@@ -743,6 +762,7 @@ svg.icon{
   appearance: none;
   border: none !important;
   letter-spacing: .1rem;
+  transition: all .1s ease-out;
 
   &.center {
     justify-content: center;

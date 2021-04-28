@@ -138,11 +138,11 @@
 							<div id="dropArea" class="dropArea">
 								<input type="file" class="fileElement" id="fileElement" multiple accept="image/*" onchange="handleFiles(this.files)">
 								<label for="fileElement">
-									<p>Drop images or click to upload</p>
-									<div class="button" style="display:inline-block;">Select some files</div>
+									<p>Suelta imágenes o haz click</p>
+									<div class="button" style="display:inline-block;">Seleccionar imágenes</div>
 								</label>
 							</div>
-							<div id="gallery" class="gallery">
+							<div id="gallery" class="gallery empty">
 								<div class="imageOptions hide" id="imageOptions"></div>
 							</div>
 							
@@ -162,32 +162,10 @@
 
 <script type="text/javascript">
 
-var totalImages = 0,
+var dropArea = document.querySelector("#dropArea"),
+		totalImages = 0,
 		totalImagesDIV = document.getElementById("totalImagesUploaded"),
-		imageGallery = [];
-
-	// Get DataURL from image
-	function getDataUrl(img) {
-		// Create canvas
-		const canvas = document.createElement('canvas');
-		const ctx = canvas.getContext('2d');
-		// Set width and height
-		canvas.width = img.width;
-		canvas.height = img.height;
-		// Draw the image
-		ctx.drawImage(img, 0, 0, img.width, img.height);
-		return canvas.toDataURL('image/jpeg');
-	}
-
-	// Test
-	/*
-	window.onload = function () {
-		const dataUrl = getDataUrl(document.querySelector('#uploadImg'));
-		window.open(dataUrl,'_blank');
-	};
-	*/
-
-	let dropArea = document.querySelector("#dropArea");
+		imageGallery = {};
 
 	// Prevent default drag behaviors
 	["dragenter", "dragover", "dragleave", "drop"].forEach(eventName => {
@@ -222,10 +200,7 @@ var totalImages = 0,
 	}
 
 	function handleDrop(e) {
-		var dt = e.dataTransfer;
-		var files = dt.files;
-
-		handleFiles(files);
+		handleFiles(e.dataTransfer.files);
 	}
 
 	function handleFiles(files) {
@@ -234,6 +209,7 @@ var totalImages = 0,
 			if (file.type.match("image.*") && !file.type.match("image/svg")) {
 				previewFile(file);
 				totalImagesDIV.textContent = ++totalImages;
+				gallery.classList.remove("empty");
 			} else {
 				console.warn("The file you are trying to upload is not a image! (file is: %s)", file.type.split("/")[1]);
 			}
@@ -241,14 +217,18 @@ var totalImages = 0,
 	}
 
 	function previewFile(file) {
-		let reader = new FileReader();
+		let reader = new FileReader(),
+				imageId = convertToCharCode(Date.now() * Math.random());
 		reader.readAsDataURL(file);
 		reader.onloadend = function() {
 			let img = document.createElement("img");
 			img.src = reader.result;
-			img.id = convertToCharCode(Date.now());
+			img.id = imageId;
 			img.style.cssText = "width:calc(180px);margin:5px;border-radius:6px;cursor:pointer;";
+			// Add to DOM
 			document.querySelector("#gallery").appendChild(img);
+			// Add to image gallery object
+			imageGallery[imageId] = img.src;
 			//getDataUrl(img);
 		}
 	}
@@ -290,15 +270,28 @@ var totalImages = 0,
 
 	function removeImage(e) {
 		if (e.target.tagName == "IMG") {
-			e.target.remove();
-			totalImagesDIV.textContent = --totalImages;
+			// Hide image options overlay
 			hideImageOptions();
+			// Remove from DOM
+			e.target.remove();
+			// Remove from image gallery object
+			delete imageGallery[e.target.id];
+			// Decrement image number
+			totalImagesDIV.textContent = --totalImages;
+			if (totalImages == 0) gallery.classList.add("empty");
 		}
 	}
 
 	function hideImageOptions() {
 		tmpTarget = "";
 		imageOptions.classList.add("hide");
+	}
+
+	function getImageGalleryKeys() {
+		return Object.keys(imageGallery)
+	}
+	function getImageGalleryValues() {
+		return Object.values(imageGallery)
 	}
 
 </script>
