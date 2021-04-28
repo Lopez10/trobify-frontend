@@ -142,7 +142,9 @@
 									<div class="button" style="display:inline-block;">Select some files</div>
 								</label>
 							</div>
-							<div id="gallery" class="gallery"></div>
+							<div id="gallery" class="gallery">
+								<div class="imageOptions hide" id="imageOptions"></div>
+							</div>
 							
 						</div>
 
@@ -160,7 +162,8 @@
 
 <script type="text/javascript">
 
-var totalImagesUploaded = 0;
+var totalImages = 0,
+		totalImagesDIV = document.getElementById("totalImagesUploaded");
 
 	// Get DataURL from image
 	function getDataUrl(img) {
@@ -227,11 +230,11 @@ var totalImagesUploaded = 0;
 	function handleFiles(files) {
 		files = [...files];
 		files.forEach( file => {
-			if (file.type.match("image.*")) {
+			if (file.type.match("image.*") && !file.type.match("image/svg")) {
 				previewFile(file);
-				document.getElementById("totalImagesUploaded").textContent = ++totalImagesUploaded;
+				totalImagesDIV.textContent = ++totalImages;
 			} else {
-				console.warn("The file you are trying to upload is not a image! (%s)", file.type.split("/")[1]);
+				console.warn("The file you are trying to upload is not a image! (file is: %s)", file.type.split("/")[1]);
 			}
 		})
 	}
@@ -243,7 +246,7 @@ var totalImagesUploaded = 0;
 			let img = document.createElement("img");
 			img.src = reader.result;
 			img.id = convertToCharCode(Date.now());
-			img.style.cssText = "width:calc(180px);margin:5px;border-radius:6px;";
+			img.style.cssText = "width:calc(180px);margin:5px;border-radius:6px;cursor:pointer;";
 			document.querySelector("#gallery").appendChild(img);
 			//getDataUrl(img);
 		}
@@ -259,27 +262,41 @@ var totalImagesUploaded = 0;
         .join('');     // join values together
 }
 
-	document.querySelector("#gallery").addEventListener("mousemove", detectImage);
-	document.querySelector("#gallery").addEventListener("mouseleave", () => { tmpTarget = "" });
+	var gallery = document.querySelector("#gallery"),
+			imageOptions = document.querySelector("#imageOptions");
+	gallery.addEventListener("mousemove", detectImage);
+	gallery.addEventListener("click", removeImage);
+	gallery.addEventListener("mouseleave", hideImageOptions);
 
 	var tmpTarget;
 	function detectImage(e) {
 		if (e.target.id != tmpTarget) {
 			if (e.target.tagName == "IMG") {
-				showOptions(e.target.id)
-			} else hideOptions(tmpTarget);
+				showImageOptions(e.target.id)
+			} else hideImageOptions();
 		}
 		tmpTarget = e.target.id;
 	}
 
-	function showOptions(id) {
-		console.log("entra de la imagen %s", id);
+	function showImageOptions(id) {
+		var pos = document.getElementById(id).getBoundingClientRect();
+		imageOptions.style.top = pos.top + "px";
+		imageOptions.style.left = pos.left + "px";
+		imageOptions.style.width = pos.width + "px";
+		imageOptions.style.height = pos.height + "px";
+		imageOptions.classList.remove("hide");
 	}
 
-	function hideOptions(id) {
-		if (id != "") {
-			console.log("sale de la imagen %s", id);
-		}
+	function removeImage(e) {
+		console.log("eliminar la imagen %s", e.target.id);
+		e.target.remove();
+		totalImagesDIV.textContent = --totalImages;
+		hideImageOptions();
+	}
+
+	function hideImageOptions() {
+		tmpTarget = "";
+		imageOptions.classList.add("hide");
 	}
 
 	
