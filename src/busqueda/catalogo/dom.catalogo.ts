@@ -1,4 +1,14 @@
 export function catalogDom(div: any, item: any) {
+	let enlace = document.createElement('a');
+	enlace.href =
+		'http://localhost:8080/public/inmueble.html' +
+		'?catastro=' +
+		item.catastro.toString() +
+		'&modo=' +
+		item.id_modalidad;
+	let nombreEnlace = document.createTextNode('enlace');
+	enlace.appendChild(nombreEnlace);
+
 	let property = document.createElement('div');
 	property.className = 'property_item';
 
@@ -7,6 +17,7 @@ export function catalogDom(div: any, item: any) {
 	photo.style.backgroundImage = 'url(' + item.urlImg + ')';
 	property.appendChild(photo);
 
+	property.appendChild(enlace);
 	let content = document.createElement('div');
 	content.className = 'content';
 
