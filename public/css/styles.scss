@@ -350,17 +350,18 @@ label {
       transition: all .1s ease-out;
     }
   }
-}
-.dropArea.highlight {
-  border-color: rgba($color-black, .2);
-  background: rgba($color-black, .05);
 
-  p {
-    color: rgba($color-black, .5);
-  }
-
-  .button {
-    background: rgba($color-black, .1);
+  &.highlight, &:hover {
+    border-color: rgba($color-black, .2);
+    background: rgba($color-black, .05);
+  
+    p {
+      color: rgba($color-black, .5);
+    }
+  
+    .button {
+      background: rgba($color-black, .1);
+    }
   }
 }
 .gallery {

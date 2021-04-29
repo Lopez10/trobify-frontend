@@ -494,16 +494,16 @@ label .label::before {
   transition: all .1s ease-out;
 }
 
-.dropArea.highlight {
+.dropArea.highlight, .dropArea:hover {
   border-color: rgba(29, 29, 29, 0.2);
   background: rgba(29, 29, 29, 0.05);
 }
 
-.dropArea.highlight p {
+.dropArea.highlight p, .dropArea:hover p {
   color: rgba(29, 29, 29, 0.5);
 }
 
-.dropArea.highlight .button {
+.dropArea.highlight .button, .dropArea:hover .button {
   background: rgba(29, 29, 29, 0.1);
 }
 
