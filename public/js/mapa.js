@@ -36,9 +36,10 @@ export function mostrarMapa(ubicaciones, latitud, longitud, zm) {
 			addMarkerToGroup(
 				group,
 				{ lat: result.latitud, lng: result.longitud },
-				'<div><a href="http://localhost:8080/public/' +
+				'<div><a href="http://localhost:3000/inmueble/' +
 					result.catastro +
-					1 +
+					'/' +
+					result.id_modalidad +
 					'.html" target="_blank"><b>Ficha de inmueble</b></a></div>' +
 					'<div>' +
 					'Precio: ' +
