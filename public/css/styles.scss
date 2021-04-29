@@ -340,6 +340,10 @@ label {
   text-align: center;
   transition: all .1s ease-out;
 
+  .fileInput {
+    display: none;
+  }
+
   label {
     padding: 5rem 4rem;
     margin: 0;
@@ -422,19 +426,6 @@ label {
       opacity: 0;
     }
   }
-}
-.button {
-  display: inline-block;
-  padding: 1rem;
-  background: $color-grey-input;
-  cursor: pointer;
-  border-radius: 1rem;
-}
-.button:hover {
-  background: $color-grey-selection;
-}
-.fileElement {
-  display: none;
 }
 
 // => Selector

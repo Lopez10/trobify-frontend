@@ -481,6 +481,10 @@ label .label::before {
   transition: all .1s ease-out;
 }
 
+.dropArea .fileInput {
+  display: none;
+}
+
 .dropArea label {
   padding: 5rem 4rem;
   margin: 0;
@@ -576,22 +580,6 @@ label .label::before {
 
 .gallery .imageOptions.hide {
   opacity: 0;
-}
-
-.button {
-  display: inline-block;
-  padding: 1rem;
-  background: #E3E3E3;
-  cursor: pointer;
-  border-radius: 1rem;
-}
-
-.button:hover {
-  background: #DBDBDB;
-}
-
-.fileElement {
-  display: none;
 }
 
 .select {
