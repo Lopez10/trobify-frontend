@@ -217,9 +217,9 @@ var dropArea = document.querySelector("#dropArea"),
 	}
 
 	function previewFile(file) {
-		let reader = new FileReader(),
-				imageId = convertToCharCode(Date.now() * Math.random());
+		let reader = new FileReader();
 		reader.readAsDataURL(file);
+		/*
 		reader.onloadend = function() {
 			let img = document.createElement("img");
 			img.src = reader.result;
@@ -229,8 +229,27 @@ var dropArea = document.querySelector("#dropArea"),
 			document.querySelector("#gallery").appendChild(img);
 			// Add to image gallery object
 			imageGallery[imageId] = img.src;
-			//getDataUrl(img);
 		}
+		*/
+		reader.onloadend = function() {
+			addImage(reader.result);
+		};
+	}
+
+	function addImage(url) {
+		let img = document.createElement("img"),
+		imageId = convertToCharCode(Date.now() * Math.random());
+		img.src = url;
+		img.id = imageId;
+		img.style.cssText = "width:180px;margin:5px;border-radius:6px;cursor:pointer;";
+		// Add to DOM
+		document.querySelector("#gallery").appendChild(img);
+		// Add to image gallery object
+		imageGallery[imageId] = img.src;
+	}
+
+	function addImages(imgs) {
+		imgs.forEach(img => addImage(img));
 	}
 
 	function convertToCharCode(num) {
