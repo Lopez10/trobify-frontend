@@ -37,10 +37,10 @@
 						<div class="flexbox column block round form">
 
 							<div class="label title">Tipo de inmueble</div>
-							<select name="propertyType" class="select">
-								<option value="1">Vivienda</option>
-								<option value="2">Garaje</option>
-								<option value="3">Local Comercial</option>
+							<select name="propertyType" class="select" id="formSelector">
+								<option value="0">Vivienda</option>
+								<option value="1">Garaje</option>
+								<option value="2">Local comercial</option>
 							</select>
 
 							<div class="label title">Método de venta</div>
@@ -66,11 +66,9 @@
 							<input class="mode-fill" type="text" name="location" id="location"
 								placeholder="100.000 €" value="" required />
 
-						</div>
+							<div class="propertyTypeHome" id="propertyTypeHome">
 
-						<div class="filters flexbox column block round form spaced-top">
-
-							<div class="propertyType-home">
+								<div class="sep"></div>
 
 								<div class="label title">Tipo de vivienda</div>
 								<select name="homeType" class="select">
@@ -81,21 +79,12 @@
 								</select>
 
 								<div class="label title">Habitaciones</div>
-								<select name="roomCount" class="select">
-									<option value="1">0 (estudio)</option>
-									<option value="2">1</option>
-									<option value="3">2</option>
-									<option value="4">3</option>
-									<option value="5">4 o más</option>
-								</select>
+								<input class="mode-fill" name="roomCount" type="number" min="0" value="0"
+									step="1" />
 
 								<div class="label title">Baños</div>
-								<select name="bathroomCount" class="select">
-									<option value="1">0</option>
-									<option value="2">1</option>
-									<option value="3">2</option>
-									<option value="4">3 o más</option>
-								</select>
+								<input class="mode-fill" name="bathroomCount" type="number" min="0" value="0"
+									step="1" />
 
 								<div class="label title optional">Características</div>
 								<label><input name="feature featureElevator" type="checkbox" value="1" />
@@ -125,6 +114,16 @@
 								<label><input name="feature featureStorageRoom" type="checkbox" value="9" />
 									<div class="label bold">Trastero</div>
 								</label>
+
+							</div>
+
+							<div class="propertyTypeComercial hideElement" id="propertyTypeComercial">
+
+								<div class="sep"></div>
+
+								<div class="label title">Baños</div>
+								<input class="mode-fill" name="bathroomCount" type="number" min="0" value="0"
+									step="1" />
 
 							</div>
 
@@ -169,6 +168,24 @@
 </body>
 
 <script type="text/javascript">
+
+	// Dynamic form
+
+	var formSelector = document.getElementById("formSelector"),
+		formSelectorValue = ["propertyTypeHome", "", "propertyTypeComercial"];
+
+	formSelector.addEventListener("change", changeForm, false);
+
+	window.onload(changeForm());
+
+	function changeForm() {
+		formSelectorValue.forEach(v => {
+			if (v != "") document.getElementById(v).classList.add("hideElement");
+		});
+		if (formSelector.value != 1) document.getElementById(formSelectorValue[formSelector.value]).classList.remove("hideElement");
+	}
+
+	// Image upload
 
 	var dropArea = document.querySelector("#dropArea"),
 		totalImages = 0,
@@ -216,8 +233,6 @@
 		files.forEach(file => {
 			if (file.type.match("image.*") && !file.type.match("image/svg")) {
 				previewFile(file);
-				totalImagesDIV.textContent = ++totalImages;
-				gallery.classList.remove("empty");
 			} else {
 				console.warn("The file you are trying to upload is not a image! (file is: %s)", file.type.split("/")[1]);
 			}
@@ -227,18 +242,6 @@
 	function previewFile(file) {
 		let reader = new FileReader();
 		reader.readAsDataURL(file);
-		/*
-		reader.onloadend = function() {
-			let img = document.createElement("img");
-			img.src = reader.result;
-			img.id = imageId;
-			img.style.cssText = "width:calc(180px);margin:5px;border-radius:6px;cursor:pointer;";
-			// Add to DOM
-			document.querySelector("#gallery").appendChild(img);
-			// Add to image gallery object
-			imageGallery[imageId] = img.src;
-		}
-		*/
 		reader.onloadend = function () {
 			addImage(reader.result);
 		};
@@ -254,6 +257,11 @@
 		document.querySelector("#gallery").appendChild(img);
 		// Add to image gallery object
 		imageGallery[imageId] = img.src;
+		// Increment image count
+		totalImagesDIV.textContent = ++totalImages;
+		if (totalImages > 0) {
+			gallery.classList.remove("empty");
+		}
 	}
 
 	function addImages(imgs) {

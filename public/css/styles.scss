@@ -873,7 +873,7 @@ svg.icon{
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    border-radius: 3rem;
+    border-radius: 1rem;
   }
 
   .location, .features {
@@ -900,4 +900,10 @@ svg.icon{
       margin-right: 0;
     }
   }
+}
+
+// Other 
+
+.hideElement {
+  display: none;
 }

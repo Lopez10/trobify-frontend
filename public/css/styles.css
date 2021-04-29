@@ -1104,7 +1104,7 @@ svg.icon {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  border-radius: 3rem;
+  border-radius: 1rem;
 }
 
 .property_item .location, .property_item .features {
@@ -1140,5 +1140,9 @@ svg.icon {
 
 .property_item .actions .button:last-child {
   margin-right: 0;
+}
+
+.hideElement {
+  display: none;
 }
 /*# sourceMappingURL=styles.css.map */
