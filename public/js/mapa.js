@@ -36,34 +36,14 @@ export function mostrarMapa(ubicaciones, latitud, longitud, zm) {
 			addMarkerToGroup(
 				group,
 				{ lat: result.latitud, lng: result.longitud },
-				'<div><a href="http://localhost:8080/public/construccion.html" target="_blank"><b>' +
+				'<div><a href="http://localhost:8080/public/' +
 					result.catastro +
-					'</b></a></div>' +
+					1 +
+					'.html" target="_blank"><b>Ficha de inmueble</b></a></div>' +
 					'<div>' +
 					'Precio: ' +
 					result.precio +
 					' € <br>' +
-					'Superficie: ' +
-					result.area +
-					' m <sup>2</sup><br>' +
-					'Habitaciones: ' +
-					result.nHab +
-					'<br>' +
-					'Baños: ' +
-					result.nBan +
-					'<br>' +
-					'Cocinas: ' +
-					result.nCoc +
-					'<br>' +
-					'Certif. Energética: ' +
-					result.certif +
-					'<br>' +
-					'Estado: ' +
-					result.estado +
-					'<br>' +
-					'Tipo de Vivienda: ' +
-					result.tpoViv +
-					'<br>' +
 					'</div>'
 			);
 		});
