@@ -1,4 +1,4 @@
-export function mostrarMapa(ubicaciones, latitud, longitud, zm) {
+export function mostrarMapa(ubicaciones, latitud, longitud, zm, unico) {
 	// Parte común  -----------------------------------------------------------
 	var platform = new H.service.Platform({
 		apikey: 'TEwOAo-zrGY4x4fsz8YFwBK4tLdyk7wPuoicDhmRb0k',
@@ -9,13 +9,11 @@ export function mostrarMapa(ubicaciones, latitud, longitud, zm) {
 		zoom: zm,
 		pixelRatio: window.devicePixelRatio || 1,
 	});
-	console.log(map);
 	window.addEventListener('resize', function () {
 		return map.getViewPort().resize();
 	});
 	var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 	var ui = H.ui.UI.createDefault(map, defaultLayers);
-	console.log(ui);
 	// Parte común  -----------------------------------------------------------
 	// Parte funcional  -------------------------------------------------------
 	var group = new H.map.Group();
@@ -32,24 +30,32 @@ export function mostrarMapa(ubicaciones, latitud, longitud, zm) {
 	);
 	// Bucle
 	ubicaciones.then((item) => {
-		item.forEach((result) => {
-			addMarkerToGroup(
-				group,
-				{ lat: result.latitud, lng: result.longitud },
-				'<div><a href="http://localhost:8080/public/inmueble.html' +
-					'?catastro=' +
-					result.catastro +
-					'&modo=' +
-					result.id_modalidad +
-					'" target="_blank"><b>Enlace</b></a></div>' +
-					'<div>' +
-					'Precio: ' +
-					result.precio +
-					' € <br>' +
-					'</div>'
-			);
-		});
+		if (unico === true) {
+			crearPuntero(item);
+		} else {
+			item.forEach((result) => {
+				crearPuntero(result);
+			});
+		}
 	});
+
+	function crearPuntero(item) {
+		addMarkerToGroup(
+			group,
+			{ lat: item.latitud, lng: item.longitud },
+			'<div><a href="http://localhost:8080/public/inmueble.html' +
+				'?catastro=' +
+				item.catastro +
+				'&modo=' +
+				item.id_modalidad +
+				'" target="_blank"><b>Enlace</b></a></div>' +
+				'<div>' +
+				'Precio: ' +
+				item.precio +
+				' € <br>' +
+				'</div>'
+		);
+	}
 	// Parte funcional  -------------------------------------------------------
 }
 
