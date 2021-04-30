@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { InmuebleInterface } from '../interface/inmueble.interface';
 export class Inmueble {
 	constructor() {
 		this.aplicarFiltros();
@@ -28,27 +28,29 @@ export class Inmueble {
 			document.querySelector('#formNewProperty') || document.createElement('form');
 		registroForm.onsubmit = () => {
 			const formData = new FormData(registroForm);
-			let propertyType = (formData.get('propertyType') as unknown) as number;
+			let propertyType = formData.get('propertyType') as string;
 			let propertyMethod = (formData.get('propertyMethod') as unknown) as number;
-			let catast = (formData.get('catast') as unknown) as number;
+			let catast = formData.get('catast') as string;
 			let place = formData.get('place') as string;
 			let descripcion = formData.get('descripcion') as string;
+			let estado = formData.get('stdo') as string;
+			let energia = formData.get('energia') as string;
 			let provincia = (formData.get('provincia') as unknown) as number;
 			let superficie = (formData.get('superficie') as unknown) as number;
 			let precio = (formData.get('precio') as unknown) as number;
-			let homeType = (formData.get('homeType') as unknown) as number;
+			let homeType = formData.get('homeType') as string;
 			let roomCount = (formData.get('roomCount') as unknown) as number;
 			let bathroomCount = (formData.get('bathroomCount') as unknown) as number;
-
-			let feature = ((formData.getAll('feature') as unknown) as Array<String>).join(',') as string;
+			console.log(bathroomCount);
+			let feature = ((formData.getAll('feature') as unknown) as Array<String>).join(',');
 			//let clfEn = (formData.get('clfEn') as unknown) as number; // Por que no se puede seleccionar en ningún sitio
-			let params = {
+			const params: InmuebleInterface = {
 				cantBanos: bathroomCount,
 				cantHab: roomCount,
 				caracteristicas: feature,
 				descripcion: descripcion,
 				direccion: place,
-				estadoInmueble: propertyType,
+				estadoInmueble: estado,
 				id_catastro: catast,
 				superficie: superficie,
 				modalidad: propertyMethod,
@@ -56,17 +58,17 @@ export class Inmueble {
 				provincia: provincia || 46,
 				tipoVivienda: homeType,
 				descuento: 0,
-				energia: 'A++',
-				tipoInmueble: 'Vivienda',
+				energia: energia,
+				tipoInmueble: propertyType,
 				propietario: 1,
 			};
 			this.postInmueble(params);
-
+			console.log(params);
 			return false;
 		};
 	}
 	async postInmueble(inmueble: any) {
-		const myRequest = 'http://localhost:3000/login';
+		const myRequest = 'http://localhost:3000/inmueble';
 		axios.post(myRequest, inmueble).then(
 			(response) => {
 				console.log(response.data);
