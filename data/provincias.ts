@@ -16,7 +16,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Vitoria-Gasteiz',
 			latitud: 42.84641,
 			longitud: -2.667893,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 2,
@@ -24,7 +24,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Albacete',
 			latitud: 38.99765,
 			longitud: -1.86007,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 3,
@@ -32,7 +32,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Alicante/Alacant',
 			latitud: 38.3452,
 			longitud: -0.481006,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 4,
@@ -40,7 +40,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Almería',
 			latitud: 36.84016,
 			longitud: -2.467922,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 5,
@@ -48,7 +48,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Ávila',
 			latitud: 40.65642,
 			longitud: -4.700323,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 6,
@@ -56,7 +56,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Badajoz',
 			latitud: 38.8786,
 			longitud: -6.970284,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 7,
@@ -64,7 +64,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Palma',
 			latitud: 39.56951,
 			longitud: 2.649966,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 8,
@@ -72,7 +72,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Barcelona',
 			latitud: 41.38792,
 			longitud: 2.169919,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 9,
@@ -80,7 +80,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Burgos',
 			latitud: 42.34087,
 			longitud: -3.699731,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 10,
@@ -88,7 +88,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Cáceres',
 			latitud: 39.47618,
 			longitud: -6.37076,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 11,
@@ -96,7 +96,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Cádiz',
 			latitud: 36.52969,
 			longitud: -6.292657,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 12,
@@ -104,7 +104,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Castellón de la Plana',
 			latitud: 39.98598,
 			longitud: -0.0376709,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 13,
@@ -112,7 +112,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Ciudad Real',
 			latitud: 38.9861,
 			longitud: -3.927263,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 14,
@@ -120,7 +120,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Córdoba',
 			latitud: 37.88473,
 			longitud: -4.779152,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 15,
@@ -128,7 +128,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Coruña { A }',
 			latitud: 43.37087,
 			longitud: -8.395835,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 16,
@@ -136,7 +136,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Cuenca',
 			latitud: 40.07183,
 			longitud: -2.134005,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 17,
@@ -144,7 +144,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Girona',
 			latitud: 41.9818,
 			longitud: 2.8237,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 18,
@@ -152,7 +152,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Granada',
 			latitud: 37.17649,
 			longitud: -3.597929,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 19,
@@ -160,7 +160,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Guadalajara',
 			latitud: 40.62981,
 			longitud: -3.166493,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 20,
@@ -168,7 +168,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'San Sebastián',
 			latitud: 43.32074,
 			longitud: -1.984421,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 21,
@@ -176,7 +176,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Huelva',
 			latitud: 37.2571,
 			longitud: -6.949555,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 22,
@@ -184,7 +184,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Huesca',
 			latitud: 42.1401,
 			longitud: -0.408898,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 23,
@@ -192,7 +192,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Jaén',
 			latitud: 37.76574,
 			longitud: -3.789518,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 24,
@@ -200,7 +200,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'León',
 			latitud: 42.59988,
 			longitud: -5.571752,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 25,
@@ -208,7 +208,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Lleida',
 			latitud: 41.61415,
 			longitud: 0.6257825,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 26,
@@ -216,7 +216,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Logroño',
 			latitud: 42.46577,
 			longitud: -2.449995,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 27,
@@ -224,7 +224,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Lugo',
 			latitud: 43.01208,
 			longitud: -7.555851,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 28,
@@ -232,7 +232,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Madrid',
 			latitud: 40.41669,
 			longitud: -3.700346,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 29,
@@ -240,7 +240,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Málaga',
 			latitud: 36.71965,
 			longitud: -4.420019,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 30,
@@ -248,7 +248,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Murcia',
 			latitud: 37.98344,
 			longitud: -1.12989,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 31,
@@ -256,7 +256,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Pamplona',
 			latitud: 42.81721,
 			longitud: -1.646767,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 32,
@@ -264,7 +264,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Ourense',
 			latitud: 42.34001,
 			longitud: -7.864641,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 33,
@@ -272,7 +272,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Oviedo',
 			latitud: 43.36026,
 			longitud: -5.844759,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 34,
@@ -280,7 +280,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Palencia',
 			latitud: 42.01246,
 			longitud: -4.531175,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 35,
@@ -288,7 +288,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Las Palmas de Gran Canaria',
 			latitud: 28.12482,
 			longitud: -15.43001,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 36,
@@ -296,7 +296,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Pontevedra',
 			latitud: 42.43362,
 			longitud: -8.648053,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 37,
@@ -304,7 +304,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Salamanca',
 			latitud: 40.96497,
 			longitud: -5.663047,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 38,
@@ -312,7 +312,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Santa Cruz de Tenerife',
 			latitud: 28.46981,
 			longitud: -16.25486,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 39,
@@ -320,7 +320,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Santander',
 			latitud: 43.46096,
 			longitud: -3.807934,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 40,
@@ -328,7 +328,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Segovia',
 			latitud: 40.94943,
 			longitud: -4.119209,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 41,
@@ -336,7 +336,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Sevilla',
 			latitud: 37.38264,
 			longitud: -5.996295,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 42,
@@ -344,7 +344,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Soria',
 			latitud: 41.7636,
 			longitud: -2.464921,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 43,
@@ -352,7 +352,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Tarragona',
 			latitud: 41.11866,
 			longitud: 1.24533,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 44,
@@ -360,7 +360,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Teruel',
 			latitud: 40.34411,
 			longitud: -1.10691,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 45,
@@ -368,7 +368,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Toledo',
 			latitud: 39.85678,
 			longitud: -4.024476,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 46,
@@ -376,7 +376,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Valencia',
 			latitud: 39.47024,
 			longitud: -0.3768049,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 47,
@@ -384,7 +384,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Valladolid',
 			latitud: 41.65295,
 			longitud: -4.728388,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 48,
@@ -392,7 +392,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Bilbao',
 			latitud: 43.25696,
 			longitud: -2.923441,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 49,
@@ -400,7 +400,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Zamora',
 			latitud: 41.50368,
 			longitud: -5.743778,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 50,
@@ -408,7 +408,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Zaragoza',
 			latitud: 41.65629,
 			longitud: -0.8765379,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 51,
@@ -416,7 +416,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Ceuta',
 			latitud: 35.88829,
 			longitud: -5.316195,
-			zoom: 10,
+			zoom: 12,
 		},
 		{
 			codigoPostal: 52,
@@ -424,7 +424,7 @@ export function obtenerProvincias(): Array<Provincia> {
 			capital: 'Melilla',
 			latitud: 35.29234,
 			longitud: -2.938794,
-			zoom: 10,
+			zoom: 12,
 		},
 	];
 	return provincias;
