@@ -1,6 +1,6 @@
 export interface InmuebleInterface {
 	id_catastro: string;
-	tipoInmueble: string;
+	tipoInmueble: number;
 	estadoInmueble: string;
 	energia: string;
 	imagen?: string[];
@@ -17,7 +17,7 @@ export interface InmuebleInterface {
 	caracteristicas: string;
 	extras?: string[];
 
-	modalidad: number;
+	modalidad: number[];
 	precio: number;
 	descuento: number;
 	propietario: number;

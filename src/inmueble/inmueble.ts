@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { InmuebleInterface } from '../interface/inmueble.interface';
 export class Inmueble {
 	constructor() {
 		this.aplicarFiltros();
@@ -29,7 +28,6 @@ export class Inmueble {
 		registroForm.onsubmit = () => {
 			const formData = new FormData(registroForm);
 			let propertyType = formData.get('propertyType') as string;
-			let propertyMethod = formData.get('propertyMethod') as string;
 			let catast = formData.get('catast') as string;
 			let place = formData.get('place') as string;
 			let descripcion = formData.get('descripcion') as string;
@@ -42,27 +40,32 @@ export class Inmueble {
 			let roomCount = formData.get('roomCount') as string;
 			let bathroomCount = formData.get('bathroomCount') as string;
 			let feature = ((formData.getAll('feature') as unknown) as Array<String>).join(',');
+			let propertyMethod = ((formData.getAll('propertyMethod') as unknown) as Array<String>).join(
+				','
+			);
+			let modo = propertyMethod.split(',').map((x) => +x);
+			let caract = feature.split(',').map((x) => +x);
+
 			//let clfEn = (formData.get('clfEn') as unknown) as number; // Por que no se puede seleccionar en ningún sitio
-			const params: InmuebleInterface = {
+			const params: any = {
 				cantBanos: +bathroomCount,
 				cantHab: +roomCount,
-				caracteristicas: feature,
+				caracteristicas: caract,
 				descripcion: descripcion,
 				direccion: place,
-				estadoInmueble: estado,
+				estadoInmueble: +estado,
 				id_catastro: catast,
 				superficie: +superficie,
-				modalidad: +propertyMethod,
+				modalidad: modo,
 				precio: +precio,
 				provincia: +provincia || 46,
-				tipoVivienda: homeType,
+				tipoVivienda: +homeType,
 				descuento: 0,
-				energia: energia,
-				tipoInmueble: propertyType,
+				energia: +energia,
+				tipoInmueble: +propertyType,
 				propietario: 1,
 			};
 			this.postInmueble(params);
-			console.log(params);
 			return false;
 		};
 	}

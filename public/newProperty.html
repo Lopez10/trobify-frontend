@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Registrar Inmueble</title>
 	<link rel="stylesheet" href="./css/styles.css" />
+
 </head>
 
 <body>
@@ -38,32 +39,39 @@
 
 							<div class="label title">Tipo de inmueble</div>
 							<select name="propertyType" class="select" id="formSelector">
-								<option value="Vivienda">Vivienda</option>
-								<option value="Garaje">Garaje</option>
-								<option value="Local comercial">Local comercial</option>
+								<option value="3">Vivienda</option>
+								<option value="1">Garaje</option>
+								<option value="2">Local comercial</option>
 							</select>
 
-							<div class="label title">Método de venta</div>
-							<select name="propertyMethod" class="select">
-								<option value="1">Vender</option>
-								<option value="2">Alquilar</option>
-							</select>
+							<div class="label title optional">Método de venta</div>
+							<label><input name="propertyMethod" type="checkbox" value="1" />
+								<div class="label bold">Venta</div>
+							</label>
+							<label><input name="propertyMethod" type="checkbox" value="2" />
+								<div class="label bold">Alquiler</div>
+							</label>
 
 							<div class="label title">Estado de inmueble</div>
 							<select class="select" name="stdo">
-								<option value="Reformado">Reformado</option>
-								<option value="Buen estado">Buen estado</option>
-								<option value="A reformar">A reformar</option>
-								<option value="Obra nueva">Obra nueva</option>
+								<option value="3">Reformado</option>
+								<option value="2">Buen estado</option>
+								<option value="4">A reformar</option>
+								<option value="1">Obra nueva</option>
 							</select>
 
 							<div class="label title">Energia</div>
 
 							<select class="select" name="energia">
-								<option value="A">A</option>
-								<option value="A+">A+</option>
-								<option value="A++">A++</option>
-								<option value="A+++">A+++</option>
+								<option value="1">A++</option>
+								<option value="2">A+</option>
+								<option value="3">A</option>
+								<option value="4">B</option>
+								<option value="5">C</option>
+								<option value="6">D</option>
+								<option value="7">E</option>
+								<option value="8">F</option>
+								<option value="9">G</option>
 							</select>
 
 							<div class="label title">Catastro</div>
@@ -92,10 +100,14 @@
 
 							<div class="label title">Tipo de vivienda</div>
 							<select name="homeType" class="select">
-								<option value="Piso">Piso</option>
-								<option value="Ático">Ático</option>
-								<option value="Bajo">Bajo</option>
-								<option value="Dúplex">Dúplex</option>
+								<option value="3">Planta Intermedia</option>
+								<option value="4">Duplex</option>
+								<option value="5">Loft</option>
+								<option value="7">Casa</option>
+								<option value="8">Chalet</option>
+								<option value="9">Adosado</option>
+								<option value="6">Bajo</option>
+								<option value="10">Finca rustica</option>
 							</select>
 
 							<div class="label title">Habitaciones</div>
@@ -206,7 +218,8 @@
 		formSelectorValue.forEach(v => {
 			if (v != "") document.getElementById(v).classList.add("hideElement");
 		});
-		if (formSelector.value != 1) document.getElementById(formSelectorValue[formSelector.value]).classList.remove("hideElement");
+		if (formSelector.value != 1)
+			document.getElementById(formSelectorValue[formSelector.value]).classList.remove("hideElement");
 	}
 
 	// Image upload
@@ -294,12 +307,12 @@
 
 	function convertToCharCode(num) {
 		return num
-			.toString()    // convert number to string
-			.split('')     // convert string to array of characters
-			.map(Number)   // parse characters as numbers
-			.map(n => (n || 10) + 64)   // convert to char code, correcting for J
-			.map(c => String.fromCharCode(c))   // convert char codes to strings
-			.join('');     // join values together
+			.toString() // convert number to string
+			.split('') // convert string to array of characters
+			.map(Number) // parse characters as numbers
+			.map(n => (n || 10) + 64) // convert to char code, correcting for J
+			.map(c => String.fromCharCode(c)) // convert char codes to strings
+			.join(''); // join values together
 	}
 
 	var gallery = document.querySelector("#gallery"),
@@ -350,7 +363,7 @@
 		return Object.keys(imageGallery)
 	}
 	function getImageGalleryValues() {
-		return Object.values(imageGallery)
+		return Object.values(imageGallery);
 	}
 
 </script>
