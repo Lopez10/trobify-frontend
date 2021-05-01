@@ -257,17 +257,21 @@
 	propertyMethodS.addEventListener("change", changeMethod, false);
 	propertyMethodR.addEventListener("change", changeMethod, false);
 
-
-	window.onload = () => {
+	window.onload(function() {
 		changeForm();
 
 		propertyMethodS.checked = false;
 		propertyMethodR.checked = false;
+<<<<<<< HEAD
 	};
 
 
+=======
+	});
+>>>>>>> parent of bd8362f (window.onload error mitigated)
 
 	function changeForm() {
+		console.log(formSelector.value);
 		formSelectorValue.forEach(v => {
 			if (v != "") document.getElementById(v).classList.add("hideElement");
 		});
