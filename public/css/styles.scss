@@ -697,7 +697,7 @@ svg.icon{
   &.yellow {
     color: $color-yellow;
   }
-  &.red {
+  &.red, &.alert {
     color: $color-red;
   }
 
@@ -905,5 +905,5 @@ svg.icon{
 // Other 
 
 .hideElement {
-  display: none;
+  display: none !important;
 }
