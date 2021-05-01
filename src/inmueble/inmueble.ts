@@ -29,33 +29,32 @@ export class Inmueble {
 		registroForm.onsubmit = () => {
 			const formData = new FormData(registroForm);
 			let propertyType = formData.get('propertyType') as string;
-			let propertyMethod = (formData.get('propertyMethod') as unknown) as number;
+			let propertyMethod = formData.get('propertyMethod') as string;
 			let catast = formData.get('catast') as string;
 			let place = formData.get('place') as string;
 			let descripcion = formData.get('descripcion') as string;
 			let estado = formData.get('stdo') as string;
 			let energia = formData.get('energia') as string;
-			let provincia = (formData.get('provincia') as unknown) as number;
-			let superficie = (formData.get('superficie') as unknown) as number;
-			let precio = (formData.get('precio') as unknown) as number;
+			let provincia = formData.get('provincia') as string;
+			let superficie = formData.get('superficie') as string;
+			let precio = formData.get('precio') as string;
 			let homeType = formData.get('homeType') as string;
-			let roomCount = (formData.get('roomCount') as unknown) as number;
-			let bathroomCount = (formData.get('bathroomCount') as unknown) as number;
-			console.log(bathroomCount);
+			let roomCount = formData.get('roomCount') as string;
+			let bathroomCount = formData.get('bathroomCount') as string;
 			let feature = ((formData.getAll('feature') as unknown) as Array<String>).join(',');
 			//let clfEn = (formData.get('clfEn') as unknown) as number; // Por que no se puede seleccionar en ningún sitio
 			const params: InmuebleInterface = {
-				cantBanos: bathroomCount,
-				cantHab: roomCount,
+				cantBanos: +bathroomCount,
+				cantHab: +roomCount,
 				caracteristicas: feature,
 				descripcion: descripcion,
 				direccion: place,
 				estadoInmueble: estado,
 				id_catastro: catast,
-				superficie: superficie,
-				modalidad: propertyMethod,
-				precio: precio,
-				provincia: provincia || 46,
+				superficie: +superficie,
+				modalidad: +propertyMethod,
+				precio: +precio,
+				provincia: +provincia || 46,
 				tipoVivienda: homeType,
 				descuento: 0,
 				energia: energia,
