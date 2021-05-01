@@ -257,15 +257,17 @@
 	propertyMethodS.addEventListener("change", changeMethod, false);
 	propertyMethodR.addEventListener("change", changeMethod, false);
 
-	window.onload(function () {
+
+	window.onload = () => {
 		changeForm();
 
 		propertyMethodS.checked = false;
 		propertyMethodR.checked = false;
-	});
+	};
+
+
 
 	function changeForm() {
-		console.log(formSelector.value);
 		formSelectorValue.forEach(v => {
 			if (v != "") document.getElementById(v).classList.add("hideElement");
 		});
