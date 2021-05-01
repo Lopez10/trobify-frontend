@@ -905,7 +905,7 @@ svg.icon {
   color: #FAC02B;
 }
 
-.label.red {
+.label.red, .label.alert {
   color: #FA4D2B;
 }
 
@@ -1143,6 +1143,6 @@ svg.icon {
 }
 
 .hideElement {
-  display: none;
+  display: none !important;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -39,25 +39,33 @@
 
 							<div class="label title">Tipo de inmueble</div>
 							<select name="propertyType" class="select" id="formSelector">
-								<option value="3">Vivienda</option>
 								<option value="1">Garaje</option>
 								<option value="2">Local comercial</option>
+								<option value="3" selected>Vivienda</option>
 							</select>
 
-							<div class="label title optional">Método de venta</div>
-							<label><input name="propertyMethod" type="checkbox" value="1" />
+							<div class="label title">Método de venta</div>
+							<label onclick="changeMethod()"><input name="propertyMethod" type="checkbox"
+									id="propertyMethodS" value="1" />
 								<div class="label bold">Venta</div>
 							</label>
-							<label><input name="propertyMethod" type="checkbox" value="2" />
+							<label onclick="changeMethod()"><input name="propertyMethod" type="checkbox"
+									id="propertyMethodR" value="2" />
 								<div class="label bold">Alquiler</div>
 							</label>
+							<!--
+							<select name="propertyMethod" class="select">
+								<option value="1">Vender</option>
+								<option value="2">Alquilar</option>
+							</select>
+							-->
 
 							<div class="label title">Estado de inmueble</div>
 							<select class="select" name="stdo">
-								<option value="3">Reformado</option>
-								<option value="2">Buen estado</option>
-								<option value="4">A reformar</option>
 								<option value="1">Obra nueva</option>
+								<option value="2">Buen estado</option>
+								<option value="3">Reformado</option>
+								<option value="4">A reformar</option>
 							</select>
 
 							<div class="label title">Energia</div>
@@ -91,12 +99,23 @@
 								placeholder="98 m²" value="" required />
 
 							<div class="label title">Precio</div>
-							<input class="mode-fill" type="text" name="precio" id="precio"
-								placeholder="100.000 €" value="" required />
 
-							<div class="propertyTypeHome" id="propertyTypeHome"> </div>
+							<div class="propertyMethodSPrice hideElement" id="propertyMethodSPrice">
+								<div class="label" style="margin-top:16px;">Precio de venta</div>
+								<input class="mode-fill" type="text" name="precio" id="precio"
+									placeholder="100.000 €" value="" required />
+							</div>
 
-							<div class="sep"></div>
+							<div class="propertyMethodRPrice hideElement" id="propertyMethodRPrice">
+								<div class="label" style="margin-top:16px;">Precio de alquiler (€/mes)</div>
+								<input class="mode-fill" type="text" name="precio" id="precio"
+									placeholder="700 € / mes" value="" required />
+							</div>
+
+							<div class="propertyMethodSPrice" id="propertyMethodNone">
+								<div class="label alert" style="margin-top:16px;">Selecciona método primero
+								</div>
+							</div>
 
 							<div class="label title">Tipo de vivienda</div>
 							<select name="homeType" class="select">
@@ -108,6 +127,22 @@
 								<option value="9">Adosado</option>
 								<option value="6">Bajo</option>
 								<option value="10">Finca rustica</option>
+							</select>
+
+							<div class="sep"></div>
+
+							<div class="label title">Tipo de vivienda</div>
+							<select name="homeType" class="select">
+								<option value="1">No es vivienda</option>
+								<option value="2">Ático</option>
+								<option value="3">Plantas intermedias</option>
+								<option value="4">Dúplex</option>
+								<option value="5">Loft</option>
+								<option value="6">Planta Baja</option>
+								<option value="7">Casa</option>
+								<option value="8">Chalet</option>
+								<option value="9">Adosado</option>
+								<option value="10">Finca Rústica</option>
 							</select>
 
 							<div class="label title">Habitaciones</div>
@@ -146,80 +181,121 @@
 								<div class="label bold">Trastero</div>
 							</label>
 
-
-
-							<div class="propertyTypeComercial hideElement" id="propertyTypeComercial">
-
-								<div class="sep"></div>
-
-								<div class="label title">Baños</div>
-								<input class="mode-fill" name="bathroomCount" type="number" min="0" value="0"
-									step="1" />
-
-							</div>
-
 						</div>
 
-					</div>
 
-					<div class="filters flexbox column spaced-top spaced" style="margin-right:0;">
+						<div class="propertyTypeComercial hideElement" id="propertyTypeComercial">
 
+							<div class="sep"></div>
 
-
-						<div class="filters flexbox column block round form">
-							<div class="label title">Descripcion</div>
-							<textarea class="mode-fill no-resize" name="descripcion" placeholder=""
-								required></textarea>
-							<div class="label title">Imágenes <div class="label detail"
-									style="margin-left: 6px;"><span id="totalImagesUploaded">0</span> imágenes
-								</div>
-							</div>
-
-							<div id="dropArea" class="dropArea">
-								<input type="file" class="fileInput" id="fileInput" multiple accept="image/*"
-									onchange="handleFiles(this.files)">
-								<label for="fileInput">
-									<p>Suelta imágenes o haz click</p>
-									<div class="button" style="display:inline-block;">Seleccionar imágenes
-									</div>
-								</label>
-							</div>
-							<div id="gallery" class="gallery empty">
-								<div class="imageOptions hide" id="imageOptions"></div>
-							</div>
+							<div class="label title">Baños</div>
+							<input class="mode-fill" name="bathroomCount" type="number" min="0" value="0"
+								step="1" />
 
 						</div>
-
 
 					</div>
 
 				</div>
 
+				<div class="filters flexbox column spaced-top spaced" style="margin-right:0;">
+
+
+
+					<div class="filters flexbox column block round form">
+						<div class="label title">Descripcion</div>
+						<textarea class="mode-fill no-resize" name="descripcion" placeholder=""
+							required></textarea>
+						<div class="label title">Imágenes <div class="label detail" style="margin-left: 6px;">
+								<span id="totalImagesUploaded">0</span> imágenes
+							</div>
+						</div>
+
+						<div id="dropArea" class="dropArea">
+							<input type="file" class="fileInput" id="fileInput" multiple accept="image/*"
+								onchange="handleFiles(this.files)">
+							<label for="fileInput">
+								<p>Suelta imágenes o haz click</p>
+								<div class="button" style="display:inline-block;">Seleccionar imágenes
+								</div>
+							</label>
+						</div>
+						<div id="gallery" class="gallery empty">
+							<div class="imageOptions hide" id="imageOptions"></div>
+						</div>
+
+					</div>
+
+
+				</div>
+
 			</div>
 
-		</form>
+	</div>
+
+	</form>
 
 	</div>
 
 </body>
 
-<script type="text/javascript" src="./inmueble.bundle.js">
+<script type="text/javascript" src="./inmueble.bundle.js"></script>
+
+<script type="text/javascript">
 
 	// Dynamic form
 
 	var formSelector = document.getElementById("formSelector"),
-		formSelectorValue = ["propertyTypeHome", "", "propertyTypeComercial"];
+		formSelectorValue = ["", "", "propertyTypeComercial", "propertyTypeHome"],
+		propertyMethodS = document.getElementById("propertyMethodS"),
+		propertyMethodR = document.getElementById("propertyMethodR"),
+		propertyMethodSPrice = document.getElementById("propertyMethodSPrice"),
+		propertyMethodRPrice = document.getElementById("propertyMethodRPrice"),
+		propertyMethodNone = document.getElementById("propertyMethodNone");
 
 	formSelector.addEventListener("change", changeForm, false);
+	propertyMethodS.addEventListener("change", changeMethod, false);
+	propertyMethodR.addEventListener("change", changeMethod, false);
 
-	window.onload(changeForm());
+	window.onload(function () {
+		changeForm();
+
+		propertyMethodS.checked = false;
+		propertyMethodR.checked = false;
+	});
 
 	function changeForm() {
+		console.log(formSelector.value);
 		formSelectorValue.forEach(v => {
 			if (v != "") document.getElementById(v).classList.add("hideElement");
 		});
 		if (formSelector.value != 1)
 			document.getElementById(formSelectorValue[formSelector.value]).classList.remove("hideElement");
+	}
+
+	function changeMethod() {
+		if (propertyMethodS.checked && propertyMethodR.checked) {
+			// both checked
+			propertyMethodSPrice.classList.remove("hideElement");
+			propertyMethodRPrice.classList.remove("hideElement");
+			propertyMethodNone.classList.add("hideElement");
+		} else if (propertyMethodS.checked && !propertyMethodR.checked) {
+			// sell
+			propertyMethodSPrice.classList.remove("hideElement");
+			propertyMethodRPrice.classList.add("hideElement");
+			propertyMethodNone.classList.add("hideElement");
+		} else if (propertyMethodR.checked && !propertyMethodS.checked) {
+			// rent
+			propertyMethodSPrice.classList.add("hideElement");
+			propertyMethodRPrice.classList.remove("hideElement");
+			propertyMethodNone.classList.add("hideElement");
+
+		} else {
+			// none selected
+			propertyMethodSPrice.classList.add("hideElement");
+			propertyMethodRPrice.classList.add("hideElement");
+			propertyMethodNone.classList.remove("hideElement");
+		}
 	}
 
 	// Image upload
