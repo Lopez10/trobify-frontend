@@ -39,6 +39,9 @@ $font-size-label-title: 2.4rem;
 .font-size-label-title-x2 {font-size: 4rem;}
 $font-size-label-title-x2: 4.4rem;
 
+.font-size-label-title-x3 {font-size: 6rem;}
+$font-size-label-title-x3: 6rem;
+
 // Font family
 
 $font-family-regular: "TT Commons Regular";
@@ -729,6 +732,12 @@ svg.icon{
     }
   }
 
+  &.title-x3 {
+    font-size: $font-size-label-title-x3;
+    line-height: $font-size-label-title-x3;
+    font-family: $font-family-demibold;
+  }
+
   &.required {
     &::after {
       content: " *";
@@ -914,4 +923,37 @@ svg.icon{
 
 .hideElement {
   display: none !important;
+}
+
+nav {
+  position: relative;
+  width: 100%;
+  justify-content: space-between;
+  padding: 2rem;
+
+  &.wide {
+    padding: 6rem;
+  }
+
+  .logo {
+    position: relative;
+    width: 9rem;
+    height: 4rem;
+    background-image: url("./logo/logotipo.png");
+    background-position: left center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .links {
+    float: right;
+  }
+}
+
+body.landing {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./img/landing.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
