@@ -51,23 +51,23 @@ export class Inmueble {
 
 			//let clfEn = (formData.get('clfEn') as unknown) as number; // Por que no se puede seleccionar en ningún sitio
 			const params: any = {
-				cantBanos: +bathroomCount,
-				cantHab: +roomCount,
-				caracteristicas: caract,
-				descripcion: descripcion,
-				direccion: place,
+				nBano: +bathroomCount,
+				nHab: +roomCount,
+				caracteristica: caract,
+				breveDescripcion: descripcion,
+				id_ubicacion: place,
 				estadoInmueble: +estado,
 				id_catastro: catast,
 				superficie: +superficie,
-				modalidad: modo,
+				id_modalidad: modo,
 				precio: +precio,
 				provincia: +provincia || 46,
-				tipoVivienda: +homeType,
+				id_tipoVivienda: +homeType,
 				descuento: 0,
-				energia: +energia,
-				tipoInmueble: +propertyType,
+				id_certifEner: +energia,
+				id_tipoInmueble: +propertyType,
 				propietario: 1,
-				id_imagen: imagenes.getImageGalleryValues(),
+				imagenes: imagenes.getImageGalleryValues(),
 			};
 			this.postInmueble(params);
 			console.log(params);
