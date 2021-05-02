@@ -1,6 +1,7 @@
 import axios from 'axios';
 const imagenes = require('../../public/js/imagenes.js');
 import { crearProvincias } from '../../data/provincias';
+import { InmuebleInterface } from '../interface/inmueble.interface';
 export class Inmueble {
 	constructor() {
 		crearProvincias();
@@ -50,24 +51,25 @@ export class Inmueble {
 			let caract = feature.split(',').map((x) => +x);
 
 			//let clfEn = (formData.get('clfEn') as unknown) as number; // Por que no se puede seleccionar en ningún sitio
-			const params: any = {
+			const params: InmuebleInterface = {
 				nBano: +bathroomCount,
 				nHab: +roomCount,
-				caracteristica: caract,
+				id_caractSecundaria: caract,
 				breveDescripcion: descripcion,
-				id_ubicacion: place,
-				estadoInmueble: +estado,
+				direccion: place,
+				id_estadoInmueble: +estado,
 				id_catastro: catast,
 				superficie: +superficie,
 				id_modalidad: modo,
 				precio: +precio,
-				provincia: +provincia || 46,
+				id_provincia: +provincia || 46,
 				id_tipoVivienda: +homeType,
 				descuento: 0,
 				id_certifEner: +energia,
 				id_tipoInmueble: +propertyType,
-				propietario: 1,
-				imagenes: imagenes.getImageGalleryValues(),
+				nCocina: 2,
+				id_usuario: 1,
+				imagen: imagenes.getImageGalleryValues(),
 			};
 			this.postInmueble(params);
 			console.log(params);

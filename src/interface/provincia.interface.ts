@@ -1,8 +1,8 @@
 export interface Provincia {
-	codigoPostal: Number;
-	provincia: String;
-	capital: String;
-	latitud: Number;
-	longitud: Number;
-	zoom: Number;
+	codigoPostal: number;
+	provincia: string;
+	capital: string;
+	latitud: number;
+	longitud: number;
+	zoom: number;
 }

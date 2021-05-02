@@ -39,17 +39,17 @@
 				<option value="3" selected>Vivienda</option>
 			</select>
 
-			<input name="place" type="text" list="places" class="no-border transparent" placeholder="Provincia o Código Postal" style="min-width: 300px;" ¡/>
-				<datalist id="places">
-					<option value="Valencia"></option>
-					<option value="Barcelona"></option>
-					<option value="Madrid"></option>
-				</datalist>
+			<select id="provincias" class="select" name="provincia"></select>
+
+			<button id="filtroSubmit" class="button black inline-flex block center applyFiltersSearch" name="submit"
+				type="submit">
+				Aplicar filtros
+			</button>
 
 		</form>
 
 	</div>
-
+	<script src="./index.bundle.js"></script>
 </body>
 
 </html>

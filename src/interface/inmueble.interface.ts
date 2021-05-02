@@ -3,7 +3,7 @@ export interface InmuebleInterface {
 	id_tipoInmueble: number;
 	id_estadoInmueble: number;
 	id_certifEner: number;
-	imagen?: string[];
+	imagen: string[];
 	superficie: number;
 	breveDescripcion: string;
 	direccion: string;
@@ -13,9 +13,9 @@ export interface InmuebleInterface {
 
 	id_tipoVivienda: number;
 	nHab: number;
-	nBanos: number;
+	nBano: number;
 	nCocina: number;
-	caractSecundaria: number[];
+	id_caractSecundaria: number[];
 	extras?: string[];
 
 	id_modalidad: number[];

@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
 	entry: {
-		//index: './src/index.ts',
+		index: './src/index.ts',
 		busqueda: './src/busqueda/index.busqueda.ts',
 		hipoteca: './src/inmueble/hipoteca/index.hipoteca.ts',
 		login: './src/login/index.login.ts',
