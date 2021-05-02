@@ -1,24 +1,25 @@
 export interface InmuebleInterface {
 	id_catastro: string;
-	tipoInmueble: number;
-	estadoInmueble: string;
-	energia: string;
+	id_tipoInmueble: number;
+	id_estadoInmueble: number;
+	id_certifEner: number;
 	imagen?: string[];
 	superficie: number;
-	descripcion: string;
+	breveDescripcion: string;
 	direccion: string;
-	provincia: number;
+	id_provincia: number;
 	longitud?: number;
 	latitud?: number;
 
-	tipoVivienda: string;
-	cantHab: number;
-	cantBanos: number;
-	caracteristicas: string;
+	id_tipoVivienda: number;
+	nHab: number;
+	nBanos: number;
+	nCocina: number;
+	caractSecundaria: number[];
 	extras?: string[];
 
-	modalidad: number[];
+	id_modalidad: number[];
 	precio: number;
 	descuento: number;
-	propietario: number;
+	id_usuario: number;
 }
