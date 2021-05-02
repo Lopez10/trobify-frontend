@@ -5,6 +5,7 @@ import { Mapa } from './mapa/mapa';
 import { obtenerProvincias, crearProvincias } from '../../data/provincias';
 import { Provincia } from '../interface/provincia.interface';
 
+
 export class Busqueda {
 	provincias: Provincia[];
 	constructor() {
@@ -57,6 +58,21 @@ export class Busqueda {
 		};
 	}
 
+	aplicarFiltrosURL(prov: number, opt: number, tpoViv: number) {
+
+		let params = querystring.stringify({
+			opt: opt,
+			tpoViv: tpoViv,
+			prov: prov
+		});
+
+		let inmuebles = this.getInmuebles(params);
+		this.crearMapa(prov, inmuebles);
+		this.crearCatalogo(inmuebles);
+
+		return false;
+	}
+
 	private crearMapa(prov: number, inmuebles: Promise<any>) {
 		let mapa = new Mapa();
 		mapa.mostrarMapa(inmuebles, this.provincias, prov || 0);
@@ -74,4 +90,23 @@ export class Busqueda {
 		});
 		return inmuebles;
 	}
+}
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+if (urlParams.get("landing") != undefined) {
+
+	let busqueda = new Busqueda();
+
+	// @ts-ignore: Object is possibly 'null'.
+	let prov: number = +urlParams.get('prov');
+	// @ts-ignore: Object is possibly 'null'.
+	let opt: number = +urlParams.get('opt');
+	// @ts-ignore: Object is possibly 'null'.
+	let tpoViv: number = +urlParams.get('tpoViv');
+
+	console.log("Parametros de la busqueda del landing: prov="+prov+", opt="+opt+", tpoViv="+tpoViv);
+	
+	busqueda.aplicarFiltrosURL(prov,opt,tpoViv);
 }

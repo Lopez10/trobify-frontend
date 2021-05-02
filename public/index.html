@@ -25,31 +25,58 @@
 
 	<div class="nav flexbox inline row group round" style="position:fixed;top:65%;left:60px;">
 
-		<form id="formSearch" class="form inline flexbox center-v center-items-v spaced">
+		<form id="formSearch" class="form inline flexbox center-h center-items-v spaced">
 
-			<select name="method" class="select" style="margin-right:8px;">
+			<select name="method" id="method" class="select" style="margin-right:8px;">
 				<option value="1" selected>Venta</option>
 				<option value="2">Alquiler</option>
 				<option value="3">Alquiler de habitaciones</option>
 			</select>
 
-			<select name="type" class="select" style="margin-right:8px;">
+			<select name="type" id="type" class="select" style="margin-right:8px;">
 				<option value="1">Garaje</option>
 				<option value="2">Local Comercial</option>
 				<option value="3" selected>Vivienda</option>
 			</select>
 
-			<select id="provincias" class="select" name="provincia"></select>
+			<select id="provincias" class="select" name="provincia" id="provincia" onchange="changeProvincia(this.value)"></select>
 
-			<button id="filtroSubmit" class="button black inline-flex block center applyFiltersSearch" name="submit"
-				type="submit">
-				Aplicar filtros
+			<button id="filtroSubmit" class="button black inline-flex chip" name="submit"
+				type="submit" style="margin-left: 16px;" onclick="search()">
+				Buscar
 			</button>
 
 		</form>
 
 	</div>
 	<script src="./index.bundle.js"></script>
+	
 </body>
+
+<script type="text/javascript">
+
+	var provincia;
+
+	function changeProvincia(value) {
+		provincia = value;
+	}
+
+	function search() {
+
+		var prov = provincia == undefined ? 46 : provincia;
+
+		window.location.assign(
+			'/public/busqueda.html?prov=' +
+			prov +
+			'&opt=' +
+			document.getElementById("method").value +
+			'&tpoViv=' +
+			document.getElementById("type").value +
+			'&landing=1'
+		);
+
+	}
+
+</script>
 
 </html>
