@@ -5,7 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Registrar Inmueble</title>
+	<title>Editar Inmueble</title>
 	<link rel="stylesheet" href="./css/styles.css" />
 </head>
 
@@ -18,7 +18,7 @@
 			<div class="flexbox column center-v spaced-inner-top spaced-inner-bottom overflow">
 
 				<div class="flexbox row center-h spaced-top">
-					<div class="label title-x2">Nuevo inmueble</div>
+					<div class="label title-x2">Editar inmueble</div>
 
 					<div class="sep x2"></div>
 					<div class="sep x2"></div>
@@ -26,7 +26,7 @@
 					<a class="button" onclick="window.history.back()">Cancelar</a>
 					<div class="sep"></div>
 					<button class="button black" name="submit" type="submit">
-						Registrar inmueble
+						Guardar cambios
 					</button>
 				</div>
 
@@ -218,6 +218,31 @@
 			</div>
 
 		</form>
+
+		<div class="flexbox row center-h spaced inner-spaced-x2" style="text-align:center;">
+			<form id="deleteProperty">
+
+				<div class="label title">¿Deseas eliminar el inmueble?</div>
+
+				<div class="sep"></div>
+
+				<div class="label">Esta acción no puede deshacerse, se perderán todos los datos</div>
+
+				<div class="sep x2"></div>
+
+				<label style="display: inline-block;"><input name="delete" type="checkbox" value="1" required/>
+					<div class="label bold">Sí quiero eliminarlo</div>
+				</label>
+
+				<div class="sep x2"></div>
+
+				<button class="button delete" name="submit" type="submit">
+					Eliminar inmueble
+				</button>
+
+			</form>
+			
+		</div>
 
 	</div>
 

@@ -10,6 +10,7 @@ $color-grey-input: #E3E3E3;
 $color-grey-selection: #DBDBDB;
 $color-grey-detail: #B2B2B2;
 $color-red: #FA4D2B;
+$color-red-light: #FBD3CB;
 $color-yellow: #FAC02B;
 $color-green: #0FBF36;
 
@@ -603,6 +604,9 @@ label {
   &.inner-spaced {
     padding: 2rem;
   }
+  &.inner-spaced-x2 {
+    padding: 4rem;
+  }
   &.shrinknt {
     flex-shrink: 0;
   }
@@ -801,6 +805,10 @@ svg.icon{
   &.action {
     background: $color-yellow;
     color: $color-black;
+  }
+  &.delete {
+    background: $color-red-light;
+    color: $color-red;
   }
   &.icon {
     // SVG Adjustement

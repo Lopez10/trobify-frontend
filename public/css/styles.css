@@ -797,6 +797,10 @@ label .label::before {
   padding: 2rem;
 }
 
+.flexbox.inner-spaced-x2 {
+  padding: 4rem;
+}
+
 .flexbox.shrinknt {
   -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -1019,6 +1023,11 @@ svg.icon {
 .button.action {
   background: #FAC02B;
   color: #1D1D1D;
+}
+
+.button.delete {
+  background: #FBD3CB;
+  color: #FA4D2B;
 }
 
 .button.icon {
