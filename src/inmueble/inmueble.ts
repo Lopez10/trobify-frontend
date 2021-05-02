@@ -1,7 +1,8 @@
 import axios from 'axios';
+const imagenes = require('../../public/js/imagenes.js');
 export class Inmueble {
 	constructor() {
-		this.aplicarFiltros();
+		this.aplicarRegistro();
 	}
 	async getInmueble() {
 		let params = this.obtenerParametros();
@@ -22,7 +23,7 @@ export class Inmueble {
 		return { catastroId, modo };
 	}
 
-	aplicarFiltros() {
+	aplicarRegistro() {
 		let registroForm: HTMLFormElement =
 			document.querySelector('#formNewProperty') || document.createElement('form');
 		registroForm.onsubmit = () => {
@@ -64,21 +65,28 @@ export class Inmueble {
 				energia: +energia,
 				tipoInmueble: +propertyType,
 				propietario: 1,
+				id_imagen: imagenes.getImageGalleryValues(),
 			};
 			this.postInmueble(params);
+			console.log(params);
 			return false;
 		};
 	}
 	async postInmueble(inmueble: any) {
-		const myRequest = 'http://localhost:3000/inmueble';
-		axios.post(myRequest, inmueble).then(
-			(response) => {
+		axios({
+			method: 'post',
+			url: 'http://localhost:3000/inmueble',
+			data: inmueble,
+			headers: { 'Content-Type': 'multipart/form-data' },
+		})
+			.then(function (response) {
 				console.log(response.data);
 				if (response.data == true) {
 					window.location.replace('http://localhost:8080/public/busqueda.html');
 				}
-			},
-			(error) => console.log(error)
-		);
+			})
+			.catch(function (response) {
+				console.log(response);
+			});
 	}
 }

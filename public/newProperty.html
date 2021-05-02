@@ -44,10 +44,12 @@
 							</select>
 
 							<div class="label title">Método de venta</div>
-							<label onclick="changeMethod()"><input name="propertyMethod" type="checkbox" id="propertyMethodS" value="1" />
+							<label onclick="changeMethod()"><input name="propertyMethod" type="checkbox"
+									id="propertyMethodS" value="1" />
 								<div class="label bold">Venta</div>
 							</label>
-							<label onclick="changeMethod()"><input name="propertyMethod" type="checkbox" id="propertyMethodR" value="2" />
+							<label onclick="changeMethod()"><input name="propertyMethod" type="checkbox"
+									id="propertyMethodR" value="2" />
 								<div class="label bold">Alquiler</div>
 							</label>
 							<!--
@@ -100,17 +102,18 @@
 							<div class="propertyMethodSPrice hideElement" id="propertyMethodSPrice">
 								<div class="label" style="margin-top:16px;">Precio de venta</div>
 								<input class="mode-fill" type="text" name="precio" id="precio"
-								placeholder="100.000 €" value="" required />
+									placeholder="100.000 €" value="" required />
 							</div>
 
 							<div class="propertyMethodRPrice hideElement" id="propertyMethodRPrice">
 								<div class="label" style="margin-top:16px;">Precio de alquiler (€/mes)</div>
 								<input class="mode-fill" type="text" name="precio" id="precio"
-								placeholder="700 € / mes" value="" required />
+									placeholder="700 € / mes" value="" required />
 							</div>
 
 							<div class="propertyMethodSPrice" id="propertyMethodNone">
-								<div class="label alert" style="margin-top:16px;">Selecciona método primero</div>
+								<div class="label alert" style="margin-top:16px;">Selecciona método primero
+								</div>
 							</div>
 
 							<div class="propertyTypeHome" id="propertyTypeHome">
@@ -132,7 +135,8 @@
 								</select>
 
 								<div class="label title">Habitaciones</div>
-								<input class="mode-fill" name="roomCount" type="number" min="0" value="0" step="1" />
+								<input class="mode-fill" name="roomCount" type="number" min="0" value="0"
+									step="1" />
 
 								<div class="label title">Baños</div>
 								<input class="mode-fill" name="bathroomCount" type="number" min="0" value="0"
@@ -232,16 +236,16 @@
 	// Dynamic form
 
 	var formSelector = document.getElementById("formSelector"),
-		formSelectorValue = ["","","propertyTypeComercial","propertyTypeHome"],
+		formSelectorValue = ["", "", "propertyTypeComercial", "propertyTypeHome"],
 		propertyMethodS = document.getElementById("propertyMethodS"),
 		propertyMethodR = document.getElementById("propertyMethodR"),
 		propertyMethodSPrice = document.getElementById("propertyMethodSPrice"),
 		propertyMethodRPrice = document.getElementById("propertyMethodRPrice"),
 		propertyMethodNone = document.getElementById("propertyMethodNone");
 
-		formSelector.addEventListener("change", changeForm, false);
-		propertyMethodS.addEventListener("change", changeMethod, false);
-		propertyMethodR.addEventListener("change", changeMethod, false);
+	formSelector.addEventListener("change", changeForm, false);
+	propertyMethodS.addEventListener("change", changeMethod, false);
+	propertyMethodR.addEventListener("change", changeMethod, false);
 
 	window.onload = () => {
 		changeForm();
@@ -250,7 +254,7 @@
 		propertyMethodR.checked = false;
 	}
 
-		
+
 
 	function changeForm() {
 		console.log(formSelector.value);
@@ -276,7 +280,7 @@
 			propertyMethodSPrice.classList.add("hideElement");
 			propertyMethodRPrice.classList.remove("hideElement");
 			propertyMethodNone.classList.add("hideElement");
-			
+
 		} else {
 			// none selected
 			propertyMethodSPrice.classList.add("hideElement");
@@ -422,12 +426,7 @@
 		imageOptions.classList.add("hide");
 	}
 
-	function getImageGalleryKeys() {
-		return Object.keys(imageGallery)
-	}
-	function getImageGalleryValues() {
-		return Object.values(imageGallery)
-	}
+
 
 </script>
 
