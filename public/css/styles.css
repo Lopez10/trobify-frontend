@@ -674,6 +674,19 @@ label .label::before {
   display: inline-flex;
 }
 
+.flexbox.imageGallery {
+  border-radius: 1rem;
+}
+
+.flexbox.imageGallery img {
+  margin-right: 3rem;
+  border-radius: 1rem;
+}
+
+.flexbox.imageGallery img:last-child {
+  margin-right: 0;
+}
+
 .flexbox .searchView #map, .flexbox .searchView #viewMode {
   position: relative;
 }

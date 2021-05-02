@@ -509,6 +509,19 @@ label {
     display: inline-flex;
   }
 
+  &.imageGallery {
+    border-radius: 1rem;
+    
+    img {
+      margin-right: 3rem;
+      border-radius: 1rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
   .searchView {
     #map, #viewMode {
       position: relative;
