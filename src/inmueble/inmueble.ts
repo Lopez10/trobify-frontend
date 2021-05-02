@@ -1,7 +1,9 @@
 import axios from 'axios';
 const imagenes = require('../../public/js/imagenes.js');
+import { crearProvincias } from '../../data/provincias';
 export class Inmueble {
 	constructor() {
+		crearProvincias();
 		this.aplicarRegistro();
 	}
 	async getInmueble() {
@@ -81,9 +83,7 @@ export class Inmueble {
 		})
 			.then(function (response) {
 				console.log(response.data);
-				if (response.data == true) {
-					window.location.replace('http://localhost:8080/public/busqueda.html');
-				}
+				//window.location.replace('http://localhost:8080/public/busqueda.html');
 			})
 			.catch(function (response) {
 				console.log(response);

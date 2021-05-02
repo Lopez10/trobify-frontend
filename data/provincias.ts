@@ -429,3 +429,21 @@ export function obtenerProvincias(): Array<Provincia> {
 	];
 	return provincias;
 }
+export function crearProvincias() {
+	let provincias: Array<Provincia> = obtenerProvincias();
+	let div = document.getElementById('provincias');
+	provincias.forEach((result) => {
+		comprobarCodigoPostal(result, div);
+	});
+}
+
+export function comprobarCodigoPostal(result: Provincia, div: HTMLElement | null) {
+	if (result.codigoPostal != 0) {
+		let option = document.createElement('option');
+		option.setAttribute('value', result.codigoPostal.toString());
+		if (result.codigoPostal == 46) option.setAttribute('selected', 'selected');
+		let textoProvincia = document.createTextNode(result.provincia.toString());
+		option.appendChild(textoProvincia);
+		if (div != null) div.appendChild(option);
+	}
+}
