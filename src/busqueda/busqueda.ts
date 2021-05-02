@@ -5,12 +5,12 @@ import { Mapa } from './mapa/mapa';
 import { obtenerProvincias, crearProvincias } from '../../data/provincias';
 import { Provincia } from '../interface/provincia.interface';
 
-
 export class Busqueda {
 	provincias: Provincia[];
 	constructor() {
 		this.provincias = obtenerProvincias();
-		this.aplicarFiltros();
+		this.obtenerFiltroUrl();
+
 		crearProvincias();
 	}
 	aplicarFiltros() {
@@ -34,6 +34,7 @@ export class Busqueda {
 			let caract = ((formData.getAll('caract') as unknown) as Array<String>).join(',') as string;
 			//let clfEn = (formData.get('clfEn') as unknown) as number; // Por que no se puede seleccionar en ningún sitio
 			let params = querystring.stringify({
+				tpoInm: 3,
 				ord: ord,
 				opt: opt,
 				preMin: preMin,
@@ -58,55 +59,55 @@ export class Busqueda {
 		};
 	}
 
-	aplicarFiltrosURL(prov: number, opt: number, tpoViv: number) {
-
+	aplicarFiltrosURL(prov: number, opt: number, tpoInm: number) {
 		let params = querystring.stringify({
 			opt: opt,
-			tpoViv: tpoViv,
-			prov: prov
+			tpoInm: tpoInm,
+			prov: prov,
 		});
 
 		let inmuebles = this.getInmuebles(params);
 		this.crearMapa(prov, inmuebles);
 		this.crearCatalogo(inmuebles);
-
 		return false;
 	}
 
-	private crearMapa(prov: number, inmuebles: Promise<any>) {
+	crearMapa(prov: number, inmuebles: Promise<any>) {
 		let mapa = new Mapa();
 		mapa.mostrarMapa(inmuebles, this.provincias, prov || 0);
 	}
 
-	private crearCatalogo(inmuebles: Promise<any>) {
+	crearCatalogo(inmuebles: Promise<any>) {
 		let catalogo = new Catalogo();
 		catalogo.mostrarInmuebles(inmuebles);
 	}
 
-	private getInmuebles(params: string) {
+	getInmuebles(params: string) {
 		const myRequest = 'http://localhost:3000/catalogo?';
 		let inmuebles: Promise<any> = axios.get(myRequest + params).then((result) => {
 			return result.data;
 		});
 		return inmuebles;
 	}
-}
+	obtenerFiltroUrl() {
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		if (urlParams.get('landing') != null) {
+			// @ts-ignore: Object is possibly 'null'.
+			let prov: number = +urlParams.get('prov');
+			// @ts-ignore: Object is possibly 'null'.
+			let opt: number = +urlParams.get('opt');
+			// @ts-ignore: Object is possibly 'null'.
+			let tpoInm: number = +urlParams.get('tpoInm');
+			let filtroForm: HTMLFormElement =
+				document.querySelector('#filtroForm') || document.createElement('form');
+			const formData = new FormData(filtroForm);
+			formData.set('opt', opt.toString());
+			formData.set('provincia', prov.toString());
 
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-
-if (urlParams.get("landing") != undefined) {
-
-	let busqueda = new Busqueda();
-
-	// @ts-ignore: Object is possibly 'null'.
-	let prov: number = +urlParams.get('prov');
-	// @ts-ignore: Object is possibly 'null'.
-	let opt: number = +urlParams.get('opt');
-	// @ts-ignore: Object is possibly 'null'.
-	let tpoViv: number = +urlParams.get('tpoViv');
-
-	console.log("Parametros de la busqueda del landing: prov="+prov+", opt="+opt+", tpoViv="+tpoViv);
-	
-	busqueda.aplicarFiltrosURL(prov,opt,tpoViv);
+			this.aplicarFiltrosURL(prov, opt, tpoInm);
+		} else {
+			this.aplicarFiltros();
+		}
+	}
 }

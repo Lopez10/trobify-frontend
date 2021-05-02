@@ -63,7 +63,7 @@
 					<select id="provincias" class="select" name="provincia"></select>
 
 					<div class="label title">Estado de inmueble</div>
-					
+
 					<label><input name="stdo" type="checkbox" value="1" />
 						<div class="label bold">Obra nueva</div>
 					</label>
@@ -285,10 +285,16 @@
 		document.getElementById("viewList").checked = true;
 		document.getElementById("viewMap").checked = false;
 		// Load filters
-		loadFilter();
+		//loadFilter();
 	}
 	function setApplyFilterButtonWidth() {
 		document.getElementById("filtroFormSubmit").style.width = document.getElementById("filtroForm").getBoundingClientRect().width + "px";
+	}
+
+	function getParameters() {
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		if (urlParams.get('opt')) { }
 	}
 
 		//document.getElementById("filterOpt").querySelectorAll('label').addEventListener("click", loadFilter());

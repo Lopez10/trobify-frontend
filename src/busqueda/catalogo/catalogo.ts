@@ -21,7 +21,6 @@ export class Catalogo {
 			}
 			result.forEach((item: any) => {
 				catalogDom(div, item);
-				console.log(item);
 			});
 		});
 	}

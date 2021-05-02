@@ -3,7 +3,7 @@ export function catalogDom(div: any, item: any) {
 	enlace.href =
 		'http://localhost:8080/public/inmueble.html' +
 		'?catastro=' +
-		item.catastro.toString() +
+		item.id_catastro +
 		'&modo=' +
 		item.id_modalidad;
 	let nombreEnlace = document.createTextNode('enlace');
