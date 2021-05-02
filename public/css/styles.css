@@ -781,6 +781,12 @@ label .label::before {
   font-family: "TT Commons Bold";
 }
 
+.flexbox.space-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .flexbox.spaced {
   margin: 2rem;
 }
