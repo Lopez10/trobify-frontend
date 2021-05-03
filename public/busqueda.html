@@ -47,8 +47,8 @@
 					</div>
 				</div>
 				<form id="filtroForm">
-					<div class="label title">Ordenar por</div>
 
+					<div class="label title">Ordenar por</div>
 					<select name="orden" class="select">
 						<option value="1">Más nuevos</option>
 						<option value="2">Más viejos</option>
@@ -59,7 +59,6 @@
 					</select>
 
 					<div class="label title">Tipo inmueble</div>
-
 					<select name="tpoInm" class="select" id="tpoInm">
 						<option value="1">Garaje</option>
 						<option value="2">Local Comercial</option>
@@ -67,11 +66,9 @@
 					</select>
 
 					<div class="label title">Provincia</div>
-
 					<select id="provincias" class="select" name="provincia"></select>
 
 					<div class="label title">Estado de inmueble</div>
-
 					<label><input name="stdo" type="checkbox" value="1" />
 						<div class="label bold">Obra nueva</div>
 					</label>
@@ -89,6 +86,7 @@
 					<input name="priceMin" class="priceMin" type="number" min="0" value="0" step="1" />
 					<input name="priceMax" class="priceMax" type="number" min="0" value="1000000" step="1"
 						style="margin-left: 10px" />
+
 					<div class="label title">Margen (%)</div>
 					<label><input name="boolUmbral" class="pricePlus" type="checkbox" />
 						<div class="label bold">Aplicar margen</div>
@@ -102,7 +100,6 @@
 						<option value="20"></option>
 						<option value="25"></option>
 					</datalist>
-
 					<div class="label bold inline" style="margin-left: 10px">%</div>
 
 					<div class="label title">Superficie</div>
@@ -111,95 +108,106 @@
 					<input name="supMax" class="priceMax" type="number" min="0" value="5000"
 						style="margin-left: 10px" />
 
-					<div class="label title">Tipo de vivienda</div>
+					<div class="dynamicFilterHome">
+						<div class="sep"></div>
+						<div class="label title">Tipo de vivienda</div>
+						<label><input name="tpoViv" type="checkbox" value="1" />
+							<div class="label bold">Ático</div>
+						</label>
+						<label><input name="tpoViv" type="checkbox" value="2" />
+							<div class="label bold">Plantas intermedias</div>
+						</label>
+						<label><input name="tpoViv" type="checkbox" value="3" />
+							<div class="label bold">Dúplex</div>
+						</label>
+						<label><input name="tpoViv" type="checkbox" value="4" />
+							<div class="label bold">Loft</div>
+						</label>
+						<label><input name="tpoViv" type="checkbox" value="5" />
+							<div class="label bold">Planta baja</div>
+						</label>
+						<label><input name="tpoViv" type="checkbox" value="6" />
+							<div class="label bold">Casa</div>
+						</label>
+						<label><input name="tpoViv" type="checkbox" value="7" />
+							<div class="label bold">Chalet</div>
+						</label>
+						<label><input name="tpoViv" type="checkbox" value="8" />
+							<div class="label bold">Adosado</div>
+						</label>
+						<label><input name="tpoViv" type="checkbox" value="9" />
+							<div class="label bold">Finca rústica</div>
+						</label>
+					</div>
 
-					<label><input name="tpoViv" type="checkbox" value="1" />
-						<div class="label bold">Ático</div>
-					</label>
-					<label><input name="tpoViv" type="checkbox" value="2" />
-						<div class="label bold">Plantas intermedias</div>
-					</label>
-					<label><input name="tpoViv" type="checkbox" value="3" />
-						<div class="label bold">Dúplex</div>
-					</label>
-					<label><input name="tpoViv" type="checkbox" value="4" />
-						<div class="label bold">Loft</div>
-					</label>
-					<label><input name="tpoViv" type="checkbox" value="5" />
-						<div class="label bold">Planta baja</div>
-					</label>
-					<label><input name="tpoViv" type="checkbox" value="6" />
-						<div class="label bold">Casa</div>
-					</label>
-					<label><input name="tpoViv" type="checkbox" value="7" />
-						<div class="label bold">Chalet</div>
-					</label>
-					<label><input name="tpoViv" type="checkbox" value="8" />
-						<div class="label bold">Adosado</div>
-					</label>
-					<label><input name="tpoViv" type="checkbox" value="9" />
-						<div class="label bold">Finca rústica</div>
-					</label>
+					<div class="dynamicFilterHome">
+						<div class="sep"></div>
+						<div class="label title">Habitaciones</div>
+						<label><input type="radio" name="h" value="0" checked />
+							<div class="label bold">0 o más (estudio)</div>
+						</label>
+						<label><input type="radio" name="h" value="1" />
+							<div class="label bold">1 o más</div>
+						</label>
+						<label><input type="radio" name="h" value="2" />
+							<div class="label bold">2 o más</div>
+						</label>
+						<label><input type="radio" name="h" value="3" />
+							<div class="label bold">3 o más</div>
+						</label>
+						<label><input type="radio" name="h" value="4" />
+							<div class="label bold">4 o más</div>
+						</label>
+					</div>
 
-					<div class="label title">Habitaciones</div>
-					<label><input type="radio" name="h" value="0" checked />
-						<div class="label bold">0 o más (estudio)</div>
-					</label>
-					<label><input type="radio" name="h" value="1" />
-						<div class="label bold">1 o más</div>
-					</label>
-					<label><input type="radio" name="h" value="2" />
-						<div class="label bold">2 o más</div>
-					</label>
-					<label><input type="radio" name="h" value="3" />
-						<div class="label bold">3 o más</div>
-					</label>
-					<label><input type="radio" name="h" value="4" />
-						<div class="label bold">4 o más</div>
-					</label>
+					<div class="dynamicFilterLocal dynamicFilterHome">
+						<div class="sep"></div>
+						<div class="label title">Baños</div>
+						<label><input type="radio" name="b" value="0" checked />
+							<div class="label bold">0 o más</div>
+						</label>
+						<label><input type="radio" name="b" value="1" />
+							<div class="label bold">1 o más</div>
+						</label>
+						<label><input type="radio" name="b" value="2" />
+							<div class="label bold">2 o más</div>
+						</label>
+						<label><input type="radio" name="b" value="3" />
+							<div class="label bold">3 o más</div>
+						</label>
+					</div>
 
-					<div class="label title">Baños</div>
-					<label><input type="radio" name="b" value="0" checked />
-						<div class="label bold">0 o más</div>
-					</label>
-					<label><input type="radio" name="b" value="1" />
-						<div class="label bold">1 o más</div>
-					</label>
-					<label><input type="radio" name="b" value="2" />
-						<div class="label bold">2 o más</div>
-					</label>
-					<label><input type="radio" name="b" value="3" />
-						<div class="label bold">3 o más</div>
-					</label>
-
-					<div class="label title">Características</div>
-					<label><input name="caract" type="checkbox" value="1" />
-						<div class="label bold">Ascensor</div>
-					</label>
-					<label><input name="caract" type="checkbox" value="2" />
-						<div class="label bold">Amueblado</div>
-					</label>
-					<label><input name="caract" type="checkbox" value="3" />
-						<div class="label bold">Terraza o balcón</div>
-					</label>
-					<label><input name="caract" type="checkbox" value="4" />
-						<div class="label bold">Aire acondicionado</div>
-					</label>
-					<label><input name="caract" type="checkbox" value="5" />
-						<div class="label bold">Armario empotrado</div>
-					</label>
-					<label><input name="caract" type="checkbox" value="6" />
-						<div class="label bold">Garaje</div>
-					</label>
-					<label><input name="caract" type="checkbox" value="7" />
-						<div class="label bold">Jardín</div>
-					</label>
-					<label><input name="caract" type="checkbox" value="8" />
-						<div class="label bold">Piscina</div>
-					</label>
-					<label><input name="caract" type="checkbox" value="9" />
-						<div class="label bold">Trastero</div>
-					</label>
+					<div class="dynamicFilterHome">
+						<div class="sep"></div>
+						<div class="label title">Características</div>
+						<label><input name="caract" type="checkbox" value="1" />
+							<div class="label bold">Ascensor</div>
+						</label>
+						<label><input name="caract" type="checkbox" value="2" />
+							<div class="label bold">Amueblado</div>
+						</label>
+						<label><input name="caract" type="checkbox" value="3" />
+							<div class="label bold">Terraza o balcón</div>
+						</label>
+						<label><input name="caract" type="checkbox" value="4" />
+							<div class="label bold">Aire acondicionado</div>
+						</label>
+						<label><input name="caract" type="checkbox" value="5" />
+							<div class="label bold">Armario empotrado</div>
+						</label>
+						<label><input name="caract" type="checkbox" value="6" />
+							<div class="label bold">Garaje</div>
+						</label>
+						<label><input name="caract" type="checkbox" value="7" />
+							<div class="label bold">Jardín</div>
+						</label>
+						<label><input name="caract" type="checkbox" value="8" />
+							<div class="label bold">Piscina</div>
+						</label>
+						<label><input name="caract" type="checkbox" value="9" />
+							<div class="label bold">Trastero</div>
+						</label>
+					</div>
 
 					<!-- Seleccionar si es Comprar, Alquilar o Alquilar habitación -->
 
@@ -270,25 +278,74 @@
 </body>
 <script type="text/javascript">
 
+<<<<<<< Updated upstream
+=======
+	var formSelector = document.getElementById("tpoInm"),
+		formSelectorValue = [
+			"dynamicFilterGarage",
+			"dynamicFilterLocal",
+			"dynamicFilterHome"
+		];
+
+	formSelector.addEventListener("change", changeForm, false);
+	window.addEventListener("onload", changeForm, false);
+
+
+	function getTpoInm() {
+		return formSelector.value;
+	}
+
+	function changeForm() {
+		formSelectorValue.forEach((v) => {
+			Array.from(document.getElementsByClassName(v)).forEach((v) => {
+				v.classList.add("hideElement");
+			});
+		});
+
+		Array.from(
+			document.getElementsByClassName(formSelectorValue[getTpoInm() - 1])
+		).forEach((v) => {
+			v.classList.remove("hideElement");
+		});
+	}
+>>>>>>> Stashed changes
 
 	window.onload = function () {
 		//setDefaultFilters();
 		setDefaultView();
 		setApplyFilterButtonWidth();
+<<<<<<< Updated upstream
 		//changeForm();
 		loadFilter();
+=======
+		changeForm();
+		//loadFilter();
+		updateBuyOptionOnLoad();
+>>>>>>> Stashed changes
 	};
 
 	function loadFilter() {
 		document.getElementById("filtroFormSubmit").click();
 	}
+
+	function updateBuyOptionOnLoad() {
+
+		var opt1 = document.getElementById("opt1").checked,
+			opt2 = document.getElementById("opt2").checked,
+			opt3 = document.getElementById("opt3").checked;
+
+		updateBuyOption(opt1 ? 1 : opt2 ? 2 : 3);
+	}
+
 	function updateBuyOption(x) {
 		document.getElementById("filterOpt").value = x;
 		loadFilter();
 	}
+
 	function updateViewMode(x) {
 		document.getElementById("viewMode").value = x;
 	}
+
 	function setDefaultFilters() {
 		// Set default buy option
 		document.getElementById("opt1").checked = true;
@@ -297,6 +354,7 @@
 		// Load filters
 		//loadFilter();
 	}
+
 	function setDefaultView() {
 		// Set default view mode
 		document.getElementById("viewList").checked = true;
@@ -304,6 +362,7 @@
 		// Load filters
 		//loadFilter();
 	}
+
 	function setApplyFilterButtonWidth() {
 		document.getElementById("filtroFormSubmit").style.width = document.getElementById("filtroForm").getBoundingClientRect().width + "px";
 	}

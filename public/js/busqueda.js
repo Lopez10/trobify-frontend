@@ -1,5 +1,9 @@
 export function modificarFiltro(opt, prov, tpoInm) {
+<<<<<<< Updated upstream
 	console.log(tpoInm);
+=======
+	//console.log(opt);
+>>>>>>> Stashed changes
 	let provincia = document.getElementById('provincias');
 	let option1 = document.getElementById('opt1');
 	let option2 = document.getElementById('opt2');
