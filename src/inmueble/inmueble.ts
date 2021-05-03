@@ -1,13 +1,12 @@
 import axios from 'axios';
-const imagenes = require('../../public/js/imagenes.js');
 import { crearProvincias } from '../../data/provincias';
 import { InmuebleInterface } from '../interface/inmueble.interface';
+const imagenes = require('../../public/js/imagenes.js');
 const inm = require('../../public/js/edit.js');
 
 export class Inmueble {
 	constructor() {
 		crearProvincias();
-		this.aplicarRegistro();
 	}
 	async getInmueble() {
 		let params = this.obtenerParametros();
