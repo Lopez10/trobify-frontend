@@ -270,23 +270,12 @@
 </body>
 <script type="text/javascript">
 
-	var formSelector = document.getElementById("tpoInm"),
-		formSelectorValue = ["", "", "propertyTypeComercial", "propertyTypeHome"];
-
-	formSelector.addEventListener("change", changeForm, false);
-
-	function changeForm() {
-		formSelectorValue.forEach(v => {
-			if (v != "") document.getElementById(v).classList.add("hideElement");
-		});
-		if (formSelector.value != 1) document.getElementById(formSelectorValue[formSelector.value]).classList.remove("hideElement");
-	}
 
 	window.onload = function () {
 		//setDefaultFilters();
 		setDefaultView();
 		setApplyFilterButtonWidth();
-		changeForm();
+		//changeForm();
 		loadFilter();
 	};
 

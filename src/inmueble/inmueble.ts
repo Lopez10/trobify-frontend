@@ -78,6 +78,8 @@ export class Inmueble {
 				id_tipoInmueble: +propertyType,
 				nCocina: 2,
 				id_usuario: 1,
+				longitud: 0,
+				latitud: 0,
 				imagen: imagenes.getImageGalleryValues(),
 			};
 			this.postInmueble(params);

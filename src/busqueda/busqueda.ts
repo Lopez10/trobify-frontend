@@ -51,6 +51,7 @@ export class Busqueda {
 				//clfEn: clfEn, // Por que no se puede seleccionar en ningún sitio
 			});
 			let inmuebles = this.getInmuebles(params);
+			console.log(inmuebles);
 			this.crearMapa(prov, inmuebles);
 			this.crearCatalogo(inmuebles);
 
@@ -59,12 +60,6 @@ export class Busqueda {
 	}
 
 	aplicarFiltrosURL(prov: number, opt: number, tpoInm: number) {
-		let params = querystring.stringify({
-			opt: opt,
-			tpoInm: tpoInm,
-			prov: prov,
-		});
-
 		busqueda.modificarFiltro(opt, prov, tpoInm);
 		this.aplicarFiltros();
 	}
@@ -97,13 +92,9 @@ export class Busqueda {
 			let opt: number = +urlParams.get('opt');
 			// @ts-ignore: Object is possibly 'null'.
 			let tpoInm: number = +urlParams.get('tpoInm');
-			let filtroForm: HTMLFormElement =
-				document.querySelector('#filtroForm') || document.createElement('form');
-			const formData = new FormData(filtroForm);
-			formData.set('opt', opt.toString());
-			formData.set('provincia', prov.toString());
 
 			crearProvincias(prov);
+			console.log(opt, tpoInm);
 			this.aplicarFiltrosURL(prov, opt, tpoInm);
 		}
 	}
