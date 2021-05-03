@@ -1,13 +1,23 @@
 export function catalogDom(div: any, item: any) {
-	let enlace = document.createElement('a');
-	enlace.href =
+	let ver = document.createElement('a');
+	ver.href =
 		'http://localhost:8080/public/inmueble.html' +
 		'?catastro=' +
 		item.id_catastro +
 		'&modo=' +
 		item.id_modalidad;
-	let nombreEnlace = document.createTextNode('enlace');
-	enlace.appendChild(nombreEnlace);
+	let verEnlace = document.createTextNode('Ver');
+	ver.appendChild(verEnlace);
+
+	let editar = document.createElement('a');
+	editar.href =
+		'http://localhost:8080/public/editProperty.html' +
+		'?catastro=' +
+		item.id_catastro +
+		'&modo=' +
+		item.id_modalidad;
+	let editarEnlace = document.createTextNode('Editar');
+	editar.appendChild(editarEnlace);
 
 	let property = document.createElement('div');
 	property.className = 'property_item';
@@ -17,7 +27,8 @@ export function catalogDom(div: any, item: any) {
 	photo.style.backgroundImage = 'url(' + item.urlImg + ')';
 	property.appendChild(photo);
 
-	property.appendChild(enlace);
+	property.appendChild(ver);
+	property.appendChild(editar);
 	let content = document.createElement('div');
 	content.className = 'content';
 

@@ -2,6 +2,7 @@ import axios from 'axios';
 const imagenes = require('../../public/js/imagenes.js');
 import { crearProvincias } from '../../data/provincias';
 import { InmuebleInterface } from '../interface/inmueble.interface';
+const editar = require('../../public/js/edit.js');
 export class Inmueble {
 	constructor() {
 		crearProvincias();
@@ -12,7 +13,6 @@ export class Inmueble {
 		const myRequest = 'http://localhost:3000/inmueble/' + params.catastroId + '/' + params.modo;
 
 		let inmueble = await axios.get(myRequest).then((result) => {
-			console.log(result.data);
 			return result.data;
 		});
 		return await inmueble;
@@ -24,6 +24,10 @@ export class Inmueble {
 		let catastroId = urlParams.get('catastro');
 		let modo = urlParams.get('modo');
 		return { catastroId, modo };
+	}
+	editarInmueble(inmueble: any): void {
+		editar.editar(inmueble);
+		this.aplicarRegistro();
 	}
 
 	aplicarRegistro() {
@@ -72,7 +76,6 @@ export class Inmueble {
 				imagen: imagenes.getImageGalleryValues(),
 			};
 			this.postInmueble(params);
-			console.log(params);
 			return false;
 		};
 	}

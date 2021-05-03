@@ -4,8 +4,13 @@ import { obtenerProvincias } from '../../data/provincias';
 
 let inmueble = new Inmueble();
 let mapa = new Mapa();
+
 let datosInmueble = inmueble.getInmueble();
 
 datosInmueble.then((data) => {
 	mapa.mostrarMapa(datosInmueble, obtenerProvincias(), data.provincia, true);
+});
+
+datosInmueble.then((data) => {
+	inmueble.editarInmueble(data);
 });

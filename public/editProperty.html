@@ -13,7 +13,7 @@
 
 	<div class="content">
 
-		<form id="formNewProperty">
+		<form id="formEditProperty">
 
 			<div class="flexbox column center-v spaced-inner-top spaced-inner-bottom overflow">
 
@@ -36,25 +36,22 @@
 
 						<div class="flexbox column block round form">
 
-							<div class="label title">Tipo de inmueble</div>
-							<select name="propertyType" class="select" id="formSelector">
-								<option value="1">Garaje</option>
-								<option value="2">Local comercial</option>
-								<option value="3" selected>Vivienda</option>
-							</select>
 
+							<div class="label title">Catastro</div>
+							<input id="catast" class="mode-fill" type="text" name="catast"
+								placeholder="0000000AA0000A0000AA" required />
 							<div class="label title">Método de venta</div>
-							<label onclick="changeMethod()"><input name="propertyMethod" type="checkbox"
-									id="propertyMethodS" value="1" />
+							<label onclick="changeMethod()"><input id="venta" name="propertyMethod"
+									type="checkbox" id="propertyMethodS" value="1" />
 								<div class="label bold">Venta</div>
 							</label>
-							<label onclick="changeMethod()"><input name="propertyMethod" type="checkbox"
-									id="propertyMethodR" value="2" />
+							<label onclick="changeMethod()"><input id="alquiler" name="propertyMethod"
+									type="checkbox" id="propertyMethodR" value="2" />
 								<div class="label bold">Alquiler</div>
 							</label>
 
 							<div class="label title">Estado de inmueble</div>
-							<select class="select" name="stdo">
+							<select class="select" name="stdo" id="stdo">
 								<option value="1">Obra nueva</option>
 								<option value="2">Buen estado</option>
 								<option value="3">Reformado</option>
@@ -75,20 +72,12 @@
 								<option value="9">G</option>
 							</select>
 
-							<div class="label title">Catastro</div>
-							<input class="mode-fill" type="text" name="catast" id="catast"
-								placeholder="0000000AA0000A0000AA" required />
-
-							<div class="label title">Dirección</div>
-							<textarea class="mode-fill no-resize" name="place" id="place"
-								placeholder="AV PRIMADO REIG 151, Escalera 1 Planta 2 Puerta 4"
-								required></textarea>
 							<div class="label title">Provincia</div>
 
 							<select id="provincias" class="select" name="provincia"></select>
 
 							<div class="label title">Superficie</div>
-							<input class="mode-fill" type="text" name="superficie" id="location"
+							<input class="mode-fill" type="text" name="superficie" id="superficie"
 								placeholder="98 m²" value="" required />
 
 							<div class="label title">Precio</div>
@@ -129,39 +118,39 @@
 								</select>
 
 								<div class="label title">Habitaciones</div>
-								<input class="mode-fill" name="roomCount" type="number" min="0" value="0"
-									step="1" />
+								<input id="hab" class="mode-fill" name="roomCount" type="number" min="0"
+									value="0" step="1" />
 
 								<div class="label title">Baños</div>
-								<input class="mode-fill" name="bathroomCount" type="number" min="0" value="0"
-									step="1" />
+								<input id="banos" class="mode-fill" name="bathroomCount" type="number" min="0"
+									value="0" step="1" />
 
 								<div class="label title optional">Características</div>
-								<label><input name="feature" type="checkbox" value="1" />
+								<label><input id="Acensor" name="feature" type="checkbox" value="1" />
 									<div class="label bold">Ascensor</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="2" />
+								<label><input id="caracter" name="feature" type="checkbox" value="2" />
 									<div class="label bold">Amueblado</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="3" />
+								<label><input id="caracter" name="feature" type="checkbox" value="3" />
 									<div class="label bold">Terraza o balcón</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="4" />
+								<label><input id="caracter" name="feature" type="checkbox" value="4" />
 									<div class="label bold">Aire acondicionado</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="5" />
+								<label><input id="caracter" name="feature" type="checkbox" value="5" />
 									<div class="label bold">Armario empotrado</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="6" />
+								<label><input id="Garaje" name="feature" type="checkbox" value="6" />
 									<div class="label bold">Garaje</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="7" />
+								<label><input id="caracter" name="feature" type="checkbox" value="7" />
 									<div class="label bold">Jardín</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="8" />
+								<label><input id="Piscina" name="feature" type="checkbox" value="8" />
 									<div class="label bold">Piscina</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="9" />
+								<label><input id="caracter" name="feature" type="checkbox" value="9" />
 									<div class="label bold">Trastero</div>
 								</label>
 
@@ -188,8 +177,8 @@
 
 						<div class="filters flexbox column block round form">
 							<div class="label title">Descripcion</div>
-							<textarea class="mode-fill no-resize" name="descripcion" placeholder="Añade una descripción a tu inmueble"
-								required></textarea>
+							<textarea id='descripcion' class="mode-fill no-resize" name="descripcion"
+								placeholder="Añade una descripción a tu inmueble" required></textarea>
 							<div class="label title">Imágenes <div class="label detail"
 									style="margin-left: 6px;"><span id="totalImagesUploaded">0</span> imágenes
 								</div>
@@ -230,7 +219,7 @@
 
 				<div class="sep x2"></div>
 
-				<label style="display: inline-block;"><input name="delete" type="checkbox" value="1" required/>
+				<label style="display: inline-block;"><input name="delete" type="checkbox" value="1" required />
 					<div class="label bold">Sí quiero eliminarlo</div>
 				</label>
 
@@ -241,7 +230,7 @@
 				</button>
 
 			</form>
-			
+
 		</div>
 
 	</div>
@@ -250,7 +239,7 @@
 
 <script type="text/javascript" src="./inmueble.bundle.js"></script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 	// Dynamic form
 
@@ -445,8 +434,11 @@
 		imageOptions.classList.add("hide");
 	}
 
+	document.getElementById('descripcion').value = 'Hola'
 
 
-</script>
+
+
+</script> -->
 
 </html>
