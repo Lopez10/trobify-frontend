@@ -411,7 +411,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"modificarFiltro\": () => (/* binding */ modificarFiltro)\n/* harmony export */ });\nfunction modificarFiltro(opt, prov, tpoInm) {\n\tconsole.log(prov);\n\tlet provincia = document.getElementById('provincias');\n\tconsole.log(provincia);\n\tprovincia.value = prov;\n}\n\n\n//# sourceURL=webpack://trobify-frontend/./public/js/busqueda.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"modificarFiltro\": () => (/* binding */ modificarFiltro)\n/* harmony export */ });\nfunction modificarFiltro(opt, prov, tpoInm) {\n\tconsole.log(opt);\n\tlet provincia = document.getElementById('provincias');\n\tlet option1 = document.getElementById('opt1');\n\tlet option2 = document.getElementById('opt2');\n\tprovincia.value = prov;\n\toption1.checked = opt == 1 ? true : false;\n\toption2.checked = opt == 2 ? true : false;\n}\n\n\n//# sourceURL=webpack://trobify-frontend/./public/js/busqueda.js?");
 
 /***/ }),
 
