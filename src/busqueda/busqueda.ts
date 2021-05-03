@@ -13,7 +13,6 @@ export class Busqueda {
 		this.obtenerFiltroUrl();
 	}
 	aplicarFiltros() {
-		crearProvincias();
 		let filtroForm: HTMLFormElement =
 			document.querySelector('#filtroForm') || document.createElement('form');
 		filtroForm.onsubmit = () => {
@@ -65,12 +64,9 @@ export class Busqueda {
 			tpoInm: tpoInm,
 			prov: prov,
 		});
-		crearProvincias(prov);
+
 		busqueda.modificarFiltro(opt, prov, tpoInm);
-		let inmuebles = this.getInmuebles(params);
-		this.crearMapa(prov, inmuebles);
-		this.crearCatalogo(inmuebles);
-		return false;
+		this.aplicarFiltros();
 	}
 
 	crearMapa(prov: number, inmuebles: Promise<any>) {
@@ -90,10 +86,11 @@ export class Busqueda {
 		});
 		return inmuebles;
 	}
+
 	obtenerFiltroUrl() {
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
-		if (urlParams.get('landing') != null) {
+		if (urlParams.get('prov') != null) {
 			// @ts-ignore: Object is possibly 'null'.
 			let prov: number = +urlParams.get('prov');
 			// @ts-ignore: Object is possibly 'null'.
@@ -106,9 +103,8 @@ export class Busqueda {
 			formData.set('opt', opt.toString());
 			formData.set('provincia', prov.toString());
 
+			crearProvincias(prov);
 			this.aplicarFiltrosURL(prov, opt, tpoInm);
-		} else {
-			this.aplicarFiltros();
 		}
 	}
 }
