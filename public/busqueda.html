@@ -58,6 +58,14 @@
 						<option value="6">Más pequeños</option>
 					</select>
 
+					<div class="label title">Tipo inmueble</div>
+
+					<select name="tpoInm" class="select" id="tpoInm">
+						<option value="1">Garaje</option>
+						<option value="2">Local Comercial</option>
+						<option value="3">Vivienda</option>
+					</select>
+
 					<div class="label title">Provincia</div>
 
 					<select id="provincias" class="select" name="provincia"></select>
@@ -261,10 +269,24 @@
 	<!--<script type="text/javascript" src="./js/selector.js"></script>-->
 </body>
 <script type="text/javascript">
+
+	var formSelector = document.getElementById("tpoInm"),
+		formSelectorValue = ["", "", "propertyTypeComercial", "propertyTypeHome"];
+
+	formSelector.addEventListener("change", changeForm, false);
+
+	function changeForm() {
+		formSelectorValue.forEach(v => {
+			if (v != "") document.getElementById(v).classList.add("hideElement");
+		});
+		if (formSelector.value != 1) document.getElementById(formSelectorValue[formSelector.value]).classList.remove("hideElement");
+	}
+
 	window.onload = function () {
 		//setDefaultFilters();
 		setDefaultView();
 		setApplyFilterButtonWidth();
+		changeForm();
 		loadFilter();
 	};
 
