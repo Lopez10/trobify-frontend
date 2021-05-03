@@ -19,42 +19,52 @@
 </head>
 
 <body>
-     <div class="flexbox column spaced-inner-top spaced-inner-bottom overflow" style="width:min(100vw, 800px);margin: 0 auto;">
+     <div>
 
-          <div class="flexbox row spaced" style="overflow:hidden;">
-               <div class="flexbox row imageGallery" style="overflow: auto;">
-                    <img src="./css/img/images/sd/aaron-huber-G7sE2S4Lab4-unsplash.jpg">
-                    <img src="./css/img/images/sd/aaron-huber-G7sE2S4Lab4-unsplash.jpg">
-                    <img src="./css/img/images/sd/aaron-huber-G7sE2S4Lab4-unsplash.jpg">
-               </div>
-          </div>
+          <a class="button" href="http://localhost:8080/public/busqueda.html">Atras</a>
 
-          <div class="flexbox row spaced space-between">
-               <div class="label title-x2"><span id="precio">000.000</span> €</div>
+          <div class="flexbox column spaced-inner-top spaced-inner-bottom overflow"
+               style="width:min(100vw, 800px);margin: 0 auto;">
 
-               <a class="button">Editar inmueble</a>
-          </div>
 
-          <div class="flexbox column spaced">
-               <div class="label bold"><span id="direccion">Ubicación</span></div>
-
-               <div class="sep"></div>
-
-               <div class="label">
-                    <span id="superficie">000</span> m²<div class="label bold" style="margin:0 10px;">·</div>
-                    <span id="nHab">0</span> habitaciones<div class="label bold" style="margin:0 10px;">·</div>
-                    <span id="nBan">0</span> baños
+               <div class="flexbox row spaced" style="overflow:hidden;">
+                    <div class="flexbox row imageGallery" style="overflow: auto;">
+                         <img id="imageGallery">
+                    </div>
                </div>
 
-               <div class="sep"></div>
+               <div class="flexbox row spaced space-between">
+                    <div class="label title-x2"><span id="precio"></span> €</div>
 
-               <div class="label paragraph"><span id="breveDescripcion">Descripción</span></div>
+                    <a class="button">Editar inmueble</a>
+               </div>
+
+               <div class="flexbox column spaced">
+                    <div class="label bold"><span id="direccion">Ubicación</span></div>
+
+                    <div class="sep"></div>
+
+                    <div class="label">
+                         <span id="superficie">000</span> m²<div class="label bold" style="margin:0 10px;">·</div>
+                         <span id="nHab">0</span> habitaciones<div class="label bold" style="margin:0 10px;">·</div>
+                         <span id="nBan">0</span> baños
+                    </div>
+
+                    <div class="sep"></div>
+
+                    <div class="label paragraph"><span id="breveDescripcion">Descripción</span></div>
+                    <br><br><br>
+                    <div class="label bold"><span>Características</span></div>
+
+
+                    <div class="label "><span id="caract"></span></div>
+               </div>
+
+               <div class="flexbox row spaced space-between">
+                    <div id="map" class="map full-width round"></div>
+               </div>
+
           </div>
-
-          <div class="flexbox row spaced space-between">
-               <div id="map" class="map full-width round"></div>
-          </div>
-
      </div>
 
      <script type="text/javascript" src="./inmueble.bundle.js"></script>

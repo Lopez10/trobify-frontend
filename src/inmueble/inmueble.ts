@@ -2,7 +2,8 @@ import axios from 'axios';
 const imagenes = require('../../public/js/imagenes.js');
 import { crearProvincias } from '../../data/provincias';
 import { InmuebleInterface } from '../interface/inmueble.interface';
-const editar = require('../../public/js/edit.js');
+const inm = require('../../public/js/edit.js');
+
 export class Inmueble {
 	constructor() {
 		crearProvincias();
@@ -26,8 +27,11 @@ export class Inmueble {
 		return { catastroId, modo };
 	}
 	editarInmueble(inmueble: any): void {
-		editar.editar(inmueble);
+		inm.editar(inmueble);
 		this.aplicarRegistro();
+	}
+	verInmueble(inmueble: any) {
+		inm.inmuebleDom(inmueble);
 	}
 
 	aplicarRegistro() {
@@ -76,22 +80,31 @@ export class Inmueble {
 				imagen: imagenes.getImageGalleryValues(),
 			};
 			this.postInmueble(params);
+			console.log(params);
 			return false;
 		};
 	}
 	async postInmueble(inmueble: any) {
-		axios({
-			method: 'post',
-			url: 'http://localhost:3000/inmueble',
-			data: inmueble,
-			headers: { 'Content-Type': 'multipart/form-data' },
-		})
-			.then(function (response) {
-				console.log(response.data);
-				//window.location.replace('http://localhost:8080/public/busqueda.html');
-			})
-			.catch(function (response) {
-				console.log(response);
-			});
+		console.log(inmueble);
+		// axios({
+		// 	method: 'post',
+		// 	url: 'http://localhost:3000/inmueble',
+		// 	data: 'hola',
+		// 	headers: { 'Content-Type': 'multipart/form-data' },
+		// })
+		// 	.then(function (response) {
+		// 		console.log(response.data);
+		// 		//window.location.replace('http://localhost:8080/public/busqueda.html');
+		// 	})
+		// 	.catch(function (response) {
+		// 		console.log(response);
+		// 	});
+
+		const myRequest = 'http://localhost:3000/inmueble';
+		let inmuebles: Promise<any> = axios.post(myRequest, inmueble).then((result) => {
+			console.log(result.data);
+			return result.data;
+		});
+		return inmuebles;
 	}
 }

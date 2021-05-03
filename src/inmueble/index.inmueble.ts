@@ -8,9 +8,7 @@ let mapa = new Mapa();
 let datosInmueble = inmueble.getInmueble();
 
 datosInmueble.then((data) => {
-	mapa.mostrarMapa(datosInmueble, obtenerProvincias(), data.provincia, true);
-});
-
-datosInmueble.then((data) => {
+	//mapa.mostrarMapa(datosInmueble, obtenerProvincias(), data.provincia, true);
 	inmueble.editarInmueble(data);
+	//inmueble.verInmueble(data);
 });
