@@ -1,5 +1,4 @@
 import { crearProvincias } from '../data/provincias';
-import { Busqueda } from './busqueda/busqueda';
 
 crearProvincias();
 
@@ -14,6 +13,5 @@ searchForm.onsubmit = () => {
 	window.location.assign(
 		'/public/busqueda.html?landing=1&opt=' + opt + '&prov=' + prov + '&tpoInm=' + tpoInm
 	);
-
 	return false;
 };

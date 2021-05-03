@@ -429,19 +429,19 @@ export function obtenerProvincias(): Array<Provincia> {
 	];
 	return provincias;
 }
-export function crearProvincias() {
+export function crearProvincias(prov?: number) {
 	let provincias: Array<Provincia> = obtenerProvincias();
 	let div = document.getElementById('provincias');
 	provincias.forEach((result) => {
-		comprobarCodigoPostal(result, div);
+		comprobarCodigoPostal(result, div, prov || 46);
 	});
 }
 
-export function comprobarCodigoPostal(result: Provincia, div: HTMLElement | null) {
+export function comprobarCodigoPostal(result: Provincia, div: HTMLElement | null, prov: number) {
 	if (result.codigoPostal != 0) {
 		let option = document.createElement('option');
 		option.setAttribute('value', result.codigoPostal.toString());
-		if (result.codigoPostal == 46) option.setAttribute('selected', 'selected');
+		if (result.codigoPostal == prov) option.setAttribute('selected', 'selected');
 		let textoProvincia = document.createTextNode(result.provincia.toString());
 		option.appendChild(textoProvincia);
 		if (div != null) div.appendChild(option);

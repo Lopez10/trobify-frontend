@@ -4,16 +4,16 @@ import { Catalogo } from './catalogo/catalogo';
 import { Mapa } from './mapa/mapa';
 import { obtenerProvincias, crearProvincias } from '../../data/provincias';
 import { Provincia } from '../interface/provincia.interface';
+const busqueda = require('../../public/js/busqueda.js');
 
 export class Busqueda {
 	provincias: Provincia[];
 	constructor() {
 		this.provincias = obtenerProvincias();
 		this.obtenerFiltroUrl();
-
-		crearProvincias();
 	}
 	aplicarFiltros() {
+		crearProvincias();
 		let filtroForm: HTMLFormElement =
 			document.querySelector('#filtroForm') || document.createElement('form');
 		filtroForm.onsubmit = () => {
@@ -65,7 +65,8 @@ export class Busqueda {
 			tpoInm: tpoInm,
 			prov: prov,
 		});
-
+		crearProvincias(prov);
+		busqueda.modificarFiltro(opt, prov, tpoInm);
 		let inmuebles = this.getInmuebles(params);
 		this.crearMapa(prov, inmuebles);
 		this.crearCatalogo(inmuebles);
