@@ -2,7 +2,8 @@ import axios from 'axios';
 import { crearProvincias } from '../../data/provincias';
 import { InmuebleInterface } from '../interface/inmueble.interface';
 const imagenes = require('../../public/js/imagenes.js');
-const inm = require('../../public/js/edit.js');
+const inm = require('../../public/js/inmueble.js');
+const editar = require('../../public/js/editar.js');
 
 export class Inmueble {
 	constructor() {
@@ -26,7 +27,7 @@ export class Inmueble {
 		return { catastroId, modo };
 	}
 	editarInmueble(inmueble: any): void {
-		inm.editar(inmueble);
+		editar.editar(inmueble);
 		this.aplicarRegistro();
 	}
 	verInmueble(inmueble: any) {
