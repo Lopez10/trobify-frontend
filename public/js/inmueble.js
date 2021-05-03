@@ -17,5 +17,19 @@ export function inmuebleDom(inmueble) {
 	ubi.innerHTML = inmueble.direccion;
 	caract.innerHTML = inmueble.caracteristicas;
 	imagenes.src = inmueble.imagen[0];
-	atras.href = 'http://localhost:8080/public/busqueda.html?prov=' + inmueble.provincia;
+	let tpoInm = 3;
+	if (inmueble.tipoInmueble == 'Vivienda') {
+		tpoInm = 3;
+	} else if (inmueble.tipoInmueble == 'Garaje') {
+		tpoInm = 1;
+	} else {
+		tpoInm = 2;
+	}
+	atras.href =
+		'http://localhost:8080/public/busqueda.html?prov=' +
+		inmueble.provincia +
+		'&opt=' +
+		inmueble.modalidad +
+		'&tpoInm=' +
+		tpoInm;
 }

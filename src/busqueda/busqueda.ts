@@ -26,6 +26,7 @@ export class Busqueda {
 			let supMin = (formData.get('supMin') as unknown) as number;
 			let supMax = (formData.get('supMax') as unknown) as number;
 			let prov = (formData.get('provincia') as unknown) as number;
+			let tpoInmueble = (formData.get('tpoInm') as unknown) as number;
 			let nHab = (formData.get('h') as unknown) as number;
 			let nBan = (formData.get('b') as unknown) as number;
 			let stdo = ((formData.getAll('stdo') as unknown) as Array<String>).join(',') as string;
@@ -33,7 +34,7 @@ export class Busqueda {
 			let caract = ((formData.getAll('caract') as unknown) as Array<String>).join(',') as string;
 			//let clfEn = (formData.get('clfEn') as unknown) as number; // Por que no se puede seleccionar en ningún sitio
 			let params = querystring.stringify({
-				tpoInm: 3,
+				tpoInm: tpoInmueble,
 				ord: ord,
 				opt: opt,
 				preMin: preMin,
