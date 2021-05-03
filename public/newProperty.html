@@ -195,6 +195,7 @@
 								</div>
 							</div>
 
+							<!--
 							<div id="dropArea" class="dropArea">
 								<input type="file" class="fileInput" id="fileInput" multiple accept="image/*"
 									onchange="handleFiles(this.files)">
@@ -204,6 +205,15 @@
 									</div>
 								</label>
 							</div>
+							-->
+
+							<input class="mode-fill" name="imageURL" id="imageURL" type="text" placeholder="Introduce la url de la imagen"/>
+							<a id="addImageBtn" class="button black inline-flex chip" name="addImageBtn">
+								Añadir imagen
+							</a>
+
+							<div class="sep"></div>
+
 							<div id="gallery" class="gallery empty">
 								<div class="imageOptions hide" id="imageOptions"></div>
 							</div>
@@ -284,7 +294,104 @@
 		}
 	}
 
-	// Image upload
+	// Image upload (url)
+
+	var imgInput = document.querySelector("#imageURL"),
+		addImageBtn = document.querySelector("#addImageBtn"),
+		totalImages = 0,
+		totalImagesDIV = document.getElementById("totalImagesUploaded"),
+		imageGallery = {};
+
+		addImageBtn.addEventListener("click", addImageDOM, false);
+
+	function addImageDOM() {
+		if (imgInput.value) {
+			addImage(imgInput.value);
+			imgInput.value = "";
+		} else {
+			imgInput.focus();
+		}
+	}
+
+	function addImage(url) {
+		let img = document.createElement("img"),
+			imageId = convertToCharCode(Date.now() * Math.random());
+		img.src = url;
+		img.id = imageId;
+		img.style.cssText = "width:180px;margin:5px;border-radius:6px;cursor:pointer;";
+		// Add to DOM
+		document.querySelector("#gallery").appendChild(img);
+		// Add to image gallery object
+		imageGallery[imageId] = img.src;
+		// Increment image count
+		totalImagesDIV.textContent = ++totalImages;
+		if (totalImages > 0) {
+			gallery.classList.remove("empty");
+		}
+	}
+
+	function addImages(imgs) {
+		imgs.forEach(img => addImage(img));
+	}
+
+	function convertToCharCode(num) {
+		return num
+			.toString()    // convert number to string
+			.split('')     // convert string to array of characters
+			.map(Number)   // parse characters as numbers
+			.map(n => (n || 10) + 64)   // convert to char code, correcting for J
+			.map(c => String.fromCharCode(c))   // convert char codes to strings
+			.join('');     // join values together
+	}
+
+	var gallery = document.querySelector("#gallery"),
+		imageOptions = document.querySelector("#imageOptions");
+		
+	gallery.addEventListener("mousemove", detectImage);
+	gallery.addEventListener("click", removeImage);
+	gallery.addEventListener("mouseleave", hideImageOptions);
+
+	var tmpTarget;
+	function detectImage(e) {
+		if (e.target.id != tmpTarget) {
+			if (e.target.tagName == "IMG") {
+				showImageOptions(e.target.id)
+			} else hideImageOptions();
+		}
+		tmpTarget = e.target.id;
+	}
+
+	function showImageOptions(id) {
+		var pos = document.getElementById(id).getBoundingClientRect();
+		imageOptions.style.top = pos.top - gallery.getBoundingClientRect().top + "px";
+		imageOptions.style.left = pos.left - gallery.getBoundingClientRect().left + "px";
+		imageOptions.style.width = pos.width + "px";
+		imageOptions.style.height = pos.height + "px";
+		imageOptions.classList.remove("hide");
+	}
+
+	function removeImage(e) {
+		if (e.target.tagName == "IMG") {
+			// Hide image options overlay
+			hideImageOptions();
+			// Remove from DOM
+			e.target.remove();
+			// Remove from image gallery object
+			delete imageGallery[e.target.id];
+			// Decrement image number
+			totalImagesDIV.textContent = --totalImages;
+			if (totalImages == 0) gallery.classList.add("empty");
+		}
+	}
+
+	function hideImageOptions() {
+		tmpTarget = "";
+		imageOptions.classList.add("hide");
+	}
+
+
+	/*
+	// Image upload (files)
 
 	var dropArea = document.querySelector("#dropArea"),
 		totalImages = 0,
@@ -420,7 +527,7 @@
 		tmpTarget = "";
 		imageOptions.classList.add("hide");
 	}
-
+	*/
 
 
 </script>
