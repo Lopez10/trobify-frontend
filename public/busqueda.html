@@ -201,7 +201,7 @@
 					<input type="radio" id="filterOpt" name="opt" value="1" style="display: none" checked />
 
 					<button id="filtroFormSubmit" class="button black inline-flex block center applyFiltersSearch"
-						name="submit" type="submit" onclick="document.getElementById('map').innerHTML=''">
+						name="submit" type="submit" onclick="document.getElementById('map').innerHTML=''" style="transition:all 0s;">
 						Aplicar filtros
 					</button>
 				</form>
@@ -261,8 +261,10 @@
 </body>
 <script type="text/javascript">
 	window.onload = function () {
-		setDefaultFilters();
+		//setDefaultFilters();
+		setDefaultView();
 		setApplyFilterButtonWidth();
+		//loadFilter();
 	};
 
 	function loadFilter() {
@@ -280,11 +282,15 @@
 		document.getElementById("opt1").checked = true;
 		document.getElementById("opt2").checked = false;
 		document.getElementById("opt3").checked = false;
+		// Load filters
+		loadFilter();
+	}
+	function setDefaultView() {
 		// Set default view mode
 		document.getElementById("viewList").checked = true;
 		document.getElementById("viewMap").checked = false;
 		// Load filters
-		//loadFilter();
+		loadFilter();
 	}
 	function setApplyFilterButtonWidth() {
 		document.getElementById("filtroFormSubmit").style.width = document.getElementById("filtroForm").getBoundingClientRect().width + "px";
