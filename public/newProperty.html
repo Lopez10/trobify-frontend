@@ -244,14 +244,15 @@
 	window.onload = () => {
 		changeForm();
 
-		propertyMethodS.checked = false;
-		propertyMethodR.checked = false;
+		// propertyMethodS.checked = false;
+		// propertyMethodR.checked = false;
+
+		changeMethod();
 	}
 
 
 
 	function changeForm() {
-		console.log(formSelector.value);
 		formSelectorValue.forEach(v => {
 			if (v != "") document.getElementById(v).classList.add("hideElement");
 		});
