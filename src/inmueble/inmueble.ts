@@ -47,7 +47,7 @@ export class Inmueble {
 			let energia = formData.get('energia') as string;
 			let provincia = formData.get('provincia') as string;
 			let superficie = formData.get('superficie') as string;
-			let precio = formData.get('precio') as string;
+			let precio = (formData.getAll('precio') as unknown) as Array<String>;
 			let homeType = formData.get('homeType') as string;
 			let roomCount = formData.get('roomCount') as string;
 			let bathroomCount = formData.get('bathroomCount') as string;
@@ -59,7 +59,8 @@ export class Inmueble {
 			let caract = feature.split(',').map((x) => +x);
 
 			//let clfEn = (formData.get('clfEn') as unknown) as number; // Por que no se puede seleccionar en ningún sitio
-			const params: InmuebleInterface = {
+
+			const params: any = {
 				nBano: +bathroomCount,
 				nHab: +roomCount,
 				id_caractSecundaria: caract,
@@ -69,7 +70,7 @@ export class Inmueble {
 				id_catastro: catast,
 				superficie: +superficie,
 				id_modalidad: modo,
-				precio: +precio,
+				precio: precio,
 				id_provincia: +provincia || 46,
 				id_tipoVivienda: +homeType,
 				descuento: 0,
