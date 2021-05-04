@@ -2,9 +2,9 @@ import querystring from 'querystring';
 import axios from 'axios';
 import { Catalogo } from './catalogo/catalogo';
 import { Mapa } from './mapa/mapa';
-import { obtenerProvincias, crearProvincias } from '../../data/provincias';
-import { Provincia } from '../interface/provincia.interface';
-const busqueda = require('../../public/js/busqueda.js');
+import { obtenerProvincias, crearProvincias } from '../../../data/provincias';
+import { Provincia } from '../../interface/provincia.interface';
+const busqueda = require('../../../public/js/busqueda.js');
 
 export class Busqueda {
 	provincias: Provincia[];
@@ -12,6 +12,14 @@ export class Busqueda {
 		this.provincias = obtenerProvincias();
 		this.obtenerFiltroUrl();
 	}
+	getInmuebles(params: string) {
+		const myRequest = 'http://localhost:3000/catalogo?';
+		let inmuebles: Promise<any> = axios.get(myRequest + params).then((result) => {
+			return result.data;
+		});
+		return inmuebles;
+	}
+
 	aplicarFiltros() {
 		let filtroForm: HTMLFormElement =
 			document.querySelector('#filtroForm') || document.createElement('form');
@@ -60,11 +68,6 @@ export class Busqueda {
 		};
 	}
 
-	aplicarFiltrosURL(prov: number, opt: number, tpoInm: number) {
-		busqueda.modificarFiltro(opt, prov, tpoInm);
-		this.aplicarFiltros();
-	}
-
 	crearMapa(prov: number, inmuebles: Promise<any>) {
 		let mapa = new Mapa();
 		mapa.mostrarMapa(inmuebles, this.provincias, prov || 0);
@@ -75,12 +78,9 @@ export class Busqueda {
 		catalogo.mostrarInmuebles(inmuebles);
 	}
 
-	getInmuebles(params: string) {
-		const myRequest = 'http://localhost:3000/catalogo?';
-		let inmuebles: Promise<any> = axios.get(myRequest + params).then((result) => {
-			return result.data;
-		});
-		return inmuebles;
+	aplicarFiltrosURL(prov: number, opt: number, tpoInm: number) {
+		busqueda.modificarFiltro(opt, prov, tpoInm);
+		this.aplicarFiltros();
 	}
 
 	obtenerFiltroUrl() {

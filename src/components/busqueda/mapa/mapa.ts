@@ -1,5 +1,5 @@
-import { Provincia } from '../../interface/provincia.interface';
-const mapa = require('../../../public/js/mapa.js');
+import { Provincia } from '../../../interface/provincia.interface';
+const mapa = require('../../../../public/js/mapa.js');
 
 export class Mapa {
 	constructor() {}

@@ -19,7 +19,7 @@ export interface InmuebleInterface {
 	extras?: string[];
 
 	id_modalidad: number[];
-	precio: number;
+	precio: String[];
 	descuento: number;
 	id_usuario: number;
 }

@@ -1,4 +1,4 @@
-export function catalogDom(div: any, item: any) {
+export function catalogDom(div, item) {
 	let ver = document.createElement('a');
 	ver.href =
 		'http://localhost:8080/public/inmueble.html' +

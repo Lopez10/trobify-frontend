@@ -1,20 +1,17 @@
-import { Hipoteca } from './hipoteca';
-export function hipotecaDom() {
-	let hipotecaForm: HTMLFormElement =
-		document.querySelector('#formularioHipoteca') || document.createElement('form');
-	let localizacion: string = 'Valencia';
+export function hipotecaDom(hipoteca) {
+	let hipotecaForm = document.querySelector('#formularioHipoteca');
+	let localizacion = 'Valencia';
 
 	hipotecaForm.onsubmit = () => {
 		const formData = new FormData(hipotecaForm);
 
-		let condicionHipoteca = formData.get('condicion') as string;
-		let precio = (formData.get('precio') as unknown) as number;
-		let ahorro = (formData.get('ahorro') as unknown) as number;
-		let plazo = (formData.get('plazo') as unknown) as number;
-		let valorVariable = (formData.get('valorVariable') as unknown) as number;
-		let interes = formData.get('interes') as string;
-		console.log(condicionHipoteca, precio, ahorro, plazo, interes);
-		let hipoteca = new Hipoteca(precio, localizacion);
+		let condicionHipoteca = formData.get('condicion');
+		let precio = formData.get('precio');
+		let ahorro = formData.get('ahorro');
+		let plazo = formData.get('plazo');
+		let valorVariable = formData.get('valorVariable');
+		let interes = formData.get('interes');
+
 		let valorCondicionHipoteca = hipoteca.calculoCondicion(condicionHipoteca);
 		let calculoAhorro = hipoteca.calculoAhorro(ahorro);
 		let calculoInteres = hipoteca.calculoInteres(interes, valorVariable, calculoAhorro);

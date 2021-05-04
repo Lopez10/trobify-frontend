@@ -1,5 +1,4 @@
-import { catalogDom } from './dom.catalogo';
-
+const constructorDom = require('../../../../public/js/catalogo.js');
 export class Catalogo {
 	constructor() {}
 
@@ -20,7 +19,7 @@ export class Catalogo {
 				}
 			}
 			result.forEach((item: any) => {
-				catalogDom(div, item);
+				constructorDom.catalogDom(div, item);
 			});
 		});
 	}

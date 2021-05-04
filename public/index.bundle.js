@@ -20,13 +20,13 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 
 /***/ }),
 
-/***/ "./src/index.ts":
-/*!**********************!*\
-  !*** ./src/index.ts ***!
-  \**********************/
+/***/ "./src/components/index.ts":
+/*!*********************************!*\
+  !*** ./src/components/index.ts ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst provincias_1 = __webpack_require__(/*! ../data/provincias */ \"./data/provincias.ts\");\nprovincias_1.crearProvincias();\nlet searchForm = document.querySelector('#formSearch') || document.createElement('form');\nsearchForm.onsubmit = () => {\n    const formData = new FormData(searchForm);\n    let opt = formData.get('opt');\n    let prov = formData.get('prov');\n    let tpoInm = formData.get('tpoInm');\n    window.location.assign('/public/busqueda.html?landing=1&opt=' + opt + '&prov=' + prov + '&tpoInm=' + tpoInm);\n    return false;\n};\n\n\n//# sourceURL=webpack://trobify-frontend/./src/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst provincias_1 = __webpack_require__(/*! ../../data/provincias */ \"./data/provincias.ts\");\nprovincias_1.crearProvincias();\nlet searchForm = document.querySelector('#formSearch') || document.createElement('form');\nsearchForm.onsubmit = () => {\n    const formData = new FormData(searchForm);\n    let opt = formData.get('opt');\n    let prov = formData.get('prov');\n    let tpoInm = formData.get('tpoInm');\n    window.location.assign('/public/busqueda.html?landing=1&opt=' + opt + '&prov=' + prov + '&tpoInm=' + tpoInm);\n    return false;\n};\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/index.ts?");
 
 /***/ })
 
@@ -60,7 +60,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\ncons
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.ts");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/components/index.ts");
 /******/ 	
 /******/ })()
 ;

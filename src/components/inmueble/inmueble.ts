@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { crearProvincias } from '../../data/provincias';
-import { InmuebleInterface } from '../interface/inmueble.interface';
-const imagenes = require('../../public/js/imagenes.js');
-const inm = require('../../public/js/inmueble.js');
-const editar = require('../../public/js/editar.js');
+import { crearProvincias } from '../../../data/provincias';
+import { InmuebleInterface } from '../../interface/inmueble.interface';
+const imagenes = require('../../../public/js/imagenes.js');
+const inm = require('../../../public/js/inmueble.js');
+const editar = require('../../../public/js/editar.js');
 
 export class Inmueble {
 	constructor() {
@@ -19,6 +19,15 @@ export class Inmueble {
 		return await inmueble;
 	}
 
+	async postInmueble(inmueble: any) {
+		const myRequest = 'http://localhost:3000/inmueble';
+		let inmuebles: Promise<any> = axios.post(myRequest, inmueble).then((result) => {
+			console.log(result.data);
+			return result.data;
+		});
+		return inmuebles;
+	}
+
 	private obtenerParametros(): any {
 		let queryString = window.location.search;
 		let urlParams = new URLSearchParams(queryString);
@@ -26,10 +35,12 @@ export class Inmueble {
 		let modo = urlParams.get('modo');
 		return { catastroId, modo };
 	}
+
 	editarInmueble(inmueble: any): void {
 		editar.editar(inmueble);
 		this.aplicarRegistro();
 	}
+
 	verInmueble(inmueble: any) {
 		inm.inmuebleDom(inmueble);
 	}
@@ -58,9 +69,7 @@ export class Inmueble {
 			let modo = propertyMethod.split(',').map((x) => +x);
 			let caract = feature.split(',').map((x) => +x);
 
-			//let clfEn = (formData.get('clfEn') as unknown) as number; // Por que no se puede seleccionar en ningún sitio
-
-			const params: any = {
+			const params: InmuebleInterface = {
 				nBano: +bathroomCount,
 				nHab: +roomCount,
 				id_caractSecundaria: caract,
@@ -86,28 +95,5 @@ export class Inmueble {
 			console.log(params);
 			return false;
 		};
-	}
-	async postInmueble(inmueble: any) {
-		console.log(inmueble);
-		// axios({
-		// 	method: 'post',
-		// 	url: 'http://localhost:3000/inmueble',
-		// 	data: 'hola',
-		// 	headers: { 'Content-Type': 'multipart/form-data' },
-		// })
-		// 	.then(function (response) {
-		// 		console.log(response.data);
-		// 		//window.location.replace('http://localhost:8080/public/busqueda.html');
-		// 	})
-		// 	.catch(function (response) {
-		// 		console.log(response);
-		// 	});
-
-		const myRequest = 'http://localhost:3000/inmueble';
-		let inmuebles: Promise<any> = axios.post(myRequest, inmueble).then((result) => {
-			console.log(result.data);
-			return result.data;
-		});
-		return inmuebles;
 	}
 }

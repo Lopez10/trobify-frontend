@@ -1,4 +1,4 @@
-import { crearProvincias } from '../data/provincias';
+import { crearProvincias } from '../../data/provincias';
 
 crearProvincias();
 

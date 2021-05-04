@@ -1,4 +1,4 @@
-import { Usuario } from '../interface/usuario.interface';
+import { Usuario } from '../../interface/usuario.interface';
 import axios from 'axios';
 
 export class Login {
