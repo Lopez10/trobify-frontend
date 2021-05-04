@@ -45,10 +45,10 @@ export function mostrarMapa(ubicaciones, latitud, longitud, zm, unico) {
 			{ lat: item.latitud, lng: item.longitud },
 			'<div><a href="http://localhost:8080/public/inmueble.html' +
 				'?catastro=' +
-				item.catastro +
+				item.id_catastro +
 				'&modo=' +
 				item.id_modalidad +
-				'" target="_blank"><b>Enlace</b></a></div>' +
+				'"><b>Enlace</b></a></div>' +
 				'<div>' +
 				'Precio: ' +
 				item.precio +
