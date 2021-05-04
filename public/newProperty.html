@@ -37,7 +37,7 @@
 						<div class="flexbox column block round form">
 
 							<div class="label title">Tipo de inmueble</div>
-							<select name="propertyType" class="select" id="formSelector">
+							<select name="propertyType" class="select" id="tpoInm">
 								<option value="1">Garaje</option>
 								<option value="2">Local comercial</option>
 								<option value="3" selected>Vivienda</option>
@@ -59,20 +59,6 @@
 								<option value="2">Buen estado</option>
 								<option value="3">Reformado</option>
 								<option value="4">A reformar</option>
-							</select>
-
-							<div class="label title">Energia</div>
-
-							<select class="select" name="energia">
-								<option value="1">A++</option>
-								<option value="2">A+</option>
-								<option value="3">A</option>
-								<option value="4">B</option>
-								<option value="5">C</option>
-								<option value="6">D</option>
-								<option value="7">E</option>
-								<option value="8">F</option>
-								<option value="9">G</option>
 							</select>
 
 							<div class="label title">Catastro</div>
@@ -110,10 +96,8 @@
 								</div>
 							</div>
 
-							<div class="propertyTypeHome" id="propertyTypeHome">
-
+							<div class="dynamicFilterHome">
 								<div class="sep"></div>
-
 								<div class="label title">Tipo de vivienda</div>
 								<select name="homeType" class="select">
 									<option value="1">No es vivienda</option>
@@ -127,15 +111,40 @@
 									<option value="9">Adosado</option>
 									<option value="10">Finca Rústica</option>
 								</select>
+							</div>
 
+							<div class="dynamicFilterHome dynamicFilterLocal">
+								<div class="sep"></div>
+								<div class="label title">Energia</div>
+								<select class="select" name="energia">
+									<option value="1">A++</option>
+									<option value="2">A+</option>
+									<option value="3">A</option>
+									<option value="4">B</option>
+									<option value="5">C</option>
+									<option value="6">D</option>
+									<option value="7">E</option>
+									<option value="8">F</option>
+									<option value="9">G</option>
+								</select>
+							</div>
+
+							<div class="dynamicFilterHome">
+								<div class="sep"></div>
 								<div class="label title">Habitaciones</div>
 								<input class="mode-fill" name="roomCount" type="number" min="0" value="0"
-									step="1" />
+								step="1" />
+							</div>
 
+							<div class="dynamicFilterHome dynamicFilterLocal">
+								<div class="sep"></div>
 								<div class="label title">Baños</div>
 								<input class="mode-fill" name="bathroomCount" type="number" min="0" value="0"
-									step="1" />
+								step="1" />
+							</div>
 
+							<div class="dynamicFilterHome">
+								<div class="sep"></div>
 								<div class="label title optional">Características</div>
 								<label><input name="feature" type="checkbox" value="1" />
 									<div class="label bold">Ascensor</div>
@@ -164,18 +173,6 @@
 								<label><input name="feature" type="checkbox" value="9" />
 									<div class="label bold">Trastero</div>
 								</label>
-
-							</div>
-
-
-							<div class="propertyTypeComercial hideElement" id="propertyTypeComercial">
-
-								<div class="sep"></div>
-
-								<div class="label title">Baños</div>
-								<input class="mode-fill" name="bathroomCount" type="number" min="0" value="0"
-									step="1" />
-
 							</div>
 
 						</div>
@@ -239,8 +236,8 @@
 
 	// Dynamic form
 
-	var formSelector = document.getElementById("formSelector"),
-		formSelectorValue = ["", "", "propertyTypeComercial", "propertyTypeHome"],
+	var formSelector = document.getElementById("tpoInm"),
+		formSelectorValue = ["dynamicFilterGarage","dynamicFilterLocal","dynamicFilterHome"],
 		propertyMethodS = document.getElementById("propertyMethodS"),
 		propertyMethodR = document.getElementById("propertyMethodR"),
 		propertyMethodSPrice = document.getElementById("propertyMethodSPrice"),
@@ -253,20 +250,25 @@
 
 	window.onload = () => {
 		changeForm();
-
-		// propertyMethodS.checked = false;
-		// propertyMethodR.checked = false;
-
 		changeMethod();
 	}
 
-
+	function getTpoInm() {
+		return formSelector.value;
+	}
 
 	function changeForm() {
-		formSelectorValue.forEach(v => {
-			if (v != "") document.getElementById(v).classList.add("hideElement");
+		formSelectorValue.forEach((v) => {
+			Array.from(document.getElementsByClassName(v)).forEach((v) => {
+				v.classList.add("hideElement");
+			});
 		});
-		if (formSelector.value != 1) document.getElementById(formSelectorValue[formSelector.value]).classList.remove("hideElement");
+
+		Array.from(
+			document.getElementsByClassName(formSelectorValue[getTpoInm() - 1])
+		).forEach((v) => {
+			v.classList.remove("hideElement");
+		});
 	}
 
 	function changeMethod() {
