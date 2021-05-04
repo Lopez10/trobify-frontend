@@ -36,61 +36,57 @@
 
 						<div class="flexbox column block round form">
 
+							<select name="propertyType" class="select" id="tpoInm" style="display:none;">
+								<option value="1">Garaje</option>
+								<option value="2">Local comercial</option>
+								<option value="3" selected>Vivienda</option>
+							</select>
 
-							<div class="label title">Catastro</div>
-							<input id="catast" class="mode-fill" type="text" name="catast"
-								placeholder="0000000AA0000A0000AA" required />
-							<div class="label title">Método de venta</div>
-							<label onclick="changeMethod()"><input id="venta" name="propertyMethod"
-									type="checkbox" id="propertyMethodS" value="1" />
+							<div class="label title" style="margin-top:0;">Método de venta</div>
+							<label onclick="changeMethod()"><input name="propertyMethod" type="checkbox"
+									id="propertyMethodS" value="1" />
 								<div class="label bold">Venta</div>
 							</label>
-							<label onclick="changeMethod()"><input id="alquiler" name="propertyMethod"
-									type="checkbox" id="propertyMethodR" value="2" />
+							<label onclick="changeMethod()"><input name="propertyMethod" type="checkbox"
+									id="propertyMethodR" value="2" />
 								<div class="label bold">Alquiler</div>
 							</label>
 
 							<div class="label title">Estado de inmueble</div>
-							<select class="select" name="stdo" id="stdo">
+							<select class="select" name="stdo">
 								<option value="1">Obra nueva</option>
 								<option value="2">Buen estado</option>
 								<option value="3">Reformado</option>
 								<option value="4">A reformar</option>
 							</select>
 
-							<div class="label title">Energia</div>
+							<div class="label title">Catastro</div>
+							<input class="mode-fill" type="text" name="catast" id="catast"
+								placeholder="0000000AA0000A0000AA" required />
 
-							<select class="select" name="energia">
-								<option value="1">A++</option>
-								<option value="2">A+</option>
-								<option value="3">A</option>
-								<option value="4">B</option>
-								<option value="5">C</option>
-								<option value="6">D</option>
-								<option value="7">E</option>
-								<option value="8">F</option>
-								<option value="9">G</option>
-							</select>
-
+							<div class="label title">Dirección</div>
+							<textarea class="mode-fill no-resize" name="place" id="place"
+								placeholder="AV PRIMADO REIG 151, Escalera 1 Planta 2 Puerta 4"
+								required></textarea>
 							<div class="label title">Provincia</div>
 
 							<select id="provincias" class="select" name="provincia"></select>
 
 							<div class="label title">Superficie</div>
-							<input class="mode-fill" type="text" name="superficie" id="superficie"
+							<input class="mode-fill" type="text" name="superficie" id="location"
 								placeholder="98 m²" value="" required />
 
 							<div class="label title">Precio</div>
 
 							<div class="propertyMethodSPrice hideElement" id="propertyMethodSPrice">
 								<div class="label" style="margin-top:16px;">Precio de venta</div>
-								<input class="mode-fill" type="text" name="precio" id="precio"
+								<input class="mode-fill" type="text" name="precio" id="precio1"
 									placeholder="100.000 €" value="" required />
 							</div>
 
 							<div class="propertyMethodRPrice hideElement" id="propertyMethodRPrice">
 								<div class="label" style="margin-top:16px;">Precio de alquiler (€/mes)</div>
-								<input class="mode-fill" type="text" name="precio" id="precio"
+								<input class="mode-fill" type="text" name="precio" id="precio2"
 									placeholder="700 € / mes" value="" required />
 							</div>
 
@@ -99,10 +95,8 @@
 								</div>
 							</div>
 
-							<div class="propertyTypeHome" id="propertyTypeHome">
-
+							<div class="dynamicFilterHome">
 								<div class="sep"></div>
-
 								<div class="label title">Tipo de vivienda</div>
 								<select name="homeType" class="select">
 									<option value="1">No es vivienda</option>
@@ -116,55 +110,68 @@
 									<option value="9">Adosado</option>
 									<option value="10">Finca Rústica</option>
 								</select>
-
-								<div class="label title">Habitaciones</div>
-								<input id="hab" class="mode-fill" name="roomCount" type="number" min="0"
-									value="0" step="1" />
-
-								<div class="label title">Baños</div>
-								<input id="banos" class="mode-fill" name="bathroomCount" type="number" min="0"
-									value="0" step="1" />
-
-								<div class="label title optional">Características</div>
-								<label><input id="Acensor" name="feature" type="checkbox" value="1" />
-									<div class="label bold">Ascensor</div>
-								</label>
-								<label><input id="Amueblado" name="feature" type="checkbox" value="2" />
-									<div class="label bold">Amueblado</div>
-								</label>
-								<label><input id="Terraza" name="feature" type="checkbox" value="3" />
-									<div class="label bold">Terraza o balcón</div>
-								</label>
-								<label><input id="AireAconcionado" name="feature" type="checkbox" value="4" />
-									<div class="label bold">Aire acondicionado</div>
-								</label>
-								<label><input id="ArmarioEmpotrado" name="feature" type="checkbox" value="5" />
-									<div class="label bold">Armario empotrado</div>
-								</label>
-								<label><input id="Garaje" name="feature" type="checkbox" value="6" />
-									<div class="label bold">Garaje</div>
-								</label>
-								<label><input id="Jardin" name="feature" type="checkbox" value="7" />
-									<div class="label bold">Jardín</div>
-								</label>
-								<label><input id="Piscina" name="feature" type="checkbox" value="8" />
-									<div class="label bold">Piscina</div>
-								</label>
-								<label><input id="Trastero" name="feature" type="checkbox" value="9" />
-									<div class="label bold">Trastero</div>
-								</label>
-
 							</div>
 
-
-							<div class="propertyTypeComercial hideElement" id="propertyTypeComercial">
-
+							<div class="dynamicFilterHome dynamicFilterLocal">
 								<div class="sep"></div>
+								<div class="label title">Energia</div>
+								<select class="select" name="energia">
+									<option value="1">A++</option>
+									<option value="2">A+</option>
+									<option value="3">A</option>
+									<option value="4">B</option>
+									<option value="5">C</option>
+									<option value="6">D</option>
+									<option value="7">E</option>
+									<option value="8">F</option>
+									<option value="9">G</option>
+								</select>
+							</div>
 
+							<div class="dynamicFilterHome">
+								<div class="sep"></div>
+								<div class="label title">Habitaciones</div>
+								<input class="mode-fill" name="roomCount" type="number" min="0" value="0"
+								step="1" />
+							</div>
+
+							<div class="dynamicFilterHome dynamicFilterLocal">
+								<div class="sep"></div>
 								<div class="label title">Baños</div>
 								<input class="mode-fill" name="bathroomCount" type="number" min="0" value="0"
-									step="1" />
+								step="1" />
+							</div>
 
+							<div class="dynamicFilterHome">
+								<div class="sep"></div>
+								<div class="label title optional">Características</div>
+								<label><input name="feature" type="checkbox" value="1" />
+									<div class="label bold">Ascensor</div>
+								</label>
+								<label><input name="feature" type="checkbox" value="2" />
+									<div class="label bold">Amueblado</div>
+								</label>
+								<label><input name="feature" type="checkbox" value="3" />
+									<div class="label bold">Terraza o balcón</div>
+								</label>
+								<label><input name="feature" type="checkbox" value="4" />
+									<div class="label bold">Aire acondicionado</div>
+								</label>
+								<label><input name="feature" type="checkbox" value="5" />
+									<div class="label bold">Armario empotrado</div>
+								</label>
+								<label><input name="feature" type="checkbox" value="6" />
+									<div class="label bold">Garaje</div>
+								</label>
+								<label><input name="feature" type="checkbox" value="7" />
+									<div class="label bold">Jardín</div>
+								</label>
+								<label><input name="feature" type="checkbox" value="8" />
+									<div class="label bold">Piscina</div>
+								</label>
+								<label><input name="feature" type="checkbox" value="9" />
+									<div class="label bold">Trastero</div>
+								</label>
 							</div>
 
 						</div>
@@ -184,6 +191,7 @@
 								</div>
 							</div>
 
+							<!--
 							<div id="dropArea" class="dropArea">
 								<input type="file" class="fileInput" id="fileInput" multiple accept="image/*"
 									onchange="handleFiles(this.files)">
@@ -193,6 +201,15 @@
 									</div>
 								</label>
 							</div>
+							-->
+
+							<input class="mode-fill" name="imageURL" id="imageURL" type="text" placeholder="Introduce la url de la imagen"/>
+							<a id="addImageBtn" class="button black inline-flex chip" name="addImageBtn">
+								Añadir imagen
+							</a>
+
+							<div class="sep"></div>
+
 							<div id="gallery" class="gallery empty">
 								<div class="imageOptions hide" id="imageOptions"></div>
 							</div>
@@ -244,8 +261,8 @@
 
 	// Dynamic form
 
-	var formSelector = document.getElementById("formEditProperty"),
-		formSelectorValue = ["", "", "propertyTypeComercial", "propertyTypeHome"],
+	var formSelector = document.getElementById("tpoInm"),
+		formSelectorValue = ["dynamicFilterGarage","dynamicFilterLocal","dynamicFilterHome"],
 		propertyMethodS = document.getElementById("propertyMethodS"),
 		propertyMethodR = document.getElementById("propertyMethodR"),
 		propertyMethodSPrice = document.getElementById("propertyMethodSPrice"),
@@ -258,19 +275,25 @@
 
 	window.onload = () => {
 		changeForm();
-
-		propertyMethodS.checked = false;
-		propertyMethodR.checked = false;
+		changeMethod();
 	}
 
-
+	function getTpoInm() {
+		return formSelector.value;
+	}
 
 	function changeForm() {
-		console.log(formSelector.value);
-		formSelectorValue.forEach(v => {
-			if (v != "") document.getElementById(v).classList.add("hideElement");
+		formSelectorValue.forEach((v) => {
+			Array.from(document.getElementsByClassName(v)).forEach((v) => {
+				v.classList.add("hideElement");
+			});
 		});
-		if (formSelector.value != 1) document.getElementById(formSelectorValue[formSelector.value]).classList.remove("hideElement");
+
+		Array.from(
+			document.getElementsByClassName(formSelectorValue[getTpoInm() - 1])
+		).forEach((v) => {
+			v.classList.remove("hideElement");
+		});
 	}
 
 	function changeMethod() {
@@ -298,7 +321,104 @@
 		}
 	}
 
-	// Image upload
+	// Image upload (url)
+
+	var imgInput = document.querySelector("#imageURL"),
+		addImageBtn = document.querySelector("#addImageBtn"),
+		totalImages = 0,
+		totalImagesDIV = document.getElementById("totalImagesUploaded"),
+		imageGallery = {};
+
+		addImageBtn.addEventListener("click", addImageDOM, false);
+
+	function addImageDOM() {
+		if (imgInput.value) {
+			addImage(imgInput.value);
+			imgInput.value = "";
+		} else {
+			imgInput.focus();
+		}
+	}
+
+	function addImage(url) {
+		let img = document.createElement("img"),
+			imageId = convertToCharCode(Date.now() * Math.random());
+		img.src = url;
+		img.id = imageId;
+		img.style.cssText = "width:180px;margin:5px;border-radius:6px;cursor:pointer;";
+		// Add to DOM
+		document.querySelector("#gallery").appendChild(img);
+		// Add to image gallery object
+		imageGallery[imageId] = img.src;
+		// Increment image count
+		totalImagesDIV.textContent = ++totalImages;
+		if (totalImages > 0) {
+			gallery.classList.remove("empty");
+		}
+	}
+
+	function addImages(imgs) {
+		imgs.forEach(img => addImage(img));
+	}
+
+	function convertToCharCode(num) {
+		return num
+			.toString()    // convert number to string
+			.split('')     // convert string to array of characters
+			.map(Number)   // parse characters as numbers
+			.map(n => (n || 10) + 64)   // convert to char code, correcting for J
+			.map(c => String.fromCharCode(c))   // convert char codes to strings
+			.join('');     // join values together
+	}
+
+	var gallery = document.querySelector("#gallery"),
+		imageOptions = document.querySelector("#imageOptions");
+		
+	gallery.addEventListener("mousemove", detectImage);
+	gallery.addEventListener("click", removeImage);
+	gallery.addEventListener("mouseleave", hideImageOptions);
+
+	var tmpTarget;
+	function detectImage(e) {
+		if (e.target.id != tmpTarget) {
+			if (e.target.tagName == "IMG") {
+				showImageOptions(e.target.id)
+			} else hideImageOptions();
+		}
+		tmpTarget = e.target.id;
+	}
+
+	function showImageOptions(id) {
+		var pos = document.getElementById(id).getBoundingClientRect();
+		imageOptions.style.top = pos.top - gallery.getBoundingClientRect().top + "px";
+		imageOptions.style.left = pos.left - gallery.getBoundingClientRect().left + "px";
+		imageOptions.style.width = pos.width + "px";
+		imageOptions.style.height = pos.height + "px";
+		imageOptions.classList.remove("hide");
+	}
+
+	function removeImage(e) {
+		if (e.target.tagName == "IMG") {
+			// Hide image options overlay
+			hideImageOptions();
+			// Remove from DOM
+			e.target.remove();
+			// Remove from image gallery object
+			delete imageGallery[e.target.id];
+			// Decrement image number
+			totalImagesDIV.textContent = --totalImages;
+			if (totalImages == 0) gallery.classList.add("empty");
+		}
+	}
+
+	function hideImageOptions() {
+		tmpTarget = "";
+		imageOptions.classList.add("hide");
+	}
+
+
+	/*
+	// Image upload (files)
 
 	var dropArea = document.querySelector("#dropArea"),
 		totalImages = 0,
@@ -434,10 +554,7 @@
 		tmpTarget = "";
 		imageOptions.classList.add("hide");
 	}
-
-	document.getElementById('descripcion').value = 'Hola'
-
-
+	*/
 
 
 </script>

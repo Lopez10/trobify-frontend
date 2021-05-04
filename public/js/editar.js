@@ -1,5 +1,6 @@
 export function editar(inmueble) {
-	console.log(inmueble);
+	//console.log(inmueble);
+	//let tpoInm = document.getElementById('tpoInm');
 	let descripcion = document.getElementById('descripcion');
 	let catastro = document.getElementById('catast');
 	let venta = document.getElementById('venta');
@@ -11,6 +12,7 @@ export function editar(inmueble) {
 	let nHab = document.getElementById('hab');
 	let gallery = document.getElementById('gallery');
 
+	//tpoInm.value = inmueble.tpoInm;
 	descripcion.innerHTML = inmueble.descripcion;
 	catastro.value = inmueble.id_catastro;
 	if (inmueble.modalidad === 1) venta.checked = true;
