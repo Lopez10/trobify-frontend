@@ -13,7 +13,7 @@ export class Login {
 				console.log(response.data);
 				if (response.data == true) {
 					this.setCookie('username', usuario.mail);
-					window.location.replace('http://localhost:8080/public/busqueda.html');
+					window.location.replace('http://localhost:8080/public/');
 				}
 			},
 			(error) => console.log(error)
@@ -53,6 +53,7 @@ export class Login {
 		expires = '; expires=' + date.toUTCString();
 		document.cookie = name + '=' + value + expires + '; path=/';
 	}
+
 	private getCookie(name: string): string | null {
 		var nameEQ = name + '=';
 		var ca = document.cookie.split(';');
@@ -63,6 +64,7 @@ export class Login {
 		}
 		return null;
 	}
+
 	private delete_cookie(name: string) {
 		document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 	}
