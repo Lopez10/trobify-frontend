@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Singleton } from '../Singleton';
 import { crearProvincias } from '../../../data/provincias';
 import { InmuebleInterface } from '../../interface/inmueble.interface';
