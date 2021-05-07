@@ -60,7 +60,6 @@ export class Busqueda {
 				//clfEn: clfEn, // Por que no se puede seleccionar en ningún sitio
 			});
 			let inmuebles = this.getInmuebles(params);
-			console.log(inmuebles);
 			this.crearMapa(prov, inmuebles);
 			this.crearCatalogo(inmuebles);
 
@@ -95,8 +94,8 @@ export class Busqueda {
 			let tpoInm: number = +urlParams.get('tpoInm');
 
 			crearProvincias(prov);
-			console.log(opt, tpoInm);
 			this.aplicarFiltrosURL(prov, opt, tpoInm);
 		}
 	}
 }
+let iniciarBusqueda = new Busqueda();

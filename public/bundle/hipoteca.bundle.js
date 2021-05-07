@@ -14,19 +14,9 @@
 /*!******************************************************!*\
   !*** ./src/components/inmueble/hipoteca/hipoteca.ts ***!
   \******************************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Hipoteca = void 0;\nclass Hipoteca {\n    constructor(precio, localizacion) {\n        this.precio = precio;\n        this.localizacion = localizacion;\n    }\n    calculoAhorro(ahorro) {\n        return this.precio - ahorro;\n    }\n    calculoInteres(interes, variable, ahorro) {\n        let interesFijo = 1.75;\n        let valorInteres;\n        if (interes == 'fijo') {\n            valorInteres = (interesFijo * ahorro) / 100;\n        }\n        else {\n            valorInteres = (variable * ahorro) / 100;\n        }\n        return valorInteres;\n    }\n    calculoCondicion(condicion) {\n        if (condicion == 'segundaMano') {\n            this.precio = this.precio * 0.995;\n        }\n        else {\n            this.precio = this.precio * 1.0005;\n        }\n    }\n    calculoTotal(valorInteres, valorAhorro, anos) {\n        return (valorAhorro += valorInteres * anos);\n    }\n    calculoCuotaMensual(valorTotal, anos) {\n        return valorTotal / (anos * 12);\n    }\n}\nexports.Hipoteca = Hipoteca;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/inmueble/hipoteca/hipoteca.ts?");
-
-/***/ }),
-
-/***/ "./src/components/inmueble/hipoteca/index.hipoteca.ts":
-/*!************************************************************!*\
-  !*** ./src/components/inmueble/hipoteca/index.hipoteca.ts ***!
-  \************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst hipoteca_1 = __webpack_require__(/*! ./hipoteca */ \"./src/components/inmueble/hipoteca/hipoteca.ts\");\nconst construccionDOM = __webpack_require__(/*! ../../../../public/js/hipoteca.js */ \"./public/js/hipoteca.js\");\nlet hipoteca = new hipoteca_1.Hipoteca(1000000, 'Valencia');\nconstruccionDOM.hipotecaDom(hipoteca);\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/inmueble/hipoteca/index.hipoteca.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Hipoteca = void 0;\nconst construccionDOM = __webpack_require__(/*! ../../../../public/js/hipoteca.js */ \"./public/js/hipoteca.js\");\nclass Hipoteca {\n    constructor(precio, localizacion) {\n        this.precio = precio;\n        this.localizacion = localizacion;\n    }\n    calculoAhorro(ahorro) {\n        return this.precio - ahorro;\n    }\n    calculoInteres(interes, variable, ahorro) {\n        let interesFijo = 1.75;\n        let valorInteres;\n        if (interes == 'fijo') {\n            valorInteres = (interesFijo * ahorro) / 100;\n        }\n        else {\n            valorInteres = (variable * ahorro) / 100;\n        }\n        return valorInteres;\n    }\n    calculoCondicion(condicion) {\n        if (condicion == 'segundaMano') {\n            this.precio = this.precio * 0.995;\n        }\n        else {\n            this.precio = this.precio * 1.0005;\n        }\n    }\n    calculoTotal(valorInteres, valorAhorro, anos) {\n        return (valorAhorro += valorInteres * anos);\n    }\n    calculoCuotaMensual(valorTotal, anos) {\n        return valorTotal / (anos * 12);\n    }\n}\nexports.Hipoteca = Hipoteca;\nlet hipoteca = new Hipoteca(1000000, 'Valencia');\nconstruccionDOM.hipotecaDom(hipoteca);\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/inmueble/hipoteca/hipoteca.ts?");
 
 /***/ }),
 
@@ -99,7 +89,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/components/inmueble/hipoteca/index.hipoteca.ts");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/components/inmueble/hipoteca/hipoteca.ts");
 /******/ 	
 /******/ })()
 ;
