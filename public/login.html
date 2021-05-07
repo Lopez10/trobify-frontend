@@ -15,24 +15,26 @@
 			<div class="filters flexbox column block round form">
 
 				<form id="formLogin">
-					
+
 					<div class="label title">Correo o teléfono</div>
 
 					<input class="mode-fill" type="email" name="user" id="user" placeholder="carmelo@gmail.com"
-						required autofocus/>
+						required autofocus />
 
 					<div class="label title">Contraseña</div>
 
 					<input class="mode-fill hint" type="password" name="password" id="password"
-						placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*" onkeyup="checkPasswordStrength(this.value)" required/>
-						<label for="password" id="passwordHint" class="passwordHint">
-							<span>La contraseña debe contener</span>
-							<p id="passwordLength">Más de 8 caracteres</p>
-							<p id="passwordUpperCase">Mínimo 1 mayúscula</p>
-							<p id="passwordLowerCase">Máximo 1 minúscula</p>
-							<p id="passwordContainsNumber">Mínimo 1 número</p>
-							<p id="passwordContainsSpecialChar">Mínimo 1 carácter especial</p>
-						</label>
+						placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+						pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*"
+						onkeyup="checkPasswordStrength(this.value)" required />
+					<label for="password" id="passwordHint" class="passwordHint">
+						<span>La contraseña debe contener</span>
+						<p id="passwordLength">Más de 8 caracteres</p>
+						<p id="passwordUpperCase">Mínimo 1 mayúscula</p>
+						<p id="passwordLowerCase">Máximo 1 minúscula</p>
+						<p id="passwordContainsNumber">Mínimo 1 número</p>
+						<p id="passwordContainsSpecialChar">Mínimo 1 carácter especial</p>
+					</label>
 
 					<div class="sep"></div>
 
@@ -49,16 +51,16 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="./login.bundle.js"></script>
+	<script type="text/javascript" src="./bundle/login.bundle.js"></script>
 </body>
 
 <script type="text/javascript">
 	function checkPasswordStrength(str) {
 		var length = document.getElementById("passwordLength").classList,
-		upper = document.getElementById("passwordUpperCase").classList,
-		lower = document.getElementById("passwordLowerCase").classList,
-		number = document.getElementById("passwordContainsNumber").classList,
-		special = document.getElementById("passwordContainsSpecialChar").classList;
+			upper = document.getElementById("passwordUpperCase").classList,
+			lower = document.getElementById("passwordLowerCase").classList,
+			number = document.getElementById("passwordContainsNumber").classList,
+			special = document.getElementById("passwordContainsSpecialChar").classList;
 
 		hasMinLength(str) ? length.add("done") : length.remove("done")
 		hasUpperCase(str) ? upper.add("done") : upper.remove("done")
@@ -68,19 +70,19 @@
 	}
 
 	function hasMinLength(str) {
-    return /^.{8,}$/.test(str)
+		return /^.{8,}$/.test(str)
 	}
 	function hasUpperCase(str) {
-    return /[A-Z]/.test(str)
+		return /[A-Z]/.test(str)
 	}
 	function hasLowerCase(str) {
-    return /[a-z]/.test(str)
+		return /[a-z]/.test(str)
 	}
 	function hasNumber(str) {
-    return /[0-9]/.test(str)
+		return /[0-9]/.test(str)
 	}
 	function hasSpecialChar(str) {
-    return /^.*[\!\¡\?\¿\@\#\$\%\^\&\*\)\(\[\]\{\}\ñ\Ñ\ç\Ç\,\+\=\.\_\-\\\/\|]/.test(str)
+		return /^.*[\!\¡\?\¿\@\#\$\%\^\&\*\)\(\[\]\{\}\ñ\Ñ\ç\Ç\,\+\=\.\_\-\\\/\|]/.test(str)
 	}
 
 	window.onload = function () {
@@ -88,7 +90,7 @@
 	};
 
 	function setPasswordHintLeftValue() {
-		document.getElementById("passwordHint").style.marginLeft = document.getElementById("password").getBoundingClientRect().width/2 + "px";
+		document.getElementById("passwordHint").style.marginLeft = document.getElementById("password").getBoundingClientRect().width / 2 + "px";
 	}
 </script>
 
