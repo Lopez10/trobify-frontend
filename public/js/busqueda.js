@@ -1,5 +1,4 @@
 export function modificarFiltro(opt, prov, tpoInm) {
-	console.log(tpoInm);
 	let provincia = document.getElementById('provincias');
 	let option1 = document.getElementById('opt1');
 	let option2 = document.getElementById('opt2');

@@ -1,3 +1,4 @@
+const construccionDOM = require('../../../../public/js/hipoteca.js');
 export class Hipoteca {
 	precio: number;
 	localizacion: string;
@@ -38,3 +39,7 @@ export class Hipoteca {
 		return valorTotal / (anos * 12);
 	}
 }
+
+let hipoteca = new Hipoteca(1000000, 'Valencia');
+
+construccionDOM.hipotecaDom(hipoteca);

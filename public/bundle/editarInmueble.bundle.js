@@ -316,25 +316,14 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 
 /***/ }),
 
-/***/ "./src/components/busqueda/mapa/mapa.ts":
-/*!**********************************************!*\
-  !*** ./src/components/busqueda/mapa/mapa.ts ***!
-  \**********************************************/
+/***/ "./src/components/inmueble/acciones/editar.inmueble.ts":
+/*!*************************************************************!*\
+  !*** ./src/components/inmueble/acciones/editar.inmueble.ts ***!
+  \*************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Mapa = void 0;\nconst mapa = __webpack_require__(/*! ../../../../public/js/mapa.js */ \"./public/js/mapa.js\");\nclass Mapa {\n    constructor() { }\n    mostrarMapa(inmuebles, provincias, prov, unico) {\n        mapa.mostrarMapa(inmuebles, provincias[prov].latitud, provincias[prov].longitud, provincias[prov].zoom, unico || false);\n    }\n}\nexports.Mapa = Mapa;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/busqueda/mapa/mapa.ts?");
-
-/***/ }),
-
-/***/ "./src/components/inmueble/acciones/ver.inmueble.ts":
-/*!**********************************************************!*\
-  !*** ./src/components/inmueble/acciones/ver.inmueble.ts ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst inmueble_1 = __webpack_require__(/*! ../inmueble */ \"./src/components/inmueble/inmueble.ts\");\nconst mapa_1 = __webpack_require__(/*! ../../busqueda/mapa/mapa */ \"./src/components/busqueda/mapa/mapa.ts\");\nconst provincias_1 = __webpack_require__(/*! ../../../../data/provincias */ \"./data/provincias.ts\");\nlet inmueble = new inmueble_1.Inmueble();\nlet mapa = new mapa_1.Mapa();\nlet datosInmueble = inmueble.getInmueble();\ndatosInmueble.then((data) => {\n    mapa.mostrarMapa(datosInmueble, provincias_1.obtenerProvincias(), data.provincia, true);\n    inmueble.verInmueble(data);\n});\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/inmueble/acciones/ver.inmueble.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst inmueble_1 = __webpack_require__(/*! ../inmueble */ \"./src/components/inmueble/inmueble.ts\");\nlet inmueble = new inmueble_1.Inmueble();\nlet datosInmueble = inmueble.getInmueble();\ndatosInmueble.then((data) => {\n    inmueble.editarInmueble(data);\n});\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/inmueble/acciones/editar.inmueble.ts?");
 
 /***/ }),
 
@@ -356,7 +345,7 @@ eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _argument
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"editar\": () => (/* binding */ editar)\n/* harmony export */ });\nfunction editar(inmueble) {\n\tconsole.log(inmueble);\n\tlet descripcion = document.getElementById('descripcion');\n\tlet catastro = document.getElementById('catast');\n\tlet venta = document.getElementById('venta');\n\tlet alquiler = document.getElementById('alquiler');\n\tlet stdo = document.getElementById('stdo');\n\tlet prov = document.getElementById('provincias');\n\tlet superficie = document.getElementById('superficie');\n\tlet nBanos = document.getElementById('banos');\n\tlet nHab = document.getElementById('hab');\n\tlet gallery = document.getElementById('gallery');\n\n\tdescripcion.innerHTML = inmueble.descripcion;\n\tcatastro.value = inmueble.id_catastro;\n\tif (inmueble.modalidad === 1) venta.checked = true;\n\tif (inmueble.modalidad === 2) alquiler.checked = true;\n\tif (inmueble.estadoInmueble == 'Obra nueva') stdo.value = 1;\n\tif (inmueble.estadoInmueble == 'Buen estado') stdo.value = 2;\n\tif (inmueble.estadoInmueble == 'Reformado') stdo.value = 2;\n\tif (inmueble.estadoInmueble == 'A reformar') stdo.value = 2;\n\tprov.value = inmueble.provincia;\n\tsuperficie.value = inmueble.superficie;\n\tnBanos.value = inmueble.nBanos;\n\tnHab.value = inmueble.nHab;\n\n\taddImages(inmueble.imagen);\n}\n\n\n//# sourceURL=webpack://trobify-frontend/./public/js/editar.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"editar\": () => (/* binding */ editar)\n/* harmony export */ });\nfunction editar(inmueble) {\n\t//console.log(inmueble);\n\t//let tpoInm = document.getElementById('tpoInm');\n\tlet descripcion = document.getElementById('descripcion');\n\tlet catastro = document.getElementById('catast');\n\tlet venta = document.getElementById('venta');\n\tlet alquiler = document.getElementById('alquiler');\n\tlet stdo = document.getElementById('stdo');\n\tlet prov = document.getElementById('provincias');\n\tlet superficie = document.getElementById('superficie');\n\tlet nBanos = document.getElementById('banos');\n\tlet nHab = document.getElementById('hab');\n\tlet gallery = document.getElementById('gallery');\n\n\t//tpoInm.value = inmueble.tpoInm;\n\tdescripcion.innerHTML = inmueble.descripcion;\n\tcatastro.value = inmueble.id_catastro;\n\tif (inmueble.modalidad === 1) venta.checked = true;\n\tif (inmueble.modalidad === 2) alquiler.checked = true;\n\tif (inmueble.estadoInmueble == 'Obra nueva') stdo.value = 1;\n\tif (inmueble.estadoInmueble == 'Buen estado') stdo.value = 2;\n\tif (inmueble.estadoInmueble == 'Reformado') stdo.value = 2;\n\tif (inmueble.estadoInmueble == 'A reformar') stdo.value = 2;\n\tprov.value = inmueble.provincia;\n\tsuperficie.value = inmueble.superficie;\n\tnBanos.value = inmueble.nBanos;\n\tnHab.value = inmueble.nHab;\n\n\taddImages(inmueble.imagen);\n}\n\n\n//# sourceURL=webpack://trobify-frontend/./public/js/editar.js?");
 
 /***/ }),
 
@@ -379,17 +368,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"inmuebleDom\": () => (/* binding */ inmuebleDom)\n/* harmony export */ });\nfunction inmuebleDom(inmueble) {\n\tconsole.log(inmueble);\n\tlet precio = document.getElementById('precio');\n\tlet superficie = document.getElementById('superficie');\n\tlet nBanos = document.getElementById('nBan');\n\tlet nHab = document.getElementById('nHab');\n\tlet desc = document.getElementById('breveDescripcion');\n\tlet ubi = document.getElementById('direccion');\n\tlet imagenes = document.getElementById('imageGallery');\n\tlet caract = document.getElementById('caract');\n\tlet atras = document.getElementById('atras');\n\tprecio.innerHTML = inmueble.precio;\n\tsuperficie.innerHTML = inmueble.superficie;\n\tnBanos.innerHTML = inmueble.nBanos;\n\tnHab.innerHTML = inmueble.nHab;\n\tdesc.innerHTML = inmueble.descripcion;\n\tubi.innerHTML = inmueble.direccion;\n\tcaract.innerHTML = inmueble.caracteristicas;\n\timagenes.src = inmueble.imagen[0];\n\tlet tpoInm = 3;\n\tif (inmueble.tipoInmueble == 'Vivienda') {\n\t\ttpoInm = 3;\n\t} else if (inmueble.tipoInmueble == 'Garaje') {\n\t\ttpoInm = 1;\n\t} else {\n\t\ttpoInm = 2;\n\t}\n\tatras.href =\n\t\t'http://localhost:8080/public/busqueda.html?prov=' +\n\t\tinmueble.provincia +\n\t\t'&opt=' +\n\t\tinmueble.modalidad +\n\t\t'&tpoInm=' +\n\t\ttpoInm;\n}\n\n\n//# sourceURL=webpack://trobify-frontend/./public/js/inmueble.js?");
-
-/***/ }),
-
-/***/ "./public/js/mapa.js":
-/*!***************************!*\
-  !*** ./public/js/mapa.js ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"mostrarMapa\": () => (/* binding */ mostrarMapa)\n/* harmony export */ });\nfunction mostrarMapa(ubicaciones, latitud, longitud, zm, unico) {\n\t// Parte común  -----------------------------------------------------------\n\tvar platform = new H.service.Platform({\n\t\tapikey: 'TEwOAo-zrGY4x4fsz8YFwBK4tLdyk7wPuoicDhmRb0k',\n\t});\n\tvar defaultLayers = platform.createDefaultLayers();\n\tvar map = new H.Map(document.getElementById('map'), defaultLayers.vector.normal.map, {\n\t\tcenter: { lat: latitud, lng: longitud },\n\t\tzoom: zm,\n\t\tpixelRatio: window.devicePixelRatio || 1,\n\t});\n\twindow.addEventListener('resize', function () {\n\t\treturn map.getViewPort().resize();\n\t});\n\tvar behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));\n\tvar ui = H.ui.UI.createDefault(map, defaultLayers);\n\t// Parte común  -----------------------------------------------------------\n\t// Parte funcional  -------------------------------------------------------\n\tvar group = new H.map.Group();\n\tmap.addObject(group);\n\tgroup.addEventListener(\n\t\t'tap',\n\t\tfunction (evt) {\n\t\t\tvar bubble = new H.ui.InfoBubble(evt.target.getGeometry(), {\n\t\t\t\tcontent: evt.target.getData(),\n\t\t\t});\n\t\t\tui.addBubble(bubble);\n\t\t},\n\t\tfalse\n\t);\n\t// Bucle\n\tubicaciones.then((item) => {\n\t\tif (unico === true) {\n\t\t\tcrearPuntero(item);\n\t\t} else {\n\t\t\titem.forEach((result) => {\n\t\t\t\tcrearPuntero(result);\n\t\t\t});\n\t\t}\n\t});\n\n\tfunction crearPuntero(item) {\n\t\taddMarkerToGroup(\n\t\t\tgroup,\n\t\t\t{ lat: item.latitud, lng: item.longitud },\n\t\t\t'<div><a href=\"http://localhost:8080/public/inmueble.html' +\n\t\t\t\t'?catastro=' +\n\t\t\t\titem.id_catastro +\n\t\t\t\t'&modo=' +\n\t\t\t\titem.id_modalidad +\n\t\t\t\t'\" target=\"_blank\"><b>Enlace</b></a></div>' +\n\t\t\t\t'<div>' +\n\t\t\t\t'Precio: ' +\n\t\t\t\titem.precio +\n\t\t\t\t' € <br>' +\n\t\t\t\t'</div>'\n\t\t);\n\t}\n\t// Parte funcional  -------------------------------------------------------\n}\n\nfunction addMarkerToGroup(group, coordinate, html) {\n\tvar marker = new H.map.Marker(coordinate);\n\t// add custom data to the marker\n\tmarker.setData(html);\n\tgroup.addObject(marker);\n}\n\n\n//# sourceURL=webpack://trobify-frontend/./public/js/mapa.js?");
 
 /***/ })
 
@@ -452,7 +430,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/components/inmueble/acciones/ver.inmueble.ts");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/components/inmueble/acciones/editar.inmueble.ts");
 /******/ 	
 /******/ })()
 ;
