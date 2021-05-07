@@ -11,7 +11,7 @@ searchForm.onsubmit = () => {
 	let tpoInm = (formData.get('tpoInm') as unknown) as number;
 
 	window.location.assign(
-		'/public/busqueda.html?landing=1&opt=' + opt + '&prov=' + prov + '&tpoInm=' + tpoInm
+		'/public/busqueda.html?opt=' + opt + '&prov=' + prov + '&tpoInm=' + tpoInm
 	);
 	return false;
 };

@@ -1,9 +1,9 @@
 import querystring from 'querystring';
-import axios from 'axios';
 import { Catalogo } from './catalogo/catalogo';
 import { Mapa } from './mapa/mapa';
 import { obtenerProvincias, crearProvincias } from '../../../data/provincias';
 import { Provincia } from '../../interface/provincia.interface';
+import { Singleton } from '../Singleton';
 const busqueda = require('../../../public/js/busqueda.js');
 
 export class Busqueda {
@@ -12,12 +12,9 @@ export class Busqueda {
 		this.provincias = obtenerProvincias();
 		this.obtenerFiltroUrl();
 	}
-	getInmuebles(params: string) {
-		const myRequest = 'http://localhost:3000/catalogo?';
-		let inmuebles: Promise<any> = axios.get(myRequest + params).then((result) => {
-			return result.data;
-		});
-		return inmuebles;
+	getInmuebles(params: string): Promise<any> {
+		let api: Singleton = Singleton.getInstance();
+		return api.accesoAPI('get', 'catalogo?' + params);
 	}
 
 	aplicarFiltros() {

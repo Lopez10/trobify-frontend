@@ -1,30 +1,28 @@
 import { Usuario } from '../../interface/usuario.interface';
-import axios from 'axios';
+import { Singleton } from '../Singleton';
 
 export class Login {
 	constructor() {
 		this.obtenerParametrosLogin();
 	}
 
-	private async postLogin(usuario: Usuario) {
-		const myRequest = 'http://localhost:3000/login';
-		axios.post(myRequest, usuario).then(
-			(response) => {
-				console.log(response.data);
-				if (response.data == true) {
-					this.setCookie('username', usuario.mail);
-					window.location.replace('http://localhost:8080/public/');
-				}
-			},
-			(error) => console.log(error)
-		);
+	private async postLogin(usuario: Usuario): Promise<void> {
+		let api: Singleton = Singleton.getInstance();
+		api.accesoAPI('post', 'login', usuario).then((response) => {
+			if (response == true) {
+				this.setCookie('username', usuario.mail);
+				this.autoRedirect();
+			}
+		});
 	}
 	private isLoggedIn(): boolean {
 		if (this.getCookie('username') !== null) return true;
 		return false;
 	}
 
-	private autoRedirect(): void {}
+	private autoRedirect(): void {
+		window.location.replace('http://localhost:8080/public/');
+	}
 
 	private logOut(): void {
 		this.delete_cookie('username');

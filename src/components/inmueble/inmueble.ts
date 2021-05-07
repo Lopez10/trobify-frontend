@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Singleton } from '../Singleton';
 import { crearProvincias } from '../../../data/provincias';
 import { InmuebleInterface } from '../../interface/inmueble.interface';
 const imagenes = require('../../../public/js/imagenes.js');
@@ -9,23 +10,15 @@ export class Inmueble {
 	constructor() {
 		crearProvincias();
 	}
-	async getInmueble() {
+	getInmueble() {
+		let api: Singleton = Singleton.getInstance();
 		let params = this.obtenerParametros();
-		const myRequest = 'http://localhost:3000/inmueble/' + params.catastroId + '/' + params.modo;
-
-		let inmueble = await axios.get(myRequest).then((result) => {
-			return result.data;
-		});
-		return await inmueble;
+		return api.accesoAPI('get', 'inmueble/' + params.catastroId + '/' + params.modo);
 	}
 
 	async postInmueble(inmueble: any) {
-		const myRequest = 'http://localhost:3000/inmueble';
-		let inmuebles: Promise<any> = axios.post(myRequest, inmueble).then((result) => {
-			console.log(result.data);
-			return result.data;
-		});
-		return inmuebles;
+		let api: Singleton = Singleton.getInstance();
+		return api.accesoAPI('post', 'inmueble', inmueble);
 	}
 
 	private obtenerParametros(): any {
@@ -92,7 +85,9 @@ export class Inmueble {
 				imagen: imagenes.getImageGalleryValues(),
 			};
 			this.postInmueble(params);
-			console.log(params);
+			window.location.replace(
+				'http://localhost:8080/public/inmueble.html?catastro=' + catast + '&modo=' + modo[0]
+			);
 			return false;
 		};
 	}
