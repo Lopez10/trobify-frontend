@@ -9,6 +9,7 @@ module.exports = {
 		editarInmueble: './src/components/inmueble/acciones/editar.inmueble.ts',
 		registroInmueble: './src/components/inmueble/acciones/registro.inmueble.ts',
 		verInmueble: './src/components/inmueble/acciones/ver.inmueble.ts',
+		inmuebles: './src/components/busqueda/inmuebles/Inmuebles.ts',
 	},
 	mode: 'development',
 	module: {

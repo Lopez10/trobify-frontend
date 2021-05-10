@@ -1,6 +1,5 @@
 import { Usuario } from '../../interface/usuario.interface';
 import { Singleton } from '../Singleton';
-const log = require('../../../public/js/navbar.js');
 
 export class Login {
 	constructor() {
@@ -12,13 +11,13 @@ export class Login {
 		api.accesoAPI('post', 'login', usuario).then((response) => {
 			if (response == true) {
 				console.log(usuario);
-				this.setCookie('username', usuario.mail);
+				this.setCookie('mail', usuario.mail);
 				this.autoRedirect();
 			}
 		});
 	}
 	private isLoggedIn(): boolean {
-		if (this.getCookie('username') !== null) return true;
+		if (this.getCookie('mail') !== null) return true;
 		return false;
 	}
 

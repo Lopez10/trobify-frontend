@@ -19,12 +19,6 @@ export class Busqueda {
 		return api.accesoAPI('get', url);
 	}
 
-	private getInmueblesPropietario(params: string): Promise<any> {
-		let api: Singleton = Singleton.getInstance();
-		let url = 'catalogo?' + params;
-		return api.accesoAPI('get', url);
-	}
-
 	private aplicarFiltros() {
 		let filtroForm: HTMLFormElement =
 			document.querySelector('#filtroForm') || document.createElement('form');
