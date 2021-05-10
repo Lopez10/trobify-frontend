@@ -71,7 +71,7 @@ export class Busqueda {
 		mapa.mostrarMapa(inmuebles, this.provincias, prov || 0);
 	}
 
-	private crearCatalogo(inmuebles: Promise<any>) {
+	private crearCatalogo(inmuebles: Promise<any>): void {
 		let catalogo = new Catalogo();
 		catalogo.mostrarInmuebles(inmuebles);
 	}
@@ -81,7 +81,7 @@ export class Busqueda {
 		this.aplicarFiltros();
 	}
 
-	private obtenerFiltroUrl() {
+	private obtenerFiltroUrl(): void {
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		if (urlParams.get('prov') != null) {

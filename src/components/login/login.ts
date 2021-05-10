@@ -16,6 +16,7 @@ export class Login {
 			}
 		});
 	}
+
 	private isLoggedIn(): boolean {
 		if (this.getCookie('mail') !== null) return true;
 		return false;

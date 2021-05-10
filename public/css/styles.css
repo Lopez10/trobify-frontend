@@ -83,6 +83,16 @@ img {
   pointer-events: none;
 }
 
+a.disabled {
+  cursor: not-allowed !important;
+  opacity: .3;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
 .form .sub-group {
   margin-left: 2rem;
 }
