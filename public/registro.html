@@ -11,18 +11,99 @@
 
 <body>
 	<div class="content">
-		<div class="filters flexbox column full-height center-h center-v">
-			<div class="filters flexbox column block round form">
+		<div class="flexbox column center-v">
+
+			<nav class="flexbox row center-v">
+				<a href="index.html" class="logo"></a>
+		
+				<div class="links">
+					<a href="login.html" class="link button black">Iniciar sesión</a>
+				</div>
+		
+			</nav>
+
+			<div class="steps flexbox row">
+				<div class="step" stepNumber="1" stepLabel="Datos personales"><span></span></div>
+				<div class="step" stepNumber="2" stepLabel="Contacto"><span></span></div>
+				<div class="step" stepNumber="3" stepLabel="Cuenta"><span></span></div>
+			</div>
+
+			<div class="flexbox column block round form spaced-bottom">
 
 				<form id="formSignUp">
 
-					<div class="label block centered title">Próximamente</div>
-					
+					<div class="stepContent" stepContent="1">
+
+						<div class="label title required">Nombre</div>
+						<input class="mode-fill" type="text" name="name" id="name" placeholder="John"
+						required autofocus />
+
+						<div class="label title">Apellidos</div>
+						<input class="mode-fill" type="text" name="lastName" id="lastName" placeholder="Appleseed"
+						required autofocus />
+
+						<label><input name="adult" type="checkbox" value="1" required/>
+							<div class="label">Soy mayor de 18 años</div>
+						</label>
+
+					</div>
+
+					<div class="stepContent" stepContent="2">
+
+						<div class="label title required">Correo</div>
+						<input class="mode-fill" type="email" name="email" id="email"
+						placeholder="john.appleseed@gmail.com" required/>
+
+						<div class="label title required">Repetir corero</div>
+						<input class="mode-fill" type="email" name="repeatMail" id="repeatMail"
+						placeholder="john.appleseed@gmail.com" required/>
+
+						<div class="label title required">Teléfono</div>
+						<input class="mode-fill" type="tel" name="phone" id="phone"
+						placeholder="777888999" pattern="(?=.{9,}$)(?=.*\d).*" required/>
+
+					</div>
+
+					<div class="stepContent" stepContent="3">
+
+						<div class="label title required">Contraseña</div>
+						<input class="mode-fill hint" type="password" name="password" id="password"
+						placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*" onkeyup="checkPasswordStrength(this.value)" onclick="setPasswordHintPosition()" required/>
+						<label for="password" id="passwordHint" class="passwordHint">
+							<span>La contraseña debe contener</span>
+							<p id="passwordLength">Más de 8 caracteres</p>
+							<p id="passwordUpperCase">Mínimo 1 mayúscula</p>
+							<p id="passwordLowerCase">Máximo 1 minúscula</p>
+							<p id="passwordContainsNumber">Mínimo 1 número</p>
+							<p id="passwordContainsSpecialChar">Mínimo 1 carácter especial</p>
+						</label>
+
+						<div class="label title required">Repetir contraseña</div>
+						<input class="mode-fill" type="password" name="repeatPassword" id="repeatPassword"
+						placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*" required/>
+
+						<div class="label title required">Usaré esta cuenta como</div>
+						<select name="role" class="select" id="role" required>
+							<option value="1">Particular</option>
+							<option value="2">Agente inmobiliario</option>
+						</select>
+
+						<div class="label block detail small">Al crear tu cuenta aceptas los terminos de uso<br>y políticas de privacidad de Trobify
+						</div>
+
+					</div>
+
 					<div class="sep"></div>
 
-					<div class="label centered block">
-						<div class="label detail" style="margin-right: 6px;">¿Ya tienes cuenta?</div>
-						<a class="label bold" href="login.html">Iniciar sesión</a>
+					<div class="button black block center stepAction" stepActionEnd="Crear cuenta" stepActionFilling="Siguiente paso">
+					</div>
+
+					<button class="button black block center invisible formSubmit" name="submit" type="submit">
+						Crear cuenta
+					</button>
+
+					<div class="label centered block stepBack hideElement" style="margin-top: 18px;">
+						<div class="label detail pointer">Volver al paso anterior</div>
 					</div>
 
 				</form>
@@ -30,5 +111,113 @@
 		</div>
 	</div>
 </body>
+
+<script type="text/javascript">
+	function checkPasswordStrength(str) {
+		var length = document.getElementById("passwordLength").classList,
+			upper = document.getElementById("passwordUpperCase").classList,
+			lower = document.getElementById("passwordLowerCase").classList,
+			number = document.getElementById("passwordContainsNumber").classList,
+			special = document.getElementById("passwordContainsSpecialChar").classList;
+
+		hasMinLength(str) ? length.add("done") : length.remove("done")
+		hasUpperCase(str) ? upper.add("done") : upper.remove("done")
+		hasLowerCase(str) ? lower.add("done") : lower.remove("done")
+		hasNumber(str) ? number.add("done") : number.remove("done")
+		hasSpecialChar(str) ? special.add("done") : special.remove("done")
+	}
+
+	function hasMinLength(str) {
+		return /^.{8,}$/.test(str)
+	}
+	function hasUpperCase(str) {
+		return /[A-Z]/.test(str)
+	}
+	function hasLowerCase(str) {
+		return /[a-z]/.test(str)
+	}
+	function hasNumber(str) {
+		return /[0-9]/.test(str)
+	}
+	function hasSpecialChar(str) {
+		return /^.*[\!\¡\?\¿\@\#\$\%\^\&\*\)\(\[\]\{\}\ñ\Ñ\ç\Ç\,\+\=\.\_\-\\\/\|]/.test(str)
+	}
+
+	window.onresize = function () {
+		setPasswordHintPosition()
+	};
+
+	function setPasswordHintPosition() {
+		document.getElementById("passwordHint").style.marginLeft = document.getElementById("password").getBoundingClientRect().width / 2 + "px";
+		document.getElementById("passwordHint").style.top = document.getElementById("password").getBoundingClientRect().top + "px";
+	}
+
+	// Step form
+
+	window.onload = function () {
+		setDefaultStepState()
+	};
+
+	var stepContent = Array.from(document.querySelectorAll("[stepContent]")),
+			step = Array.from(document.querySelectorAll(".steps .step")),
+			stepActionButton = document.querySelector(".stepAction"),
+			formSubmitButon = document.querySelector(".formSubmit"),
+			stepBackButton = document.querySelector(".stepBack"),
+			stepNum = 1,
+			stepEnd = step.length;
+
+	function setDefaultStepState() {
+		stepBackButton.classList.add("hideElement");
+		stepActionButton.textContent = stepActionButton.getAttribute("stepActionFilling");
+		step.forEach(element => {
+			element.classList.remove("filled","current");
+		});
+		step[0].classList.add("current");
+		stepContent.forEach(element => {
+			element.classList.add("hideElement");
+		});
+		stepContent[0].classList.remove("hideElement");
+	}
+
+	stepActionButton.addEventListener("click", stepAction, false);
+	stepBackButton.addEventListener("click", stepBack, false)
+
+	function stepAction() {
+		if (stepNum < stepEnd) {
+
+			stepBackButton.classList.remove("hideElement");
+
+			step[stepNum - 1].classList.remove("current");
+			step[stepNum - 1].classList.add("filled");
+			stepContent[stepNum - 1].classList.add("hideElement");
+
+			step[stepNum].classList.add("current");
+			stepContent[stepNum].classList.remove("hideElement");
+
+			stepNum++;
+		} else {
+			formSubmitButon.click();
+		}
+	}
+
+	function stepBack() {
+		if (stepNum > 1) {
+
+			step[stepNum - 2].classList.remove("filled");
+			step[stepNum - 2].classList.add("current");
+			stepContent[stepNum - 2].classList.remove("hideElement");
+
+			step[stepNum - 1].classList.remove("current");
+			stepContent[stepNum - 1].classList.add("hideElement");
+
+			stepNum--;
+
+			if (stepNum == 1) {
+				stepBackButton.classList.add("hideElement");
+			}
+		}
+	}
+
+</script>
 
 </html>

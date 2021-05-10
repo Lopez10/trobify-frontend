@@ -11,18 +11,21 @@
 
 <body>
 	<div class="content">
-		<div class="filters flexbox column full-height center-h center-v">
-			<div class="filters flexbox column block round form">
+		<div class="flexbox column center-v">
+
+			<nav class="flexbox row center-v wide centered">
+				<a href="index.html" class="logo"></a>
+			</nav>
+
+			<div class="flexbox column block round form spaced-top">
 
 				<form id="formLogin">
 
 					<div class="label title">Correo o teléfono</div>
-
 					<input class="mode-fill" type="email" name="user" id="user" placeholder="carmelo@gmail.com"
 						required autofocus />
 
 					<div class="label title">Contraseña</div>
-
 					<input class="mode-fill hint" type="password" name="password" id="password"
 						placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
 						pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*"
@@ -44,7 +47,7 @@
 
 					<div class="label centered block" style="padding:0 32px;">
 						<div class="label detail" style="margin-right:6px;">¿Eres nuevo?</div>
-						<a class="label bold" href="signup.html">Crear cuenta</a>
+						<a class="label bold" href="registro.html">Crear cuenta</a>
 					</div>
 
 				</form>

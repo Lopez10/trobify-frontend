@@ -30,13 +30,16 @@ $font-weight-bold: 700;
 
 // Font size
 
-.font-size-label {font-size: 1.6rem;}
+.font-size-small {font-size: 1.6rem;}
+$font-size-small: 1.6rem;
+
+.font-size-label {font-size: 1.8rem;}
 $font-size-label: 1.8rem;
 
-.font-size-label-title {font-size: 2rem;}
+.font-size-label-title {font-size: 2.4rem;}
 $font-size-label-title: 2.4rem;
 
-.font-size-label-title-x2 {font-size: 4rem;}
+.font-size-label-title-x2 {font-size: 4.4rem;}
 $font-size-label-title-x2: 4.4rem;
 
 .font-size-label-title-x3 {font-size: 6rem;}
@@ -155,6 +158,12 @@ input {
   &[type="checkbox"], &[type="radio"] {
     display: none;
 
+    &[required] ~ .label::after {
+      content: " *";
+      font-family: $font-family-demibold;
+      color: $color-red;
+    }
+
     &:hover ~ .label::before {
       background: $color-grey-selection;
     }
@@ -180,6 +189,7 @@ input {
 
 input[type="number"],
 input[type="text"],
+input[type="tel"],
 input[type="email"],
 input[type="password"],
 textarea {
@@ -252,27 +262,28 @@ textarea {
 
 input[type="password"].hint {
   position: relative;
+
   & ~ label.passwordHint {
     position: absolute;
-    top: 50%;
     left: calc(50% + 2.5rem);
     transform: translateY(-50%);
     padding: 3rem 2.5rem;
     background: $color-black;
     color: $color-white;
     border-radius: 1rem;
-    transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out, margin 0s, top 0s;
     pointer-events: none;
     opacity: 0;
+    z-index: 999;
   }
   &:focus ~ label.passwordHint {
     left: calc(50% + 3rem);
     opacity: 1;
   }
-  & ~ label {
+  & ~ label.passwordHint {
     &::before {
       position: absolute;
-      content: "";
+      //content: "";
       top: 50%;
       left: -1rem;
       width: 2rem;
@@ -614,6 +625,15 @@ label {
   &.spaced-top {
     margin-top: 4rem;
   }
+  &.spaced-top-x2 {
+    margin-top: 8rem;
+  }
+  &.spaced-bottom {
+    margin-bottom: 4rem;
+  }
+  &.spaced-bottom-x2 {
+    margin-bottom: 8rem;
+  }
   &.spaced-inner-top {
     padding-top: 4rem;
   }
@@ -701,14 +721,18 @@ svg.icon{
   display: inline-block;
 
   &.inline {
-    display: inline-block !important;
+    display: inline-block;
   }
   &.block {
-    display: block !important;
+    display: block;
   }
 
   &.centered {
     text-align: center;
+  }
+
+  &.pointer {
+    cursor: pointer;
   }
 
   &.detail {
@@ -726,6 +750,11 @@ svg.icon{
 
   &.bold {
     font-family: $font-family-demibold;
+  }
+
+  &.small {
+    font-size: $font-size-small;
+    line-height: $font-size-small;
   }
 
   &.paragraph {
@@ -935,6 +964,87 @@ svg.icon{
   }
 }
 
+// Steps
+
+.steps {
+  display: flex;
+  margin: 6rem 0 10rem 0;
+
+  .step {
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    background: $color-grey;
+    color: $color-black;
+    margin-right: 18rem;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      width: 16rem;
+      height: .2rem;
+      background: $color-grey-selection;
+      transform: translateY(-50%) translateX(1rem);
+    }
+
+    &::before {
+      content: attr(stepNumber);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      font-size: $font-size-small;
+      opacity: .6;
+    }
+
+    &::after {
+      content: attr(stepLabel);
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(1rem);
+      font-size: $font-size-small;
+      white-space: nowrap;
+      color: $color-black;
+      opacity: .6;
+    }
+
+    &:last-child {
+      margin-right: 0;
+      
+      span {
+        display: none;
+      }
+    }
+
+    &.filled {
+      box-shadow: inset 0 0 0 .2rem $color-black;
+      background: none;
+
+      span {
+        background: $color-black;
+      }
+
+      &::before, &::after {
+        font-family: $font-family-demibold;
+        opacity: 1;
+      }
+    }
+
+    &.current {
+      background: $color-black;
+      color: $color-white;
+
+      &::before, &::after {
+        font-family: $font-family-demibold;
+        opacity: 1;
+      }
+    }
+  }
+}
+
 // Other 
 
 .hideElement {
@@ -946,9 +1056,16 @@ nav {
   width: 100%;
   justify-content: space-between;
   padding: 2rem;
+  border-bottom: .1rem solid $color-grey-input;
 
   &.wide {
     padding: 6rem;
+    border-bottom: none;
+  }
+
+  &.centered {
+    justify-content: center;
+    border-bottom: none;
   }
 
   .logo {
