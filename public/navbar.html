@@ -8,30 +8,33 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 </head>
 
-	<nav class="flexbox row center-v">
-		
-		<a href="" class="logo"></a>
+<nav class="flexbox row center-v">
 
-		<!-- Usuario anónimo -->
-		<!--
+	<a href="" class="logo"></a>
+
+	<!-- Usuario anónimo -->
+	<!--
 		<div class="links">
 			<a href="signup.html" class="link label">Crear cuenta</a>
 			<a href="login.html" class="link button black">Iniciar sesión</a>
 		</div>
 		-->
 
-		<!-- Usuario registrado -->
-		<div class="links">
-			<a href="" class="link label selec">Mis inmuebles</a>
-			<a href="" class="link label">Favoritos</a>
-			<a class="link button black dropdown" dropdownButton="userOptions" onclick="document.querySelector('[dropdown='+this.getAttribute('dropdownButton')+']').classList.toggle('hideElement')">Álvaro</a>
-			<div class="popup hideElement" dropdown="userOptions">
-				<a href="" class="label">Perfil</a>
-				<a href="" class="label">Mensajes</a>
-				<a href="" class="label red">Cerrar sesión</a>
-			</div>
+	<!-- Usuario registrado -->
+	<div class="links">
+		<a href="" class="link label selec">Mis inmuebles</a>
+		<a href="" class="disabled link label">Favoritos</a>
+		<a class="link button black dropdown" dropdownButton="userOptions"
+			onclick="document.querySelector('[dropdown='+this.getAttribute('dropdownButton')+']').classList.toggle('hideElement')">Mi
+			cuenta</a>
+		<div class="popup hideElement" dropdown="userOptions">
+			<a href="" class="disabled label">Perfil</a>
+			<a href="" class="disabled label">Mensajes</a>
+			<a href="" onclick="logOut()" class="label red">Cerrar sesión</a>
 		</div>
+	</div>
 
-	</nav>
+</nav>
+<script src="./js/navbar.js"></script>
 
 </html>

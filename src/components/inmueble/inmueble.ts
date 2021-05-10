@@ -12,20 +12,14 @@ export class Inmueble {
 	getInmueble() {
 		let api: Singleton = Singleton.getInstance();
 		let params = this.obtenerParametros();
-		return api.accesoAPI('get', 'inmueble/' + params.catastroId + '/' + params.modo);
+		let url = 'inmueble/' + params.catastroId + '/' + params.modo;
+
+		return api.accesoAPI('get', url);
 	}
 
-	async postInmueble(inmueble: any) {
+	postInmueble(inmueble: any) {
 		let api: Singleton = Singleton.getInstance();
 		return api.accesoAPI('post', 'inmueble', inmueble);
-	}
-
-	private obtenerParametros(): any {
-		let queryString = window.location.search;
-		let urlParams = new URLSearchParams(queryString);
-		let catastroId = urlParams.get('catastro');
-		let modo = urlParams.get('modo');
-		return { catastroId, modo };
 	}
 
 	editarInmueble(inmueble: any): void {
@@ -35,6 +29,14 @@ export class Inmueble {
 
 	verInmueble(inmueble: any) {
 		inm.inmuebleDom(inmueble);
+	}
+
+	private obtenerParametros(): any {
+		let queryString = window.location.search;
+		let urlParams = new URLSearchParams(queryString);
+		let catastroId = urlParams.get('catastro');
+		let modo = urlParams.get('modo');
+		return { catastroId, modo };
 	}
 
 	aplicarRegistro() {

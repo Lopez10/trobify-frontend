@@ -1,5 +1,6 @@
 import { Usuario } from '../../interface/usuario.interface';
 import { Singleton } from '../Singleton';
+const log = require('../../../public/js/navbar.js');
 
 export class Login {
 	constructor() {
@@ -10,6 +11,7 @@ export class Login {
 		let api: Singleton = Singleton.getInstance();
 		api.accesoAPI('post', 'login', usuario).then((response) => {
 			if (response == true) {
+				console.log(usuario);
 				this.setCookie('username', usuario.mail);
 				this.autoRedirect();
 			}
@@ -22,10 +24,6 @@ export class Login {
 
 	private autoRedirect(): void {
 		window.location.replace('http://localhost:8080/public/');
-	}
-
-	private logOut(): void {
-		this.delete_cookie('username');
 	}
 
 	private obtenerParametrosLogin(): void {
@@ -61,10 +59,6 @@ export class Login {
 			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
 		}
 		return null;
-	}
-
-	private delete_cookie(name: string) {
-		document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 	}
 }
 

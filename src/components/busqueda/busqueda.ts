@@ -12,12 +12,20 @@ export class Busqueda {
 		this.provincias = obtenerProvincias();
 		this.obtenerFiltroUrl();
 	}
-	getInmuebles(params: string): Promise<any> {
+
+	private getInmuebles(params: string): Promise<any> {
 		let api: Singleton = Singleton.getInstance();
-		return api.accesoAPI('get', 'catalogo?' + params);
+		let url = 'catalogo?' + params;
+		return api.accesoAPI('get', url);
 	}
 
-	aplicarFiltros() {
+	private getInmueblesPropietario(params: string): Promise<any> {
+		let api: Singleton = Singleton.getInstance();
+		let url = 'catalogo?' + params;
+		return api.accesoAPI('get', url);
+	}
+
+	private aplicarFiltros() {
 		let filtroForm: HTMLFormElement =
 			document.querySelector('#filtroForm') || document.createElement('form');
 		filtroForm.onsubmit = () => {
@@ -64,22 +72,22 @@ export class Busqueda {
 		};
 	}
 
-	crearMapa(prov: number, inmuebles: Promise<any>) {
+	private crearMapa(prov: number, inmuebles: Promise<any>) {
 		let mapa = new Mapa();
 		mapa.mostrarMapa(inmuebles, this.provincias, prov || 0);
 	}
 
-	crearCatalogo(inmuebles: Promise<any>) {
+	private crearCatalogo(inmuebles: Promise<any>) {
 		let catalogo = new Catalogo();
 		catalogo.mostrarInmuebles(inmuebles);
 	}
 
-	aplicarFiltrosURL(prov: number, opt: number, tpoInm: number) {
+	private aplicarFiltrosURL(prov: number, opt: number, tpoInm: number) {
 		busqueda.modificarFiltro(opt, prov, tpoInm);
 		this.aplicarFiltros();
 	}
 
-	obtenerFiltroUrl() {
+	private obtenerFiltroUrl() {
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		if (urlParams.get('prov') != null) {
