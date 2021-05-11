@@ -17,9 +17,9 @@ export class Inmueble {
 		return api.accesoAPI('get', url);
 	}
 
-	postInmueble(inmueble: any) {
+	async postInmueble(inmueble: any) {
 		let api: Singleton = Singleton.getInstance();
-		return api.accesoAPI('post', 'inmueble', inmueble);
+		return await api.accesoAPI('post', 'inmueble', inmueble);
 	}
 
 	editarInmueble(inmueble: any): void {
@@ -40,6 +40,7 @@ export class Inmueble {
 	}
 
 	aplicarRegistro() {
+		console.log('entra');
 		let registroForm: HTMLFormElement =
 			document.querySelector('#formNewProperty') || document.createElement('form');
 		registroForm.onsubmit = () => {
@@ -52,12 +53,12 @@ export class Inmueble {
 			let energia = formData.get('energia') as string;
 			let provincia = formData.get('provincia') as string;
 			let superficie = formData.get('superficie') as string;
-			let precio = (formData.getAll('precio') as unknown) as Array<String>;
+			let precio = formData.getAll('precio') as unknown as Array<String>;
 			let homeType = formData.get('homeType') as string;
 			let roomCount = formData.get('roomCount') as string;
 			let bathroomCount = formData.get('bathroomCount') as string;
-			let feature = ((formData.getAll('feature') as unknown) as Array<String>).join(',');
-			let propertyMethod = ((formData.getAll('propertyMethod') as unknown) as Array<String>).join(
+			let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
+			let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(
 				','
 			);
 			let modo = propertyMethod.split(',').map((x) => +x);
@@ -86,9 +87,9 @@ export class Inmueble {
 				imagen: imagenes.getImageGalleryValues(),
 			};
 			this.postInmueble(params);
-			window.location.replace(
-				'http://localhost:8080/public/inmueble.html?catastro=' + catast + '&modo=' + modo[0]
-			);
+			// window.location.replace(
+			// 	'http://localhost:8080/public/inmueble.html?catastro=' + catast + '&modo=' + modo[0]
+			// );
 			return false;
 		};
 	}

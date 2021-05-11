@@ -11,7 +11,7 @@ export function catalogDom(div, item) {
 
 	let editar = document.createElement('a');
 	editar.href =
-		'http://localhost:8080/public/editProperty.html' +
+		'http://localhost:8080/public/editar.html' +
 		'?catastro=' +
 		item.id_catastro +
 		'&modo=' +

@@ -1,10 +1,11 @@
 export function editar(inmueble) {
 	//console.log(inmueble);
 	//let tpoInm = document.getElementById('tpoInm');
+	console.log(inmueble);
 	let descripcion = document.getElementById('descripcion');
 	let catastro = document.getElementById('catast');
-	let venta = document.getElementById('venta');
-	let alquiler = document.getElementById('alquiler');
+	let venta = document.getElementById('propertyMethodS');
+	let alquiler = document.getElementById('propertyMethodR');
 	let stdo = document.getElementById('stdo');
 	let prov = document.getElementById('provincias');
 	let superficie = document.getElementById('superficie');
