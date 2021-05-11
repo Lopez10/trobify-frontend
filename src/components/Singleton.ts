@@ -19,6 +19,10 @@ export class Singleton {
 			return await axios.post(myRequest + ruta, objeto).then((result) => {
 				return result.data;
 			});
+		} else if (tipo == 'put') {
+			return await axios.put(myRequest + ruta, objeto).then((result) => {
+				return result.data;
+			});
 		}
 	}
 }
