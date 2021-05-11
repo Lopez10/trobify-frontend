@@ -735,6 +735,10 @@ svg.icon{
     cursor: pointer;
   }
 
+  &.underline {
+    text-decoration: underline;
+  }
+
   &.detail {
     color: $color-grey-detail;
   }

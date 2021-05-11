@@ -103,7 +103,7 @@
 					</button>
 
 					<div class="label centered block stepBack hideElement" style="margin-top: 18px;">
-						<div class="label detail pointer">Volver al paso anterior</div>
+						<div class="label detail pointer underline">Volver al paso anterior</div>
 					</div>
 
 				</form>
@@ -195,6 +195,10 @@
 			stepContent[stepNum].classList.remove("hideElement");
 
 			stepNum++;
+
+			if (stepNum == stepEnd) {
+				stepActionButton.textContent = stepActionButton.getAttribute("stepActionEnd");
+			}
 		} else {
 			formSubmitButon.click();
 		}
@@ -202,6 +206,10 @@
 
 	function stepBack() {
 		if (stepNum > 1) {
+
+			if (stepNum == stepEnd) {
+				stepActionButton.textContent = stepActionButton.getAttribute("stepActionFilling");
+			}
 
 			step[stepNum - 2].classList.remove("filled");
 			step[stepNum - 2].classList.add("current");
