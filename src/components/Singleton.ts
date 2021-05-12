@@ -23,6 +23,12 @@ export class Singleton {
 			return await axios.put(myRequest + ruta, objeto).then((result) => {
 				return result.data;
 			});
+		} else if (tipo == 'delete') {
+			return await axios
+				.delete(myRequest + ruta, { data: { id_catastro: objeto } })
+				.then((result) => {
+					return result.data;
+				});
 		}
 	}
 }
