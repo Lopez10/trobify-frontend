@@ -12,7 +12,7 @@ export function editar(inmueble) {
 	let nBanos = document.getElementById('banos');
 	let nHab = document.getElementById('hab');
 	let precioV = document.getElementById('precio1');
-	let precioA = document.getElementById('precio1');
+	let precioA = document.getElementById('precio2');
 	let direccion = document.getElementById('direccion');
 	let tipoViv = document.getElementById('homeType');
 	let gallery = document.getElementById('imageOptions');

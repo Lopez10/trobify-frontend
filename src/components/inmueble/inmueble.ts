@@ -62,7 +62,8 @@ export class Inmueble {
 			let energia = formData.get('energia') as string;
 			let provincia = formData.get('provincia') as string;
 			let superficie = formData.get('superficie') as string;
-			let precio = formData.getAll('precio') as unknown as Array<String>;
+			let precioV = formData.get('precioV') as string;
+			let precioA = formData.get('precioA') as string;
 			let homeType = formData.get('homeType') as string;
 			let roomCount = formData.get('roomCount') as string;
 			let bathroomCount = formData.get('bathroomCount') as string;
@@ -83,7 +84,7 @@ export class Inmueble {
 				id_catastro: catast,
 				superficie: +superficie,
 				id_modalidad: modo,
-				precio: precio,
+				precio: [precioV, precioA],
 				id_provincia: +provincia || 46,
 				id_tipoVivienda: +homeType,
 				descuento: 0,
