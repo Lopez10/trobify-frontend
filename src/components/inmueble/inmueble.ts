@@ -96,9 +96,7 @@ export class Inmueble {
 			};
 			console.log(params);
 			this.postInmueble(params);
-			window.location.replace(
-				'http://localhost:8080/public/inmueble.html?catastro=' + catast + '&modo=' + modo[0]
-			);
+			window.location.replace('http://localhost:8080/public');
 			return false;
 		};
 	}
@@ -146,7 +144,7 @@ export class Inmueble {
 			};
 			console.log(params);
 			this.putInmueble(params);
-			// window.location.replace('http://localhost:8080/public');
+			window.location.replace('http://localhost:8080/public');
 			return false;
 		};
 	}

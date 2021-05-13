@@ -7,15 +7,21 @@ export function editar(inmueble) {
 	let venta = document.getElementById('propertyMethodS');
 	let alquiler = document.getElementById('propertyMethodR');
 	let stdo = document.getElementById('stdo');
-	let prov = document.getElementById('provincias');
-	let superficie = document.getElementById('superficie');
 	let nBanos = document.getElementById('banos');
 	let nHab = document.getElementById('hab');
 	let precioV = document.getElementById('precio1');
 	let precioA = document.getElementById('precio2');
-	let direccion = document.getElementById('direccion');
 	let tipoViv = document.getElementById('homeType');
 	let gallery = document.getElementById('imageOptions');
+
+	let ascensor = document.getElementById('ascensor');
+	let amueblado = document.getElementById('amueblado');
+	let terraza = document.getElementById('terraza');
+	let acondicionado = document.getElementById('acondicionado');
+	let empotrado = document.getElementById('empotrado');
+	let garaje = document.getElementById('garaje');
+	let piscina = document.getElementById('piscina');
+	let jardin = document.getElementById('jardin');
 
 	//tpoInm.value = inmueble.tpoInm;
 	descripcion.innerHTML = inmueble.descripcion;
@@ -32,11 +38,17 @@ export function editar(inmueble) {
 	} else {
 		precioV.value = inmueble.precio;
 	}
-	direccion.innerHTML = inmueble.direccion;
-	prov.value = inmueble.provincia;
-	superficie.value = inmueble.superficie;
+
 	nBanos.value = inmueble.nBanos;
 	nHab.value = inmueble.nHab;
+	inmueble.caracteristicas.forEach(function (value) {
+		console.log(value);
+		if (value === 'Ascensor') ascensor.checked = true;
+		if (value === 'Amueblado') amueblado.checked = true;
+		if (value === 'Garaje') garaje.checked = true;
+		if (value === 'Jardin') jardin.checked = true;
+		if (value === 'Piscina') piscina.checked = true;
+	});
 
 	addImages(inmueble.imagen);
 }
