@@ -13,6 +13,36 @@
 
 	<div class="content">
 
+		<nav class="flexbox row center-v">
+
+			<a href="" class="logo"></a>
+		
+			<div class="links" logged="false">
+				<a href="registro.html" class="link label">Crear cuenta</a>
+				<a href="login.html" class="link button black">Iniciar sesión</a>
+			</div>
+		
+			<div class="links" logged="true">
+				<a href="inmuebles.html" class="link label selec">Mis inmuebles</a>
+				<a href="" class="disabled link label">Favoritos</a>
+				<a class="link button black dropdown" dropdownButton="userOptions"
+					onclick="document.querySelector('[dropdown='+this.getAttribute('dropdownButton')+']').classList.toggle('hideElement')">Mi
+					cuenta</a>
+				<div class="dropdownList hideElement" dropdown="userOptions">
+					<a href="" class="disabled label">Perfil</a>
+					<a href="" class="disabled label">Mensajes</a>
+					<a href="" id="logout" class="label red">Cerrar sesión</a>
+				</div>
+			</div>
+
+			<script type="module">
+				import * as navbar from "./js/navbar.js";
+				navbar.protectFromAnon();
+				navbar.setNavbar();
+			</script>
+		
+		</nav>
+
 		<form id="formNewProperty">
 
 			<div class="flexbox column center-v spaced-inner-top spaced-inner-bottom overflow">
@@ -239,7 +269,6 @@
 </body>
 
 <script type="text/javascript" src="./bundle/editarInmueble.bundle.js"></script>
-
 
 <script type="text/javascript">
 

@@ -9,15 +9,49 @@
 </head>
 
 <body>
-	<div class="flexbox column full-width">
+	<div class="content">
 
-		<div class="flexbox column full-height spaced searchView">
-			<div id="catalogo" class="full-width list"></div>
+		<nav class="flexbox row center-v">
+
+			<a href="" class="logo"></a>
+		
+			<div class="links" logged="false">
+				<a href="registro.html" class="link label">Crear cuenta</a>
+				<a href="login.html" class="link button black">Iniciar sesión</a>
+			</div>
+		
+			<div class="links" logged="true">
+				<a href="inmuebles.html" class="link label selec">Mis inmuebles</a>
+				<a href="" class="disabled link label">Favoritos</a>
+				<a class="link button black dropdown" dropdownButton="userOptions"
+					onclick="document.querySelector('[dropdown='+this.getAttribute('dropdownButton')+']').classList.toggle('hideElement')">Mi
+					cuenta</a>
+				<div class="dropdownList hideElement" dropdown="userOptions">
+					<a href="" class="disabled label">Perfil</a>
+					<a href="" class="disabled label">Mensajes</a>
+					<a href="" id="logout" class="label red">Cerrar sesión</a>
+				</div>
+			</div>
+
+			<script type="module">
+				import * as navbar from "./js/navbar.js";
+				navbar.protectFromAnon();
+				navbar.setNavbar();
+			</script>
+		
+		</nav>
+
+		<div class="flexbox column full-width">
+
+			<div class="flexbox column full-height spaced searchView">
+				<div id="catalogo" class="full-width list"></div>
+			</div>
 		</div>
-	</div>
-	<div class="flexbox row spaced space-between">
+		<div class="flexbox row spaced space-between">
+	
+			<a class="button">Editar inmueble</a>
+		</div>
 
-		<a class="button">Editar inmueble</a>
 	</div>
 	<script src="./bundle/inmuebles.bundle.js"></script>
 </body>

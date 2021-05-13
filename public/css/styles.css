@@ -1352,6 +1352,10 @@ nav.wide {
   border-bottom: none;
 }
 
+nav.wide .dropdownList {
+  right: 6rem;
+}
+
 nav.centered {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1422,6 +1426,7 @@ nav .dropdownList {
   padding: 1rem;
   border-radius: .8rem;
   margin-top: .6rem;
+  background: #FFFFFF;
   z-index: 99;
 }
 

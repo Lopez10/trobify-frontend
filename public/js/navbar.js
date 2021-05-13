@@ -20,7 +20,7 @@ export function getCookie(cname) {
 }
 
 export function checkCookie(cname) {
-  return !getCookie(cname) != "";
+  return getCookie(cname) != "";
 }
 
 export function isLogged() {
@@ -28,10 +28,21 @@ export function isLogged() {
 }
 
 export function setNavbar() {
-  if (isLogged()) {
-		var e = document.querySelectorAll("[logged]");
-		e.forEach( v => {
-			
-		});
+	var l = document.querySelectorAll(isLogged() ? "[logged='false']" : "[logged='true']");
+	l.forEach( i => {
+		i.remove();
+	});
+	if (isLogged()) document.getElementById("logout").addEventListener("click", logout, false);
+}
+
+export function loggedToIndex() {
+	if (isLogged()) {
+		window.location.replace("/public/index.html");
+	}
+}
+
+export function protectFromAnon() {
+	if (!isLogged()) {
+		window.location.replace("/public/index.html");
 	}
 }
