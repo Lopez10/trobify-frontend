@@ -220,13 +220,13 @@
 
 				<div class="sep x2"></div>
 
-				<label style="display: inline-block;"><input name="delete" type="checkbox" value="1" required />
+				<label style="display: inline-block;"><input name="delete" type="checkbox" value="1" id="deleteConfirmation"/>
 					<div class="label bold">Sí quiero eliminarlo</div>
 				</label>
 
 				<div class="sep x2"></div>
 
-				<button class="button delete" name="submit" type="submit">
+				<button class="button delete disabled" id="deleteButton" name="submit" type="submit">
 					Eliminar inmueble
 				</button>
 
@@ -240,6 +240,7 @@
 
 <script type="text/javascript" src="./bundle/editarInmueble.bundle.js"></script>
 
+
 <script type="text/javascript">
 
 	// Dynamic form
@@ -250,15 +251,19 @@
 		propertyMethodR = document.getElementById("propertyMethodR"),
 		propertyMethodSPrice = document.getElementById("propertyMethodSPrice"),
 		propertyMethodRPrice = document.getElementById("propertyMethodRPrice"),
-		propertyMethodNone = document.getElementById("propertyMethodNone");
+		propertyMethodNone = document.getElementById("propertyMethodNone"),
+		deleteConfirmation = document.getElementById("deleteConfirmation"),
+		deleteButton = document.getElementById("deleteButton");
 
 	formSelector.addEventListener("change", changeForm, false);
 	propertyMethodS.addEventListener("change", changeMethod, false);
 	propertyMethodR.addEventListener("change", changeMethod, false);
+	deleteConfirmation.addEventListener("change", toggleDeleteButton, false);
 
 	window.onload = () => {
 		changeForm();
 		changeMethod();
+		setDefaultDeleteConfirmation()
 	}
 
 	function getTpoInm() {
@@ -302,6 +307,16 @@
 			propertyMethodRPrice.classList.add("hideElement");
 			propertyMethodNone.classList.remove("hideElement");
 		}
+	}
+
+	// Delete property confirmation
+
+	function setDefaultDeleteConfirmation() {
+		deleteConfirmation.checked = false;
+	}
+
+	function toggleDeleteButton() {
+		deleteConfirmation.checked ? deleteButton.classList.remove("disabled") : deleteButton.classList.add("disabled");
 	}
 
 	// Image upload (url)

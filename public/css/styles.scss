@@ -868,6 +868,11 @@ svg.icon{
     background: $color-red-light;
     color: $color-red;
   }
+  &.disabled {
+    opacity: .5;
+    pointer-events: none;
+    user-select: none;
+  }
   &.icon {
     // SVG Adjustement
     padding: 1.435rem 4.4rem !important;
