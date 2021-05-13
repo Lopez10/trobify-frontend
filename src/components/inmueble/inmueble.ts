@@ -36,10 +36,10 @@ export class Inmueble {
 		this.escuchaEliminar(inmueble.id_catastro);
 	}
 
-	async registrarInmueble() {
-		let params = await this.aplicarRegistro();
-		this.postInmueble(params);
-	}
+	// async registrarInmueble() {
+	// 	let params = await this.aplicarRegistro();
+	// 	this.postInmueble(params);
+	// }
 
 	verInmueble(inmueble: any) {
 		inm.inmuebleDom(inmueble);
@@ -95,10 +95,10 @@ export class Inmueble {
 				imagen: imagenes.getImageGalleryValues(),
 			};
 			console.log(params);
-			//this.postInmueble(params);
-			// window.location.replace(
-			// 	'http://localhost:8080/public/inmueble.html?catastro=' + catast + '&modo=' + modo[0]
-			// );
+			this.postInmueble(params);
+			window.location.replace(
+				'http://localhost:8080/public/inmueble.html?catastro=' + catast + '&modo=' + modo[0]
+			);
 			return false;
 		};
 	}
