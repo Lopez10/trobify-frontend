@@ -65,29 +65,17 @@
 							<input class="mode-fill" type="text" name="catast" id="catast"
 								placeholder="0000000AA0000A0000AA" required />
 
-							<div class="label title">Dirección</div>
-							<textarea class="mode-fill no-resize" name="place" id="place"
-								placeholder="AV PRIMADO REIG 151, Escalera 1 Planta 2 Puerta 4"
-								required></textarea>
-							<div class="label title">Provincia</div>
-
-							<select id="provincias" class="select" name="provincia"></select>
-
-							<div class="label title">Superficie</div>
-							<input class="mode-fill" type="text" name="superficie" id="location"
-								placeholder="98 m²" value="" required />
-
 							<div class="label title">Precio</div>
 
 							<div class="propertyMethodSPrice hideElement" id="propertyMethodSPrice">
 								<div class="label" style="margin-top:16px;">Precio de venta</div>
-								<input class="mode-fill" type="text" name="precio" id="precio1"
+								<input class="mode-fill" type="text" name="precioV" id="precio1"
 									placeholder="100.000 €" value="" required />
 							</div>
 
 							<div class="propertyMethodRPrice hideElement" id="propertyMethodRPrice">
 								<div class="label" style="margin-top:16px;">Precio de alquiler (€/mes)</div>
-								<input class="mode-fill" type="text" name="precio" id="precio2"
+								<input class="mode-fill" type="text" name="precioA" id="precio2"
 									placeholder="700 € / mes" value="" required />
 							</div>
 
@@ -192,18 +180,6 @@
 								</div>
 							</div>
 
-							<!--
-							<div id="dropArea" class="dropArea">
-								<input type="file" class="fileInput" id="fileInput" multiple accept="image/*"
-									onchange="handleFiles(this.files)">
-								<label for="fileInput">
-									<p>Suelta imágenes o haz click</p>
-									<div class="button" style="display:inline-block;">Seleccionar imágenes
-									</div>
-								</label>
-							</div>
-							-->
-
 							<input class="mode-fill" name="imageURL" id="imageURL" type="text"
 								placeholder="Introduce la url de la imagen" />
 							<a id="addImageBtn" class="button black inline-flex chip" name="addImageBtn">
@@ -215,6 +191,12 @@
 							<div id="gallery" class="gallery empty">
 								<div class="imageOptions hide" id="imageOptions"></div>
 							</div>
+							<div class="label title">¿Desea publicar?</div>
+							<label>
+
+								<input name="publicar" type="checkbox" value="1" />
+								<div class="label bold">Publicar</div>
+							</label>
 
 						</div>
 

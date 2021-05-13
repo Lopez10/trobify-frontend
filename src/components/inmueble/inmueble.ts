@@ -1,14 +1,11 @@
 import { Singleton } from '../Singleton';
-import { crearProvincias } from '../../../data/provincias';
 import { InmuebleInterface } from '../../interface/inmueble.interface';
 const imagenes = require('../../../public/js/imagenes.js');
 const inm = require('../../../public/js/inmueble.js');
 const editar = require('../../../public/js/editar.js');
 
 export class Inmueble {
-	constructor() {
-		crearProvincias();
-	}
+	constructor() {}
 	getInmueble() {
 		let api: Singleton = Singleton.getInstance();
 		let params = this.obtenerParametros();
@@ -39,10 +36,10 @@ export class Inmueble {
 		this.escuchaEliminar(inmueble.id_catastro);
 	}
 
-	// async registrarInmueble() {
-	// 	let params = await this.aplicarRegistro();
-	// 	this.postInmueble(params);
-	// }
+	async registrarInmueble() {
+		let params = await this.aplicarRegistro();
+		this.postInmueble(params);
+	}
 
 	verInmueble(inmueble: any) {
 		inm.inmuebleDom(inmueble);
@@ -63,17 +60,15 @@ export class Inmueble {
 			const formData = new FormData(registroForm);
 			let propertyType = formData.get('propertyType') as string;
 			let catast = formData.get('catast') as string;
-			let place = formData.get('place') as string;
 			let descripcion = formData.get('descripcion') as string;
 			let estado = formData.get('stdo') as string;
 			let energia = formData.get('energia') as string;
-			let provincia = formData.get('provincia') as string;
-			let superficie = formData.get('superficie') as string;
 			let precioV = formData.get('precioV') as string;
 			let precioA = formData.get('precioA') as string;
 			let homeType = formData.get('homeType') as string;
 			let roomCount = formData.get('roomCount') as string;
 			let bathroomCount = formData.get('bathroomCount') as string;
+			let publicar = formData.get('publicar') as string;
 			let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
 			let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(
 				','
@@ -86,32 +81,28 @@ export class Inmueble {
 				nHab: +roomCount,
 				id_caractSecundaria: caract,
 				breveDescripcion: descripcion,
-				direccion: place,
 				id_estadoInmueble: +estado,
 				id_catastro: catast,
-				superficie: +superficie,
 				id_modalidad: modo,
 				precio: [precioV, precioA],
-				id_provincia: +provincia || 46,
 				id_tipoVivienda: +homeType,
 				descuento: 0,
 				id_certifEner: +energia,
 				id_tipoInmueble: +propertyType,
 				nCocina: 2,
 				id_usuario: 1,
-				longitud: 0,
-				latitud: 0,
+				publicar: +publicar | 0,
 				imagen: imagenes.getImageGalleryValues(),
 			};
-			this.postInmueble(params);
-			window.location.replace(
-				'http://localhost:8080/public/inmueble.html?catastro=' + catast + '&modo=' + modo[0]
-			);
+			console.log(params);
+			//this.postInmueble(params);
+			// window.location.replace(
+			// 	'http://localhost:8080/public/inmueble.html?catastro=' + catast + '&modo=' + modo[0]
+			// );
 			return false;
 		};
 	}
 
-	// Refactorizar
 	aplicarEditar() {
 		let registroForm: HTMLFormElement =
 			document.querySelector('#formNewProperty') || document.createElement('form');
@@ -119,16 +110,14 @@ export class Inmueble {
 			const formData = new FormData(registroForm);
 			let propertyType = formData.get('propertyType') as string;
 			let catast = formData.get('catast') as string;
-			let place = formData.get('place') as string;
 			let descripcion = formData.get('descripcion') as string;
 			let estado = formData.get('stdo') as string;
 			let energia = formData.get('energia') as string;
-			let provincia = formData.get('provincia') as string;
-			let superficie = formData.get('superficie') as string;
 			let precioV = formData.get('precioV') as string;
 			let precioA = formData.get('precioA') as string;
 			let homeType = formData.get('homeType') as string;
 			let roomCount = formData.get('roomCount') as string;
+			let publicar = formData.get('publicar') as string;
 			let bathroomCount = formData.get('bathroomCount') as string;
 			let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
 			let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(
@@ -142,25 +131,22 @@ export class Inmueble {
 				nHab: +roomCount,
 				id_caractSecundaria: caract,
 				breveDescripcion: descripcion,
-				direccion: place,
 				id_estadoInmueble: +estado,
 				id_catastro: catast,
-				superficie: +superficie,
 				id_modalidad: modo,
 				precio: [precioV, precioA],
-				id_provincia: +provincia || 46,
 				id_tipoVivienda: +homeType,
 				descuento: 0,
 				id_certifEner: +energia,
 				id_tipoInmueble: +propertyType,
 				nCocina: 2,
+				publicar: +publicar | 0,
 				id_usuario: 1,
-				longitud: 0,
-				latitud: 0,
 				imagen: imagenes.getImageGalleryValues(),
 			};
+			console.log(params);
 			this.putInmueble(params);
-			window.location.replace('http://localhost:8080/public');
+			// window.location.replace('http://localhost:8080/public');
 			return false;
 		};
 	}

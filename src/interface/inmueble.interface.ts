@@ -4,12 +4,7 @@ export interface InmuebleInterface {
 	id_estadoInmueble: number;
 	id_certifEner: number;
 	imagen: string[];
-	superficie: number;
 	breveDescripcion: string;
-	direccion: string;
-	id_provincia: number;
-	longitud?: number;
-	latitud?: number;
 
 	id_tipoVivienda: number;
 	nHab: number;
@@ -17,6 +12,7 @@ export interface InmuebleInterface {
 	nCocina: number;
 	id_caractSecundaria: number[];
 	extras?: string[];
+	publicar: number;
 
 	id_modalidad: number[];
 	precio: String[];
