@@ -75,8 +75,8 @@ export class Inmueble {
 			);
 			let modo = propertyMethod.split(',').map((x) => +x);
 			let caract = feature.split(',').map((x) => +x);
-
-			const params: InmuebleInterface = {
+			let precios: string[] = this.validarPrecio(precioA, precioV);
+			const params: any = {
 				nBano: +bathroomCount,
 				nHab: +roomCount,
 				id_caractSecundaria: caract,
@@ -84,7 +84,7 @@ export class Inmueble {
 				id_estadoInmueble: +estado,
 				id_catastro: catast,
 				id_modalidad: modo,
-				precio: [precioV, precioA],
+				precio: precios,
 				id_tipoVivienda: +homeType,
 				descuento: 0,
 				id_certifEner: +energia,
@@ -99,6 +99,18 @@ export class Inmueble {
 			window.location.replace('http://localhost:8080/public');
 			return false;
 		};
+	}
+
+	private validarPrecio(precioA: string, precioV: string) {
+		let precios: string[];
+		if (precioA == '') {
+			precios = [precioV];
+		} else if (precioV == '') {
+			precios = [precioA];
+		} else {
+			precios = [precioV, precioA];
+		}
+		return precios;
 	}
 
 	aplicarEditar() {
@@ -123,6 +135,7 @@ export class Inmueble {
 			);
 			let modo = propertyMethod.split(',').map((x) => +x);
 			let caract = feature.split(',').map((x) => +x);
+			let precios: string[] = this.validarPrecio(precioA, precioV);
 
 			const params: InmuebleInterface = {
 				nBano: +bathroomCount,
@@ -132,7 +145,7 @@ export class Inmueble {
 				id_estadoInmueble: +estado,
 				id_catastro: catast,
 				id_modalidad: modo,
-				precio: [precioV, precioA],
+				precio: precios,
 				id_tipoVivienda: +homeType,
 				descuento: 0,
 				id_certifEner: +energia,
