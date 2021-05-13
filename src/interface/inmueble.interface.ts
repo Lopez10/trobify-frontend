@@ -12,7 +12,7 @@ export interface InmuebleInterface {
 	nCocina: number;
 	id_caractSecundaria: number[];
 	extras?: string[];
-	publicar: number;
+	publicado: number;
 
 	id_modalidad: number[];
 	precio: String[];

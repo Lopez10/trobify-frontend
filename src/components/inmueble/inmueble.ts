@@ -91,7 +91,7 @@ export class Inmueble {
 				id_tipoInmueble: +propertyType,
 				nCocina: 2,
 				id_usuario: 1,
-				publicar: +publicar | 0,
+				publicado: +publicar | 0,
 				imagen: imagenes.getImageGalleryValues(),
 			};
 			console.log(params);
@@ -140,7 +140,7 @@ export class Inmueble {
 				id_certifEner: +energia,
 				id_tipoInmueble: +propertyType,
 				nCocina: 2,
-				publicar: +publicar | 0,
+				publicado: +publicar | 0,
 				id_usuario: 1,
 				imagen: imagenes.getImageGalleryValues(),
 			};
