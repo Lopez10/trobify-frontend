@@ -11,45 +11,16 @@
 
 <body>
 	<div class="content">
-		
-		<nav class="flexbox row center-v">
-
-			<a href="" class="logo"></a>
-		
-			<div class="links" logged="false">
-				<a href="registro.html" class="link label">Crear cuenta</a>
-				<a href="login.html" class="link button black">Iniciar sesión</a>
-			</div>
-		
-			<div class="links" logged="true">
-				<a href="inmuebles.html" class="link label selec">Mis inmuebles</a>
-				<a href="" class="disabled link label">Favoritos</a>
-				<a class="link button black dropdown" dropdownButton="userOptions"
-					onclick="document.querySelector('[dropdown='+this.getAttribute('dropdownButton')+']').classList.toggle('hideElement')">Mi
-					cuenta</a>
-				<div class="dropdownList hideElement" dropdown="userOptions">
-					<a href="" class="disabled label">Perfil</a>
-					<a href="" class="disabled label">Mensajes</a>
-					<a href="" id="logout" class="label red">Cerrar sesión</a>
-				</div>
-			</div>
-
-			<script type="module">
-				import * as navbar from "./js/navbar.js";
-				navbar.setNavbar();
-			</script>
-		
-		</nav>
 
 		<div class="flexbox column center-v">
 
 			<nav class="flexbox row center-v">
 				<a href="index.html" class="logo"></a>
-		
+
 				<div class="links">
 					<a href="login.html" class="link button black">Iniciar sesión</a>
 				</div>
-		
+
 			</nav>
 
 			<div class="steps flexbox row">
@@ -65,14 +36,14 @@
 					<div class="stepContent" stepContent="1">
 
 						<div class="label title required">Nombre</div>
-						<input class="mode-fill" type="text" name="name" id="name" placeholder="John"
-						required autofocus />
+						<input class="mode-fill" type="text" name="name" id="name" placeholder="John" required
+							autofocus />
 
 						<div class="label title">Apellidos</div>
 						<input class="mode-fill" type="text" name="lastName" id="lastName" placeholder="Appleseed"
-						required autofocus />
+							required autofocus />
 
-						<label><input name="adult" type="checkbox" value="1" required/>
+						<label><input name="adult" type="checkbox" value="1" required />
 							<div class="label">Soy mayor de 18 años</div>
 						</label>
 
@@ -82,15 +53,15 @@
 
 						<div class="label title required">Correo</div>
 						<input class="mode-fill" type="email" name="email" id="email"
-						placeholder="john.appleseed@gmail.com" required/>
+							placeholder="john.appleseed@gmail.com" required />
 
 						<div class="label title required">Repetir corero</div>
 						<input class="mode-fill" type="email" name="repeatMail" id="repeatMail"
-						placeholder="john.appleseed@gmail.com" required/>
+							placeholder="john.appleseed@gmail.com" required />
 
 						<div class="label title required">Teléfono</div>
-						<input class="mode-fill" type="tel" name="phone" id="phone"
-						placeholder="777888999" pattern="(?=.{9,}$)(?=.*\d).*" required/>
+						<input class="mode-fill" type="tel" name="phone" id="phone" placeholder="777888999"
+							pattern="(?=.{9,}$)(?=.*\d).*" required />
 
 					</div>
 
@@ -98,7 +69,10 @@
 
 						<div class="label title required">Contraseña</div>
 						<input class="mode-fill hint" type="password" name="password" id="password"
-						placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*" onkeyup="checkPasswordStrength(this.value)" onclick="setPasswordHintPosition()" required/>
+							placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+							pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*"
+							onkeyup="checkPasswordStrength(this.value)" onclick="setPasswordHintPosition()"
+							required />
 						<label for="password" id="passwordHint" class="passwordHint">
 							<span>La contraseña debe contener</span>
 							<p id="passwordLength">Más de 8 caracteres</p>
@@ -110,7 +84,8 @@
 
 						<div class="label title required">Repetir contraseña</div>
 						<input class="mode-fill" type="password" name="repeatPassword" id="repeatPassword"
-						placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*" required/>
+							placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+							pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*" required />
 
 						<div class="label title required">Usaré esta cuenta como</div>
 						<select name="role" class="select" id="role" required>
@@ -118,14 +93,16 @@
 							<option value="2">Agente inmobiliario</option>
 						</select>
 
-						<div class="label block detail small">Al crear tu cuenta aceptas los terminos de uso<br>y políticas de privacidad de Trobify
+						<div class="label block detail small">Al crear tu cuenta aceptas los terminos de uso<br>y
+							políticas de privacidad de Trobify
 						</div>
 
 					</div>
 
 					<div class="sep"></div>
 
-					<div class="button black block center stepAction" stepActionEnd="Crear cuenta" stepActionFilling="Siguiente paso">
+					<div class="button black block center stepAction" stepActionEnd="Crear cuenta"
+						stepActionFilling="Siguiente paso">
 					</div>
 
 					<button class="button black block center invisible formSubmit" name="submit" type="submit">
@@ -189,18 +166,18 @@
 	};
 
 	var stepContent = Array.from(document.querySelectorAll("[stepContent]")),
-			step = Array.from(document.querySelectorAll(".steps .step")),
-			stepActionButton = document.querySelector(".stepAction"),
-			formSubmitButon = document.querySelector(".formSubmit"),
-			stepBackButton = document.querySelector(".stepBack"),
-			stepNum = 1,
-			stepEnd = step.length;
+		step = Array.from(document.querySelectorAll(".steps .step")),
+		stepActionButton = document.querySelector(".stepAction"),
+		formSubmitButon = document.querySelector(".formSubmit"),
+		stepBackButton = document.querySelector(".stepBack"),
+		stepNum = 1,
+		stepEnd = step.length;
 
 	function setDefaultStepState() {
 		stepBackButton.classList.add("hideElement");
 		stepActionButton.textContent = stepActionButton.getAttribute("stepActionFilling");
 		step.forEach(element => {
-			element.classList.remove("filled","current");
+			element.classList.remove("filled", "current");
 		});
 		step[0].classList.add("current");
 		stepContent.forEach(element => {

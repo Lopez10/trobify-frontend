@@ -6,18 +6,6 @@ export function catalogDom(div, item) {
 		item.id_catastro +
 		'&modo=' +
 		item.id_modalidad;
-	let verEnlace = document.createTextNode('Ver');
-	ver.appendChild(verEnlace);
-
-	let editar = document.createElement('a');
-	editar.href =
-		'http://localhost:8080/public/editar.html' +
-		'?catastro=' +
-		item.id_catastro +
-		'&modo=' +
-		item.id_modalidad;
-	let editarEnlace = document.createTextNode('Editar');
-	editar.appendChild(editarEnlace);
 
 	let property = document.createElement('div');
 	property.className = 'property_item';
@@ -25,10 +13,9 @@ export function catalogDom(div, item) {
 	let photo = document.createElement('div');
 	photo.className = 'photo';
 	photo.style.backgroundImage = 'url(' + item.urlImg + ')';
-	property.appendChild(photo);
-
+	ver.appendChild(photo);
 	property.appendChild(ver);
-	property.appendChild(editar);
+
 	let content = document.createElement('div');
 	content.className = 'content';
 
@@ -78,6 +65,7 @@ export function catalogDom(div, item) {
 	content.appendChild(descripcion);
 
 	property.appendChild(content);
+
 	div?.appendChild(property);
 }
 
