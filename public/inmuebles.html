@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Mis inmuebles</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 </head>
 
 <body>
@@ -21,7 +21,7 @@
 			</div>
 
 			<div class="links" logged="true">
-				<a href="inmuebles.html" class="link label selec">Mis inmuebles</a>
+				<a href="" class="link label selected">Mis inmuebles</a>
 				<a href="" class="disabled link label">Favoritos</a>
 				<a class="link button black dropdown" dropdownButton="userOptions"
 					onclick="document.querySelector('[dropdown='+this.getAttribute('dropdownButton')+']').classList.toggle('hideElement')">Mi
@@ -43,13 +43,67 @@
 
 		<div class="flexbox column full-width">
 
-			<div class="flexbox column full-height spaced searchView">
-				<div id="catalogo" class="full-width list"></div>
-			</div>
-		</div>
-		<div class="flexbox row spaced space-between">
+			<div class="flexbox column center-v spaced spaced-top">
 
-			<a class="button">Editar inmueble</a>
+				<div class="flexbox row center-h spaced-top">
+					<div class="label title-x2">Mis inmuebles</div>
+
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
+					<div class="sep x2"></div>
+					<div class="sep"></div>
+
+					<div class="sep"></div>
+					<a href="nuevoInmueble.html" class="button black">
+						Nuevo inmueble
+					</a>
+				</div>
+
+				<div id="catalogo" class="flexbox column center-v full-width list spaced-top">
+
+					<div class="property_item">
+						<div class="photo" style="background-image: url(css/img/placeholder.png)"></div>
+						<div class="content">
+							<div class="price">
+								<div class="label title-x2">00.000.000</div>
+								<div class="currency">
+									<div class="label title">€</div>
+								</div>
+							</div>
+							<div class="location">
+								<div class="label bold">Ubicación del inmueble</div>
+							</div>
+							<div class="features">
+								<div class="label bold">000 m<sup>2</sup></div>
+								<div class="label bold">00 Hab</div>
+								<div class="label bold">00 Baños</div>
+								<div class="label bold">00º Piso</div>
+							</div>
+							<div class="description label paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet
+								luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus ...
+							</div>
+							<div class="actions">
+								<div class="button" href="">Editar</div>
+								<select name="visibility" class="select">
+									<option value="0">Oculto</option>
+									<option value="1">Público</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
 
 	</div>
