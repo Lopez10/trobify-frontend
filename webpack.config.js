@@ -5,11 +5,12 @@ module.exports = {
 		index: './src/components/index.ts',
 		busqueda: './src/components/busqueda/busqueda.ts',
 		hipoteca: './src/components/inmueble/hipoteca/hipoteca.ts',
-		login: './src/components/login/login.ts',
+		login: './src/components/usuarios/login.ts',
 		editarInmueble: './src/components/inmueble/acciones/editar.inmueble.ts',
 		registroInmueble: './src/components/inmueble/acciones/registro.inmueble.ts',
 		verInmueble: './src/components/inmueble/acciones/ver.inmueble.ts',
 		inmuebles: './src/components/busqueda/inmuebles/Inmuebles.ts',
+		registro: './src/components/usuarios/registro',
 	},
 	mode: 'development',
 	module: {
