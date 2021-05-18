@@ -1,15 +1,23 @@
 import { Singleton } from '../../Singleton';
-import { Catalogo } from '../catalogo/catalogo';
+const inmueblesPropietario = require('../../../../public/js/catalogo.js');
+
 export class Inmuebles {
 	constructor() {}
 	async getInmueblesPropietario(params: string): Promise<any> {
 		let api: Singleton = Singleton.getInstance();
-		let catalogo = new Catalogo();
-		let url = 'catalogo?propietario=' + params;
+		let url = 'catalogo/' + params;
 		let inmuebles = await api.accesoAPI('get', url);
-		catalogo.mostrarInmuebles(inmuebles);
+		this.mostrarInmuebles(inmuebles);
+	}
+
+	private mostrarInmuebles(inmuebles: any) {
+		const div = document.getElementById('catalogo');
+		inmuebles.forEach((item: any) => {
+			console.log(item);
+			inmueblesPropietario.inmueblePropietarioDom(div, item);
+		});
 	}
 }
 
 let inmuebles = new Inmuebles();
-inmuebles.getInmueblesPropietario('prueba4@gmail.com');
+inmuebles.getInmueblesPropietario('prueba2@gmail.com');

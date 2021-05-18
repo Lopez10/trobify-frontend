@@ -8,7 +8,6 @@ export function inmuebleDom(inmueble) {
 	let ubi = document.getElementById('direccion');
 	let imagenes = document.getElementById('imageGallery');
 	let caract = document.getElementById('caract');
-	let atras = document.getElementById('atras');
 	precio.innerHTML = inmueble.precio;
 	superficie.innerHTML = inmueble.superficie;
 	nBanos.innerHTML = inmueble.nBanos;
@@ -25,11 +24,4 @@ export function inmuebleDom(inmueble) {
 	} else {
 		tpoInm = 2;
 	}
-	atras.href =
-		'http://localhost:8080/public/busqueda.html?prov=' +
-		inmueble.provincia +
-		'&opt=' +
-		inmueble.modalidad +
-		'&tpoInm=' +
-		tpoInm;
 }

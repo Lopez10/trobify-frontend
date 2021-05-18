@@ -4,7 +4,9 @@ export class Catalogo {
 
 	mostrarInmuebles(catalogo: Promise<any>) {
 		const div = this.reiniciarInmuebles();
+
 		catalogo.then((result) => {
+			console.log(result);
 			const resultado = document.getElementById('resultAmount');
 			this.numeroResultados(resultado, result);
 			result.forEach((item: any) => {
