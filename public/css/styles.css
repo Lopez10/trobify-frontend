@@ -166,6 +166,14 @@ input[type="checkbox"][type="checkbox"]:checked ~ .label::before, input[type="ra
   background-repeat: no-repeat;
 }
 
+input[type="checkbox"].error, input[type="checkbox"].alert, input[type="radio"].error, input[type="radio"].alert {
+  color: #FA4D2B;
+}
+
+input[type="checkbox"].error ~ .label, input[type="checkbox"].alert ~ .label, input[type="radio"].error ~ .label, input[type="radio"].alert ~ .label {
+  color: #FA4D2B;
+}
+
 input[type="radio"] ~ .label::before {
   border-radius: 100%;
   -webkit-box-shadow: inset 0 0 0 0.3rem #E3E3E3, inset 0 0 0 0.7rem #F2F2F2;
@@ -253,6 +261,62 @@ textarea[disabled]:active,
 textarea[disabled]:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+input[type="number"].error, input[type="number"].alert,
+input[type="text"].error,
+input[type="text"].alert,
+input[type="tel"].error,
+input[type="tel"].alert,
+input[type="email"].error,
+input[type="email"].alert,
+input[type="password"].error,
+input[type="password"].alert,
+textarea.error,
+textarea.alert {
+  background: rgba(250, 77, 43, 0.05);
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(250, 77, 43, 0.4);
+          box-shadow: 0 0 0 0.2rem rgba(250, 77, 43, 0.4);
+}
+
+input[type="number"].error:hover, input[type="number"].alert:hover,
+input[type="text"].error:hover,
+input[type="text"].alert:hover,
+input[type="tel"].error:hover,
+input[type="tel"].alert:hover,
+input[type="email"].error:hover,
+input[type="email"].alert:hover,
+input[type="password"].error:hover,
+input[type="password"].alert:hover,
+textarea.error:hover,
+textarea.alert:hover {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(250, 77, 43, 0.4);
+          box-shadow: 0 0 0 0.2rem rgba(250, 77, 43, 0.4);
+}
+
+input[type="number"].error:focus, input[type="number"].error:active, input[type="number"].alert:focus, input[type="number"].alert:active,
+input[type="text"].error:focus,
+input[type="text"].error:active,
+input[type="text"].alert:focus,
+input[type="text"].alert:active,
+input[type="tel"].error:focus,
+input[type="tel"].error:active,
+input[type="tel"].alert:focus,
+input[type="tel"].alert:active,
+input[type="email"].error:focus,
+input[type="email"].error:active,
+input[type="email"].alert:focus,
+input[type="email"].alert:active,
+input[type="password"].error:focus,
+input[type="password"].error:active,
+input[type="password"].alert:focus,
+input[type="password"].alert:active,
+textarea.error:focus,
+textarea.error:active,
+textarea.alert:focus,
+textarea.alert:active {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(250, 77, 43, 0.8);
+          box-shadow: 0 0 0 0.2rem rgba(250, 77, 43, 0.8);
 }
 
 input[type="number"].transparent,
