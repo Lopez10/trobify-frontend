@@ -96,7 +96,7 @@ export class Inmueble {
 			};
 			console.log(params);
 			this.postInmueble(params);
-			window.location.replace('http://localhost:8080/public');
+			window.history.back();
 			return false;
 		};
 	}
@@ -157,7 +157,7 @@ export class Inmueble {
 			};
 			console.log(params);
 			this.putInmueble(params);
-			window.location.replace('http://localhost:8080/public');
+			window.history.back();
 			return false;
 		};
 	}
@@ -167,7 +167,7 @@ export class Inmueble {
 			document.querySelector('#deleteProperty') || document.createElement('form');
 		registroForm.onsubmit = () => {
 			this.deleteInmueble(id_catastro);
-			window.location.replace('http://localhost:8080/public/');
+			window.history.back();
 			return false;
 		};
 	}
