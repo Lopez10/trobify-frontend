@@ -1,10 +1,23 @@
-import { Usuario } from '../../interface/usuario.interface';
 import { Singleton } from '../Singleton';
+import { Usuario } from './usuario';
 
-export class Registro {
+export class Registro extends Usuario {
 	constructor() {
+		super();
 		this.obtenerParametrosRegistro();
 	}
+
+	private async postRegistro(usuario: any): Promise<void> {
+		let api: Singleton = Singleton.getInstance();
+		api.accesoAPI('post', 'login', usuario).then((response) => {
+			if (response == true) {
+				console.log(usuario);
+				this.setCookie('mail', usuario.mail);
+				this.autoRedirect();
+			}
+		});
+	}
+
 	private obtenerParametrosRegistro(): void {
 		let loginForm: HTMLFormElement =
 			document.querySelector('#formSignUp') || document.createElement('form');
@@ -32,6 +45,7 @@ export class Registro {
 					id_rol: role,
 				};
 				console.log(usuario);
+				this.postRegistro(usuario);
 			}
 			return false;
 		};
