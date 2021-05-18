@@ -17,5 +17,5 @@ export interface InmuebleInterface {
 	id_modalidad: number[];
 	precio: string[];
 	descuento: number;
-	id_usuario: number;
+	mail: string;
 }

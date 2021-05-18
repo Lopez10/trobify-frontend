@@ -76,7 +76,7 @@ export class Inmueble {
 			let modo = propertyMethod.split(',').map((x) => +x);
 			let caract = feature.split(',').map((x) => +x);
 			let precios: string[] = this.validarPrecio(precioA, precioV);
-			const params: any = {
+			const params: InmuebleInterface = {
 				nBano: +bathroomCount,
 				nHab: +roomCount,
 				id_caractSecundaria: caract,
@@ -90,7 +90,7 @@ export class Inmueble {
 				id_certifEner: +energia,
 				id_tipoInmueble: +propertyType,
 				nCocina: 2,
-				id_usuario: 1,
+				mail: this.getCookie('mail'),
 				publicado: +publicar | 0,
 				imagen: imagenes.getImageGalleryValues(),
 			};
@@ -152,7 +152,7 @@ export class Inmueble {
 				id_tipoInmueble: +propertyType,
 				nCocina: 2,
 				publicado: +publicar | 0,
-				id_usuario: 1,
+				mail: this.getCookie('mail'),
 				imagen: imagenes.getImageGalleryValues(),
 			};
 			console.log(params);
@@ -170,5 +170,15 @@ export class Inmueble {
 			window.location.replace('http://localhost:8080/public/');
 			return false;
 		};
+	}
+	private getCookie(name: string): string {
+		var nameEQ = name + '=';
+		var ca = document.cookie.split(';');
+		for (var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+		}
+		return '';
 	}
 }

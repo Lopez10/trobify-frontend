@@ -35,8 +35,10 @@ export function editar(inmueble) {
 	if (typeof inmueble.precio == 'array') {
 		precioV.value = inmueble.precio[0];
 		precioA.value = inmueble.precio[1];
-	} else {
+	} else if (inmueble.modalidad === 1) {
 		precioV.value = inmueble.precio;
+	} else if (inmueble.modalidad === 2) {
+		precioA.value = inmueble.precio;
 	}
 
 	nBanos.value = inmueble.nBanos;
