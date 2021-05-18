@@ -1,5 +1,6 @@
 export class Usuario {
 	protected setCookie(name: string, value: string): void {
+		console.log(name, value);
 		let expires = '';
 		let date = new Date();
 		date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);

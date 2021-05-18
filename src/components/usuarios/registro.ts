@@ -9,11 +9,12 @@ export class Registro extends Usuario {
 
 	private async postRegistro(usuario: any): Promise<void> {
 		let api: Singleton = Singleton.getInstance();
-		api.accesoAPI('post', 'login', usuario).then((response) => {
+		api.accesoAPI('post', 'registro', usuario).then((response) => {
+			console.log(response);
 			if (response == true) {
 				console.log(usuario);
-				this.setCookie('mail', usuario.mail);
-				this.autoRedirect();
+				super.setCookie('mail', usuario.mail);
+				super.autoRedirect();
 			}
 		});
 	}

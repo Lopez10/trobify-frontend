@@ -334,7 +334,7 @@ eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _argument
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Usuario = void 0;\nclass Usuario {\n    setCookie(name, value) {\n        let expires = '';\n        let date = new Date();\n        date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);\n        expires = '; expires=' + date.toUTCString();\n        document.cookie = name + '=' + value + expires + '; path=/';\n    }\n    autoRedirect() {\n        window.location.replace('http://localhost:8080/public/');\n    }\n}\nexports.Usuario = Usuario;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/usuarios/usuario.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Usuario = void 0;\nclass Usuario {\n    setCookie(name, value) {\n        console.log(name, value);\n        let expires = '';\n        let date = new Date();\n        date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);\n        expires = '; expires=' + date.toUTCString();\n        document.cookie = name + '=' + value + expires + '; path=/';\n    }\n    autoRedirect() {\n        window.location.replace('http://localhost:8080/public/');\n    }\n}\nexports.Usuario = Usuario;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/usuarios/usuario.ts?");
 
 /***/ })
 
