@@ -176,6 +176,13 @@ input {
       background-position: center center;
       background-repeat: no-repeat;
     }
+
+    &.error, &.alert {
+      color: $color-red;
+      & ~ .label {
+        color: $color-red;
+      }
+    }
   }
 
   &[type="radio"] ~ .label::before {
@@ -213,6 +220,17 @@ textarea {
 
     &:hover, &:active, &:focus {
       box-shadow: none;
+    }
+  }
+
+  &.error, &.alert {
+    background: rgba($color-red, .05);
+    box-shadow: 0 0 0 .2rem rgba($color-red, .4);
+    &:hover {
+      box-shadow: 0 0 0 .2rem rgba($color-red, .4);
+    }
+    &:focus, &:active {
+      box-shadow: 0 0 0 .2rem rgba($color-red, .8);
     }
   }
 
