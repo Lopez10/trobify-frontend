@@ -7,14 +7,14 @@ export function inmuebleDom(inmueble) {
 	let desc = document.getElementById('breveDescripcion');
 	let ubi = document.getElementById('direccion');
 	let imagenes = document.getElementById('imageGallery');
-	let caract = document.getElementById('caract');
+	//let caract = document.getElementById('caract');
 	precio.innerHTML = inmueble.precio;
 	superficie.innerHTML = inmueble.superficie;
 	nBanos.innerHTML = inmueble.nBanos;
 	nHab.innerHTML = inmueble.nHab;
 	desc.innerHTML = inmueble.descripcion;
 	ubi.innerHTML = inmueble.direccion;
-	caract.innerHTML = inmueble.caracteristicas;
+	//caract.innerHTML = inmueble.caracteristicas;
 	imagenes.src = inmueble.imagen[0];
 	let tpoInm = 3;
 	if (inmueble.tipoInmueble == 'Vivienda') {

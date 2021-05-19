@@ -38,15 +38,17 @@ export function catalogDom(div, item) {
 	let features = document.createElement('div');
 	features.className = 'features';
 
-	let banos = document.createElement('div');
-	banos.className = 'label bold';
-	banos.textContent = 'Baños: ' + item.nBano;
-	features.appendChild(banos);
+	if (item.nBano != null && item.nHab != null) {
+		let banos = document.createElement('div');
+		banos.className = 'label bold';
+		banos.textContent = 'Baños: ' + item.nBano;
+		features.appendChild(banos);
 
-	let habitaciones = document.createElement('div');
-	habitaciones.className = 'label bold';
-	habitaciones.textContent = 'Habitaciones: ' + item.nHab;
-	features.appendChild(habitaciones);
+		let habitaciones = document.createElement('div');
+		habitaciones.className = 'label bold';
+		habitaciones.textContent = 'Habitaciones: ' + item.nHab;
+		features.appendChild(habitaciones);
+	}
 
 	let sup = document.createElement('sup');
 	sup.textContent = '2';
@@ -107,15 +109,17 @@ export function inmueblePropietarioDom(div, item) {
 	let features = document.createElement('div');
 	features.className = 'features';
 
-	let banos = document.createElement('div');
-	banos.className = 'label bold';
-	banos.textContent = 'Baños: ' + item.nBano;
-	features.appendChild(banos);
+	if (item.nBano != null && item.nHab != null) {
+		let banos = document.createElement('div');
+		banos.className = 'label bold';
+		banos.textContent = 'Baños: ' + item.nBano;
+		features.appendChild(banos);
 
-	let habitaciones = document.createElement('div');
-	habitaciones.className = 'label bold';
-	habitaciones.textContent = 'Habitaciones: ' + item.nHab;
-	features.appendChild(habitaciones);
+		let habitaciones = document.createElement('div');
+		habitaciones.className = 'label bold';
+		habitaciones.textContent = 'Habitaciones: ' + item.nHab;
+		features.appendChild(habitaciones);
+	}
 
 	let sup = document.createElement('sup');
 	sup.textContent = '2';
