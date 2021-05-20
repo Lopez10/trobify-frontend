@@ -780,6 +780,8 @@ label .label::before {
 .flexbox.imageGallery img {
   margin-right: 3rem;
   border-radius: 1rem;
+  height: 50rem;
+  max-height: 50rem;
 }
 
 .flexbox.imageGallery img:last-child {
