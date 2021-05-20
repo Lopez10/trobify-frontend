@@ -1,5 +1,6 @@
 import { Singleton } from '../Singleton';
 import { Usuario } from './usuario';
+const mostrarValidacion = require('../../../public/js/registro.js');
 
 export class Registro extends Usuario {
 	constructor() {
@@ -15,6 +16,8 @@ export class Registro extends Usuario {
 				console.log(usuario);
 				super.setCookie('mail', usuario.mail);
 				super.autoRedirect();
+			} else {
+				mostrarValidacion.alertAlreadyExists();
 			}
 		});
 	}

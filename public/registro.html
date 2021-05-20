@@ -38,7 +38,8 @@
 						<div class="label title required">Nombre</div>
 						<input class="mode-fill" type="text" name="name" id="name" placeholder="John" required
 							autofocus />
-						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertName">El campo nombre no puede estar vacío</div>
+						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+							id="alertName">El campo nombre no puede estar vacío</div>
 
 						<div class="label title">Apellidos</div>
 						<input class="mode-fill" type="text" name="lastName" id="lastName" placeholder="Appleseed"
@@ -47,7 +48,8 @@
 						<label><input name="adult" id="adult" type="checkbox" value="1" />
 							<div class="label">Soy mayor de 18 años</div>
 						</label>
-						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertAdult">Debes ser mayor de 18 años<br>para poder crear una cuenta</div>
+						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+							id="alertAdult">Debes ser mayor de 18 años<br>para poder crear una cuenta</div>
 
 					</div>
 
@@ -56,17 +58,20 @@
 						<div class="label title required">Correo</div>
 						<input class="mode-fill" type="email" name="email" id="email"
 							placeholder="john.appleseed@gmail.com" required />
-						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertEmail">El campo email no puede estar vacío</div>
+						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+							id="alertEmail">El campo email no puede estar vacío</div>
 
 						<div class="label title required">Repetir corero</div>
 						<input class="mode-fill" type="email" name="repeatMail" id="repeatMail"
 							placeholder="john.appleseed@gmail.com" required />
-						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertRepeatMail">Los emails no coinciden</div>
+						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+							id="alertRepeatMail">Los emails no coinciden</div>
 
 						<div class="label title required">Teléfono</div>
 						<input class="mode-fill" type="tel" name="phone" id="phone" placeholder="777888999"
 							pattern="(?=.{9,}$)(?=.*\d).*" required />
-						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertPhone">El campo teléfono no puede estar vacío</div>
+						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+							id="alertPhone">El campo teléfono no puede estar vacío</div>
 
 					</div>
 
@@ -86,13 +91,15 @@
 							<p id="passwordContainsNumber">Mínimo 1 número</p>
 							<p id="passwordContainsSpecialChar">Mínimo 1 carácter especial</p>
 						</label>
-						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertPassword">El campo contraseña no puede estar vacío</div>
+						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+							id="alertPassword">El campo contraseña no puede estar vacío</div>
 
 						<div class="label title required">Repetir contraseña</div>
 						<input class="mode-fill" type="password" name="repeatPassword" id="repeatPassword"
 							placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
 							pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*" required />
-						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertRepeatPassword">Las contraseñas nos coinciden</div>
+						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+							id="alertRepeatPassword">Las contraseñas nos coinciden</div>
 
 						<div class="label title required">Usaré esta cuenta como</div>
 						<select name="role" class="select" id="role" required>
@@ -100,7 +107,8 @@
 							<option value="2">Agente inmobiliario</option>
 						</select>
 
-						<div class="label small alert alertMessage hideElement" style="margin-top: 20px;" id="alertAlreadyExists">Ya esxiste un usuario registrado con este correo</div>
+						<div class="label small alert alertMessage hideElement" style="margin-top: 20px;"
+							id="alertAlreadyExists">Ya existe un usuario registrado con este correo</div>
 
 						<div class="label block detail small">Al crear tu cuenta aceptas los terminos de uso<br>y
 							políticas de privacidad de Trobify
@@ -257,7 +265,7 @@
 			}
 
 		}
-		if (stepNum===stepEnd) {
+		if (stepNum === stepEnd) {
 			formSubmitButon.click();
 		}
 	}
@@ -272,9 +280,7 @@
 		});
 	}
 
-	function alertAlreadyExists() {
-		document.querySelector("#alertAlreadyExists").classList.remove("hideElement");
-	}
+
 
 	function stepForward() {
 		stepBackButton.classList.remove("hideElement");
