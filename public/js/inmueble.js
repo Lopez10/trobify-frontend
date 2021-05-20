@@ -1,21 +1,29 @@
 export function inmuebleDom(inmueble) {
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	let modalidad = urlParams.get('modo');
 	console.log(inmueble);
 	let precio = document.getElementById('precio');
-	let superficie = document.getElementById('superficie');
-	let nBanos = document.getElementById('nBan');
-	let nHab = document.getElementById('nHab');
-	let desc = document.getElementById('breveDescripcion');
-	let ubi = document.getElementById('direccion');
 	let imagenes = document.getElementById('imageGallery');
+	document.getElementById('superficie').innerHTML = inmueble.superficie;
+	document.getElementById('nBan').innerHTML = inmueble.nBanos;
+	document.getElementById('nHab').innerHTML = inmueble.nHab;
+	document.getElementById('breveDescripcion').innerHTML = inmueble.descripcion;
+	document.getElementById('direccion').innerHTML = inmueble.direccion;
 	//let caract = document.getElementById('caract');
-	precio.innerHTML = inmueble.precio;
-	superficie.innerHTML = inmueble.superficie;
-	nBanos.innerHTML = inmueble.nBanos;
-	nHab.innerHTML = inmueble.nHab;
-	desc.innerHTML = inmueble.descripcion;
-	ubi.innerHTML = inmueble.direccion;
 	//caract.innerHTML = inmueble.caracteristicas;
-	imagenes.src = inmueble.imagen[0];
+	if (modalidad == 1) {
+		precio.innerHTML = inmueble.precio[0];
+	} else {
+		precio.innerHTML = inmueble.precio[1];
+	}
+	inmueble.imagen.forEach((item) => {
+		console.log(item);
+		let img = document.createElement('img');
+		img.src = item;
+		imagenes.appendChild(img);
+	});
+
 	let tpoInm = 3;
 	if (inmueble.tipoInmueble == 'Vivienda') {
 		tpoInm = 3;

@@ -157,7 +157,8 @@ export class Inmueble {
 			};
 			console.log(params);
 			this.putInmueble(params);
-			window.history.back();
+			window.location.replace('http://localhost:8080/public/inmuebles.html');
+
 			return false;
 		};
 	}
