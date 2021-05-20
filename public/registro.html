@@ -100,6 +100,8 @@
 							<option value="2">Agente inmobiliario</option>
 						</select>
 
+						<div class="label small alert alertMessage hideElement" style="margin-top: 20px;" id="alertAlreadyExists">Ya esxiste un usuario registrado con este correo</div>
+
 						<div class="label block detail small">Al crear tu cuenta aceptas los terminos de uso<br>y
 							políticas de privacidad de Trobify
 						</div>
@@ -256,7 +258,6 @@
 
 		}
 		if (stepNum===stepEnd) {
-			console.log("hola");
 			formSubmitButon.click();
 		}
 	}
@@ -269,6 +270,10 @@
 		Array.from(document.querySelectorAll(".alertMessage:not(hideElement)")).forEach(v => {
 			v.classList.add("hideElement");
 		});
+	}
+
+	function alertAlreadyExists() {
+		document.querySelector("#alertAlreadyExists").classList.remove("hideElement");
 	}
 
 	function stepForward() {
