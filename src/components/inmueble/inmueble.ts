@@ -68,7 +68,7 @@ export class Inmueble {
 			let homeType = formData.get('homeType') as string;
 			let roomCount = formData.get('roomCount') as string;
 			let bathroomCount = formData.get('bathroomCount') as string;
-			let publicar = formData.get('publicar') as string;
+			let publicar = formData.get('visibility') as string;
 			let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
 			let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(
 				','
@@ -127,7 +127,7 @@ export class Inmueble {
 			let precioA = formData.get('precioA') as string;
 			let homeType = formData.get('homeType') as string;
 			let roomCount = formData.get('roomCount') as string;
-			let publicar = formData.get('publicar') as string;
+			let publicar = formData.get('visibility') as string;
 			let bathroomCount = formData.get('bathroomCount') as string;
 			let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
 			let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(

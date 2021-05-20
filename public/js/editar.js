@@ -8,6 +8,7 @@ export function editar(inmueble) {
 	document.getElementById('homeType').value = inmueble.tipoVivienda;
 	document.getElementById('energia').value = inmueble.energia;
 	document.getElementById('hab').value = inmueble.nHab;
+	document.getElementById('visibility').value = inmueble.publicado;
 	let precioA = document.getElementById('precio2');
 	let alquiler = document.getElementById('propertyMethodR');
 	let venta = document.getElementById('propertyMethodS');
