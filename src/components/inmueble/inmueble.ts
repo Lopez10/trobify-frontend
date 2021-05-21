@@ -95,17 +95,11 @@ export class Inmueble {
 		const params: InmuebleInterface = {
 			nBano: formData.get('bathroomCount') as unknown as number,
 			nHab: formData.get('roomCount') as unknown as number,
-			id_caractSecundaria: (formData.getAll('feature') as unknown as Array<String>)
-				.join(',')
-				.split(',')
-				.map((x) => +x),
+			id_caractSecundaria: this.creacionArrayNumeros(formData, 'feature'),
 			breveDescripcion: formData.get('descripcion') as string,
 			id_estadoInmueble: formData.get('stdo') as unknown as number,
 			id_catastro: formData.get('catast') as string,
-			id_modalidad: (formData.getAll('propertyMethod') as unknown as Array<String>)
-				.join(',')
-				.split(',')
-				.map((x) => +x),
+			id_modalidad: this.creacionArrayNumeros(formData, 'propertyMethod'),
 			precio: this.validarPrecio(precioA, precioV),
 			id_tipoVivienda: formData.get('homeType') as unknown as number,
 			descuento: 0,
@@ -117,5 +111,12 @@ export class Inmueble {
 			imagen: imagenes.getImageGalleryValues(),
 		};
 		return params;
+	}
+
+	private creacionArrayNumeros(formData: FormData, tipo: string): number[] {
+		return (formData.getAll(tipo) as unknown as Array<String>)
+			.join(',')
+			.split(',')
+			.map((x) => +x);
 	}
 }
