@@ -1,8 +1,6 @@
 import { Singleton } from '../Singleton';
 import { InmuebleInterface } from '../../interface/inmueble.interface';
 const imagenes = require('../../../public/js/imagenes.js');
-const inm = require('../../../public/js/inmueble.js');
-const editar = require('../../../public/js/editar.js');
 
 export class Inmueble {
 	constructor() {}
@@ -30,12 +28,6 @@ export class Inmueble {
 		return await api.accesoAPI('delete', 'inmueble', id_catastro);
 	}
 
-	async editarInmueble(inmueble: any) {
-		editar.editar(inmueble);
-		this.aplicarEditar();
-		this.escuchaEliminar(inmueble.id_catastro);
-	}
-
 	aplicarEditar() {
 		let registroForm: HTMLFormElement =
 			document.querySelector('#formNewProperty') || document.createElement('form');
@@ -57,10 +49,6 @@ export class Inmueble {
 		};
 	}
 
-	verInmueble(inmueble: any) {
-		inm.inmuebleDom(inmueble);
-	}
-
 	aplicarRegistro() {
 		let registroForm: HTMLFormElement =
 			document.querySelector('#formNewProperty') || document.createElement('form');
@@ -71,6 +59,31 @@ export class Inmueble {
 			window.history.back();
 			return false;
 		};
+	}
+
+	private obtenerParametros(): any {
+		let queryString = window.location.search;
+		let urlParams = new URLSearchParams(queryString);
+		let catastroId = urlParams.get('catastro');
+		let modo = urlParams.get('modo');
+		return { catastroId, modo };
+	}
+
+	private validarPrecio(precioA: string, precioV: string): Array<string> {
+		if (precioA == '') return [precioV];
+		else if (precioV == '') return [precioA];
+		else return [precioV, precioA];
+	}
+
+	private getCookie(name: string): string {
+		var nameEQ = name + '=';
+		var ca = document.cookie.split(';');
+		for (var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+		}
+		return '';
 	}
 
 	private crearParametros(registroForm: HTMLFormElement) {
@@ -110,36 +123,5 @@ export class Inmueble {
 			imagen: imagenes.getImageGalleryValues(),
 		};
 		return params;
-	}
-
-	private obtenerParametros(): any {
-		let queryString = window.location.search;
-		let urlParams = new URLSearchParams(queryString);
-		let catastroId = urlParams.get('catastro');
-		let modo = urlParams.get('modo');
-		return { catastroId, modo };
-	}
-
-	private validarPrecio(precioA: string, precioV: string) {
-		let precios: string[];
-		if (precioA == '') {
-			precios = [precioV];
-		} else if (precioV == '') {
-			precios = [precioA];
-		} else {
-			precios = [precioV, precioA];
-		}
-		return precios;
-	}
-
-	private getCookie(name: string): string {
-		var nameEQ = name + '=';
-		var ca = document.cookie.split(';');
-		for (var i = 0; i < ca.length; i++) {
-			var c = ca[i];
-			while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-		}
-		return '';
 	}
 }
