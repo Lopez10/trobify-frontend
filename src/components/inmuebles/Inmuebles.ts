@@ -1,5 +1,5 @@
-import { Singleton } from '../../Singleton';
-const inmueblesPropietario = require('../../../../public/js/catalogo.js');
+import { Singleton } from '../Singleton';
+const inmueblesPropietario = require('../../../public/js/catalogo.js');
 
 export class Inmuebles {
 	constructor() {}
@@ -13,7 +13,6 @@ export class Inmuebles {
 	private mostrarInmuebles(inmuebles: any) {
 		const div = document.getElementById('catalogo');
 		inmuebles.forEach((item: any) => {
-			console.log(item);
 			inmueblesPropietario.inmueblePropietarioDom(div, item);
 		});
 	}

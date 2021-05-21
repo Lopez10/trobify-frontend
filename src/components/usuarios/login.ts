@@ -24,11 +24,9 @@ export class Login extends Usuario {
 			document.querySelector('#formLogin') || document.createElement('form');
 		loginForm.onsubmit = () => {
 			const formData = new FormData(loginForm);
-			let mail = formData.get('user') as string;
-			let pass = formData.get('password') as string;
 			let usuario: UsuarioInterface = {
-				mail: mail,
-				password: pass,
+				mail: formData.get('user') as string,
+				password: formData.get('password') as string,
 			};
 			this.postLogin(usuario);
 			return false;

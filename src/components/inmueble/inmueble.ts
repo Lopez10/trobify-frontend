@@ -88,38 +88,32 @@ export class Inmueble {
 
 	private crearParametros(registroForm: HTMLFormElement) {
 		const formData = new FormData(registroForm);
-		let propertyType = formData.get('propertyType') as string;
-		let catast = formData.get('catast') as string;
-		let descripcion = formData.get('descripcion') as string;
-		let estado = formData.get('stdo') as string;
-		let energia = formData.get('energia') as string;
+
 		let precioV = formData.get('precioV') as string;
 		let precioA = formData.get('precioA') as string;
-		let homeType = formData.get('homeType') as string;
-		let roomCount = formData.get('roomCount') as string;
-		let bathroomCount = formData.get('bathroomCount') as string;
-		let publicar = formData.get('publicar') as string;
-		let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
-		let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(',');
-		let modo = propertyMethod.split(',').map((x) => +x);
-		let caract = feature.split(',').map((x) => +x);
-		let precios: string[] = this.validarPrecio(precioA, precioV);
+
 		const params: InmuebleInterface = {
-			nBano: +bathroomCount,
-			nHab: +roomCount,
-			id_caractSecundaria: caract,
-			breveDescripcion: descripcion,
-			id_estadoInmueble: +estado,
-			id_catastro: catast,
-			id_modalidad: modo,
-			precio: precios,
-			id_tipoVivienda: +homeType,
+			nBano: formData.get('bathroomCount') as unknown as number,
+			nHab: formData.get('roomCount') as unknown as number,
+			id_caractSecundaria: (formData.getAll('feature') as unknown as Array<String>)
+				.join(',')
+				.split(',')
+				.map((x) => +x),
+			breveDescripcion: formData.get('descripcion') as string,
+			id_estadoInmueble: formData.get('stdo') as unknown as number,
+			id_catastro: formData.get('catast') as string,
+			id_modalidad: (formData.getAll('propertyMethod') as unknown as Array<String>)
+				.join(',')
+				.split(',')
+				.map((x) => +x),
+			precio: this.validarPrecio(precioA, precioV),
+			id_tipoVivienda: formData.get('homeType') as unknown as number,
 			descuento: 0,
-			id_certifEner: +energia,
-			id_tipoInmueble: +propertyType,
+			id_certifEner: formData.get('energia') as unknown as number,
+			id_tipoInmueble: formData.get('propertyType') as unknown as number,
 			nCocina: 2,
 			mail: this.getCookie('mail'),
-			publicado: +publicar | 0,
+			publicado: formData.get('publicar') as unknown as number | 0,
 			imagen: imagenes.getImageGalleryValues(),
 		};
 		return params;
