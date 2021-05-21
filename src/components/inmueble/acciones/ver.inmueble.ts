@@ -9,6 +9,7 @@ let mapa = new Mapa();
 let datosInmueble = inmueble.getInmueble();
 
 datosInmueble.then((data) => {
+	console.log(data);
 	mapa.mostrarMapa(datosInmueble, obtenerProvincias(), data.provincia, true);
-	inm.inmuebleDom(inmueble);
+	inm.inmuebleDom(data);
 });
