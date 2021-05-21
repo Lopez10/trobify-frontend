@@ -1,10 +1,10 @@
 import querystring from 'querystring';
 import { Catalogo } from './catalogo/catalogo';
-import { Mapa } from './mapa/mapa';
 import { obtenerProvincias, crearProvincias } from '../../../data/provincias';
 import { Provincia } from '../../interface/provincia.interface';
 import { Singleton } from '../Singleton';
 const busqueda = require('../../../public/js/busqueda.js');
+const mapa = require('../../../public/js/mapa.js');
 
 export class Busqueda {
 	provincias: Provincia[];
@@ -66,8 +66,13 @@ export class Busqueda {
 	}
 
 	private crearMapa(prov: number, inmuebles: Promise<any>) {
-		let mapa = new Mapa();
-		mapa.mostrarMapa(inmuebles, this.provincias, prov || 0);
+		mapa.mostrarMapa(
+			inmuebles,
+			this.provincias[prov].latitud,
+			this.provincias[prov].longitud,
+			this.provincias[prov].zoom,
+			false
+		);
 	}
 
 	private crearCatalogo(inmuebles: Promise<any>): void {

@@ -327,17 +327,6 @@ eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _argument
 
 /***/ }),
 
-/***/ "./src/components/busqueda/mapa/mapa.ts":
-/*!**********************************************!*\
-  !*** ./src/components/busqueda/mapa/mapa.ts ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Mapa = void 0;\nconst mapa = __webpack_require__(/*! ../../../../public/js/mapa.js */ \"./public/js/mapa.js\");\nclass Mapa {\n    constructor() { }\n    mostrarMapa(inmuebles, provincias, prov, unico) {\n        mapa.mostrarMapa(inmuebles, provincias[prov].latitud, provincias[prov].longitud, provincias[prov].zoom, unico || false);\n    }\n}\nexports.Mapa = Mapa;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/busqueda/mapa/mapa.ts?");
-
-/***/ }),
-
 /***/ "./src/components/inmueble/acciones/ver.inmueble.ts":
 /*!**********************************************************!*\
   !*** ./src/components/inmueble/acciones/ver.inmueble.ts ***!
@@ -345,7 +334,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst inmueble_1 = __webpack_require__(/*! ../inmueble */ \"./src/components/inmueble/inmueble.ts\");\nconst mapa_1 = __webpack_require__(/*! ../../busqueda/mapa/mapa */ \"./src/components/busqueda/mapa/mapa.ts\");\nconst provincias_1 = __webpack_require__(/*! ../../../../data/provincias */ \"./data/provincias.ts\");\nconst inm = __webpack_require__(/*! ../../../../public/js/inmueble.js */ \"./public/js/inmueble.js\");\nlet inmueble = new inmueble_1.Inmueble();\nlet mapa = new mapa_1.Mapa();\nlet datosInmueble = inmueble.getInmueble();\ndatosInmueble.then((data) => {\n    console.log(data);\n    mapa.mostrarMapa(datosInmueble, provincias_1.obtenerProvincias(), data.provincia, true);\n    inm.inmuebleDom(data);\n});\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/inmueble/acciones/ver.inmueble.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst inmueble_1 = __webpack_require__(/*! ../inmueble */ \"./src/components/inmueble/inmueble.ts\");\nconst provincias_1 = __webpack_require__(/*! ../../../../data/provincias */ \"./data/provincias.ts\");\nconst inm = __webpack_require__(/*! ../../../../public/js/inmueble.js */ \"./public/js/inmueble.js\");\nconst mapa = __webpack_require__(/*! ../../../../public/js/mapa.js */ \"./public/js/mapa.js\");\nlet inmueble = new inmueble_1.Inmueble();\nlet datosInmueble = inmueble.getInmueble();\nlet provincias = provincias_1.obtenerProvincias();\ndatosInmueble.then((data) => {\n    console.log(data);\n    mapa.mostrarMapa(datosInmueble, provincias[data.provincia].latitud, provincias[data.provincia].longitud, provincias[data.provincia].zoom, true);\n    inm.inmuebleDom(data);\n});\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/inmueble/acciones/ver.inmueble.ts?");
 
 /***/ }),
 
