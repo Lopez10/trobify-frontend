@@ -36,13 +36,80 @@ export class Inmueble {
 		this.escuchaEliminar(inmueble.id_catastro);
 	}
 
-	// async registrarInmueble() {
-	// 	let params = await this.aplicarRegistro();
-	// 	this.postInmueble(params);
-	// }
+	aplicarEditar() {
+		let registroForm: HTMLFormElement =
+			document.querySelector('#formNewProperty') || document.createElement('form');
+		registroForm.onsubmit = () => {
+			const params: InmuebleInterface = this.crearParametros(registroForm);
+			this.putInmueble(params);
+			window.history.back();
+			return false;
+		};
+	}
+
+	escuchaEliminar(id_catastro: string) {
+		let registroForm: HTMLFormElement =
+			document.querySelector('#deleteProperty') || document.createElement('form');
+		registroForm.onsubmit = () => {
+			this.deleteInmueble(id_catastro);
+			window.history.back();
+			return false;
+		};
+	}
 
 	verInmueble(inmueble: any) {
 		inm.inmuebleDom(inmueble);
+	}
+
+	aplicarRegistro() {
+		let registroForm: HTMLFormElement =
+			document.querySelector('#formNewProperty') || document.createElement('form');
+		registroForm.onsubmit = () => {
+			const params: InmuebleInterface = this.crearParametros(registroForm);
+			console.log(params);
+			this.postInmueble(params);
+			window.history.back();
+			return false;
+		};
+	}
+
+	private crearParametros(registroForm: HTMLFormElement) {
+		const formData = new FormData(registroForm);
+		let propertyType = formData.get('propertyType') as string;
+		let catast = formData.get('catast') as string;
+		let descripcion = formData.get('descripcion') as string;
+		let estado = formData.get('stdo') as string;
+		let energia = formData.get('energia') as string;
+		let precioV = formData.get('precioV') as string;
+		let precioA = formData.get('precioA') as string;
+		let homeType = formData.get('homeType') as string;
+		let roomCount = formData.get('roomCount') as string;
+		let bathroomCount = formData.get('bathroomCount') as string;
+		let publicar = formData.get('publicar') as string;
+		let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
+		let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(',');
+		let modo = propertyMethod.split(',').map((x) => +x);
+		let caract = feature.split(',').map((x) => +x);
+		let precios: string[] = this.validarPrecio(precioA, precioV);
+		const params: InmuebleInterface = {
+			nBano: +bathroomCount,
+			nHab: +roomCount,
+			id_caractSecundaria: caract,
+			breveDescripcion: descripcion,
+			id_estadoInmueble: +estado,
+			id_catastro: catast,
+			id_modalidad: modo,
+			precio: precios,
+			id_tipoVivienda: +homeType,
+			descuento: 0,
+			id_certifEner: +energia,
+			id_tipoInmueble: +propertyType,
+			nCocina: 2,
+			mail: this.getCookie('mail'),
+			publicado: +publicar | 0,
+			imagen: imagenes.getImageGalleryValues(),
+		};
+		return params;
 	}
 
 	private obtenerParametros(): any {
@@ -51,54 +118,6 @@ export class Inmueble {
 		let catastroId = urlParams.get('catastro');
 		let modo = urlParams.get('modo');
 		return { catastroId, modo };
-	}
-
-	aplicarRegistro() {
-		let registroForm: HTMLFormElement =
-			document.querySelector('#formNewProperty') || document.createElement('form');
-		registroForm.onsubmit = () => {
-			const formData = new FormData(registroForm);
-			let propertyType = formData.get('propertyType') as string;
-			let catast = formData.get('catast') as string;
-			let descripcion = formData.get('descripcion') as string;
-			let estado = formData.get('stdo') as string;
-			let energia = formData.get('energia') as string;
-			let precioV = formData.get('precioV') as string;
-			let precioA = formData.get('precioA') as string;
-			let homeType = formData.get('homeType') as string;
-			let roomCount = formData.get('roomCount') as string;
-			let bathroomCount = formData.get('bathroomCount') as string;
-			let publicar = formData.get('visibility') as string;
-			let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
-			let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(
-				','
-			);
-			let modo = propertyMethod.split(',').map((x) => +x);
-			let caract = feature.split(',').map((x) => +x);
-			let precios: string[] = this.validarPrecio(precioA, precioV);
-			const params: InmuebleInterface = {
-				nBano: +bathroomCount,
-				nHab: +roomCount,
-				id_caractSecundaria: caract,
-				breveDescripcion: descripcion,
-				id_estadoInmueble: +estado,
-				id_catastro: catast,
-				id_modalidad: modo,
-				precio: precios,
-				id_tipoVivienda: +homeType,
-				descuento: 0,
-				id_certifEner: +energia,
-				id_tipoInmueble: +propertyType,
-				nCocina: 2,
-				mail: this.getCookie('mail'),
-				publicado: +publicar | 0,
-				imagen: imagenes.getImageGalleryValues(),
-			};
-			console.log(params);
-			this.postInmueble(params);
-			window.history.back();
-			return false;
-		};
 	}
 
 	private validarPrecio(precioA: string, precioV: string) {
@@ -113,65 +132,6 @@ export class Inmueble {
 		return precios;
 	}
 
-	aplicarEditar() {
-		let registroForm: HTMLFormElement =
-			document.querySelector('#formNewProperty') || document.createElement('form');
-		registroForm.onsubmit = () => {
-			const formData = new FormData(registroForm);
-			let propertyType = formData.get('propertyType') as string;
-			let catast = formData.get('catast') as string;
-			let descripcion = formData.get('descripcion') as string;
-			let estado = formData.get('stdo') as string;
-			let energia = formData.get('energia') as string;
-			let precioV = formData.get('precioV') as string;
-			let precioA = formData.get('precioA') as string;
-			let homeType = formData.get('homeType') as string;
-			let roomCount = formData.get('roomCount') as string;
-			let publicar = formData.get('visibility') as string;
-			let bathroomCount = formData.get('bathroomCount') as string;
-			let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
-			let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(
-				','
-			);
-			let modo = propertyMethod.split(',').map((x) => +x);
-			let caract = feature.split(',').map((x) => +x);
-			let precios: string[] = this.validarPrecio(precioA, precioV);
-
-			const params: InmuebleInterface = {
-				nBano: +bathroomCount,
-				nHab: +roomCount,
-				id_caractSecundaria: caract,
-				breveDescripcion: descripcion,
-				id_estadoInmueble: +estado,
-				id_catastro: catast,
-				id_modalidad: modo,
-				precio: precios,
-				id_tipoVivienda: +homeType,
-				descuento: 0,
-				id_certifEner: +energia,
-				id_tipoInmueble: +propertyType,
-				nCocina: 2,
-				publicado: +publicar | 0,
-				mail: this.getCookie('mail'),
-				imagen: imagenes.getImageGalleryValues(),
-			};
-			console.log(params);
-			this.putInmueble(params);
-			window.location.replace('http://localhost:8080/public/inmuebles.html');
-
-			return false;
-		};
-	}
-
-	escuchaEliminar(id_catastro: string) {
-		let registroForm: HTMLFormElement =
-			document.querySelector('#deleteProperty') || document.createElement('form');
-		registroForm.onsubmit = () => {
-			this.deleteInmueble(id_catastro);
-			window.history.back();
-			return false;
-		};
-	}
 	private getCookie(name: string): string {
 		var nameEQ = name + '=';
 		var ca = document.cookie.split(';');
