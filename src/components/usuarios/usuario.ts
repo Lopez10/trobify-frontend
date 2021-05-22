@@ -1,4 +1,6 @@
-export class Usuario {
+export abstract class Usuario {
+	abstract postUsuarios(usuario: any): Promise<void>;
+
 	protected setCookie(name: string, value: string): void {
 		console.log(name, value);
 		let expires = '';

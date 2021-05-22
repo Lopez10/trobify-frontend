@@ -8,7 +8,7 @@ export class Login extends Usuario {
 		this.obtenerParametrosLogin();
 	}
 
-	private async postLogin(usuario: UsuarioInterface): Promise<void> {
+	async postUsuarios(usuario: any): Promise<void> {
 		let api: Singleton = Singleton.getInstance();
 		api.accesoAPI('post', 'login', usuario).then((response) => {
 			if (response == true) {
@@ -28,7 +28,7 @@ export class Login extends Usuario {
 				mail: formData.get('user') as string,
 				password: formData.get('password') as string,
 			};
-			this.postLogin(usuario);
+			this.postUsuarios(usuario);
 			return false;
 		};
 	}

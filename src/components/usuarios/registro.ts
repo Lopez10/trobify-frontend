@@ -8,7 +8,7 @@ export class Registro extends Usuario {
 		this.obtenerParametrosRegistro();
 	}
 
-	private async postRegistro(usuario: any): Promise<void> {
+	async postUsuarios(usuario: any): Promise<void> {
 		let api: Singleton = Singleton.getInstance();
 		api.accesoAPI('post', 'registro', usuario).then((response) => {
 			console.log(response);
@@ -36,7 +36,7 @@ export class Registro extends Usuario {
 				id_rol: formData.get('role') as string,
 			};
 			console.log(usuario);
-			this.postRegistro(usuario);
+			this.postUsuarios(usuario);
 
 			return false;
 		};
