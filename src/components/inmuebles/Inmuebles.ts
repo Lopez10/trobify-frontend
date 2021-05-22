@@ -1,10 +1,10 @@
-import { Singleton } from '../Singleton';
+import { API } from '../API';
 const inmueblesPropietario = require('../../../public/js/catalogo.js');
 
 export class Inmuebles {
 	constructor() {}
 	async getInmueblesPropietario(params: string): Promise<any> {
-		let api: Singleton = Singleton.getInstance();
+		let api: API = API.getInstance();
 		let url = 'catalogo/' + params;
 		let inmuebles = await api.accesoAPI('get', url);
 		this.mostrarInmuebles(inmuebles);

@@ -1,11 +1,11 @@
-import { Singleton } from '../Singleton';
+import { API } from '../API';
 import { InmuebleInterface } from '../../interface/inmueble.interface';
 const imagenes = require('../../../public/js/imagenes.js');
 
 export class Inmueble {
 	constructor() {}
 	getInmueble() {
-		let api: Singleton = Singleton.getInstance();
+		let api: API = API.getInstance();
 		let params = this.obtenerParametros();
 		let url = 'inmueble/' + params.catastroId + '/' + params.modo;
 
@@ -13,18 +13,18 @@ export class Inmueble {
 	}
 
 	async postInmueble(inmueble: any) {
-		let api: Singleton = Singleton.getInstance();
+		let api: API = API.getInstance();
 		return await api.accesoAPI('post', 'inmueble', inmueble);
 	}
 
 	async putInmueble(inmueble: any) {
-		let api: Singleton = Singleton.getInstance();
+		let api: API = API.getInstance();
 		console.log(inmueble);
 		return await api.accesoAPI('put', 'inmueble', inmueble);
 	}
 
 	async deleteInmueble(id_catastro: any) {
-		let api: Singleton = Singleton.getInstance();
+		let api: API = API.getInstance();
 		return await api.accesoAPI('delete', 'inmueble', id_catastro);
 	}
 

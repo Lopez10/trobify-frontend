@@ -2,7 +2,7 @@ import querystring from 'querystring';
 import { Catalogo } from './catalogo/catalogo';
 import { obtenerProvincias, crearProvincias } from '../../../data/provincias';
 import { Provincia } from '../../interface/provincia.interface';
-import { Singleton } from '../Singleton';
+import { API } from '../API';
 const busqueda = require('../../../public/js/busqueda.js');
 const mapa = require('../../../public/js/mapa.js');
 
@@ -15,7 +15,7 @@ export class Busqueda {
 	}
 
 	private getInmuebles(params: string): Promise<any> {
-		let api: Singleton = Singleton.getInstance();
+		let api: API = API.getInstance();
 		let url = 'catalogo?' + params;
 		return api.accesoAPI('get', url);
 	}

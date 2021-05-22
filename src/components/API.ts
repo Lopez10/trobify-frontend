@@ -1,12 +1,12 @@
 import axios from 'axios';
-export class Singleton {
-	private static instance: Singleton;
+export class API {
+	private static instance: API;
 	private constructor() {}
-	public static getInstance(): Singleton {
-		if (Singleton.instance == null) {
-			Singleton.instance = new Singleton();
+	public static getInstance(): API {
+		if (API.instance == null) {
+			API.instance = new API();
 		}
-		return Singleton.instance;
+		return API.instance;
 	}
 
 	public async accesoAPI(tipo: string, ruta: string, objeto?: any) {

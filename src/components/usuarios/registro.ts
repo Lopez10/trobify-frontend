@@ -1,4 +1,4 @@
-import { Singleton } from '../Singleton';
+import { API } from '../API';
 import { Usuario } from './usuario';
 const mostrarValidacion = require('../../../public/js/registro.js');
 
@@ -9,7 +9,7 @@ export class Registro extends Usuario {
 	}
 
 	async postUsuarios(usuario: any): Promise<void> {
-		let api: Singleton = Singleton.getInstance();
+		let api: API = API.getInstance();
 		api.accesoAPI('post', 'registro', usuario).then((response) => {
 			console.log(response);
 			if (response == true) {

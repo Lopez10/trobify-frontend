@@ -1,5 +1,5 @@
 import { UsuarioInterface } from '../../interface/usuario.interface';
-import { Singleton } from '../Singleton';
+import { API } from '../API';
 import { Usuario } from './usuario';
 
 export class Login extends Usuario {
@@ -9,7 +9,7 @@ export class Login extends Usuario {
 	}
 
 	async postUsuarios(usuario: any): Promise<void> {
-		let api: Singleton = Singleton.getInstance();
+		let api: API = API.getInstance();
 		api.accesoAPI('post', 'login', usuario).then((response) => {
 			if (response == true) {
 				console.log(usuario);
