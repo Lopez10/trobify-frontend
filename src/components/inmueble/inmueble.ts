@@ -1,64 +1,19 @@
 import { API } from '../API';
 import { InmuebleInterface } from '../../interface/inmueble.interface';
+import { obtenerProvincias } from '../../../data/provincias';
 const imagenes = require('../../../public/js/imagenes.js');
+const inm = require('../../../public/js/inmueble.js');
+const mapa = require('../../../public/js/mapa.js');
 
 export class Inmueble {
 	constructor() {}
+
 	getInmueble() {
 		let api: API = API.getInstance();
 		let params = this.obtenerParametros();
 		let url = 'inmueble/' + params.catastroId + '/' + params.modo;
 
 		return api.accesoAPI('get', url);
-	}
-
-	async postInmueble(inmueble: any) {
-		let api: API = API.getInstance();
-		return await api.accesoAPI('post', 'inmueble', inmueble);
-	}
-
-	async putInmueble(inmueble: any) {
-		let api: API = API.getInstance();
-		console.log(inmueble);
-		return await api.accesoAPI('put', 'inmueble', inmueble);
-	}
-
-	async deleteInmueble(id_catastro: any) {
-		let api: API = API.getInstance();
-		return await api.accesoAPI('delete', 'inmueble', id_catastro);
-	}
-
-	aplicarEditar() {
-		let registroForm: HTMLFormElement =
-			document.querySelector('#formNewProperty') || document.createElement('form');
-		registroForm.onsubmit = () => {
-			const params: InmuebleInterface = this.crearParametros(registroForm);
-			this.putInmueble(params);
-			window.history.back();
-			return false;
-		};
-	}
-
-	escuchaEliminar(id_catastro: string) {
-		let registroForm: HTMLFormElement =
-			document.querySelector('#deleteProperty') || document.createElement('form');
-		registroForm.onsubmit = () => {
-			this.deleteInmueble(id_catastro);
-			window.history.back();
-			return false;
-		};
-	}
-
-	aplicarRegistro() {
-		let registroForm: HTMLFormElement =
-			document.querySelector('#formNewProperty') || document.createElement('form');
-		registroForm.onsubmit = () => {
-			const params: InmuebleInterface = this.crearParametros(registroForm);
-			console.log(params);
-			this.postInmueble(params);
-			window.history.back();
-			return false;
-		};
 	}
 
 	private obtenerParametros(): any {
@@ -86,7 +41,7 @@ export class Inmueble {
 		return '';
 	}
 
-	private crearParametros(registroForm: HTMLFormElement) {
+	protected crearParametros(registroForm: HTMLFormElement) {
 		const formData = new FormData(registroForm);
 
 		let precioV = formData.get('precioV') as string;
@@ -107,7 +62,7 @@ export class Inmueble {
 			id_tipoInmueble: formData.get('propertyType') as unknown as number,
 			nCocina: 2,
 			mail: this.getCookie('mail'),
-			publicado: formData.get('publicar') as unknown as number | 0,
+			publicado: formData.get('visibility') as unknown as number | 0,
 			imagen: imagenes.getImageGalleryValues(),
 		};
 		return params;
@@ -120,3 +75,19 @@ export class Inmueble {
 			.map((x) => +x);
 	}
 }
+
+let inmueble = new Inmueble();
+
+let datosInmueble = inmueble.getInmueble();
+let provincias = obtenerProvincias();
+
+datosInmueble.then((data) => {
+	mapa.mostrarMapa(
+		datosInmueble,
+		provincias[data.provincia].latitud,
+		provincias[data.provincia].longitud,
+		provincias[data.provincia].zoom,
+		true
+	);
+	inm.inmuebleDom(data);
+});
