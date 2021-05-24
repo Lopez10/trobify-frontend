@@ -9,6 +9,7 @@ module.exports = {
 		inmueble: './src/components/inmueble/inmueble.ts',
 		editarInmueble: './src/components/inmueble/acciones/editar.inmueble.ts',
 		registroInmueble: './src/components/inmueble/acciones/registro.inmueble.ts',
+		eliminarInmueble: './src/components/inmueble/acciones/eliminar.inmueble.ts',
 		inmuebles: './src/components/inmuebles/Inmuebles.ts',
 		registro: './src/components/usuarios/registro',
 	},

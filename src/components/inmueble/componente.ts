@@ -1,3 +1,0 @@
-interface componente {
-	aplicarAccion(): void;
-}
