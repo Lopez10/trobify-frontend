@@ -9,7 +9,7 @@ export class Acciones {
 	}
 	private realizarAccion(action: string) {
 		console.log(action);
-		let context = new Context();
+		let context = new Context(new EstrategiaEditar());
 		if (action == 'editar') {
 			context.setEstrategia(new EstrategiaEditar());
 		}
