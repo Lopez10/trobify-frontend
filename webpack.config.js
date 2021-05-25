@@ -12,6 +12,7 @@ module.exports = {
 		eliminarInmueble: './src/components/inmueble/acciones/eliminar.inmueble.ts',
 		inmuebles: './src/components/inmuebles/Inmuebles.ts',
 		registro: './src/components/usuarios/registro',
+		acciones: './src/components/inmueble/Acciones',
 	},
 	mode: 'development',
 	module: {

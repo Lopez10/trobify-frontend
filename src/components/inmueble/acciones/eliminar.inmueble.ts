@@ -1,5 +1,4 @@
 import { API } from '../../API';
-import { Acciones } from '../Acciones';
 import { Estrategia } from '../Estrategia';
 import { Inmueble } from '../inmueble';
 

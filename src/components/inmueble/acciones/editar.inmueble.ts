@@ -28,5 +28,3 @@ export class EstrategiaEditar extends Inmueble implements Estrategia {
 		return await api.accesoAPI('put', 'inmueble', inmueble);
 	}
 }
-
-let acciones = new Acciones();

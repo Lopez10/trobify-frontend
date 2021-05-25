@@ -5,9 +5,17 @@ import { Context } from './Context';
 
 export class Acciones {
 	constructor() {
-		this.realizarAccion('editar');
+		var pathname = this.leerUrl();
+
+		this.realizarAccion(pathname);
 	}
-	private realizarAccion(action: string) {
+	private leerUrl() {
+		let pathname = window.location.pathname;
+
+		return pathname.substring(pathname.lastIndexOf('/') + 1, pathname.lastIndexOf('.'));
+	}
+
+	realizarAccion(action: string) {
 		console.log(action);
 		let context = new Context(new EstrategiaEditar());
 		if (action == 'editar') {
@@ -17,9 +25,12 @@ export class Acciones {
 			context.setEstrategia(new EstrategiaEliminar());
 		}
 		if (action == 'registrar') {
+			console.log(action);
 			context.setEstrategia(new EstrategiaRegistrar());
 		}
 
-		let result = context.ejecutarEstatregia();
+		context.ejecutarEstatregia();
 	}
 }
+
+let acciones = new Acciones();

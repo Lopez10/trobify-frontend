@@ -327,6 +327,28 @@ eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _argument
 
 /***/ }),
 
+/***/ "./src/components/inmueble/Acciones.ts":
+/*!*********************************************!*\
+  !*** ./src/components/inmueble/Acciones.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Acciones = void 0;\nconst editar_inmueble_1 = __webpack_require__(/*! ./acciones/editar.inmueble */ \"./src/components/inmueble/acciones/editar.inmueble.ts\");\nconst eliminar_inmueble_1 = __webpack_require__(/*! ./acciones/eliminar.inmueble */ \"./src/components/inmueble/acciones/eliminar.inmueble.ts\");\nconst registro_inmueble_1 = __webpack_require__(/*! ./acciones/registro.inmueble */ \"./src/components/inmueble/acciones/registro.inmueble.ts\");\nconst Context_1 = __webpack_require__(/*! ./Context */ \"./src/components/inmueble/Context.ts\");\nclass Acciones {\n    constructor() {\n        var pathname = this.leerUrl();\n        this.realizarAccion(pathname);\n    }\n    leerUrl() {\n        let pathname = window.location.pathname;\n        return pathname.substring(pathname.lastIndexOf('/') + 1, pathname.lastIndexOf('.'));\n    }\n    realizarAccion(action) {\n        console.log(action);\n        let context = new Context_1.Context(new editar_inmueble_1.EstrategiaEditar());\n        if (action == 'editar') {\n            context.setEstrategia(new editar_inmueble_1.EstrategiaEditar());\n        }\n        if (action == 'eliminar') {\n            context.setEstrategia(new eliminar_inmueble_1.EstrategiaEliminar());\n        }\n        if (action == 'registrar') {\n            console.log(action);\n            context.setEstrategia(new registro_inmueble_1.EstrategiaRegistrar());\n        }\n        context.ejecutarEstatregia();\n    }\n}\nexports.Acciones = Acciones;\nlet acciones = new Acciones();\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/inmueble/Acciones.ts?");
+
+/***/ }),
+
+/***/ "./src/components/inmueble/Context.ts":
+/*!********************************************!*\
+  !*** ./src/components/inmueble/Context.ts ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Context = void 0;\nclass Context {\n    constructor(estrategia) {\n        this.estrategia = estrategia;\n    }\n    setEstrategia(estrategia) {\n        this.estrategia = estrategia;\n    }\n    ejecutarEstatregia() {\n        return this.estrategia.formulario();\n    }\n}\nexports.Context = Context;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/inmueble/Context.ts?");
+
+/***/ }),
+
 /***/ "./src/components/inmueble/acciones/editar.inmueble.ts":
 /*!*************************************************************!*\
   !*** ./src/components/inmueble/acciones/editar.inmueble.ts ***!
@@ -335,6 +357,28 @@ eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _argument
 
 "use strict";
 eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.EstrategiaEditar = void 0;\nconst API_1 = __webpack_require__(/*! ../../API */ \"./src/components/API.ts\");\nconst inmueble_1 = __webpack_require__(/*! ../inmueble */ \"./src/components/inmueble/inmueble.ts\");\nconst editar = __webpack_require__(/*! ../../../../public/js/editar.js */ \"./public/js/editar.js\");\nclass EstrategiaEditar extends inmueble_1.Inmueble {\n    constructor() {\n        super();\n        this.getInmueble().then((data) => {\n            editar.editar(data);\n        });\n    }\n    formulario() {\n        let registroForm = document.querySelector('#formNewProperty') || document.createElement('form');\n        registroForm.onsubmit = () => {\n            const params = this.crearParametros(registroForm);\n            this.ejecucion(params);\n            window.history.back();\n            return false;\n        };\n    }\n    ejecucion(inmueble) {\n        return __awaiter(this, void 0, void 0, function* () {\n            let api = API_1.API.getInstance();\n            return yield api.accesoAPI('put', 'inmueble', inmueble);\n        });\n    }\n}\nexports.EstrategiaEditar = EstrategiaEditar;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/inmueble/acciones/editar.inmueble.ts?");
+
+/***/ }),
+
+/***/ "./src/components/inmueble/acciones/eliminar.inmueble.ts":
+/*!***************************************************************!*\
+  !*** ./src/components/inmueble/acciones/eliminar.inmueble.ts ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.EstrategiaEliminar = void 0;\nconst API_1 = __webpack_require__(/*! ../../API */ \"./src/components/API.ts\");\nconst inmueble_1 = __webpack_require__(/*! ../inmueble */ \"./src/components/inmueble/inmueble.ts\");\nclass EstrategiaEliminar extends inmueble_1.Inmueble {\n    ejecucion(id_catastro) {\n        return __awaiter(this, void 0, void 0, function* () {\n            let api = API_1.API.getInstance();\n            return yield api.accesoAPI('delete', 'inmueble', id_catastro);\n        });\n    }\n    formulario(id_catastro) {\n        let registroForm = document.querySelector('#deleteProperty') || document.createElement('form');\n        registroForm.onsubmit = () => {\n            this.ejecucion(id_catastro);\n            window.history.back();\n            return false;\n        };\n    }\n}\nexports.EstrategiaEliminar = EstrategiaEliminar;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/inmueble/acciones/eliminar.inmueble.ts?");
+
+/***/ }),
+
+/***/ "./src/components/inmueble/acciones/registro.inmueble.ts":
+/*!***************************************************************!*\
+  !*** ./src/components/inmueble/acciones/registro.inmueble.ts ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.EstrategiaRegistrar = void 0;\nconst API_1 = __webpack_require__(/*! ../../API */ \"./src/components/API.ts\");\nconst inmueble_1 = __webpack_require__(/*! ../inmueble */ \"./src/components/inmueble/inmueble.ts\");\nclass EstrategiaRegistrar extends inmueble_1.Inmueble {\n    ejecucion(inmueble) {\n        return __awaiter(this, void 0, void 0, function* () {\n            let api = API_1.API.getInstance();\n            return yield api.accesoAPI('post', 'inmueble', inmueble);\n        });\n    }\n    formulario() {\n        let registroForm = document.querySelector('#formNewProperty') || document.createElement('form');\n        registroForm.onsubmit = () => {\n            const params = this.crearParametros(registroForm);\n            this.ejecucion(params);\n            window.history.back();\n            return false;\n        };\n    }\n}\nexports.EstrategiaRegistrar = EstrategiaRegistrar;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/inmueble/acciones/registro.inmueble.ts?");
 
 /***/ }),
 
@@ -451,8 +495,8 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/components/inmueble/acciones/editar.inmueble.ts");
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/components/inmueble/Acciones.ts");
 /******/ 	
 /******/ })()
 ;
