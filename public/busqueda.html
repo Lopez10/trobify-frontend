@@ -134,11 +134,11 @@
 
 						<div class="label title">Margen (%)</div>
 						
-						<label><input filterEnable="umbral" name="boolUmbral" class="pricePlus" type="checkbox" />
+						<label><input filter name="boolUmbral" class="pricePlus" type="checkbox" />
 							<div class="label bold">Aplicar margen</div>
 						</label>
 
-						<input name="umbral" class="priceMax" type="number" min="0" max="100" value="10" step="1"
+						<input filter name="umbral" class="priceMax" type="number" min="0" max="100" value="10" step="1"
 							list="listaUmbrales" />
 						<datalist id="listaUmbrales">
 							<option value="5"></option>
@@ -307,20 +307,6 @@
 				"dynamicFilterLocal",
 				"dynamicFilterHome"
 			];
-
-	Array.from(form.querySelectorAll("[filterEnable]")).forEach((i) => {
-		i.addEventListener("change", enableFilter);
-	});
-
-	function enableFilter() {
-		var isChecked = this.checked,
-			target = form.querySelector(
-				'[name="' + this.getAttribute("filterEnable") + '"]'
-			);
-		isChecked
-			? target.setAttribute("filter", "")
-			: target.removeAttribute("filter");
-	}
 
 	formSelector.addEventListener("change", changeForm, false);
 	window.addEventListener("onload", changeForm, false);
