@@ -77,165 +77,156 @@
 						Notificarme
 					</div>
 				</div>
-				<form id="filtroForm">
 
-					<div class="label title">Ordenar por</div>
-					<select name="orden" class="select">
-						<option value="1">Más nuevos</option>
-						<option value="2">Más viejos</option>
-						<option value="3">Más caros</option>
-						<option value="4">Más baratos</option>
-						<option value="5">Más grandes</option>
-						<option value="6">Más pequeños</option>
-					</select>
+				<form id="filtroForm" formFilter>
 
-					<div class="label title">Tipo inmueble</div>
-					<select name="tpoInm" class="select" id="tpoInm">
-						<option value="1">Garaje</option>
-						<option value="2">Local Comercial</option>
-						<option value="3">Vivienda</option>
-					</select>
-
-					<div class="label title">Provincia</div>
-					<select id="provincias" class="select" name="provincia"></select>
-
-					<div class="label title">Estado de inmueble</div>
-					<label><input name="stdo" type="checkbox" value="1" />
-						<div class="label bold">Obra nueva</div>
-					</label>
-					<label><input name="stdo" type="checkbox" value="2" />
-						<div class="label bold">Buen estado</div>
-					</label>
-					<label><input name="stdo" type="checkbox" value="3" />
-						<div class="label bold">Reformado</div>
-					</label>
-					<label><input name="stdo" type="checkbox" value="4" />
-						<div class="label bold">A reformar</div>
-					</label>
-
-					<div class="label title">Precio</div>
-					<input name="priceMin" class="priceMin" type="number" min="0" value="0" step="1" />
-					<input name="priceMax" class="priceMax" type="number" min="0" value="1000000" step="1"
-						style="margin-left: 10px" />
-
-					<div class="label title">Margen (%)</div>
-					<label><input name="boolUmbral" class="pricePlus" type="checkbox" />
-						<div class="label bold">Aplicar margen</div>
-					</label>
-					<input name="umbral" class="priceMax" type="number" min="0" max="100" value="10" step="1"
-						list="listaUmbrales" />
-					<datalist id="listaUmbrales">
-						<option value="5"></option>
-						<option value="10"></option>
-						<option value="15"></option>
-						<option value="20"></option>
-						<option value="25"></option>
-					</datalist>
-					<div class="label bold inline" style="margin-left: 10px">%</div>
-
-					<div class="label title">Superficie</div>
-					<input name="supMin" class="priceMax" type="number" min="0" value="50"
-						list="listaSuperficiesMin" />
-					<input name="supMax" class="priceMax" type="number" min="0" value="5000"
-						style="margin-left: 10px" />
-
-					<div class="dynamicFilterHome">
-						<div class="sep"></div>
-						<div class="label title">Tipo de vivienda</div>
-						<label><input name="tpoViv" type="checkbox" value="1" />
-							<div class="label bold">Ático</div>
-						</label>
-						<label><input name="tpoViv" type="checkbox" value="2" />
-							<div class="label bold">Plantas intermedias</div>
-						</label>
-						<label><input name="tpoViv" type="checkbox" value="3" />
-							<div class="label bold">Dúplex</div>
-						</label>
-						<label><input name="tpoViv" type="checkbox" value="4" />
-							<div class="label bold">Loft</div>
-						</label>
-						<label><input name="tpoViv" type="checkbox" value="5" />
-							<div class="label bold">Planta baja</div>
-						</label>
-						<label><input name="tpoViv" type="checkbox" value="6" />
-							<div class="label bold">Casa</div>
-						</label>
-						<label><input name="tpoViv" type="checkbox" value="7" />
-							<div class="label bold">Chalet</div>
-						</label>
-						<label><input name="tpoViv" type="checkbox" value="8" />
-							<div class="label bold">Adosado</div>
-						</label>
-						<label><input name="tpoViv" type="checkbox" value="9" />
-							<div class="label bold">Finca rústica</div>
-						</label>
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="select">
+						<div class="label title">Ordenar por</div>
+						<select filter name="orden" class="select">
+							<option value="1">Más nuevos</option>
+							<option value="2">Más viejos</option>
+							<option value="3">Más caros</option>
+							<option value="4">Más baratos</option>
+							<option value="5">Más grandes</option>
+							<option value="6">Más pequeños</option>
+						</select>
 					</div>
 
-					<div class="dynamicFilterHome">
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="select">
+						<div class="sep"></div>
+						<div class="label title">Tipo inmueble</div>
+						<select filter name="tpoInm" class="select" id="tpoInm">
+							<option value="1">Garaje</option>
+							<option value="2">Local Comercial</option>
+							<option value="3">Vivienda</option>
+						</select>
+					</div>
+
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="select">
+						<div class="sep"></div>
+						<div class="label title">Provincia</div>
+						<select filter id="provincias" class="select" name="provincia"></select>
+					</div>
+
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="checkbox">
+						<div class="sep"></div>
+						<div class="label title">Estado de inmueble</div>
+						<label><input filter name="stdo" type="checkbox" value="1" />
+							<div class="label bold">Obra nueva</div>
+						</label>
+						<label><input filter name="stdo" type="checkbox" value="2" />
+							<div class="label bold">Buen estado</div>
+						</label>
+						<label><input filter name="stdo" type="checkbox" value="3" />
+							<div class="label bold">Reformado</div>
+						</label>
+						<label><input filter name="stdo" type="checkbox" value="4" />
+							<div class="label bold">A reformar</div>
+						</label>
+					</div>
+					
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="input">
+						<div class="sep"></div>
+						<div class="label title">Precio</div>
+						<input filter name="priceMin" class="priceMin" type="number" min="0" value="0" step="1" />
+						<input filter name="priceMax" class="priceMax" type="number" min="0" value="1000000" step="1"
+							style="margin-left: 10px" />
+
+						<div class="label title">Margen (%)</div>
+						
+						<label><input filterEnable="umbral" name="boolUmbral" class="pricePlus" type="checkbox" />
+							<div class="label bold">Aplicar margen</div>
+						</label>
+
+						<input name="umbral" class="priceMax" type="number" min="0" max="100" value="10" step="1"
+							list="listaUmbrales" />
+						<datalist id="listaUmbrales">
+							<option value="5"></option>
+							<option value="10"></option>
+							<option value="15"></option>
+							<option value="20"></option>
+							<option value="25"></option>
+						</datalist>
+						<div class="label bold inline" style="margin-left: 10px">%</div>
+					</div>
+					
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="input">
+						<div class="sep"></div>
+						<div class="label title">Superficie</div>
+						<input filter name="supMin" class="priceMax" type="number" min="0" value="50"
+							list="listaSuperficiesMin"/>
+						<input filter name="supMax" class="priceMax" type="number" min="0" value="5000"
+							style="margin-left: 10px"/>
+					</div>
+
+					<div class="dynamicFilter dynamicFilterHome" filterType="radio">
 						<div class="sep"></div>
 						<div class="label title">Habitaciones</div>
-						<label><input type="radio" name="h" value="0" checked />
+
+						<label><input filter type="radio" name="h" value="0" checked />
 							<div class="label bold">0 o más (estudio)</div>
 						</label>
-						<label><input type="radio" name="h" value="1" />
+						<label><input filter type="radio" name="h" value="1" />
 							<div class="label bold">1 o más</div>
 						</label>
-						<label><input type="radio" name="h" value="2" />
+						<label><input filter type="radio" name="h" value="2" />
 							<div class="label bold">2 o más</div>
 						</label>
-						<label><input type="radio" name="h" value="3" />
+						<label><input filter type="radio" name="h" value="3" />
 							<div class="label bold">3 o más</div>
 						</label>
-						<label><input type="radio" name="h" value="4" />
+						<label><input filter type="radio" name="h" value="4" />
 							<div class="label bold">4 o más</div>
 						</label>
 					</div>
 
-					<div class="dynamicFilterLocal dynamicFilterHome">
+					<div class="dynamicFilter dynamicFilterLocal dynamicFilterHome" filterType="radio">
 						<div class="sep"></div>
 						<div class="label title">Baños</div>
-						<label><input type="radio" name="b" value="0" checked />
+
+						<label><input filter type="radio" name="b" value="0" checked />
 							<div class="label bold">0 o más</div>
 						</label>
-						<label><input type="radio" name="b" value="1" />
+						<label><input filter type="radio" name="b" value="1" />
 							<div class="label bold">1 o más</div>
 						</label>
-						<label><input type="radio" name="b" value="2" />
+						<label><input filter type="radio" name="b" value="2" />
 							<div class="label bold">2 o más</div>
 						</label>
-						<label><input type="radio" name="b" value="3" />
+						<label><input filter type="radio" name="b" value="3" />
 							<div class="label bold">3 o más</div>
 						</label>
 					</div>
 
-					<div class="dynamicFilterHome">
+					<div class="dynamicFilter dynamicFilterHome" filterType="checkbox">
 						<div class="sep"></div>
 						<div class="label title">Características</div>
+
 						<label><input name="caract" type="checkbox" value="1" />
 							<div class="label bold">Ascensor</div>
 						</label>
-						<label><input name="caract" type="checkbox" value="2" />
+						<label><input filter name="caract" type="checkbox" value="2" />
 							<div class="label bold">Amueblado</div>
 						</label>
-						<label><input name="caract" type="checkbox" value="3" />
+						<label><input filter name="caract" type="checkbox" value="3" />
 							<div class="label bold">Terraza o balcón</div>
 						</label>
-						<label><input name="caract" type="checkbox" value="4" />
+						<label><input filter name="caract" type="checkbox" value="4" />
 							<div class="label bold">Aire acondicionado</div>
 						</label>
-						<label><input name="caract" type="checkbox" value="5" />
+						<label><input filter name="caract" type="checkbox" value="5" />
 							<div class="label bold">Armario empotrado</div>
 						</label>
-						<label><input name="caract" type="checkbox" value="6" />
+						<label><input filter name="caract" type="checkbox" value="6" />
 							<div class="label bold">Garaje</div>
 						</label>
-						<label><input name="caract" type="checkbox" value="7" />
+						<label><input filter name="caract" type="checkbox" value="7" />
 							<div class="label bold">Jardín</div>
 						</label>
-						<label><input name="caract" type="checkbox" value="8" />
+						<label><input filter name="caract" type="checkbox" value="8" />
 							<div class="label bold">Piscina</div>
 						</label>
-						<label><input name="caract" type="checkbox" value="9" />
+						<label><input filter name="caract" type="checkbox" value="9" />
 							<div class="label bold">Trastero</div>
 						</label>
 					</div>
@@ -310,11 +301,26 @@
 <script type="text/javascript">
 
 	var formSelector = document.getElementById("tpoInm"),
-		formSelectorValue = [
-			"dynamicFilterGarage",
-			"dynamicFilterLocal",
-			"dynamicFilterHome"
-		];
+			form = document.querySelector("[formFilter]"),
+			formSelectorValue = [
+				"dynamicFilterGarage",
+				"dynamicFilterLocal",
+				"dynamicFilterHome"
+			];
+
+	Array.from(form.querySelectorAll("[filterEnable]")).forEach((i) => {
+		i.addEventListener("change", enableFilter);
+	});
+
+	function enableFilter() {
+		var isChecked = this.checked,
+			target = form.querySelector(
+				'[name="' + this.getAttribute("filterEnable") + '"]'
+			);
+		isChecked
+			? target.setAttribute("filter", "")
+			: target.removeAttribute("filter");
+	}
 
 	formSelector.addEventListener("change", changeForm, false);
 	window.addEventListener("onload", changeForm, false);
@@ -343,8 +349,7 @@
 		setDefaultView();
 		setApplyFilterButtonWidth();
 		changeForm();
-		//loadFilter();
-		updateBuyOptionOnLoad();
+		updateBuyOptionOnLoad(); // disable this when working without backend
 	};
 
 	function loadFilter() {
