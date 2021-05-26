@@ -8,7 +8,7 @@ export function getForm() {
 					if (filter.type === "checkbox") {
 						if (filter.checked) obj[filter.name] = filter.checked;
 					} else {
-						if (!(filter.value === "")) obj[filter.name] = filter.type === "number" ? parseInt(filter.value, 10) : filter.value;
+						if (!(filter.value === "")) obj[filter.name] = filter.type === "number" || "tel" ? parseInt(filter.value, 10) : filter.value;
 					}
 				});
 			} else if (i.getAttribute("filterType") === "checkbox") {

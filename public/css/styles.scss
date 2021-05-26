@@ -724,6 +724,11 @@ svg.icon{
     height: 3rem;
   }
 
+  &.x0 {
+    width: 0;
+    height: 0;
+  }
+
   &.inline {
     display: inline-block;
   }

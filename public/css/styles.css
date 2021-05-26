@@ -1008,6 +1008,11 @@ svg.icon {
   height: 3rem;
 }
 
+.sep.x0 {
+  width: 0;
+  height: 0;
+}
+
 .sep.inline {
   display: inline-block;
 }
