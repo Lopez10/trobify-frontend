@@ -8,7 +8,6 @@ export class EstrategiaEditar extends Inmueble implements Estrategia {
 	constructor() {
 		super();
 		this.getInmueble().then((data) => {
-			console.log(data);
 			editar.editar(data);
 		});
 	}

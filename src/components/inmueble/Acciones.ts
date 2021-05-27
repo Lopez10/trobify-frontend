@@ -16,7 +16,6 @@ export class Acciones {
 	}
 
 	realizarAccion(action: string) {
-		console.log(action);
 		let context = new Context(new EstrategiaEliminar());
 		if (action == 'editar') {
 			context.setEstrategia(new EstrategiaEditar());

@@ -16,7 +16,7 @@ export class Inmueble {
 		return api.accesoAPI('get', url);
 	}
 
-	private obtenerParametros(): any {
+	protected obtenerParametros(): any {
 		let queryString = window.location.search;
 		let urlParams = new URLSearchParams(queryString);
 		let catastroId = urlParams.get('catastro');

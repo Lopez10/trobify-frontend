@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="./css/styles.css" />
+     <title>Trobify</title>
+</head>
+
+<body>
+     <div class="flexbox row center-h spaced inner-spaced-x2" style="text-align:center;">
+          <form id="deleteProperty">
+
+               <div class="label title">¿Estas seguro de eliminar el inmueble?<p id='catastro'></p>
+               </div>
+
+               <div class="sep"></div>
+
+               <div class="label">Esta acción no puede deshacerse, se perderán todos los datos</div>
+
+               <div class="sep x2"></div>
+
+               <label style="display: inline-block;"><input name="delete" type="checkbox" value="1"
+                         id="deleteConfirmation" />
+                    <div class="label bold">Sí quiero eliminarlo</div>
+               </label>
+
+               <div class="sep x2"></div>
+
+               <button class="button delete disabled" id="deleteButton" name="submit" type="submit">
+                    Eliminar inmueble
+               </button>
+
+          </form>
+
+     </div>
+     <script>
+          deleteConfirmation = document.getElementById("deleteConfirmation");
+          deleteConfirmation.addEventListener("change", toggleDeleteButton, false);
+          window.onload = () => {
+               setDefaultDeleteConfirmation()
+          }
+          function setDefaultDeleteConfirmation() {
+               deleteConfirmation.checked = false;
+          }
+
+          function toggleDeleteButton() {
+               deleteConfirmation.checked ? deleteButton.classList.remove("disabled") : deleteButton.classList.add("disabled");
+          }
+     </script>
+     <script src="./bundle/acciones.bundle.js"></script>
+
+</body>
+
+</html>

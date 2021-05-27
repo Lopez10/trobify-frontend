@@ -240,28 +240,10 @@
 		</form>
 
 		<div class="flexbox row center-h spaced inner-spaced-x2" style="text-align:center;">
-			<form id="deleteProperty">
 
-				<div class="label title">¿Deseas eliminar el inmueble?</div>
-
-				<div class="sep"></div>
-
-				<div class="label">Esta acción no puede deshacerse, se perderán todos los datos</div>
-
-				<div class="sep x2"></div>
-
-				<label style="display: inline-block;"><input name="delete" type="checkbox" value="1"
-						id="deleteConfirmation" />
-					<div class="label bold">Sí quiero eliminarlo</div>
-				</label>
-
-				<div class="sep x2"></div>
-
-				<button class="button delete disabled" id="deleteButton" name="submit" type="submit">
-					Eliminar inmueble
-				</button>
-
-			</form>
+			<a class="button delete" id="deleteButton" name="submit" href="./eliminar.html">
+				Eliminar inmueble
+			</a>
 
 		</div>
 
@@ -285,18 +267,15 @@
 		propertyMethodSPrice = document.getElementById("propertyMethodSPrice"),
 		propertyMethodRPrice = document.getElementById("propertyMethodRPrice"),
 		propertyMethodNone = document.getElementById("propertyMethodNone"),
-		deleteConfirmation = document.getElementById("deleteConfirmation"),
 		deleteButton = document.getElementById("deleteButton");
 
 	formSelector.addEventListener("change", changeForm, false);
 	propertyMethodS.addEventListener("change", changeMethod, false);
 	propertyMethodR.addEventListener("change", changeMethod, false);
-	deleteConfirmation.addEventListener("change", toggleDeleteButton, false);
 
 	window.onload = () => {
 		changeForm();
 		changeMethod();
-		setDefaultDeleteConfirmation()
 	}
 
 	function getTpoInm() {
@@ -342,15 +321,6 @@
 		}
 	}
 
-	// Delete property confirmation
-
-	function setDefaultDeleteConfirmation() {
-		deleteConfirmation.checked = false;
-	}
-
-	function toggleDeleteButton() {
-		deleteConfirmation.checked ? deleteButton.classList.remove("disabled") : deleteButton.classList.add("disabled");
-	}
 
 	// Image upload (url)
 
