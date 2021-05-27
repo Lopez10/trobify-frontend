@@ -17,7 +17,7 @@ export class Acciones {
 
 	realizarAccion(action: string) {
 		console.log(action);
-		let context = new Context(new EstrategiaEditar());
+		let context = new Context(new EstrategiaEliminar());
 		if (action == 'editar') {
 			context.setEstrategia(new EstrategiaEditar());
 		}
@@ -25,7 +25,6 @@ export class Acciones {
 			context.setEstrategia(new EstrategiaEliminar());
 		}
 		if (action == 'registrar') {
-			console.log(action);
 			context.setEstrategia(new EstrategiaRegistrar());
 		}
 

@@ -2,13 +2,13 @@ import { InmuebleInterface } from '../../../interface/inmueble.interface';
 import { API } from '../../API';
 import { Inmueble } from '../inmueble';
 import { Estrategia } from '../Estrategia';
-import { Acciones } from '../Acciones';
 const editar = require('../../../../public/js/editar.js');
 
 export class EstrategiaEditar extends Inmueble implements Estrategia {
 	constructor() {
 		super();
 		this.getInmueble().then((data) => {
+			console.log(data);
 			editar.editar(data);
 		});
 	}
