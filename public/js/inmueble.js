@@ -10,6 +10,9 @@ export function inmuebleDom(inmueble) {
 	document.getElementById('nHab').innerHTML = inmueble.nHab;
 	document.getElementById('breveDescripcion').innerHTML = inmueble.descripcion;
 	document.getElementById('direccion').innerHTML = inmueble.direccion;
+	document
+		.getElementById('hipoteca')
+		.setAttribute('href', './hipoteca.html?precio=' + inmueble.precio[0]);
 	//let caract = document.getElementById('caract');
 	//caract.innerHTML = inmueble.caracteristicas;
 	if (modalidad == 1) {
