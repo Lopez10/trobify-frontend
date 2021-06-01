@@ -236,7 +236,9 @@
 					<div class="sep x2"></div>
 					<div class="sep x2"></div>
 
-					<input type="radio" id="filterOpt" name="opt" value="1" style="display: none" checked />
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="radio">
+						<input filter type="radio" id="filterOpt" name="opt" value="1" style="display: none" checked />
+					</div>
 
 					<button id="filtroFormSubmit" class="button black inline-flex block center applyFiltersSearch"
 						name="submit" type="submit" onclick="document.getElementById('map').innerHTML=''"
