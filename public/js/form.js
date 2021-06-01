@@ -3,6 +3,7 @@ export function getForm() {
 	var obj = {};
 	let form = document.querySelector('[formFilter]');
 	Array.from(form.querySelectorAll('.dynamicFilter:not(.hideElement)')).forEach((i) => {
+		console.log(i);
 		if (i.getAttribute('filterType') === 'input') {
 			Array.from(i.querySelectorAll('[filter]')).forEach((filter) => {
 				if (filter.type === 'checkbox') {

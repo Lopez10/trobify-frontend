@@ -3,6 +3,7 @@ import { InmuebleInterface } from '../../interface/inmueble.interface';
 const imagenes = require('../../../public/js/imagenes.js');
 const inm = require('../../../public/js/inmueble.js');
 const editar = require('../../../public/js/editar.js');
+const form = require('../../../public/js/form.js');
 
 export class Inmueble {
 	constructor() {}
@@ -56,47 +57,49 @@ export class Inmueble {
 	aplicarRegistro() {
 		let registroForm: HTMLFormElement =
 			document.querySelector('#formNewProperty') || document.createElement('form');
+		let obj = form.getForm();
 		registroForm.onsubmit = () => {
-			const formData = new FormData(registroForm);
-			let propertyType = formData.get('propertyType') as string;
-			let catast = formData.get('catast') as string;
-			let descripcion = formData.get('descripcion') as string;
-			let estado = formData.get('stdo') as string;
-			let energia = formData.get('energia') as string;
-			let precioV = formData.get('precioV') as string;
-			let precioA = formData.get('precioA') as string;
-			let homeType = formData.get('homeType') as string;
-			let roomCount = formData.get('roomCount') as string;
-			let bathroomCount = formData.get('bathroomCount') as string;
-			let publicar = formData.get('publicar') as string;
-			let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
-			let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(
-				','
-			);
-			let modo = propertyMethod.split(',').map((x) => +x);
-			let caract = feature.split(',').map((x) => +x);
-			let precios: string[] = this.validarPrecio(precioA, precioV);
-			const params: InmuebleInterface = {
-				nBano: +bathroomCount,
-				nHab: +roomCount,
-				id_caractSecundaria: caract,
-				breveDescripcion: descripcion,
-				id_estadoInmueble: +estado,
-				id_catastro: catast,
-				id_modalidad: modo,
-				precio: precios,
-				id_tipoVivienda: +homeType,
-				descuento: 0,
-				id_certifEner: +energia,
-				id_tipoInmueble: +propertyType,
-				nCocina: 2,
-				mail: this.getCookie('mail'),
-				publicado: +publicar | 0,
-				imagen: imagenes.getImageGalleryValues(),
-			};
-			console.log(params);
-			this.postInmueble(params);
-			window.history.back();
+			console.log(obj);
+			// const formData = new FormData(registroForm);
+			// let propertyType = formData.get('propertyType') as string;
+			// let catast = formData.get('catast') as string;
+			// let descripcion = formData.get('descripcion') as string;
+			// let estado = formData.get('stdo') as string;
+			// let energia = formData.get('energia') as string;
+			// let precioV = formData.get('precioV') as string;
+			// let precioA = formData.get('precioA') as string;
+			// let homeType = formData.get('homeType') as string;
+			// let roomCount = formData.get('roomCount') as string;
+			// let bathroomCount = formData.get('bathroomCount') as string;
+			// let publicar = formData.get('publicar') as string;
+			// let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
+			// let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(
+			// 	','
+			// );
+			// let modo = propertyMethod.split(',').map((x) => +x);
+			// let caract = feature.split(',').map((x) => +x);
+			// let precios: string[] = this.validarPrecio(precioA, precioV);
+			// const params: InmuebleInterface = {
+			// 	nBano: +bathroomCount,
+			// 	nHab: +roomCount,
+			// 	id_caractSecundaria: caract,
+			// 	breveDescripcion: descripcion,
+			// 	id_estadoInmueble: +estado,
+			// 	id_catastro: catast,
+			// 	id_modalidad: modo,
+			// 	precio: precios,
+			// 	id_tipoVivienda: +homeType,
+			// 	descuento: 0,
+			// 	id_certifEner: +energia,
+			// 	id_tipoInmueble: +propertyType,
+			// 	nCocina: 2,
+			// 	mail: this.getCookie('mail'),
+			// 	publicado: +publicar | 0,
+			// 	imagen: imagenes.getImageGalleryValues(),
+			// };
+			// console.log(params);
+			// this.postInmueble(params);
+			// window.history.back();
 			return false;
 		};
 	}

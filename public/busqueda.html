@@ -80,9 +80,10 @@
 
 				<form id="filtroForm" formFilter>
 
-					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="select">
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage"
+						filterType="select">
 						<div class="label title">Ordenar por</div>
-						<select filter name="orden" class="select">
+						<select filter name="ord" class="select">
 							<option value="1">Más nuevos</option>
 							<option value="2">Más viejos</option>
 							<option value="3">Más caros</option>
@@ -92,7 +93,8 @@
 						</select>
 					</div>
 
-					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="select">
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage"
+						filterType="select">
 						<div class="sep"></div>
 						<div class="label title">Tipo inmueble</div>
 						<select filter name="tpoInm" class="select" id="tpoInm">
@@ -102,13 +104,15 @@
 						</select>
 					</div>
 
-					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="select">
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage"
+						filterType="select">
 						<div class="sep"></div>
 						<div class="label title">Provincia</div>
-						<select filter id="provincias" class="select" name="provincia"></select>
+						<select filter id="provincias" class="select" name="prov"></select>
 					</div>
 
-					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="checkbox">
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage"
+						filterType="checkbox">
 						<div class="sep"></div>
 						<div class="label title">Estado de inmueble</div>
 						<label><input filter name="stdo" type="checkbox" value="1" />
@@ -124,22 +128,23 @@
 							<div class="label bold">A reformar</div>
 						</label>
 					</div>
-					
-					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="input">
+
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage"
+						filterType="input">
 						<div class="sep"></div>
 						<div class="label title">Precio</div>
-						<input filter name="priceMin" class="priceMin" type="number" min="0" value="0" step="1" />
-						<input filter name="priceMax" class="priceMax" type="number" min="0" value="1000000" step="1"
-							style="margin-left: 10px" />
+						<input filter name="preMin" class="priceMin" type="number" min="0" value="0" step="1" />
+						<input filter name="preMax" class="priceMax" type="number" min="0" value="1000000"
+							step="1" style="margin-left: 10px" />
 
 						<div class="label title">Margen (%)</div>
-						
-						<label><input filter name="boolUmbral" class="pricePlus" type="checkbox" />
+
+						<label><input filter name="aMrgn" class="pricePlus" type="checkbox" />
 							<div class="label bold">Aplicar margen</div>
 						</label>
 
-						<input filter name="umbral" class="priceMax" type="number" min="0" max="100" value="10" step="1"
-							list="listaUmbrales" />
+						<input filter name="mrgn" class="priceMax" type="number" min="0" max="100" value="10"
+							step="1" list="listaUmbrales" />
 						<datalist id="listaUmbrales">
 							<option value="5"></option>
 							<option value="10"></option>
@@ -149,33 +154,34 @@
 						</datalist>
 						<div class="label bold inline" style="margin-left: 10px">%</div>
 					</div>
-					
-					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="input">
+
+					<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage"
+						filterType="input">
 						<div class="sep"></div>
 						<div class="label title">Superficie</div>
 						<input filter name="supMin" class="priceMax" type="number" min="0" value="50"
-							list="listaSuperficiesMin"/>
+							list="listaSuperficiesMin" />
 						<input filter name="supMax" class="priceMax" type="number" min="0" value="5000"
-							style="margin-left: 10px"/>
+							style="margin-left: 10px" />
 					</div>
 
 					<div class="dynamicFilter dynamicFilterHome" filterType="radio">
 						<div class="sep"></div>
 						<div class="label title">Habitaciones</div>
 
-						<label><input filter type="radio" name="h" value="0" checked />
+						<label><input filter type="radio" name="nHab" value="0" checked />
 							<div class="label bold">0 o más (estudio)</div>
 						</label>
-						<label><input filter type="radio" name="h" value="1" />
+						<label><input filter type="radio" name="nHab" value="1" />
 							<div class="label bold">1 o más</div>
 						</label>
-						<label><input filter type="radio" name="h" value="2" />
+						<label><input filter type="radio" name="nHab" value="2" />
 							<div class="label bold">2 o más</div>
 						</label>
-						<label><input filter type="radio" name="h" value="3" />
+						<label><input filter type="radio" name="nHab" value="3" />
 							<div class="label bold">3 o más</div>
 						</label>
-						<label><input filter type="radio" name="h" value="4" />
+						<label><input filter type="radio" name="nHab" value="4" />
 							<div class="label bold">4 o más</div>
 						</label>
 					</div>
@@ -184,16 +190,16 @@
 						<div class="sep"></div>
 						<div class="label title">Baños</div>
 
-						<label><input filter type="radio" name="b" value="0" checked />
+						<label><input filter type="radio" name="nBan" value="0" checked />
 							<div class="label bold">0 o más</div>
 						</label>
-						<label><input filter type="radio" name="b" value="1" />
+						<label><input filter type="radio" name="nBan" value="1" />
 							<div class="label bold">1 o más</div>
 						</label>
-						<label><input filter type="radio" name="b" value="2" />
+						<label><input filter type="radio" name="nBan" value="2" />
 							<div class="label bold">2 o más</div>
 						</label>
-						<label><input filter type="radio" name="b" value="3" />
+						<label><input filter type="radio" name="nBan" value="3" />
 							<div class="label bold">3 o más</div>
 						</label>
 					</div>
@@ -252,16 +258,18 @@
 				<div class="nav flexbox row group round">
 					<form id="searchTypeForm" class="form inline flexbox">
 						<label class="inline">
-							<input type="radio" name="opt" id="opt1" value="1" onchange='updateBuyOption(1)' />
+							<input filter type="radio" name="opt" id="opt1" value="1"
+								onchange='updateBuyOption(1)' />
 							<div class="button option">Comprar</div>
 						</label>
 						<label class="inline">
-							<input type="radio" name="opt" id="opt2" value="2" onchange='updateBuyOption(2)' />
+							<input filter type="radio" name="opt" id="opt2" value="2"
+								onchange='updateBuyOption(2)' />
 							<div class="button option">Alquilar</div>
 						</label>
 						<label class="disabled inline">
-							<input type="radio" name="opt" id="opt3" value="3" onchange='updateBuyOption(3)'
-								disabled />
+							<input filter type="radio" name="opt" id="opt3" value="3"
+								onchange='updateBuyOption(3)' disabled />
 							<div class="button option">Alquilar habitación</div>
 						</label>
 					</form>
@@ -301,12 +309,12 @@
 <script type="text/javascript">
 
 	var formSelector = document.getElementById("tpoInm"),
-			form = document.querySelector("[formFilter]"),
-			formSelectorValue = [
-				"dynamicFilterGarage",
-				"dynamicFilterLocal",
-				"dynamicFilterHome"
-			];
+		form = document.querySelector("[formFilter]"),
+		formSelectorValue = [
+			"dynamicFilterGarage",
+			"dynamicFilterLocal",
+			"dynamicFilterHome"
+		];
 
 	formSelector.addEventListener("change", changeForm, false);
 	window.addEventListener("onload", changeForm, false);

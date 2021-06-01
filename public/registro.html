@@ -37,26 +37,28 @@
 
 						<div class="dynamicFilter" filterType="input">
 							<div class="label title required">Nombre</div>
-							<input filter class="mode-fill" type="text" name="name" id="name" placeholder="John" required
-								autofocus />
-							<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertName">El campo nombre no puede estar vacío</div>	
+							<input filter class="mode-fill" type="text" name="nombre" id="name"
+								placeholder="John" required autofocus />
+							<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+								id="alertName">El campo nombre no puede estar vacío</div>
 						</div>
-						
+
 						<div class="dynamicFilter" filterType="input">
 							<div class="sep x0"></div>
 
 							<div class="label title">Apellidos</div>
-							<input filter class="mode-fill" type="text" name="lastName" id="lastName" placeholder="Appleseed"
-								required autofocus />
+							<input filter class="mode-fill" type="text" name="apellidos" id="lastName"
+								placeholder="Appleseed" required autofocus />
 						</div>
-						
-						<div class="dynamicFilter" filterType="checkbox">
-							<label><input filter name="adult" id="adult" type="checkbox" value="1" />
-							<div class="label">Soy mayor de 18 años</div>
+
+						<div class="dynamicFilter">
+							<label><input name="adult" id="adult" type="checkbox" value="1" />
+								<div class="label">Soy mayor de 18 años</div>
 							</label>
-							<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertAdult">Debes ser mayor de 18 años<br>para poder crear una cuenta</div>
+							<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+								id="alertAdult">Debes ser mayor de 18 años<br>para poder crear una cuenta</div>
 						</div>
-						
+
 
 					</div>
 
@@ -64,25 +66,29 @@
 
 						<div class="dynamicFilter" filterType="input">
 							<div class="label title required">Correo</div>
-							<input filter class="mode-fill" type="email" name="email" id="email"
+							<input filter class="mode-fill" type="email" name="mail" id="email"
 								placeholder="john.appleseed@gmail.com" required />
-							<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertEmail">El campo email no puede estar vacío</div>
+							<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+								id="alertEmail">El campo email no puede estar vacío</div>
 						</div>
-						
+
 						<div class="label title required">Repetir corero</div>
 						<input class="mode-fill" type="email" name="repeatMail" id="repeatMail"
 							placeholder="john.appleseed@gmail.com" required />
-						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertRepeatMail">Los emails no coinciden</div>
+						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+							id="alertRepeatMail">Los emails no coinciden</div>
 
 						<div class="dynamicFilter" filterType="input">
 							<div class="sep x0"></div>
 
 							<div class="label title required">Teléfono</div>
-							<input filter class="mode-fill" type="tel" name="phone" id="phone" placeholder="777888999" pattern="(?=.{9,}$)(?=.*\d).*" required />
-							<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertPhone">El campo teléfono no puede estar vacío</div>
+							<input filter class="mode-fill" type="tel" name="telefono" id="phone"
+								placeholder="777888999" pattern="(?=.{9,}$)(?=.*\d).*" required />
+							<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+								id="alertPhone">El campo teléfono no puede estar vacío</div>
 						</div>
 
-						
+
 
 					</div>
 
@@ -90,7 +96,7 @@
 
 						<div class="dynamicFilter" filterType="input">
 							<div class="label title required">Contraseña</div>
-							<input filter class="mode-fill hint" type="password" name="password" id="password"
+							<input filter class="mode-fill hint" type="password" name="contrasena" id="password"
 								placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
 								pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*"
 								onkeyup="checkPasswordStrength(this.value)" onclick="setPasswordHintPosition()"
@@ -103,27 +109,29 @@
 								<p id="passwordContainsNumber">Mínimo 1 número</p>
 								<p id="passwordContainsSpecialChar">Mínimo 1 carácter especial</p>
 							</label>
-							<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertPassword">El campo contraseña no puede estar vacío</div>
+							<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+								id="alertPassword">El campo contraseña no puede estar vacío</div>
 						</div>
 
-						
+
 
 						<div class="label title required">Repetir contraseña</div>
 						<input class="mode-fill" type="password" name="repeatPassword" id="repeatPassword"
 							placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
 							pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*" required />
-						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;" id="alertRepeatPassword">Las contraseñas nos coinciden</div>
+						<div class="label small alert alertMessage hideElement" style="margin-top: 10px;"
+							id="alertRepeatPassword">Las contraseñas nos coinciden</div>
 
 						<div class="dynamicFilter" filterType="select">
 							<div class="sep x0"></div>
 							<div class="label title required">Usaré esta cuenta como</div>
-							<select filter name="role" class="select" id="role" required>
+							<select filter name="id_rol" class="select" id="role" required>
 								<option value="1">Particular</option>
 								<option value="2">Agente inmobiliario</option>
 							</select>
 						</div>
 
-						
+
 
 						<div class="label block detail small">Al crear tu cuenta aceptas los terminos de uso<br>y
 							políticas de privacidad de Trobify
@@ -133,11 +141,12 @@
 
 					<div class="sep"></div>
 
-					<div class="button black block center stepAction" stepActionEnd="Crear cuenta" stepActionEndProcess ="Registrando..."
-						stepActionFilling="Siguiente paso">
+					<div class="button black block center stepAction" stepActionEnd="Crear cuenta"
+						stepActionEndProcess="Registrando..." stepActionFilling="Siguiente paso">
 					</div>
 
-					<button class="button black block center invisible formSubmit" name="submit" type="submit"></button>
+					<button class="button black block center invisible formSubmit" name="submit"
+						type="submit"></button>
 
 					<div class="label centered block stepBack hideElement" style="margin-top: 18px;">
 						<div class="label detail pointer underline">Volver al paso anterior</div>
@@ -277,7 +286,7 @@
 			}
 
 		}
-		if (stepNum===stepEnd) {
+		if (stepNum === stepEnd) {
 			var err = Array.from(document.querySelectorAll("input.error")).length > 0;
 			if (!err) {
 				stepActionButton.textContent = stepActionButton.getAttribute("stepActionEndProcess");
