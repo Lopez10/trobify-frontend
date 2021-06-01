@@ -64,9 +64,9 @@ export class Busqueda {
 			let params = querystring.stringify(obj);
 			console.log(params);
 
-			// let inmuebles = this.getInmuebles(params);
-			// this.crearMapa(prov, inmuebles);
-			// this.crearCatalogo(inmuebles);
+			let inmuebles = this.getInmuebles(params);
+			this.crearMapa(obj.prov, inmuebles);
+			this.crearCatalogo(inmuebles);
 
 			return false;
 		};
