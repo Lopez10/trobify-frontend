@@ -57,9 +57,8 @@ export class Inmueble {
 	aplicarRegistro() {
 		let registroForm: HTMLFormElement =
 			document.querySelector('#formNewProperty') || document.createElement('form');
-		let obj = form.getForm();
 		registroForm.onsubmit = () => {
-			console.log(obj);
+			let obj = form.getForm();
 			// const formData = new FormData(registroForm);
 			// let propertyType = formData.get('propertyType') as string;
 			// let catast = formData.get('catast') as string;
@@ -79,25 +78,13 @@ export class Inmueble {
 			// let modo = propertyMethod.split(',').map((x) => +x);
 			// let caract = feature.split(',').map((x) => +x);
 			// let precios: string[] = this.validarPrecio(precioA, precioV);
-			// const params: InmuebleInterface = {
-			// 	nBano: +bathroomCount,
-			// 	nHab: +roomCount,
-			// 	id_caractSecundaria: caract,
-			// 	breveDescripcion: descripcion,
-			// 	id_estadoInmueble: +estado,
-			// 	id_catastro: catast,
-			// 	id_modalidad: modo,
-			// 	precio: precios,
-			// 	id_tipoVivienda: +homeType,
-			// 	descuento: 0,
-			// 	id_certifEner: +energia,
-			// 	id_tipoInmueble: +propertyType,
-			// 	nCocina: 2,
-			// 	mail: this.getCookie('mail'),
-			// 	publicado: +publicar | 0,
-			// 	imagen: imagenes.getImageGalleryValues(),
-			// };
-			// console.log(params);
+			let params = {
+				mail: this.getCookie('mail'),
+				imagen: imagenes.getImageGalleryValues(),
+				descuento: 0,
+			};
+			Object.assign(obj, params);
+			console.log(obj);
 			// this.postInmueble(params);
 			// window.history.back();
 			return false;
