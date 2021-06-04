@@ -1,4 +1,3 @@
-import { InmuebleInterface } from '../../../interface/inmueble.interface';
 import { API } from '../../API';
 import { Inmueble } from '../inmueble';
 import { Estrategia } from '../Estrategia';
@@ -15,7 +14,7 @@ export class EstrategiaEditar extends Inmueble implements Estrategia {
 		let registroForm: HTMLFormElement =
 			document.querySelector('#formNewProperty') || document.createElement('form');
 		registroForm.onsubmit = () => {
-			const params: InmuebleInterface = this.crearParametros(registroForm);
+			const params = this.creacionObjeto();
 			this.ejecucion(params);
 			window.history.back();
 			return false;
