@@ -1,5 +1,5 @@
 import { UsuarioInterface } from '../../interface/usuario.interface';
-import { Singleton } from '../Singleton';
+import { API } from '../API';
 import { Usuario } from './usuario';
 const form = require('../../../public/js/form.js');
 
@@ -9,8 +9,8 @@ export class Login extends Usuario {
 		this.obtenerParametrosLogin();
 	}
 
-	private async postLogin(usuario: UsuarioInterface): Promise<void> {
-		let api: Singleton = Singleton.getInstance();
+	async postUsuarios(usuario: any): Promise<void> {
+		let api: API = API.getInstance();
 		api.accesoAPI('post', 'login', usuario).then((response) => {
 			if (response == true) {
 				console.log(usuario);
@@ -25,7 +25,7 @@ export class Login extends Usuario {
 			document.querySelector('#formLogin') || document.createElement('form');
 		loginForm.onsubmit = () => {
 			let obj = form.getForm();
-			this.postLogin(obj);
+			this.postUsuarios(obj);
 			return false;
 		};
 	}

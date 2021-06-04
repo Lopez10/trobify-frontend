@@ -1,12 +1,29 @@
+import { InmuebleInterface } from '../../../interface/inmueble.interface';
+import { API } from '../../API';
 import { Inmueble } from '../inmueble';
+import { Estrategia } from '../Estrategia';
 const editar = require('../../../../public/js/editar.js');
 
-let inmueble = new Inmueble();
+export class EstrategiaEditar extends Inmueble implements Estrategia {
+	constructor() {
+		super();
+		this.getInmueble().then((data) => {
+			editar.editar(data);
+		});
+	}
+	formulario() {
+		let registroForm: HTMLFormElement =
+			document.querySelector('#formNewProperty') || document.createElement('form');
+		registroForm.onsubmit = () => {
+			const params: InmuebleInterface = this.crearParametros(registroForm);
+			this.ejecucion(params);
+			window.history.back();
+			return false;
+		};
+	}
 
-let datosInmueble = inmueble.getInmueble();
-
-datosInmueble.then((data) => {
-	editar.editar(data);
-	inmueble.aplicarEditar();
-	inmueble.escuchaEliminar(data.id_catastro);
-});
+	async ejecucion(inmueble: any) {
+		let api: API = API.getInstance();
+		return await api.accesoAPI('put', 'inmueble', inmueble);
+	}
+}

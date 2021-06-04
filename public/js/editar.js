@@ -9,6 +9,10 @@ export function editar(inmueble) {
 	document.getElementById('energia').value = inmueble.energia;
 	document.getElementById('hab').value = inmueble.nHab;
 	document.getElementById('visibility').value = inmueble.publicado;
+	document
+		.getElementById('deleteButton')
+		.setAttribute('href', './eliminar.html?catastro=' + inmueble.id_catastro);
+
 	let precioA = document.getElementById('precio2');
 	let alquiler = document.getElementById('propertyMethodR');
 	let venta = document.getElementById('propertyMethodS');

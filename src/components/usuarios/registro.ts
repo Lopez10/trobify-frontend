@@ -1,4 +1,4 @@
-import { Singleton } from '../Singleton';
+import { API } from '../API';
 import { Usuario } from './usuario';
 const mostrarValidacion = require('../../../public/js/registro.js');
 const form = require('../../../public/js/form.js');
@@ -9,8 +9,8 @@ export class Registro extends Usuario {
 		this.obtenerParametrosRegistro();
 	}
 
-	private async postRegistro(usuario: any): Promise<void> {
-		let api: Singleton = Singleton.getInstance();
+	async postUsuarios(usuario: any): Promise<void> {
+		let api: API = API.getInstance();
 		api.accesoAPI('post', 'registro', usuario).then((response) => {
 			console.log(response);
 			if (response == true) {
@@ -28,7 +28,7 @@ export class Registro extends Usuario {
 			document.querySelector('#formSignUp') || document.createElement('form');
 		loginForm.onsubmit = () => {
 			let obj = form.getForm();
-			this.postRegistro(obj);
+			this.postUsuarios(obj);
 			return false;
 		};
 	}
