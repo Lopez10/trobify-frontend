@@ -1,19 +1,15 @@
 export function getForm() {
-	console.log('entra');
 	var obj = {};
 	let form = document.querySelector('[formFilter]');
 	Array.from(form.querySelectorAll('.dynamicFilter:not(.hideElement)')).forEach((i) => {
-		console.log(i);
 		if (i.getAttribute('filterType') === 'input') {
 			Array.from(i.querySelectorAll('[filter]')).forEach((filter) => {
 				if (filter.type === 'checkbox') {
 					if (filter.checked) obj[filter.name] = filter.checked;
 				} else {
 					if (filter.value != '') {
-						console.log(filter.type);
 						obj[filter.name] =
 							filter.type === ('number' || 'tel') ? parseInt(filter.value, 10) : filter.value;
-						console.log(obj[filter.name]);
 					}
 				}
 			});

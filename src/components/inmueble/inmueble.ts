@@ -37,11 +37,6 @@ export class Inmueble {
 		this.escuchaEliminar(inmueble.id_catastro);
 	}
 
-	// async registrarInmueble() {
-	// 	let params = await this.aplicarRegistro();
-	// 	this.postInmueble(params);
-	// }
-
 	verInmueble(inmueble: any) {
 		inm.inmuebleDom(inmueble);
 	}
@@ -59,36 +54,25 @@ export class Inmueble {
 			document.querySelector('#formNewProperty') || document.createElement('form');
 		registroForm.onsubmit = () => {
 			let obj = form.getForm();
-			// const formData = new FormData(registroForm);
-			// let propertyType = formData.get('propertyType') as string;
-			// let catast = formData.get('catast') as string;
-			// let descripcion = formData.get('descripcion') as string;
-			// let estado = formData.get('stdo') as string;
-			// let energia = formData.get('energia') as string;
-			// let precioV = formData.get('precioV') as string;
-			// let precioA = formData.get('precioA') as string;
-			// let homeType = formData.get('homeType') as string;
-			// let roomCount = formData.get('roomCount') as string;
-			// let bathroomCount = formData.get('bathroomCount') as string;
-			// let publicar = formData.get('publicar') as string;
-			// let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
-			// let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(
-			// 	','
-			// );
-			// let modo = propertyMethod.split(',').map((x) => +x);
-			// let caract = feature.split(',').map((x) => +x);
-			// let precios: string[] = this.validarPrecio(precioA, precioV);
-			let params = {
-				mail: this.getCookie('mail'),
-				imagen: imagenes.getImageGalleryValues(),
-				descuento: 0,
-			};
-			Object.assign(obj, params);
-			console.log(obj);
-			// this.postInmueble(params);
-			// window.history.back();
+			let params = this.modificacionObjeto(obj);
+			this.postInmueble(params);
+			console.log(params);
+			window.history.back();
 			return false;
 		};
+	}
+
+	private modificacionObjeto(obj: any) {
+		let params = {
+			mail: this.getCookie('mail'),
+			imagen: imagenes.getImageGalleryValues(),
+			descuento: 0,
+			precios: [obj.precioV, obj.precioA],
+		};
+		delete obj.precioV;
+		delete obj.precioA;
+		Object.assign(obj, params);
+		return obj;
 	}
 
 	private validarPrecio(precioA: string, precioV: string) {
@@ -107,45 +91,8 @@ export class Inmueble {
 		let registroForm: HTMLFormElement =
 			document.querySelector('#formNewProperty') || document.createElement('form');
 		registroForm.onsubmit = () => {
-			const formData = new FormData(registroForm);
-			let propertyType = formData.get('propertyType') as string;
-			let catast = formData.get('catast') as string;
-			let descripcion = formData.get('descripcion') as string;
-			let estado = formData.get('stdo') as string;
-			let energia = formData.get('energia') as string;
-			let precioV = formData.get('precioV') as string;
-			let precioA = formData.get('precioA') as string;
-			let homeType = formData.get('homeType') as string;
-			let roomCount = formData.get('roomCount') as string;
-			let publicar = formData.get('publicar') as string;
-			let bathroomCount = formData.get('bathroomCount') as string;
-			let feature = (formData.getAll('feature') as unknown as Array<String>).join(',');
-			let propertyMethod = (formData.getAll('propertyMethod') as unknown as Array<String>).join(
-				','
-			);
-			let modo = propertyMethod.split(',').map((x) => +x);
-			let caract = feature.split(',').map((x) => +x);
-			let precios: string[] = this.validarPrecio(precioA, precioV);
-
-			const params: InmuebleInterface = {
-				nBano: +bathroomCount,
-				nHab: +roomCount,
-				id_caractSecundaria: caract,
-				breveDescripcion: descripcion,
-				id_estadoInmueble: +estado,
-				id_catastro: catast,
-				id_modalidad: modo,
-				precio: precios,
-				id_tipoVivienda: +homeType,
-				descuento: 0,
-				id_certifEner: +energia,
-				id_tipoInmueble: +propertyType,
-				nCocina: 2,
-				publicado: +publicar | 0,
-				mail: this.getCookie('mail'),
-				imagen: imagenes.getImageGalleryValues(),
-			};
-			console.log(params);
+			let obj = form.getForm();
+			let params = this.modificacionObjeto(obj);
 			this.putInmueble(params);
 			window.history.back();
 			return false;
