@@ -24,6 +24,7 @@ export class Inmueble {
 			imagen: imagenes.getImageGalleryValues(),
 			descuento: 0,
 			precio,
+			nCocina: 0,
 		};
 		delete obj.precioV;
 		delete obj.precioA;

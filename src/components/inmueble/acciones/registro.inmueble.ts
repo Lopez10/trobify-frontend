@@ -12,8 +12,9 @@ export class EstrategiaRegistrar extends Inmueble implements Estrategia {
 			document.querySelector('#formNewProperty') || document.createElement('form');
 		registroForm.onsubmit = () => {
 			const params = this.creacionObjeto();
+			console.log(params);
 			this.ejecucion(params);
-			window.history.back();
+			// window.history.back();
 			return false;
 		};
 	}
