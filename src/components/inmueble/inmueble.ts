@@ -33,7 +33,8 @@ export class Inmueble {
 		let registroForm: HTMLFormElement =
 			document.querySelector('#formNewProperty') || document.createElement('form');
 		registroForm.onsubmit = () => {
-			const params: InmuebleInterface = this.crearParametros(registroForm);
+			let obj = form.getForm();
+			let params = this.modificacionObjeto(obj);
 
 			this.putInmueble(params);
 			window.history.back();
@@ -48,7 +49,8 @@ export class Inmueble {
 			let obj = form.getForm();
 			let params = this.modificacionObjeto(obj);
 			this.postInmueble(params);
-			console.log(params);
+
+			return false;
 		};
 	}
 
@@ -97,39 +99,5 @@ export class Inmueble {
 			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
 		}
 		return '';
-	}
-
-	private crearParametros(registroForm: HTMLFormElement) {
-		const formData = new FormData(registroForm);
-
-		let precioV = formData.get('precioV') as string;
-		let precioA = formData.get('precioA') as string;
-
-		const params: InmuebleInterface = {
-			nBano: formData.get('bathroomCount') as unknown as number,
-			nHab: formData.get('roomCount') as unknown as number,
-			id_caractSecundaria: this.creacionArrayNumeros(formData, 'feature'),
-			breveDescripcion: formData.get('descripcion') as string,
-			id_estadoInmueble: formData.get('stdo') as unknown as number,
-			id_catastro: formData.get('catast') as string,
-			id_modalidad: this.creacionArrayNumeros(formData, 'propertyMethod'),
-			precio: this.validarPrecio(precioA, precioV),
-			id_tipoVivienda: formData.get('homeType') as unknown as number,
-			descuento: 0,
-			id_certifEner: formData.get('energia') as unknown as number,
-			id_tipoInmueble: formData.get('propertyType') as unknown as number,
-			nCocina: 2,
-			mail: this.getCookie('mail'),
-			publicado: formData.get('publicar') as unknown as number | 0,
-			imagen: imagenes.getImageGalleryValues(),
-		};
-		return params;
-	}
-
-	private creacionArrayNumeros(formData: FormData, tipo: string): number[] {
-		return (formData.getAll(tipo) as unknown as Array<String>)
-			.join(',')
-			.split(',')
-			.map((x) => +x);
 	}
 }
