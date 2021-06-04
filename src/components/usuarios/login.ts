@@ -1,6 +1,7 @@
 import { UsuarioInterface } from '../../interface/usuario.interface';
 import { Singleton } from '../Singleton';
 import { Usuario } from './usuario';
+const form = require('../../../public/js/form.js');
 
 export class Login extends Usuario {
 	constructor() {
@@ -23,12 +24,8 @@ export class Login extends Usuario {
 		let loginForm: HTMLFormElement =
 			document.querySelector('#formLogin') || document.createElement('form');
 		loginForm.onsubmit = () => {
-			const formData = new FormData(loginForm);
-			let usuario: UsuarioInterface = {
-				mail: formData.get('user') as string,
-				password: formData.get('password') as string,
-			};
-			this.postLogin(usuario);
+			let obj = form.getForm();
+			this.postLogin(obj);
 			return false;
 		};
 	}

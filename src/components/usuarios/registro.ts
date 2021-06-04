@@ -1,6 +1,7 @@
 import { Singleton } from '../Singleton';
 import { Usuario } from './usuario';
 const mostrarValidacion = require('../../../public/js/registro.js');
+const form = require('../../../public/js/form.js');
 
 export class Registro extends Usuario {
 	constructor() {
@@ -26,18 +27,8 @@ export class Registro extends Usuario {
 		let loginForm: HTMLFormElement =
 			document.querySelector('#formSignUp') || document.createElement('form');
 		loginForm.onsubmit = () => {
-			const formData = new FormData(loginForm);
-			let usuario: any = {
-				nombre: formData.get('name') as string,
-				apellidos: formData.get('lastName') as string,
-				mail: formData.get('email') as string,
-				telefono: formData.get('phone') as string,
-				contrasena: formData.get('password') as string,
-				id_rol: formData.get('role') as string,
-			};
-			console.log(usuario);
-			this.postRegistro(usuario);
-
+			let obj = form.getForm();
+			this.postRegistro(obj);
 			return false;
 		};
 	}

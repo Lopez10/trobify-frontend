@@ -1,6 +1,7 @@
 import { Singleton } from '../Singleton';
 import { InmuebleInterface } from '../../interface/inmueble.interface';
 const imagenes = require('../../../public/js/imagenes.js');
+const form = require('../../../public/js/form.js');
 
 export class Inmueble {
 	constructor() {}
@@ -33,9 +34,21 @@ export class Inmueble {
 			document.querySelector('#formNewProperty') || document.createElement('form');
 		registroForm.onsubmit = () => {
 			const params: InmuebleInterface = this.crearParametros(registroForm);
+
 			this.putInmueble(params);
 			window.history.back();
 			return false;
+		};
+	}
+
+	aplicarRegistro() {
+		let registroForm: HTMLFormElement =
+			document.querySelector('#formNewProperty') || document.createElement('form');
+		registroForm.onsubmit = () => {
+			let obj = form.getForm();
+			let params = this.modificacionObjeto(obj);
+			this.postInmueble(params);
+			console.log(params);
 		};
 	}
 
@@ -48,17 +61,17 @@ export class Inmueble {
 			return false;
 		};
 	}
-
-	aplicarRegistro() {
-		let registroForm: HTMLFormElement =
-			document.querySelector('#formNewProperty') || document.createElement('form');
-		registroForm.onsubmit = () => {
-			const params: InmuebleInterface = this.crearParametros(registroForm);
-			console.log(params);
-			this.postInmueble(params);
-			window.history.back();
-			return false;
+	private modificacionObjeto(obj: any) {
+		let params = {
+			mail: this.getCookie('mail'),
+			imagen: imagenes.getImageGalleryValues(),
+			descuento: 0,
+			precios: [obj.precioV, obj.precioA],
 		};
+		delete obj.precioV;
+		delete obj.precioA;
+		Object.assign(obj, params);
+		return obj;
 	}
 
 	private obtenerParametros(): any {

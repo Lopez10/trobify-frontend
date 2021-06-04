@@ -12,6 +12,7 @@ export class Singleton {
 	public async accesoAPI(tipo: string, ruta: string, objeto?: any) {
 		const myRequest = 'http://localhost:3000/';
 		if (tipo == 'get') {
+			console.log(myRequest + ruta);
 			return await axios.get(myRequest + ruta).then((result) => {
 				return result.data;
 			});

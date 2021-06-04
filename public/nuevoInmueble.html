@@ -43,7 +43,7 @@
 
 		</nav>
 
-		<form id="formNewProperty">
+		<form id="formNewProperty" formFilter>
 
 			<div class="flexbox column center-v spaced-inner-top spaced-inner-bottom overflow">
 
@@ -66,58 +66,81 @@
 
 						<div class="flexbox column block round form">
 
-							<div class="label title">Tipo de inmueble</div>
-							<select name="propertyType" class="select" id="tpoInm">
-								<option value="1">Garaje</option>
-								<option value="2">Local comercial</option>
-								<option value="3" selected>Vivienda</option>
-							</select>
+							<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage"
+								filterType="select">
 
-							<div class="label title">Método de venta</div>
-							<label onclick="changeMethod()"><input name="propertyMethod" type="checkbox"
+								<div class="label title">Tipo de inmueble</div>
+								<select filter name="id_tipoInmueble" class="select" id="tpoInm">
+									<option value="1">Garaje</option>
+									<option value="2">Local comercial</option>
+									<option value="3" selected>Vivienda</option>
+								</select>
+							</div>
+
+
+							<div class="sep"></div>
+
+							<div class="label title" style="margin-top:0;">Método de venta</div>
+							<label onclick="changeMethod()"><input filter name="propertyMethod" type="checkbox"
 									id="propertyMethodS" value="1" />
 								<div class="label bold">Venta</div>
 							</label>
-							<label onclick="changeMethod()"><input name="propertyMethod" type="checkbox"
+							<label onclick="changeMethod()"><input filter name="propertyMethod" type="checkbox"
 									id="propertyMethodR" value="2" />
 								<div class="label bold">Alquiler</div>
 							</label>
 
-							<div class="label title">Estado de inmueble</div>
-							<select class="select" name="stdo">
-								<option value="1">Obra nueva</option>
-								<option value="2">Buen estado</option>
-								<option value="3">Reformado</option>
-								<option value="4">A reformar</option>
-							</select>
 
-							<div class="label title">Catastro</div>
-							<input class="mode-fill" type="text" name="catast" id="catast"
-								placeholder="0000000AA0000A0000AA" required />
+							<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage"
+								filterType="select">
+								<div class="sep"></div>
 
-							<div class="label title">Precio</div>
-
-							<div class="propertyMethodSPrice hideElement" id="propertyMethodSPrice">
-								<div class="label" style="margin-top:16px;">Precio de venta</div>
-								<input class="mode-fill" type="text" name="precioV" id="precio1"
-									placeholder="100.000 €" value="" />
+								<div class="label title">Estado de inmueble</div>
+								<select filter class="select" name="id_estadoInmueble" id="stdo">
+									<option value="1">Obra nueva</option>
+									<option value="2">Buen estado</option>
+									<option value="3">Reformado</option>
+									<option value="4">A reformar</option>
+								</select>
 							</div>
 
-							<div class="propertyMethodRPrice hideElement" id="propertyMethodRPrice">
-								<div class="label" style="margin-top:16px;">Precio de alquiler (€/mes)</div>
-								<input class="mode-fill" type="text" name="precioA" id="precio2"
-									placeholder="700 € / mes" value="" />
+							<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage"
+								filterType="input">
+								<div class="sep"></div>
+
+								<div class="label title">Catastro</div>
+								<input filter class="mode-fill" type="text" name="id_catastro" id="catast"
+									placeholder="0000000AA0000A0000AA" required />
 							</div>
 
-							<div class="propertyMethodSPrice" id="propertyMethodNone">
-								<div class="label alert" style="margin-top:16px;">Selecciona método de venta
+							<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage"
+								filterType="input">
+								<div class="sep"></div>
+
+								<div class="label title">Precio</div>
+								<div class="propertyMethodSPrice hideElement" id="propertyMethodSPrice">
+									<div class="label" style="margin-top:16px;">Precio de venta</div>
+									<input filter class="mode-fill" type="text" name="precioV" id="precio1"
+										placeholder="100.000 €" value="" />
+								</div>
+								<div class="propertyMethodRPrice hideElement" id="propertyMethodRPrice">
+									<div class="label" style="margin-top:16px;">Precio de alquiler (€/mes)
+									</div>
+									<input filter class="mode-fill" type="text" name="precioA" id="precio2"
+										placeholder="700 € / mes" value="" />
+								</div>
+								<div class="propertyMethodSPrice" id="propertyMethodNone">
+									<div class="label alert" style="margin-top:16px;">Selecciona método de
+										venta
+									</div>
 								</div>
 							</div>
 
-							<div class="dynamicFilterHome">
+							<div class="dynamicFilter dynamicFilterHome" filterType="select">
 								<div class="sep"></div>
+
 								<div class="label title">Tipo de vivienda</div>
-								<select name="homeType" class="select">
+								<select filter name="id_tipoVivienda" class="select" id="homeType">
 									<option value="1">No es vivienda</option>
 									<option value="2">Ático</option>
 									<option value="3">Plantas intermedias</option>
@@ -131,10 +154,11 @@
 								</select>
 							</div>
 
-							<div class="dynamicFilterHome dynamicFilterLocal">
+							<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal" filterType="select">
 								<div class="sep"></div>
+
 								<div class="label title">Energia</div>
-								<select class="select" name="energia">
+								<select filter class="select" id="energia" name="id_certifEner">
 									<option value="1">A++</option>
 									<option value="2">A+</option>
 									<option value="3">A</option>
@@ -144,51 +168,55 @@
 									<option value="7">E</option>
 									<option value="8">F</option>
 									<option value="9">G</option>
+									<option value="10">¿?</option>
 								</select>
 							</div>
 
-							<div class="dynamicFilterHome">
+							<div class="dynamicFilter dynamicFilterHome" filterType="input">
 								<div class="sep"></div>
+
 								<div class="label title">Habitaciones</div>
-								<input class="mode-fill" name="roomCount" type="number" min="0" value="0"
-									step="1" />
+								<input filter class="mode-fill" name="nHab" type="number" min="0" value="0"
+									id="hab" step="1" />
 							</div>
 
-							<div class="dynamicFilterHome dynamicFilterLocal">
+							<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal" filterType="input">
 								<div class="sep"></div>
+
 								<div class="label title">Baños</div>
-								<input class="mode-fill" name="bathroomCount" type="number" min="0" value="0"
-									step="1" />
+								<input filter class="mode-fill" name="nBano" type="number" min="0" value="0"
+									id="banos" step="1" />
 							</div>
 
-							<div class="dynamicFilterHome">
+							<div class="dynamicFilter dynamicFilterHome" filterType="checkbox">
 								<div class="sep"></div>
+
 								<div class="label title optional">Características</div>
-								<label><input name="feature" type="checkbox" value="1" />
+								<label><input filter name="caract" id="1" type="checkbox" value="1" />
 									<div class="label bold">Ascensor</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="2" />
+								<label><input filter name="caract" id="2" type="checkbox" value="2" />
 									<div class="label bold">Amueblado</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="3" />
+								<label><input filter name="caract" id="3" type="checkbox" value="3" />
 									<div class="label bold">Terraza o balcón</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="4" />
+								<label><input filter name="caract" id="4" type="checkbox" value="4" />
 									<div class="label bold">Aire acondicionado</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="5" />
+								<label><input filter name="caract" id="5" type="checkbox" value="5" />
 									<div class="label bold">Armario empotrado</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="6" />
+								<label><input filter name="caract" id="6" type="checkbox" value="6" />
 									<div class="label bold">Garaje</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="7" />
+								<label><input filter name="caract" id="7" type="checkbox" value="7" />
 									<div class="label bold">Jardín</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="8" />
+								<label><input filter name="caract" id="8" type="checkbox" value="8" />
 									<div class="label bold">Piscina</div>
 								</label>
-								<label><input name="feature" type="checkbox" value="9" />
+								<label><input filter name="caract" id="9" type="checkbox" value="9" />
 									<div class="label bold">Trastero</div>
 								</label>
 							</div>
@@ -202,9 +230,16 @@
 
 
 						<div class="filters flexbox column block round form">
-							<div class="label title">Descripcion</div>
-							<textarea class="mode-fill no-resize" name="descripcion"
-								placeholder="Añade una descripción a tu inmueble" required></textarea>
+
+							<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage"
+								filterType="input">
+
+								<div class="label title">Descripcion</div>
+								<textarea filter id='descripcion' class="mode-fill no-resize"
+									name="breveDescripcion" placeholder="Añade una descripción a tu inmueble"
+									required></textarea>
+							</div>
+
 							<div class="label title">Imágenes <div class="label detail"
 									style="margin-left: 6px;"><span id="totalImagesUploaded">0</span> imágenes
 								</div>
@@ -221,14 +256,29 @@
 							<div id="gallery" class="gallery empty">
 								<div class="imageOptions hide" id="imageOptions"></div>
 							</div>
+
+							<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage"
+								filterType="select">
+								<div class="sep"></div>
+
+								<div class="label title">Visibilidad inmueble</div>
+								<select filter name="publicado" class="select">
+									<option value="0">Oculto</option>
+									<option value="1">Público</option>
+								</select>
+							</div>
+
+							<!--
 							<div class="label title">¿Desea publicar?</div>
 							<label>
 
 								<input name="visibility" type="checkbox" value="1" />
 								<div class="label bold">Publicar</div>
 							</label>
+							-->
 
 						</div>
+
 
 
 					</div>
@@ -258,12 +308,12 @@
 		propertyMethodNone = document.getElementById("propertyMethodNone");
 
 	formSelector.addEventListener("change", changeForm, false);
-	propertyMethodS.addEventListener("change", changeMethod, false);
-	propertyMethodR.addEventListener("change", changeMethod, false);
+	// propertyMethodS.addEventListener("change", changeMethod, false);
+	// propertyMethodR.addEventListener("change", changeMethod, false);
 
 	window.onload = () => {
 		changeForm();
-		changeMethod();
+		//changeMethod();
 	}
 
 	function getTpoInm() {

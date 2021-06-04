@@ -14,37 +14,43 @@
 		<div class="flexbox column center-v">
 
 			<nav class="flexbox row center-v wide centered">
-				
+
 				<a href="index.html" class="logo"></a>
 
 				<script type="module">
 					import * as navbar from "./js/navbar.js";
 					navbar.loggedToIndex();
 				</script>
-				
+
 			</nav>
 
 			<div class="flexbox column block round form spaced-top">
 
-				<form id="formLogin">
+				<form id="formLogin" formFilter>
 
-					<div class="label title">Correo o teléfono</div>
-					<input class="mode-fill" type="email" name="user" id="user" placeholder="carmelo@gmail.com"
-						required autofocus />
+					<div class="dynamicFilter" filterType="input">
+						<div class="label title">Correo o teléfono</div>
+						<input filter class="mode-fill" type="email" name="mail" id="mail"
+							placeholder="carmelo@gmail.com" required autofocus />
+					</div>
 
-					<div class="label title">Contraseña</div>
-					<input class="mode-fill hint" type="password" name="password" id="password"
-						placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-						pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*"
-						onkeyup="checkPasswordStrength(this.value)" required />
-					<label for="password" id="passwordHint" class="passwordHint">
-						<span>La contraseña debe contener</span>
-						<p id="passwordLength">Más de 8 caracteres</p>
-						<p id="passwordUpperCase">Mínimo 1 mayúscula</p>
-						<p id="passwordLowerCase">Máximo 1 minúscula</p>
-						<p id="passwordContainsNumber">Mínimo 1 número</p>
-						<p id="passwordContainsSpecialChar">Mínimo 1 carácter especial</p>
-					</label>
+					<div class="dynamicFilter" filterType="input">
+						<div class="sep x0"></div>
+
+						<div class="label title">Contraseña</div>
+						<input filter class="mode-fill hint" type="password" name="password" id="password"
+							placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+							pattern="(?=.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*"
+							onkeyup="checkPasswordStrength(this.value)" required />
+						<label for="password" id="passwordHint" class="passwordHint">
+							<span>La contraseña debe contener</span>
+							<p id="passwordLength">Más de 8 caracteres</p>
+							<p id="passwordUpperCase">Mínimo 1 mayúscula</p>
+							<p id="passwordLowerCase">Máximo 1 minúscula</p>
+							<p id="passwordContainsNumber">Mínimo 1 número</p>
+							<p id="passwordContainsSpecialChar">Mínimo 1 carácter especial</p>
+						</label>
+					</div>
 
 					<div class="sep"></div>
 
