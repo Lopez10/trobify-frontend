@@ -1,3 +1,0 @@
-tpoInm=3&ord=1&opt=1&preMin=0&preMax=1000000&mrgn=0.1&aMrgn=&supMin=50&supMax=5000&stdo=&tpoViv=&caract=&prov=46&nHab=0&nBan=0
-
-ord=1&tpoInm=3&prov=46&preMin=0&preMax=1000000&mrgn=10&supMin=50&supMax=5000&nHab=0&nBan=0&opt=1

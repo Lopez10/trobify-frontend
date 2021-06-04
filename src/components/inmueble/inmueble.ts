@@ -1,5 +1,4 @@
 import { API } from '../API';
-import { InmuebleInterface } from '../../interface/inmueble.interface';
 import { obtenerProvincias } from '../../../data/provincias';
 const imagenes = require('../../../public/js/imagenes.js');
 const form = require('../../../public/js/form.js');
@@ -19,11 +18,12 @@ export class Inmueble {
 
 	protected creacionObjeto() {
 		let obj = form.getForm();
+		let precio = this.validarPrecio(obj.precioV, obj.precioA);
 		let params = {
 			mail: this.getCookie('mail'),
 			imagen: imagenes.getImageGalleryValues(),
 			descuento: 0,
-			precios: [obj.precioV, obj.precioA],
+			precio,
 		};
 		delete obj.precioV;
 		delete obj.precioA;
