@@ -3,9 +3,9 @@ const mostrarValidacion = require('../../../public/js/registro.js');
 const form = require('../../../public/js/form.js');
 
 export class Usuario {
-	protected async postUsuarios(usuario: any): Promise<void> {
+	protected async postUsuarios(usuario: any, tipo: string): Promise<void> {
 		let api: API = API.getInstance();
-		api.accesoAPI('post', 'registro', usuario).then((response) => {
+		api.accesoAPI('post', tipo, usuario).then((response) => {
 			if (response == true) {
 				this.setCookie('mail', usuario.mail);
 				this.autoRedirect();
@@ -15,12 +15,12 @@ export class Usuario {
 		});
 	}
 
-	public obtenerParametros(): void {
-		let loginForm: HTMLFormElement =
+	public obtenerParametros(tipo: string): void {
+		let escucharFormulario: HTMLFormElement =
 			document.querySelector('#form') || document.createElement('form');
-		loginForm.onsubmit = () => {
+		escucharFormulario.onsubmit = () => {
 			let obj = form.getForm();
-			this.postUsuarios(obj);
+			this.postUsuarios(obj, tipo);
 			return false;
 		};
 	}
