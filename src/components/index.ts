@@ -1,17 +1,14 @@
 import { crearProvincias } from '../../data/provincias';
+const form = require('../../../public/js/form.js');
 
 crearProvincias();
 
 let searchForm: HTMLFormElement =
 	document.querySelector('#formSearch') || document.createElement('form');
 searchForm.onsubmit = () => {
-	const formData = new FormData(searchForm);
-	let opt = (formData.get('opt') as unknown) as number;
-	let prov = (formData.get('prov') as unknown) as number;
-	let tpoInm = (formData.get('tpoInm') as unknown) as number;
-
+	let obj = form.getForm();
 	window.location.assign(
-		'/public/busqueda.html?opt=' + opt + '&prov=' + prov + '&tpoInm=' + tpoInm
+		'/public/busqueda.html?opt=' + obj.opt + '&prov=' + obj.prov + '&tpoInm=' + obj.tpoInm
 	);
 	return false;
 };

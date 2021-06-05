@@ -1,15 +1,38 @@
-export abstract class Usuario {
-	abstract postUsuarios(usuario: any): Promise<void>;
+import { API } from '../API';
+const mostrarValidacion = require('../../../public/js/registro.js');
+const form = require('../../../public/js/form.js');
 
-	protected setCookie(name: string, value: string): void {
-		console.log(name, value);
+export class Usuario {
+	protected async postUsuarios(usuario: any): Promise<void> {
+		let api: API = API.getInstance();
+		api.accesoAPI('post', 'registro', usuario).then((response) => {
+			if (response == true) {
+				this.setCookie('mail', usuario.mail);
+				this.autoRedirect();
+			} else {
+				mostrarValidacion.alertAlreadyExists();
+			}
+		});
+	}
+
+	public obtenerParametros(): void {
+		let loginForm: HTMLFormElement =
+			document.querySelector('#form') || document.createElement('form');
+		loginForm.onsubmit = () => {
+			let obj = form.getForm();
+			this.postUsuarios(obj);
+			return false;
+		};
+	}
+
+	private setCookie(name: string, value: string): void {
 		let expires = '';
 		let date = new Date();
 		date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
 		expires = '; expires=' + date.toUTCString();
 		document.cookie = name + '=' + value + expires + '; path=/';
 	}
-	protected autoRedirect(): void {
+	private autoRedirect(): void {
 		window.location.replace('http://localhost:8080/public/');
 	}
 }
