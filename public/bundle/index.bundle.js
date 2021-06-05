@@ -26,7 +26,17 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
   \*********************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst provincias_1 = __webpack_require__(/*! ../../data/provincias */ \"./data/provincias.ts\");\nprovincias_1.crearProvincias();\nlet searchForm = document.querySelector('#formSearch') || document.createElement('form');\nsearchForm.onsubmit = () => {\n    const formData = new FormData(searchForm);\n    let opt = formData.get('opt');\n    let prov = formData.get('prov');\n    let tpoInm = formData.get('tpoInm');\n    window.location.assign('/public/busqueda.html?opt=' + opt + '&prov=' + prov + '&tpoInm=' + tpoInm);\n    return false;\n};\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst provincias_1 = __webpack_require__(/*! ../../data/provincias */ \"./data/provincias.ts\");\nconst form = __webpack_require__(/*! ../../public/js/form.js */ \"./public/js/form.js\");\nprovincias_1.crearProvincias();\nlet searchForm = document.querySelector('#formSearch') || document.createElement('form');\nsearchForm.onsubmit = () => {\n    let obj = form.getForm();\n    console.log(obj);\n    window.location.assign('/public/busqueda.html?opt=' + obj.opt + '&prov=' + obj.prov + '&tpoInm=' + obj.tpoInm);\n    return false;\n};\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/index.ts?");
+
+/***/ }),
+
+/***/ "./public/js/form.js":
+/*!***************************!*\
+  !*** ./public/js/form.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getForm\": () => (/* binding */ getForm)\n/* harmony export */ });\nfunction getForm() {\n\tvar obj = {};\n\tlet form = document.querySelector('[formFilter]');\n\tArray.from(form.querySelectorAll('.dynamicFilter:not(.hideElement)')).forEach((i) => {\n\t\tif (i.getAttribute('filterType') === 'input') {\n\t\t\tArray.from(i.querySelectorAll('[filter]')).forEach((filter) => {\n\t\t\t\tif (filter.type === 'checkbox') {\n\t\t\t\t\tif (filter.checked) obj[filter.name] = filter.checked;\n\t\t\t\t} else {\n\t\t\t\t\tif (filter.value != '') {\n\t\t\t\t\t\tobj[filter.name] =\n\t\t\t\t\t\t\tfilter.type === ('number' || 0) ? parseInt(filter.value, 10) : filter.value;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t});\n\t\t} else if (i.getAttribute('filterType') === 'checkbox') {\n\t\t\tvar cbs = Array.from(i.querySelectorAll('[filter]:checked'));\n\t\t\tif (cbs.length > 0) {\n\t\t\t\tobj[cbs[0].name] = [];\n\t\t\t\tcbs.forEach((cb) => {\n\t\t\t\t\tobj[cbs[0].name].push(cb.value);\n\t\t\t\t});\n\t\t\t}\n\t\t} else if (i.getAttribute('filterType') === 'radio') {\n\t\t\tvar rd = i.querySelectorAll('[filter]:checked');\n\t\t\tif (rd.length > 0) obj[rd[0].name] = parseInt(rd[0].value, 10);\n\t\t} else if (i.getAttribute('filterType') === 'select') {\n\t\t\tvar sl = i.querySelectorAll('select');\n\t\t\tobj[sl[0].name] = sl[0].value;\n\t\t} else {\n\t\t\tconsole.warn('getForm(): Input type not defined or implemented:\\n' + i.innerHTML);\n\t\t}\n\t});\n\treturn obj;\n}\n\n\n//# sourceURL=webpack://trobify-frontend/./public/js/form.js?");
 
 /***/ })
 
@@ -54,6 +64,35 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\ncons
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 /******/ 	

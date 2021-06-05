@@ -1,9 +1,7 @@
 import { API } from '../API';
-import { obtenerProvincias } from '../../../data/provincias';
+
 const imagenes = require('../../../public/js/imagenes.js');
 const form = require('../../../public/js/form.js');
-const inm = require('../../../public/js/inmueble.js');
-const mapa = require('../../../public/js/mapa.js');
 
 export class Inmueble {
 	constructor() {}
@@ -57,19 +55,3 @@ export class Inmueble {
 		return '';
 	}
 }
-
-let inmueble = new Inmueble();
-
-let datosInmueble = inmueble.getInmueble();
-let provincias = obtenerProvincias();
-
-datosInmueble.then((data) => {
-	mapa.mostrarMapa(
-		datosInmueble,
-		provincias[data.provincia].latitud,
-		provincias[data.provincia].longitud,
-		provincias[data.provincia].zoom,
-		true
-	);
-	inm.inmuebleDom(data);
-});

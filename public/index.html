@@ -43,22 +43,30 @@
 
 	<div class="nav flexbox inline row group round" style="position:fixed;top:65%;left:60px;">
 
-		<form id="formSearch" class="form inline flexbox center-h center-items-v spaced">
+		<form id="formSearch" class="form inline flexbox center-h center-items-v spaced" formFilter>
 
-			<select name="opt" id="method" class="select" style="margin-right:8px;">
-				<option value="1" selected>Venta</option>
-				<option value="2">Alquiler</option>
-				<option value="3">Alquiler de habitaciones</option>
-			</select>
 
-			<select name="tpoInm" id="type" class="select" style="margin-right:8px;">
-				<option value="1">Garaje</option>
-				<option value="2">Local Comercial</option>
-				<option value="3" selected>Vivienda</option>
-			</select>
+			<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="select">
 
-			<select id="provincias" class="select" name="prov" id="provincia"
-				onchange="changeProvincia(this.value)"></select>
+				<select filter name="opt" class="select" id="tpoInm">
+					<option value="1" selected>Venta</option>
+					<option value="2">Alquiler</option>
+					<option value="3">Alquiler de habitaciones</option>
+				</select>
+			</div>
+
+			<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="select">
+
+				<select filter name="tpoInm" class="select" id="tpoInm">
+					<option value="1">Garaje</option>
+					<option value="2">Local comercial</option>
+					<option value="3" selected>Vivienda</option>
+				</select>
+			</div>
+			<div class="dynamicFilter dynamicFilterHome dynamicFilterLocal dynamicFilterGarage" filterType="select">
+				<select filter id="provincias" class="select" name="prov" id="provincia"
+					onchange="changeProvincia(this.value)"></select>
+			</div>
 
 			<button id="filtroSubmit" class="button black inline-flex chip" name="submit" type="submit"
 				style="margin-left: 16px;">

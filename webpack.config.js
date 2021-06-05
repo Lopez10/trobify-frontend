@@ -7,6 +7,7 @@ module.exports = {
 		hipoteca: './src/components/inmueble/hipoteca/hipoteca.ts',
 		login: './src/components/usuarios/login.ts',
 		inmueble: './src/components/inmueble/inmueble.ts',
+		visualizar: './src/components/inmueble/acciones/visualizar.inmueble.ts',
 		inmuebles: './src/components/inmuebles/Inmuebles.ts',
 		registro: './src/components/usuarios/registro',
 		acciones: './src/components/inmueble/Acciones',

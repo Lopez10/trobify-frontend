@@ -320,10 +320,10 @@ eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _argument
 /*!******************************************!*\
   !*** ./src/components/usuarios/login.ts ***!
   \******************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Login = void 0;\nconst API_1 = __webpack_require__(/*! ../API */ \"./src/components/API.ts\");\nconst usuario_1 = __webpack_require__(/*! ./usuario */ \"./src/components/usuarios/usuario.ts\");\nconst form = __webpack_require__(/*! ../../../public/js/form.js */ \"./public/js/form.js\");\nclass Login extends usuario_1.Usuario {\n    constructor() {\n        super();\n        this.obtenerParametrosLogin();\n    }\n    postUsuarios(usuario) {\n        return __awaiter(this, void 0, void 0, function* () {\n            let api = API_1.API.getInstance();\n            api.accesoAPI('post', 'login', usuario).then((response) => {\n                if (response == true) {\n                    console.log(usuario);\n                    this.setCookie('mail', usuario.mail);\n                    this.autoRedirect();\n                }\n            });\n        });\n    }\n    obtenerParametrosLogin() {\n        let loginForm = document.querySelector('#formLogin') || document.createElement('form');\n        loginForm.onsubmit = () => {\n            let obj = form.getForm();\n            this.postUsuarios(obj);\n            return false;\n        };\n    }\n}\nexports.Login = Login;\nlet login = new Login();\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/usuarios/login.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst usuario_1 = __webpack_require__(/*! ./usuario */ \"./src/components/usuarios/usuario.ts\");\nlet login = new usuario_1.Usuario();\nlogin.obtenerParametros('login');\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/usuarios/login.ts?");
 
 /***/ }),
 
@@ -331,10 +331,10 @@ eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _argument
 /*!********************************************!*\
   !*** ./src/components/usuarios/usuario.ts ***!
   \********************************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Usuario = void 0;\nclass Usuario {\n    setCookie(name, value) {\n        console.log(name, value);\n        let expires = '';\n        let date = new Date();\n        date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);\n        expires = '; expires=' + date.toUTCString();\n        document.cookie = name + '=' + value + expires + '; path=/';\n    }\n    autoRedirect() {\n        window.location.replace('http://localhost:8080/public/');\n    }\n}\nexports.Usuario = Usuario;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/usuarios/usuario.ts?");
+eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Usuario = void 0;\nconst API_1 = __webpack_require__(/*! ../API */ \"./src/components/API.ts\");\nconst mostrarValidacion = __webpack_require__(/*! ../../../public/js/registro.js */ \"./public/js/registro.js\");\nconst form = __webpack_require__(/*! ../../../public/js/form.js */ \"./public/js/form.js\");\nclass Usuario {\n    postUsuarios(usuario, tipo) {\n        return __awaiter(this, void 0, void 0, function* () {\n            let api = API_1.API.getInstance();\n            api.accesoAPI('post', tipo, usuario).then((response) => {\n                if (response == true) {\n                    this.setCookie('mail', usuario.mail);\n                    this.autoRedirect();\n                }\n                else {\n                    mostrarValidacion.alertAlreadyExists();\n                }\n            });\n        });\n    }\n    obtenerParametros(tipo) {\n        let escucharFormulario = document.querySelector('#form') || document.createElement('form');\n        escucharFormulario.onsubmit = () => {\n            let obj = form.getForm();\n            this.postUsuarios(obj, tipo);\n            return false;\n        };\n    }\n    setCookie(name, value) {\n        let expires = '';\n        let date = new Date();\n        date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);\n        expires = '; expires=' + date.toUTCString();\n        document.cookie = name + '=' + value + expires + '; path=/';\n    }\n    autoRedirect() {\n        window.location.replace('http://localhost:8080/public/');\n    }\n}\nexports.Usuario = Usuario;\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/usuarios/usuario.ts?");
 
 /***/ }),
 
@@ -346,6 +346,17 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getForm\": () => (/* binding */ getForm)\n/* harmony export */ });\nfunction getForm() {\n\tvar obj = {};\n\tlet form = document.querySelector('[formFilter]');\n\tArray.from(form.querySelectorAll('.dynamicFilter:not(.hideElement)')).forEach((i) => {\n\t\tif (i.getAttribute('filterType') === 'input') {\n\t\t\tArray.from(i.querySelectorAll('[filter]')).forEach((filter) => {\n\t\t\t\tif (filter.type === 'checkbox') {\n\t\t\t\t\tif (filter.checked) obj[filter.name] = filter.checked;\n\t\t\t\t} else {\n\t\t\t\t\tif (filter.value != '') {\n\t\t\t\t\t\tobj[filter.name] =\n\t\t\t\t\t\t\tfilter.type === ('number' || 0) ? parseInt(filter.value, 10) : filter.value;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t});\n\t\t} else if (i.getAttribute('filterType') === 'checkbox') {\n\t\t\tvar cbs = Array.from(i.querySelectorAll('[filter]:checked'));\n\t\t\tif (cbs.length > 0) {\n\t\t\t\tobj[cbs[0].name] = [];\n\t\t\t\tcbs.forEach((cb) => {\n\t\t\t\t\tobj[cbs[0].name].push(cb.value);\n\t\t\t\t});\n\t\t\t}\n\t\t} else if (i.getAttribute('filterType') === 'radio') {\n\t\t\tvar rd = i.querySelectorAll('[filter]:checked');\n\t\t\tif (rd.length > 0) obj[rd[0].name] = parseInt(rd[0].value, 10);\n\t\t} else if (i.getAttribute('filterType') === 'select') {\n\t\t\tvar sl = i.querySelectorAll('select');\n\t\t\tobj[sl[0].name] = sl[0].value;\n\t\t} else {\n\t\t\tconsole.warn('getForm(): Input type not defined or implemented:\\n' + i.innerHTML);\n\t\t}\n\t});\n\treturn obj;\n}\n\n\n//# sourceURL=webpack://trobify-frontend/./public/js/form.js?");
+
+/***/ }),
+
+/***/ "./public/js/registro.js":
+/*!*******************************!*\
+  !*** ./public/js/registro.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"alertAlreadyExists\": () => (/* binding */ alertAlreadyExists)\n/* harmony export */ });\nfunction alertAlreadyExists() {\n\tdocument.querySelector('#alertAlreadyExists').classList.remove('hideElement');\n}\n\n\n//# sourceURL=webpack://trobify-frontend/./public/js/registro.js?");
 
 /***/ })
 
@@ -407,7 +418,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/components/usuarios/login.ts");
 /******/ 	
 /******/ })()
