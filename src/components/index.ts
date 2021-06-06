@@ -7,7 +7,6 @@ let searchForm: HTMLFormElement =
 	document.querySelector('#formSearch') || document.createElement('form');
 searchForm.onsubmit = () => {
 	let obj = form.getForm();
-	console.log(obj);
 	window.location.assign(
 		'/public/busqueda.html?opt=' + obj.opt + '&prov=' + obj.prov + '&tpoInm=' + obj.tpoInm
 	);

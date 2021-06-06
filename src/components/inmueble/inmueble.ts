@@ -3,9 +3,9 @@ import { API } from '../API';
 const imagenes = require('../../../public/js/imagenes.js');
 const form = require('../../../public/js/form.js');
 
-export class Inmueble {
+export abstract class Inmueble {
 	constructor() {}
-
+	abstract ejecucion(object?: any): any;
 	getInmueble() {
 		let api: API = API.getInstance();
 		let params = this.obtenerParametros();

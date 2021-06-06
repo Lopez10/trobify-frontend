@@ -1,4 +1,4 @@
-import { Usuario } from './usuario';
+import { Usuario } from './Usuario';
 
 let registro = new Usuario();
-registro.obtenerParametros('registro');
+registro.escucharFormulario('registro');

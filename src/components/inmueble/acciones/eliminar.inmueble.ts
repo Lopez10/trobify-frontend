@@ -1,8 +1,8 @@
 import { API } from '../../API';
 import { Estrategia } from '../Estrategia';
-import { Inmueble } from '../inmueble';
+import { Inmueble } from '../Inmueble';
 
-export class EstrategiaEliminar extends Inmueble implements Estrategia {
+export class Eliminar extends Inmueble implements Estrategia {
 	async ejecucion(id_catastro: any) {
 		console.log(id_catastro);
 		let api: API = API.getInstance();
@@ -10,7 +10,6 @@ export class EstrategiaEliminar extends Inmueble implements Estrategia {
 	}
 	formulario() {
 		let params = this.obtenerParametros();
-		console.log(params);
 		let registroForm: HTMLFormElement =
 			document.querySelector('#deleteProperty') || document.createElement('form');
 		registroForm.onsubmit = () => {

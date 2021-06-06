@@ -26,7 +26,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
   \*********************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst provincias_1 = __webpack_require__(/*! ../../data/provincias */ \"./data/provincias.ts\");\nconst form = __webpack_require__(/*! ../../public/js/form.js */ \"./public/js/form.js\");\nprovincias_1.crearProvincias();\nlet searchForm = document.querySelector('#formSearch') || document.createElement('form');\nsearchForm.onsubmit = () => {\n    let obj = form.getForm();\n    console.log(obj);\n    window.location.assign('/public/busqueda.html?opt=' + obj.opt + '&prov=' + obj.prov + '&tpoInm=' + obj.tpoInm);\n    return false;\n};\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst provincias_1 = __webpack_require__(/*! ../../data/provincias */ \"./data/provincias.ts\");\nconst form = __webpack_require__(/*! ../../public/js/form.js */ \"./public/js/form.js\");\nprovincias_1.crearProvincias();\nlet searchForm = document.querySelector('#formSearch') || document.createElement('form');\nsearchForm.onsubmit = () => {\n    let obj = form.getForm();\n    window.location.assign('/public/busqueda.html?opt=' + obj.opt + '&prov=' + obj.prov + '&tpoInm=' + obj.tpoInm);\n    return false;\n};\n\n\n//# sourceURL=webpack://trobify-frontend/./src/components/index.ts?");
 
 /***/ }),
 

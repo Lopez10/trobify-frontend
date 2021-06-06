@@ -3,14 +3,14 @@ const path = require('path');
 module.exports = {
 	entry: {
 		index: './src/components/index.ts',
-		busqueda: './src/components/busqueda/busqueda.ts',
-		hipoteca: './src/components/inmueble/hipoteca/hipoteca.ts',
+		busqueda: './src/components/busqueda/Busqueda.ts',
+		hipoteca: './src/components/inmueble/hipoteca/Hipoteca.ts',
 		login: './src/components/usuarios/login.ts',
-		inmueble: './src/components/inmueble/inmueble.ts',
+		registro: './src/components/usuarios/registro.ts',
+		//inmueble: './src/components/inmueble/Inmueble.ts',
 		visualizar: './src/components/inmueble/acciones/visualizar.inmueble.ts',
 		inmuebles: './src/components/inmuebles/Inmuebles.ts',
-		registro: './src/components/usuarios/registro',
-		acciones: './src/components/inmueble/Acciones',
+		acciones: './src/components/inmueble/Acciones.ts',
 	},
 	mode: 'development',
 	module: {

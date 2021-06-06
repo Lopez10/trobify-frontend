@@ -1,9 +1,9 @@
 import { API } from '../../API';
-import { Inmueble } from '../inmueble';
+import { Inmueble } from '../Inmueble';
 import { Estrategia } from '../Estrategia';
 const editar = require('../../../../public/js/editar.js');
 
-export class EstrategiaEditar extends Inmueble implements Estrategia {
+export class Editar extends Inmueble implements Estrategia {
 	constructor() {
 		super();
 		this.getInmueble().then((data) => {

@@ -1,6 +1,6 @@
-import { EstrategiaEditar } from './acciones/editar.inmueble';
-import { EstrategiaEliminar } from './acciones/eliminar.inmueble';
-import { EstrategiaRegistrar } from './acciones/registro.inmueble';
+import { Editar } from './acciones/Editar.inmueble';
+import { Eliminar } from './acciones/Eliminar.inmueble';
+import { Registrar } from './acciones/Registrar.inmueble';
 import { Context } from './Context';
 
 export class Acciones {
@@ -16,15 +16,15 @@ export class Acciones {
 	}
 
 	realizarAccion(action: string) {
-		let context = new Context(new EstrategiaEliminar());
+		let context = new Context(new Eliminar());
 		if (action == 'editar') {
-			context.setEstrategia(new EstrategiaEditar());
+			context.setEstrategia(new Editar());
 		}
 		if (action == 'eliminar') {
-			context.setEstrategia(new EstrategiaEliminar());
+			context.setEstrategia(new Eliminar());
 		}
 		if (action == 'registrar') {
-			context.setEstrategia(new EstrategiaRegistrar());
+			context.setEstrategia(new Registrar());
 		}
 
 		context.ejecutarEstatregia();

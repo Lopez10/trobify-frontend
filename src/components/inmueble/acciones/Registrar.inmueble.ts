@@ -1,8 +1,8 @@
 import { API } from '../../API';
 import { Estrategia } from '../Estrategia';
-import { Inmueble } from '../inmueble';
+import { Inmueble } from '../Inmueble';
 
-export class EstrategiaRegistrar extends Inmueble implements Estrategia {
+export class Registrar extends Inmueble implements Estrategia {
 	async ejecucion(inmueble: any) {
 		let api: API = API.getInstance();
 		return await api.accesoAPI('post', 'inmueble', inmueble);
@@ -12,9 +12,8 @@ export class EstrategiaRegistrar extends Inmueble implements Estrategia {
 			document.querySelector('#formNewProperty') || document.createElement('form');
 		registroForm.onsubmit = () => {
 			const params = this.creacionObjeto();
-			console.log(params);
 			this.ejecucion(params);
-			// window.history.back();
+			window.history.back();
 			return false;
 		};
 	}

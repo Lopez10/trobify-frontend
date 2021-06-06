@@ -3,7 +3,7 @@ const mostrarValidacion = require('../../../public/js/registro.js');
 const form = require('../../../public/js/form.js');
 
 export class Usuario {
-	protected async postUsuarios(usuario: any, tipo: string): Promise<void> {
+	public async accion(usuario: any, tipo: string): Promise<void> {
 		let api: API = API.getInstance();
 		api.accesoAPI('post', tipo, usuario).then((response) => {
 			if (response == true) {
@@ -15,12 +15,12 @@ export class Usuario {
 		});
 	}
 
-	public obtenerParametros(tipo: string): void {
+	public escucharFormulario(tipo: string): void {
 		let escucharFormulario: HTMLFormElement =
 			document.querySelector('#form') || document.createElement('form');
 		escucharFormulario.onsubmit = () => {
 			let obj = form.getForm();
-			this.postUsuarios(obj, tipo);
+			this.accion(obj, tipo);
 			return false;
 		};
 	}
