@@ -1,15 +1,13 @@
 const construccionDOM = require('../../../../public/js/hipoteca.js');
 export class Hipoteca {
 	precio: number;
-	localizacion: string;
 
-	constructor(precio: number, localizacion: string) {
-		this.precio = precio;
-		this.localizacion = localizacion;
+	constructor() {
+		this.precio = this.obtenerPrecio() || 0;
 	}
 
-	calculoAhorro(ahorro: number) {
-		return this.precio - ahorro;
+	calculoAhorro(precio: number, ahorro: number) {
+		return precio - ahorro;
 	}
 
 	calculoInteres(interes: string, variable: number, ahorro: number) {
@@ -24,22 +22,25 @@ export class Hipoteca {
 	}
 
 	calculoCondicion(condicion: string) {
-		if (condicion == 'segundaMano') {
-			this.precio = this.precio * 0.995;
-		} else {
-			this.precio = this.precio * 1.0005;
-		}
+		return condicion == 'segundaMano' ? 0.995 : 1.0005;
 	}
 
-	calculoTotal(valorInteres: number, valorAhorro: number, anos: number) {
-		return (valorAhorro += valorInteres * anos);
+	calculoTotal(valorInteres: number, valorAhorro: number, anos: number, condicion: number) {
+		return (valorAhorro += valorInteres * anos) * condicion;
 	}
 
 	calculoCuotaMensual(valorTotal: number, anos: number) {
 		return valorTotal / (anos * 12);
 	}
+	obtenerPrecio() {
+		let queryString = window.location.search;
+		let urlParams = new URLSearchParams(queryString);
+		let precio = urlParams.get('precio');
+
+		if (precio) return +precio;
+	}
 }
 
-let hipoteca = new Hipoteca(1000000, 'Valencia');
+let hipoteca = new Hipoteca();
 
 construccionDOM.hipotecaDom(hipoteca);

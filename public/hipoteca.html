@@ -41,6 +41,7 @@
 			</script>
 
 		</nav>
+		<a class="button" onclick="window.history.back()">Atras</a>
 
 		<div class="filters flexbox column center-h center-v">
 			<div class="filters flexbox column block round form">
@@ -60,8 +61,7 @@
 					</label>
 
 					<div class="label title">Precio</div>
-					<input class="priceMax" type="number" min="0" value="100000" name="precio" id="precio"
-						step="1" />
+					<input class="priceMax" type="number" min="0" name="precio" id="precio" step="1" />
 
 					<div class="label title">Ahorro aportado</div>
 					<input class="priceMax" type="number" min="0" value="10000" name="ahorro" id="ahorro"
@@ -89,7 +89,7 @@
 					<div class="sep"></div>
 
 					<button class="button black inline-flex" name="submit" type="submit">
-						Aplicar filtros
+						Calcular
 					</button>
 				</form>
 				<div class="sep"></div>

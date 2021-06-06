@@ -1,6 +1,6 @@
 export function hipotecaDom(hipoteca) {
 	let hipotecaForm = document.querySelector('#formularioHipoteca');
-	let localizacion = 'Valencia';
+	document.getElementById('precio').value = hipoteca.precio;
 
 	hipotecaForm.onsubmit = () => {
 		const formData = new FormData(hipotecaForm);
@@ -13,11 +13,16 @@ export function hipotecaDom(hipoteca) {
 		let interes = formData.get('interes');
 
 		let valorCondicionHipoteca = hipoteca.calculoCondicion(condicionHipoteca);
-		let calculoAhorro = hipoteca.calculoAhorro(ahorro);
+		let calculoAhorro = hipoteca.calculoAhorro(+precio, ahorro);
 		let calculoInteres = hipoteca.calculoInteres(interes, valorVariable, calculoAhorro);
-		let total = hipoteca.calculoTotal(calculoInteres, calculoAhorro, plazo);
+		let total = hipoteca.calculoTotal(
+			calculoInteres,
+			calculoAhorro,
+			plazo,
+			+valorCondicionHipoteca
+		);
 		let cuotaMensual = hipoteca.calculoCuotaMensual(total, plazo);
-		console.log(total, hipoteca.calculoCuotaMensual(total, plazo));
+		console.log(interes, total, cuotaMensual);
 		let totalDom = document.getElementById('total');
 		total = Math.round(total);
 		if (totalDom != null) totalDom.textContent = total.toString();
