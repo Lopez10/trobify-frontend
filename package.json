@@ -6,7 +6,7 @@
 	"scripts": {
 		"serve": "webpack serve",
 		"build": "webpack",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "jest"
 	},
 	"repository": {
 		"type": "git",
@@ -19,9 +19,13 @@
 	},
 	"homepage": "https://github.com/Lopez10/Trobify-frontend#readme",
 	"devDependencies": {
+		"@babel/preset-typescript": "^7.13.0",
+		"@types/jest": "^26.0.23",
 		"@types/node": "^14.14.31",
 		"@types/request": "^2.48.5",
+		"jest": "^27.0.4",
 		"nodemon": "^2.0.7",
+		"ts-jest": "^27.0.3",
 		"ts-loader": "^8.0.17",
 		"ts-node": "^9.1.1",
 		"tslint": "^5.12.1",
