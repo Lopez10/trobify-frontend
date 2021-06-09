@@ -1,4 +1,4 @@
-import { Estrategia } from './Estrategia';
+import { Estrategia } from '../../interface/estrategia.interface';
 
 export class Context {
 	private estrategia: Estrategia;

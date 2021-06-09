@@ -1,10 +1,9 @@
 import { API } from '../../API';
-import { Estrategia } from '../Estrategia';
+import { Estrategia } from '../../../interface/estrategia.interface';
 import { Inmueble } from '../Inmueble';
 
 export class Eliminar extends Inmueble implements Estrategia {
 	async ejecucion(id_catastro: any) {
-		console.log(id_catastro);
 		let api: API = API.getInstance();
 		return await api.accesoAPI('delete', 'inmueble', id_catastro);
 	}

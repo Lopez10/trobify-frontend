@@ -1,5 +1,5 @@
 import { API } from '../../API';
-import { Estrategia } from '../Estrategia';
+import { Estrategia } from '../../../interface/estrategia.interface';
 import { Inmueble } from '../Inmueble';
 
 export class Registrar extends Inmueble implements Estrategia {

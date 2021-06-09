@@ -1,6 +1,6 @@
 import { API } from '../../API';
 import { Inmueble } from '../Inmueble';
-import { Estrategia } from '../Estrategia';
+import { Estrategia } from '../../../interface/estrategia.interface';
 const editar = require('../../../../public/js/editar.js');
 
 export class Editar extends Inmueble implements Estrategia {

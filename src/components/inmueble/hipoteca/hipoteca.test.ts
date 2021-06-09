@@ -1,4 +1,4 @@
-import { hipoteca } from './prueba';
+import { hipoteca } from './HipotecaTest';
 let precio = 654765;
 let ahorro = 10321;
 let calculoTotal = hipoteca.calculoTotal(
